@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">toulouse-0219-android-robinsdesmers</string>
+    <string name="nom_d_utilisateur">Nom d\'utilisateur</string>
+    <string name="adresse_mail">Adresse mail</string>
+    <string name="mot_de_passe">Mot de passe</string>
 </resources>
