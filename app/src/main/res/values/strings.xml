@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">toulouse-0219-android-robinsdesmers</string>
     <string name="title_activity_maps">Map</string>
+    <string name="un_d_chet_seul">Un déchet seul</string>
+    <string name="un_amas_de_d_chets">Un amas de déchets</string>
+    <string name="un_lieu_de_collecte">Un lieu de collecte</string>
+    <string name="bouteilles_plastique">Bouteilles plastique</string>
+    <string name="verre">Verre</string>
+    <string name="autre_plastique">Autre plastique</string>
+    <string name="m_tal">Métal</string>
+    <string name="m_got">Mégot</string>
+    <string name="carton">Carton</string>
+    <string name="retour_carte">Retour Carte</string>
 </resources>
