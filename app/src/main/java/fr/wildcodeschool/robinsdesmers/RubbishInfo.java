@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class RubbishInfo extends AppCompatActivity {
 
     @Override
@@ -24,62 +27,65 @@ public class RubbishInfo extends AppCompatActivity {
         CheckBox checkBoxP = findViewById(R.id.cbPlastique);
         CheckBox checkBoxV = findViewById(R.id.cbVerre);
         Button buttonBack = findViewById(R.id.btBack);
+        Button btSend = findViewById(R.id.btSend);
 
 
+        Intent intent = getIntent();
+        final RubbishMarkers location = intent.getParcelableExtra("locationMarkers");
 
         checkBoxB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //rubbish.setRubbishType2("Bouteille seule");
+                location.setInfoSup("Bouteille seule");
             }
         });
         checkBoxC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //rubbish.setRubbishType2("Carton");
+                location.setInfoSup("Carton");
             }
         });
         checkBoxMa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //rubbish.setRubbishType2("Métal");
+                location.setInfoSup("Métal");
             }
         });
         checkBoxM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //rubbish.setRubbishType2("Mégot");
+                location.setInfoSup("Mégot");
             }
         });
         checkBoxP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //rubbish.setRubbishType2("Plastique");
+                location.setInfoSup("Plastique");
             }
         });
         checkBoxV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //rubbish.setRubbishType2("Verre");
+                location.setInfoSup("Verre");
             }
         });
 
         buttonD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //rubbish.setRubbishType("Déchet seul");
+                location.setInfoRubbish("Déchet seul");
             }
         });
         buttonA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //rubbish.setRubbishType("Amas de déchets");
+                location.setInfoRubbish("Amas de déchets");
             }
         });
         buttonC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //rubbish.setRubbishType("Point de collecte");
+                location.setInfoRubbish("Point de collecte");
             }
         });
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +93,14 @@ public class RubbishInfo extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RubbishInfo.this,MapsActivity.class);
                 startActivity(intent);
+            }
+        });
+        btSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference markersRef = database.getReference("RubbishMarkers");
+                markersRef.push().setValue(location);
             }
         });
 

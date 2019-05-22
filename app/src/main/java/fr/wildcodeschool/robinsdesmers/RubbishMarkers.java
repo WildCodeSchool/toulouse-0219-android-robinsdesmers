@@ -7,18 +7,28 @@ public class RubbishMarkers implements Parcelable {
 
     double latitude;
     double longitude;
+    String infoRubbish;
+    String infoSup;
+    String date;
 
-    public RubbishMarkers(double latitude, double longitude) {
+    public RubbishMarkers(double latitude, double longitude, String infoRubbish, String infoSup, String date) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.infoRubbish = infoRubbish;
+        this.infoSup = infoSup;
+        this.date = date;
     }
-    public RubbishMarkers(){
+
+    public RubbishMarkers() {
 
     }
 
     protected RubbishMarkers(Parcel in) {
         latitude = in.readDouble();
         longitude = in.readDouble();
+        infoRubbish = in.readString();
+        infoSup = in.readString();
+        date = in.readString();
     }
 
     public static final Creator<RubbishMarkers> CREATOR = new Creator<RubbishMarkers>() {
@@ -32,6 +42,10 @@ public class RubbishMarkers implements Parcelable {
             return new RubbishMarkers[size];
         }
     };
+
+    public static Creator<RubbishMarkers> getCREATOR() {
+        return CREATOR;
+    }
 
     public double getLatitude() {
         return latitude;
@@ -49,6 +63,30 @@ public class RubbishMarkers implements Parcelable {
         this.longitude = longitude;
     }
 
+    public String getInfoRubbish() {
+        return infoRubbish;
+    }
+
+    public void setInfoRubbish(String infoRubbish) {
+        this.infoRubbish = infoRubbish;
+    }
+
+    public String getInfoSup() {
+        return infoSup;
+    }
+
+    public void setInfoSup(String infoSup) {
+        this.infoSup = infoSup;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -58,5 +96,8 @@ public class RubbishMarkers implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeDouble(latitude);
         dest.writeDouble(longitude);
+        dest.writeString(infoRubbish);
+        dest.writeString(infoSup);
+        dest.writeString(date);
     }
 }
