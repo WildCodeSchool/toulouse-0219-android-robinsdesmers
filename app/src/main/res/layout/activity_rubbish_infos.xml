@@ -4,49 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RubbishInfo">
-
-    <Button
-        android:id="@+id/btDéchetSeul"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginLeft="161dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginRight="162dp"
-        android:text="@string/un_d_chet_seul"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btAmas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginLeft="161dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginRight="162dp"
-        android:text="@string/un_amas_de_d_chets"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btDéchetSeul" />
-
-    <Button
-        android:id="@+id/btLieu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginLeft="160dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginRight="163dp"
-        android:text="@string/un_lieu_de_collecte"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btAmas" />
+    tools:context=".RubbishInfos">
 
     <CheckBox
         android:id="@+id/cbBouteille"
@@ -54,10 +12,10 @@
         android:layout_height="20dp"
         android:layout_marginStart="63dp"
         android:layout_marginLeft="63dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text=""
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btLieu" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
         android:id="@+id/cbVerre"
@@ -65,7 +23,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="70dp"
         android:text=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cbBouteille" />
@@ -76,7 +34,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="70dp"
         android:text=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cbVerre" />
@@ -87,7 +45,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="70dp"
         android:text=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cbPlastique" />
@@ -98,7 +56,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="63dp"
         android:layout_marginLeft="63dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="70dp"
         android:text=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cbMetal" />
@@ -109,7 +67,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="63dp"
         android:layout_marginLeft="63dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="70dp"
         android:text=""
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cbMegot" />
@@ -120,10 +78,10 @@
         android:layout_height="20dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/bouteilles_plastique"
         app:layout_constraintStart_toEndOf="@+id/cbBouteille"
-        app:layout_constraintTop_toBottomOf="@+id/btLieu" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
@@ -131,7 +89,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="70dp"
         android:text="@string/verre"
         app:layout_constraintStart_toEndOf="@+id/cbVerre"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -142,7 +100,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="70dp"
         android:text="@string/autre_plastique"
         app:layout_constraintStart_toEndOf="@+id/cbPlastique"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -153,7 +111,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="69dp"
         android:text="@string/m_tal"
         app:layout_constraintStart_toEndOf="@+id/cbMetal"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -164,7 +122,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="70dp"
         android:text="@string/m_got"
         app:layout_constraintStart_toEndOf="@+id/cbMegot"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -175,24 +133,10 @@
         android:layout_height="20dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="70dp"
         android:text="@string/carton"
         app:layout_constraintStart_toEndOf="@+id/cbCarton"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <Button
-        android:id="@+id/btBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginLeft="162dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginRight="162dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/retour_carte"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btSend"
@@ -200,14 +144,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
         android:layout_marginLeft="161dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="162dp"
         android:layout_marginRight="162dp"
-        android:layout_marginBottom="98dp"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/btBack"
+        android:layout_marginBottom="32dp"
+        android:text="Send"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
