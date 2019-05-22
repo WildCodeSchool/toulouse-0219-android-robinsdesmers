@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">toulouse-0219-android-robinsdesmers</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
