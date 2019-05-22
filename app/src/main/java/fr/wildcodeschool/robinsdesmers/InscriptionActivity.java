@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class Inscription extends AppCompatActivity {
+public class InscriptionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class Inscription extends AppCompatActivity {
         imBtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToHome = new Intent(Inscription.this, MainActivity.class);
+                Intent goToHome = new Intent(InscriptionActivity.this, MainActivity.class);
                 startActivity(goToHome);
             }
         });
