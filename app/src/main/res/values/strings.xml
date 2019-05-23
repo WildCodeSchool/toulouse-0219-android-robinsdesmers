@@ -3,6 +3,9 @@
     <string name="nom_d_utilisateur">Nom d\'utilisateur</string>
     <string name="adresse_mail">Adresse mail</string>
     <string name="mot_de_passe">Mot de passe</string>
+    <string name="m_moire_de_poisson_rouge">Mémoire de poisson rouge ?</string>
+    <string name="se_souvenir_de_moi">Se souvenir de moi</string>
+    <string name="connexion">Connexion</string>
     <string name="title_activity_user_profile">UserProfile</string>
     <string name="home">Home</string>
     <string name="mission">Mission</string>
