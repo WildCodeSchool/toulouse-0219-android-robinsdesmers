@@ -6,7 +6,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 public class UserProfile extends AppCompatActivity {
 
@@ -16,6 +15,7 @@ public class UserProfile extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
+
                 case R.id.navigation_home:
                     Intent goToHome = new Intent(UserProfile.this, MainActivity.class);
                     startActivity(goToHome);
