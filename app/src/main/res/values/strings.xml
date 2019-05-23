@@ -6,4 +6,10 @@
     <string name="m_moire_de_poisson_rouge">Mémoire de poisson rouge ?</string>
     <string name="se_souvenir_de_moi">Se souvenir de moi</string>
     <string name="connexion">Connexion</string>
+    <string name="title_activity_user_profile">UserProfile</string>
+    <string name="home">Home</string>
+    <string name="mission">Mission</string>
+    <string name="map">Carte</string>
+    <string name="info">Info</string>
+    <string name="profile">Profil</string>
 </resources>
