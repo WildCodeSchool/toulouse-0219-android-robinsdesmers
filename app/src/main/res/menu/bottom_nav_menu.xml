@@ -3,32 +3,32 @@
 
     <item
         android:id="@+id/navigation_home"
+        android:enabled="true"
         android:icon="@drawable/icon_home"
-        android:title="@string/home"
-        android:enabled="true"/>
+        android:title="@string/home" />
 
     <item
         android:id="@+id/navigation_mission"
+        android:enabled="true"
         android:icon="@drawable/icon_mission"
-        android:title="@string/mission"
-        android:enabled="true"/>
+        android:title="@string/mission" />
 
     <item
         android:id="@+id/navigation_carte"
+        android:enabled="true"
         android:icon="@drawable/icon_map"
-        android:title="@string/map"
-        android:enabled="true"/>
+        android:title="@string/map" />
 
     <item
         android:id="@+id/navigation_info"
+        android:enabled="true"
         android:icon="@drawable/icon_info"
-        android:title="@string/info"
-        android:enabled="true"/>
+        android:title="@string/info" />
 
     <item
         android:id="@+id/navigation_profile"
+        android:enabled="true"
         android:icon="@drawable/icon_profile"
-        android:title="@string/profile"
-        android:enabled="true"/>
+        android:title="@string/profile" />
 
 </menu>
