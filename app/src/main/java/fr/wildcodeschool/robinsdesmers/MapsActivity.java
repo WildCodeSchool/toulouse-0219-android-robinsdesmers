@@ -38,11 +38,12 @@ import java.util.GregorianCalendar;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_LOCATION = 4322;
-    static final float DEFAULT_ZOOM = 16.0f;
-    GoogleMap mMap;
+    private static final float DEFAULT_ZOOM = 16.0f;
+    private GoogleMap mMap;
     private boolean mMapInit = false;
     private LocationManager mLocationManager = null;
     private Location mLocationUser = null;
+    private static final int MIN_DISTANCE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,9 +114,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onProviderDisabled(String provider) {
             }
         };
-        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 2, locationListener);
-
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, MIN_DISTANCE, locationListener);
     }
 
     @SuppressLint("MissingPermission")
@@ -169,7 +168,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 SimpleDateFormat d = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = calendar.getTime();
 
-                final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date),false);
+                final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date));
 
                 Intent intent = new Intent(MapsActivity.this, MarkerType.class);
                 intent.putExtra("RubbishMarkers", location);
@@ -196,13 +195,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-            @Override
-            public void onInfoWindowClick(Marker marker) {
-
-            }
-        });
-
     }
 
 }
