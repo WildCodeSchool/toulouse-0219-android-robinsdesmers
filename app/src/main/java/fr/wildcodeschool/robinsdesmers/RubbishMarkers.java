@@ -5,6 +5,17 @@ import android.os.Parcelable;
 
 public class RubbishMarkers implements Parcelable {
 
+    public static final Creator<RubbishMarkers> CREATOR = new Creator<RubbishMarkers>() {
+        @Override
+        public RubbishMarkers createFromParcel(Parcel in) {
+            return new RubbishMarkers(in);
+        }
+
+        @Override
+        public RubbishMarkers[] newArray(int size) {
+            return new RubbishMarkers[size];
+        }
+    };
     double latitude;
     double longitude;
     String infoRubbish;
@@ -30,18 +41,6 @@ public class RubbishMarkers implements Parcelable {
         infoSup = in.readString();
         date = in.readString();
     }
-
-    public static final Creator<RubbishMarkers> CREATOR = new Creator<RubbishMarkers>() {
-        @Override
-        public RubbishMarkers createFromParcel(Parcel in) {
-            return new RubbishMarkers(in);
-        }
-
-        @Override
-        public RubbishMarkers[] newArray(int size) {
-            return new RubbishMarkers[size];
-        }
-    };
 
     public static Creator<RubbishMarkers> getCREATOR() {
         return CREATOR;

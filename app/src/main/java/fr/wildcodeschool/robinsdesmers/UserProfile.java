@@ -7,7 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+public class UserProfile extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -15,8 +15,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
+
                 case R.id.navigation_home:
-                    Intent goToHome = new Intent(MainActivity.this, MainActivity.class);
+                    Intent goToHome = new Intent(UserProfile.this, MainActivity.class);
                     startActivity(goToHome);
                     return true;
                 case R.id.navigation_mission:
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_info:
                     return true;
                 case R.id.navigation_profile:
-                    Intent goToProfile = new Intent(MainActivity.this, UserProfile.class);
+                    Intent goToProfile = new Intent(UserProfile.this, UserProfile.class);
                     startActivity(goToProfile);
                     return true;
             }
@@ -37,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_user_profile);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
+
 }

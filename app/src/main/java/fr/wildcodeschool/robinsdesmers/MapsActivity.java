@@ -8,9 +8,9 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -36,8 +36,8 @@ import java.util.GregorianCalendar;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    GoogleMap mMap;
     private static final int REQUEST_LOCATION = 4322;
+    GoogleMap mMap;
     private boolean mMapInit = false;
     private LocationManager mLocationManager = null;
     private Location mLocationUser = null;
@@ -46,7 +46,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -155,31 +154,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 MarkerOptions markerOptions = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish));
 
-                // Setting the position for the marker
                 markerOptions.position(latLng);
-
-                // Setting the title for the marker.
-                // This will be displayed on taping the marker
                 markerOptions.title("Déchet");
-
-                // Clears the previously touched position
                 mMap.clear();
-
-                // Animating to the touched position
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-
-                // Placing a marker on the touched position
                 mMap.addMarker(markerOptions);
 
                 Calendar c = Calendar.getInstance();
                 int year = c.get(Calendar.YEAR);
                 int month = c.get(Calendar.MONTH);
                 int day = c.get(Calendar.DAY_OF_MONTH);
-                Calendar calendar = new GregorianCalendar(year,month,day);
+                Calendar calendar = new GregorianCalendar(year, month, day);
                 SimpleDateFormat d = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = calendar.getTime();
 
-                final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude,"","",d.format(date));
+                final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date));
 
                 Intent intent = new Intent(MapsActivity.this, MarkerType.class);
                 intent.putExtra("RubbishMarkers", location);
@@ -194,15 +183,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
-                     RubbishMarkers locationMarker =
+                    RubbishMarkers locationMarker =
                             markerSnapshot.getValue(RubbishMarkers.class);
-                    final LatLng locMarker = new LatLng(locationMarker.getLatitude(),locationMarker.getLongitude());
+                    final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
                     mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish)).position(locMarker).title("Déchet"));
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
+            public void onCancelled(DatabaseError databaseError) {
+            }
         });
 
     }

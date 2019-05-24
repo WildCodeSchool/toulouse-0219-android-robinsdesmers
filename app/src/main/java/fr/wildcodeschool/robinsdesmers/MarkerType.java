@@ -1,8 +1,8 @@
 package fr.wildcodeschool.robinsdesmers;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -51,7 +51,7 @@ public class MarkerType extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MarkerType.this,MapsActivity.class);
+                Intent intent = new Intent(MarkerType.this, MapsActivity.class);
                 startActivity(intent);
             }
         });

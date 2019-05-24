@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">toulouse-0219-android-robinsdesmers</string>
+    <string name="nom_d_utilisateur">Nom d\'utilisateur</string>
+    <string name="adresse_mail">Adresse mail</string>
+    <string name="mot_de_passe">Mot de passe</string>
+    <string name="m_moire_de_poisson_rouge">Mémoire de poisson rouge ?</string>
+    <string name="se_souvenir_de_moi">Se souvenir de moi</string>
+    <string name="connexion">Connexion</string>
+    <string name="title_activity_user_profile">UserProfile</string>
+    <string name="home">Home</string>
+    <string name="mission">Mission</string>
+    <string name="map">Carte</string>
+    <string name="info">Info</string>
+    <string name="profile">Profil</string>
     <string name="title_activity_maps">Map</string>
     <string name="un_d_chet_seul">Un déchet seul</string>
     <string name="un_amas_de_d_chets">Un amas de déchets</string>
