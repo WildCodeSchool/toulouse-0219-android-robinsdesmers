@@ -37,6 +37,7 @@ import java.util.GregorianCalendar;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_LOCATION = 4322;
+    private static final float DEFAULT_ZOOM = 16.0f;
     GoogleMap mMap;
     private boolean mMapInit = false;
     private LocationManager mLocationManager = null;
@@ -126,10 +127,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mLocationUser.setLatitude(lat);
             mLocationUser.setLongitude(lng);
 
-            float zoomLevel = 16.0f;
             if (mMap != null && !mMapInit) {
                 mMapInit = true;
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, zoomLevel));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, DEFAULT_ZOOM));
                 mMap.setMyLocationEnabled(true);
             }
         }
@@ -155,7 +155,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 MarkerOptions markerOptions = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish));
 
                 markerOptions.position(latLng);
-                markerOptions.title("Déchet");
+                markerOptions.title(getString(R.string.dechet));
                 mMap.clear();
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                 mMap.addMarker(markerOptions);

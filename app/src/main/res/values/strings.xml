@@ -23,4 +23,13 @@
     <string name="m_got">Mégot</string>
     <string name="carton">Carton</string>
     <string name="retour_carte">Retour Carte</string>
+    <string name="envoyer">Envoyer</string>
+    <string name="benne_de_revalorisation">Benne de revalorisation</string>
+    <string name="poubelle_classique">Poubelle Classique</string>
+    <string name="poubelle_de_tri">Poubelle de Tri</string>
+    <string name="decheterie">Décheterie</string>
+    <string name="dechet">Déchet</string>
+    <string name="dechet_seul">Déchet seul</string>
+    <string name="amas_de_dechets">Amas de déchets</string>
+    <string name="point_de_collecte">Point de collecte</string>
 </resources>

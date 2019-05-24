@@ -24,7 +24,7 @@ public class MarkerType extends AppCompatActivity {
         buttonD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoRubbish("Déchet seul");
+                location.setInfoRubbish(getString(R.string.dechet_seul));
                 Intent intent = new Intent(MarkerType.this, RubbishInfos.class);
                 intent.putExtra("RubbishMarkers", location);
                 startActivity(intent);
@@ -33,7 +33,7 @@ public class MarkerType extends AppCompatActivity {
         buttonA.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoRubbish("Amas de déchets");
+                location.setInfoRubbish(getString(R.string.amas_de_dechets));
                 Intent intent = new Intent(MarkerType.this, RubbishMultiInfos.class);
                 intent.putExtra("RubbishMarkers", location);
                 startActivity(intent);
@@ -42,7 +42,7 @@ public class MarkerType extends AppCompatActivity {
         buttonC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoRubbish("Point de collecte");
+                location.setInfoRubbish(getString(R.string.point_de_collecte));
                 Intent intent = new Intent(MarkerType.this, CollectPointInfos.class);
                 intent.putExtra("RubbishMarkers", location);
                 startActivity(intent);

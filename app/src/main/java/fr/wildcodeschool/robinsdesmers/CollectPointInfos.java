@@ -29,25 +29,26 @@ public class CollectPointInfos extends AppCompatActivity {
         checkBoxB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup("Benne de revalorisation");
+                location.setInfoSup(getString(R.string.benne_de_revalorisation));
             }
         });
         checkBoxP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup("Poubelle Classique");
+                location.setInfoSup(getString(R.string.poubelle_classique));
             }
         });
         checkBoxPT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup("Poubelle de Tri");
+                location.setInfoSup(getString(R.string.poubelle_de_tri));
             }
+
         });
         checkBoxD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup("Décheterie");
+                location.setInfoSup(getString(R.string.decheterie));
             }
         });
         btSend.setOnClickListener(new View.OnClickListener() {

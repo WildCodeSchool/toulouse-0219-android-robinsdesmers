@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CollectPointInfos">
+    tools:context=".CollectPointInfos"
+    android:background="@color/vert_fonce">
 
     <CheckBox
         android:id="@+id/cbPoubelle"
@@ -47,59 +48,66 @@
         app:layout_constraintTop_toBottomOf="@+id/cbDecheterie" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvPoubelleC"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="122dp"
         android:layout_marginLeft="122dp"
         android:layout_marginTop="100dp"
         android:text="Poubelle Classique"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/cbPoubelle"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tvPoubelleT"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="122dp"
         android:layout_marginLeft="122dp"
         android:layout_marginTop="50dp"
         android:text="Poubelle de Tri"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/cbPoubelleTri"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPoubelleC" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tvDecheterie"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="122dp"
         android:layout_marginLeft="122dp"
         android:layout_marginTop="50dp"
         android:text="Décheterie"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/cbDecheterie"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPoubelleT" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/tvBenne"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginStart="122dp"
         android:layout_marginLeft="122dp"
         android:layout_marginTop="50dp"
         android:text="Benne de revalorisation"
+        android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/cbBenne"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDecheterie" />
 
     <Button
         android:id="@+id/btSend3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="131dp"
+        android:layout_height="67dp"
         android:layout_marginStart="161dp"
         android:layout_marginLeft="161dp"
         android:layout_marginEnd="162dp"
         android:layout_marginRight="162dp"
         android:layout_marginBottom="111dp"
-        android:text="Send"
+        android:alpha="0.70"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/orange"
+        android:text="@string/envoyer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
