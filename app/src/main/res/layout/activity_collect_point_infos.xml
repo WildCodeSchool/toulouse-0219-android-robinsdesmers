@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CollectPointInfosActivity"
+    android:background="@color/vert_fonce">
+
+    <CheckBox
+        android:id="@+id/cbPoubelle"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginLeft="58dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cbPoubelleTri"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginLeft="58dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbPoubelle" />
+
+    <CheckBox
+        android:id="@+id/cbDecheterie"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginLeft="58dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbPoubelleTri" />
+
+    <CheckBox
+        android:id="@+id/cbBenne"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="58dp"
+        android:layout_marginLeft="58dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbDecheterie" />
+
+    <TextView
+        android:id="@+id/tvPoubelleC"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginLeft="122dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/poubelle_classique"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/cbPoubelle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPoubelleT"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginLeft="122dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/poubelle_de_tri"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/cbPoubelleTri"
+        app:layout_constraintTop_toBottomOf="@+id/tvPoubelleC" />
+
+    <TextView
+        android:id="@+id/tvDecheterie"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginLeft="122dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/d_cheterie"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/cbDecheterie"
+        app:layout_constraintTop_toBottomOf="@+id/tvPoubelleT" />
+
+    <TextView
+        android:id="@+id/tvBenne"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/benne_de_revalorisation"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/cbBenne"
+        app:layout_constraintTop_toBottomOf="@+id/tvDecheterie" />
+
+    <Button
+        android:id="@+id/btSend3"
+        android:layout_width="131dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginLeft="161dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="111dp"
+        android:alpha="0.70"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/orange"
+        android:text="@string/envoyer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>
