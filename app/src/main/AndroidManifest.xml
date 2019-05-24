@@ -16,9 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignInActivity" >
-        </activity>
-        <activity android:name=".RubbishMultiInfos"></activity>
+        <activity android:name=".CollectRubbish"></activity>
+        <activity android:name=".SignInActivity"></activity>
+        <activity android:name=".RubbishMultiInfos" />
         <activity android:name=".CollectPointInfos" />
         <activity android:name=".RubbishInfos" />
         <activity android:name=".MarkerType" />
@@ -38,9 +38,9 @@
         </activity>
         <activity
             android:name=".UserProfile"
-            android:label="@string/title_activity_user_profile"></activity>
-        <activity android:name=".InscriptionActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
+            android:label="@string/title_activity_user_profile" />
+        <activity android:name=".InscriptionActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

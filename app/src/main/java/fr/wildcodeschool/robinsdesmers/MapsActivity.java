@@ -21,6 +21,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -37,11 +38,12 @@ import java.util.GregorianCalendar;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_LOCATION = 4322;
-    static final float DEFAULT_ZOOM = 16.0f;
-    GoogleMap mMap;
+    private static final float DEFAULT_ZOOM = 16.0f;
+    private GoogleMap mMap;
     private boolean mMapInit = false;
     private LocationManager mLocationManager = null;
     private Location mLocationUser = null;
+    private static final int MIN_DISTANCE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,9 +114,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onProviderDisabled(String provider) {
             }
         };
-        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 2, locationListener);
-
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, MIN_DISTANCE, locationListener);
     }
 
     @SuppressLint("MissingPermission")
@@ -187,6 +187,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             markerSnapshot.getValue(RubbishMarkers.class);
                     final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
                     mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish)).position(locMarker).title("Déchet"));
+
                 }
             }
 
@@ -194,7 +195,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
     }
 
 }
