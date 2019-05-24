@@ -21,6 +21,15 @@ public class RubbishMarkers implements Parcelable {
     String infoRubbish;
     String infoSup;
     String date;
+
+    public boolean isCollected() {
+        return isCollected;
+    }
+
+    public void setCollected(boolean collected) {
+        isCollected = collected;
+    }
+
     boolean isCollected;
 
     public RubbishMarkers(double latitude, double longitude, String infoRubbish, String infoSup, String date, boolean isCollected) {
@@ -29,7 +38,7 @@ public class RubbishMarkers implements Parcelable {
         this.infoRubbish = infoRubbish;
         this.infoSup = infoSup;
         this.date = date;
-        this.isCollected = false;
+        this.isCollected = isCollected;
     }
 
     public RubbishMarkers() {

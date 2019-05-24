@@ -10,7 +10,7 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RubbishMultiInfos extends AppCompatActivity {
+public class RubbishMultiInfosActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +74,7 @@ public class RubbishMultiInfos extends AppCompatActivity {
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RubbishMultiInfos.this, MapsActivity.class);
+                Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
                 startActivity(intent);
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference markersRef = database.getReference("RubbishMarkers");

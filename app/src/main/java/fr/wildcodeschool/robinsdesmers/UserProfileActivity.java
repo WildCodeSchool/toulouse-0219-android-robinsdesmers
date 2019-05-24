@@ -7,7 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-public class UserProfile extends AppCompatActivity {
+public class UserProfileActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -17,7 +17,7 @@ public class UserProfile extends AppCompatActivity {
             switch (item.getItemId()) {
 
                 case R.id.navigation_home:
-                    Intent goToHome = new Intent(UserProfile.this, MainActivity.class);
+                    Intent goToHome = new Intent(UserProfileActivity.this, MainActivity.class);
                     startActivity(goToHome);
                     return true;
                 case R.id.navigation_mission:
@@ -27,7 +27,7 @@ public class UserProfile extends AppCompatActivity {
                 case R.id.navigation_info:
                     return true;
                 case R.id.navigation_profile:
-                    Intent goToProfile = new Intent(UserProfile.this, UserProfile.class);
+                    Intent goToProfile = new Intent(UserProfileActivity.this, UserProfileActivity.class);
                     startActivity(goToProfile);
                     return true;
             }

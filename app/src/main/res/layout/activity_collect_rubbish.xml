@@ -4,6 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CollectRubbish">
+    tools:context=".CollectRubbishActivity"
+    android:background="@color/vert_fonce">
 
+    <CheckBox
+        android:alpha="0.70"
+        android:background="@color/orange"
+        android:id="@+id/cbIsCollected"
+        android:layout_width="227dp"
+        android:layout_height="143dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="171dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginRight="99dp"
+        android:text="est collecté"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btSend"
+        android:layout_width="131dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="162dp"
+        android:layout_marginLeft="162dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="206dp"
+        android:text="@string/envoyer"
+        android:alpha="0.70"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

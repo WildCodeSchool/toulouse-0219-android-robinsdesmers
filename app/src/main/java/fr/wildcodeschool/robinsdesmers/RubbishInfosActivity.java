@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RubbishInfos extends AppCompatActivity {
+public class RubbishInfosActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +67,7 @@ public class RubbishInfos extends AppCompatActivity {
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RubbishInfos.this, MapsActivity.class);
+                Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
                 startActivity(intent);
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference markersRef = database.getReference("RubbishMarkers");

@@ -146,6 +146,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
             setUserLocation(mLocationUser);
         }
+        Intent intent = getIntent();
+        final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Intent intent = new Intent(MapsActivity.this, CollectRubbishActivity.class);
+                intent.putExtra("RubbishMarkers", location);
+                startActivity(intent);
+            }
+        });
 
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 
@@ -168,29 +178,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 SimpleDateFormat d = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = calendar.getTime();
 
-                final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date));
+                final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date),false);
 
-                Intent intent = new Intent(MapsActivity.this, MarkerType.class);
+                Intent intent = new Intent(MapsActivity.this, MarkerTypeActivity.class);
                 intent.putExtra("RubbishMarkers", location);
                 startActivity(intent);
             }
         });
-
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference markersRef = database.getReference("RubbishMarkers");
         markersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
-                    RubbishMarkers locationMarker =
-                            markerSnapshot.getValue(RubbishMarkers.class);
+                    RubbishMarkers locationMarker = markerSnapshot.getValue(RubbishMarkers.class);
                     final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
-                    mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish)).position(locMarker).title("Déchet"));
-
+                    if(locationMarker.isCollected == false) {
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish)).position(locMarker).title("Déchet"));
+                    }
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
