@@ -21,7 +21,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -170,7 +169,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date));
 
-                Intent intent = new Intent(MapsActivity.this, MarkerType.class);
+                Intent intent = new Intent(MapsActivity.this, MarkerTypeActivity.class);
                 intent.putExtra("RubbishMarkers", location);
                 startActivity(intent);
             }

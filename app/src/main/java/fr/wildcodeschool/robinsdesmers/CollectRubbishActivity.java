@@ -3,7 +3,7 @@ package fr.wildcodeschool.robinsdesmers;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CollectRubbish extends AppCompatActivity {
+public class CollectRubbishActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -16,12 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CollectRubbish"></activity>
+        <activity android:name=".CollectRubbishActivity"></activity>
         <activity android:name=".SignInActivity"></activity>
-        <activity android:name=".RubbishMultiInfos" />
-        <activity android:name=".CollectPointInfos" />
-        <activity android:name=".RubbishInfos" />
-        <activity android:name=".MarkerType" />
+        <activity android:name=".RubbishMultiInfosActivity" />
+        <activity android:name=".CollectPointInfosActivity" />
+        <activity android:name=".RubbishInfosActivity" />
+        <activity android:name=".MarkerTypeActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
