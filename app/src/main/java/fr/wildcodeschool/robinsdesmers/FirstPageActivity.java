@@ -6,19 +6,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class PrincipalActivity extends AppCompatActivity {
+public class FirstPageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal);
+        setContentView(R.layout.activity_first_page);
 
         ImageButton imBtRegister = findViewById(R.id.ibRegisterPrincipal);
 
         imBtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToRegister = new Intent(PrincipalActivity.this, InscriptionActivity.class);
+                Intent goToRegister = new Intent(FirstPageActivity.this, InscriptionActivity.class);
                 startActivity(goToRegister);
             }
         });
@@ -28,7 +28,7 @@ public class PrincipalActivity extends AppCompatActivity {
         imBtSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToSignIn = new Intent(PrincipalActivity.this, SignInActivity.class);
+                Intent goToSignIn = new Intent(FirstPageActivity.this, SignInActivity.class);
                 startActivity(goToSignIn);
             }
         });
@@ -38,7 +38,7 @@ public class PrincipalActivity extends AppCompatActivity {
         imBtVisitor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToHome = new Intent(PrincipalActivity.this, MapsActivity.class);
+                Intent goToHome = new Intent(FirstPageActivity.this, MapsActivity.class);
                 startActivity(goToHome);
             }
         });
