@@ -32,42 +32,42 @@ public class RubbishMultiInfos extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String Bouteille = etBt.getText().toString();
-                location.setInfoSup(Bouteille + " Bouteilles");
+                location.setInfoSup(Bouteille + getString(R.string.bouteilles));
             }
         });
         etMa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String Metal = etMa.getText().toString();
-                location.setInfoSup(Metal + " Cartons");
+                location.setInfoSup(Metal + getString(R.string.metal));
             }
         });
         etM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String Megot = etM.getText().toString();
-                location.setInfoSup(Megot + " Megots");
+                location.setInfoSup(Megot + getString(R.string.megots));
             }
         });
         etC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String carton = etC.getText().toString();
-                location.setInfoSup(carton + " Cartons");
+                location.setInfoSup(carton + getString(R.string.cartons));
             }
         });
         etV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String Verre = etV.getText().toString();
-                location.setInfoSup(Verre + " Déchets en verre");
+                location.setInfoSup(Verre + getString(R.string.dechets_en_verre));
             }
         });
         etP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String plastique = etP.getText().toString();
-                location.setInfoSup(plastique + " Déchets en plastique");
+                location.setInfoSup(plastique + getString(R.string.dechets_en_plastique));
             }
         });
 

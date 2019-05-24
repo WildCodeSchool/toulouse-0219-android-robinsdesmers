@@ -54,7 +54,7 @@
         android:layout_marginStart="122dp"
         android:layout_marginLeft="122dp"
         android:layout_marginTop="100dp"
-        android:text="Poubelle Classique"
+        android:text="@string/poubelle_classique"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/cbPoubelle"
         app:layout_constraintTop_toTopOf="parent" />
@@ -66,7 +66,7 @@
         android:layout_marginStart="122dp"
         android:layout_marginLeft="122dp"
         android:layout_marginTop="50dp"
-        android:text="Poubelle de Tri"
+        android:text="@string/poubelle_de_tri"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/cbPoubelleTri"
         app:layout_constraintTop_toBottomOf="@+id/tvPoubelleC" />
@@ -78,7 +78,7 @@
         android:layout_marginStart="122dp"
         android:layout_marginLeft="122dp"
         android:layout_marginTop="50dp"
-        android:text="Décheterie"
+        android:text="@string/d_cheterie"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/cbDecheterie"
         app:layout_constraintTop_toBottomOf="@+id/tvPoubelleT" />
@@ -87,10 +87,10 @@
         android:id="@+id/tvBenne"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginStart="122dp"
-        android:layout_marginLeft="122dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginLeft="120dp"
         android:layout_marginTop="50dp"
-        android:text="Benne de revalorisation"
+        android:text="@string/benne_de_revalorisation"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/cbBenne"
         app:layout_constraintTop_toBottomOf="@+id/tvDecheterie" />

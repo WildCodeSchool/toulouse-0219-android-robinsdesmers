@@ -37,7 +37,7 @@ import java.util.GregorianCalendar;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_LOCATION = 4322;
-    private static final float DEFAULT_ZOOM = 16.0f;
+    static final float DEFAULT_ZOOM = 16.0f;
     GoogleMap mMap;
     private boolean mMapInit = false;
     private LocationManager mLocationManager = null;

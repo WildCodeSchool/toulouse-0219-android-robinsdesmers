@@ -31,37 +31,37 @@ public class RubbishInfos extends AppCompatActivity {
         checkBoxC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup("Carton");
+                location.setInfoSup(getString(R.string.carton));
             }
         });
         checkBoxB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup("Bouteille");
+                location.setInfoSup(getString(R.string.bouteille));
             }
         });
         checkBoxMa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup("Métal");
+                location.setInfoSup(getString(R.string.metal));
             }
         });
         checkBoxM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup("Mégot");
+                location.setInfoSup(getString(R.string.megot));
             }
         });
         checkBoxP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup("Plastique");
+                location.setInfoSup(getString(R.string.plastique));
             }
         });
         checkBoxV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup("Verre");
+                location.setInfoSup(getString(R.string.verre));
             }
         });
         btSend.setOnClickListener(new View.OnClickListener() {
