@@ -31,22 +31,22 @@ public class RubbishMultiInfos extends AppCompatActivity {
         etBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Bouteille = etBt.getText().toString();
-                location.setInfoSup(Bouteille + getString(R.string.bouteilles));
+                String bouteille = etBt.getText().toString();
+                location.setInfoSup(bouteille + getString(R.string.bouteilles));
             }
         });
         etMa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Metal = etMa.getText().toString();
-                location.setInfoSup(Metal + getString(R.string.metal));
+                String metal = etMa.getText().toString();
+                location.setInfoSup(metal + getString(R.string.metal));
             }
         });
         etM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Megot = etM.getText().toString();
-                location.setInfoSup(Megot + getString(R.string.megots));
+                String megot = etM.getText().toString();
+                location.setInfoSup(megot + getString(R.string.megots));
             }
         });
         etC.setOnClickListener(new View.OnClickListener() {
@@ -59,8 +59,8 @@ public class RubbishMultiInfos extends AppCompatActivity {
         etV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Verre = etV.getText().toString();
-                location.setInfoSup(Verre + getString(R.string.dechets_en_verre));
+                String verre = etV.getText().toString();
+                location.setInfoSup(verre + getString(R.string.dechets_en_verre));
             }
         });
         etP.setOnClickListener(new View.OnClickListener() {
