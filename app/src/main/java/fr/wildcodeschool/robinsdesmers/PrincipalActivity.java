@@ -28,7 +28,7 @@ public class PrincipalActivity extends AppCompatActivity {
         imBtSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToSignIn = new Intent(PrincipalActivity.this, MainActivity.class);
+                Intent goToSignIn = new Intent(PrincipalActivity.this, SignInActivity.class);
                 startActivity(goToSignIn);
             }
         });
@@ -38,7 +38,7 @@ public class PrincipalActivity extends AppCompatActivity {
         imBtVisitor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToHome = new Intent(PrincipalActivity.this, MainActivity.class);
+                Intent goToHome = new Intent(PrincipalActivity.this, MapsActivity.class);
                 startActivity(goToHome);
             }
         });

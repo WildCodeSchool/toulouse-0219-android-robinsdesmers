@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RubbishInfosActivity"
+    android:background="@color/vert_fonce">
+
+    <CheckBox
+        android:id="@+id/cbBouteille"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginLeft="63dp"
+        android:layout_marginTop="32dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cbVerre"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="70dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbBouteille" />
+
+    <CheckBox
+        android:id="@+id/cbPlastique"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="70dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbVerre" />
+
+    <CheckBox
+        android:id="@+id/cbMetal"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="70dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbPlastique" />
+
+    <CheckBox
+        android:id="@+id/cbMegot"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginLeft="63dp"
+        android:layout_marginTop="70dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbMetal" />
+
+    <CheckBox
+        android:id="@+id/cbCarton"
+        android:layout_width="25dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="63dp"
+        android:layout_marginLeft="63dp"
+        android:layout_marginTop="70dp"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbMegot" />
+
+    <TextView
+        android:id="@+id/tvBouteille"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/bouteilles_plastique"
+        app:layout_constraintStart_toEndOf="@+id/cbBouteille"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvVerre"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/verre"
+        app:layout_constraintStart_toEndOf="@+id/cbVerre"
+        app:layout_constraintTop_toBottomOf="@+id/tvBouteille" />
+
+    <TextView
+        android:id="@+id/tvPlastique"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/autre_plastique"
+        app:layout_constraintStart_toEndOf="@+id/cbPlastique"
+        app:layout_constraintTop_toBottomOf="@+id/tvVerre" />
+
+    <TextView
+        android:id="@+id/tvMetal"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="69dp"
+        android:text="@string/m_tal"
+        app:layout_constraintStart_toEndOf="@+id/cbMetal"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlastique" />
+
+    <TextView
+        android:id="@+id/tvMegot"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/m_got"
+        app:layout_constraintStart_toEndOf="@+id/cbMegot"
+        app:layout_constraintTop_toBottomOf="@+id/tvMetal" />
+
+    <TextView
+        android:id="@+id/tvCarton"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="70dp"
+        android:text="@string/carton"
+        app:layout_constraintStart_toEndOf="@+id/cbCarton"
+        app:layout_constraintTop_toBottomOf="@+id/tvMegot" />
+
+    <Button
+        android:id="@+id/btSend"
+        android:layout_width="137dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginLeft="161dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/orange"
+        android:alpha="0.70"
+        android:text="@string/envoyer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

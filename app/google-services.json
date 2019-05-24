@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "596514508872",
+    "firebase_url": "https://toulouse-0219-android-robinsd.firebaseio.com",
+    "project_id": "toulouse-0219-android-robinsd",
+    "storage_bucket": "toulouse-0219-android-robinsd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596514508872:android:8f0d497ee3de79db",
+        "android_client_info": {
+          "package_name": "fr.wildcodeschool.robinsdesmers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596514508872-rp9781jsolnvonc2qto88bt7tj6b3kh0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wildcodeschool.robinsdesmers",
+            "certificate_hash": "356f8c6220b5fd59e3da61bca7da854251704453"
+          }
+        },
+        {
+          "client_id": "596514508872-spb8v2cvksqje0bpdvbpitcg1n2s2oae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBooQvP8d7RXaBPp09NRssy3W0C5NbTxi8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "596514508872-spb8v2cvksqje0bpdvbpitcg1n2s2oae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
