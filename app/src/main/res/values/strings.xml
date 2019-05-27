@@ -43,4 +43,5 @@
     <string name="poubelle_classique">Poubelle Classique</string>
     <string name="d_cheterie">Décheterie</string>
     <string name="inscripiton">Inscripiton</string>
+    <string name="date_de_naissance">Date de naissance</string>
 </resources>
