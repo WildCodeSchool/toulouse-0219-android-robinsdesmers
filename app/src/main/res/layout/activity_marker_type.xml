@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MarkerTypeActivity"
+    android:background="@color/vert_fonce">
+
+    <Button
+        android:id="@+id/btDéchetSeul"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginLeft="161dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:text="@string/un_d_chet_seul"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:alpha="0.70"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/orange"/>
+
+    <Button
+        android:alpha="0.70"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/orange"
+        android:id="@+id/btAmas"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginLeft="161dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="32dp"
+        android:text="@string/un_amas_de_d_chets"
+        app:layout_constraintBottom_toTopOf="@+id/btLieu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btDéchetSeul" />
+
+    <Button
+        android:alpha="0.70"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/orange"
+        android:id="@+id/btLieu"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginRight="163dp"
+        android:layout_marginBottom="75dp"
+        android:text="@string/un_lieu_de_collecte"
+        app:layout_constraintBottom_toTopOf="@+id/btBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btBack"
+        android:layout_width="133dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="162dp"
+        android:layout_marginLeft="162dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginRight="162dp"
+        android:layout_marginBottom="56dp"
+        android:alpha="0.70"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/orange"
+        android:text="@string/retour_carte"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.368"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
