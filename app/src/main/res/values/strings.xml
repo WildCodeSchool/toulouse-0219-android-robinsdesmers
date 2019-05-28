@@ -44,4 +44,7 @@
     <string name="d_cheterie">Décheterie</string>
     <string name="inscripiton">Inscripiton</string>
     <string name="date_de_naissance">Date de naissance</string>
+    <string name="personnalisation">Personnalisation</string>
+    <string name="ton_departement">Ton département</string>
+    <string name="hyphen">-</string>
 </resources>

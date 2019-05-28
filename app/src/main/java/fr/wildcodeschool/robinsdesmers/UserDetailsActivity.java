@@ -5,11 +5,14 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class UserDetailsActivity extends AppCompatActivity {
@@ -51,5 +54,28 @@ public class UserDetailsActivity extends AppCompatActivity {
                 mDisplayDate.setText(date);
             }
         };
+
+        ArrayList<Departments> departments = new ArrayList<>();
+        Departments hauteGaronne = new Departments("Haute-Garonne", 31);
+        Departments correze = new Departments("Corrèze", 19);
+        Departments charente = new Departments("Charente-Maritime", 17);
+        Departments gers = new Departments("Gers", 32);
+        Departments hauteSavoie = new Departments("Haute Savoie", 85);
+        Departments vendee = new Departments("Vendée", 31);
+        Departments vaucluse = new Departments("Vaucluse", 84);
+        departments.add(hauteGaronne);
+        departments.add(correze);
+        departments.add(charente);
+        departments.add(gers);
+        departments.add(hauteSavoie);
+        departments.add(vendee);
+        departments.add(vaucluse);
+
+        RecyclerView rvListDepartments = findViewById(R.id.rvListDepartments);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        rvListDepartments.setLayoutManager(layoutManager);
+        final ListDepartmentAdapter adapter = new ListDepartmentAdapter(departments);
+        rvListDepartments.setAdapter(adapter);
     }
 }
