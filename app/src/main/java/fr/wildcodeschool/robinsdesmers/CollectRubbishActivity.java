@@ -1,15 +1,12 @@
 package fr.wildcodeschool.robinsdesmers;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,6 +44,7 @@ public class CollectRubbishActivity extends AppCompatActivity {
                     });
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }

@@ -22,15 +22,6 @@ public class RubbishMarkers implements Parcelable {
     String infoSup;
     String date;
     boolean isCollected;
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
     String key;
 
     public RubbishMarkers(double latitude, double longitude, String infoRubbish, String infoSup, String date, String key) {
@@ -57,6 +48,14 @@ public class RubbishMarkers implements Parcelable {
 
     public static Creator<RubbishMarkers> getCREATOR() {
         return CREATOR;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public double getLatitude() {
