@@ -31,18 +31,11 @@ public class RubbishMarkers implements Parcelable {
         this.infoSup = infoSup;
         this.date = date;
         this.key = key;
+        this.isCollected = false;
     }
 
     public RubbishMarkers() {
 
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
     }
 
     protected RubbishMarkers(Parcel in) {
@@ -54,6 +47,14 @@ public class RubbishMarkers implements Parcelable {
     }
     public static Creator<RubbishMarkers> getCREATOR() {
         return CREATOR;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public double getLatitude() {
