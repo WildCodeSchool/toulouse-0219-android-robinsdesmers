@@ -178,7 +178,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 SimpleDateFormat d = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = calendar.getTime();
 
-                final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date),false);
+                final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date),"");
 
                 Intent intent = new Intent(MapsActivity.this, MarkerTypeActivity.class);
                 intent.putExtra("RubbishMarkers", location);
@@ -193,7 +193,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
                     RubbishMarkers locationMarker = markerSnapshot.getValue(RubbishMarkers.class);
                     final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
-                    if(locationMarker.isCollected == false) {
+                    if(!locationMarker.isCollected) {
                         mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish)).position(locMarker).title("Déchet"));
                     }
                 }

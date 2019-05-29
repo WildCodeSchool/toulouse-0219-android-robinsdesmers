@@ -21,24 +21,26 @@ public class RubbishMarkers implements Parcelable {
     String infoRubbish;
     String infoSup;
     String date;
-
-    public boolean isCollected() {
-        return isCollected;
-    }
-
-    public void setCollected(boolean collected) {
-        isCollected = collected;
-    }
-
     boolean isCollected;
 
-    public RubbishMarkers(double latitude, double longitude, String infoRubbish, String infoSup, String date, boolean isCollected) {
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    String key;
+
+    public RubbishMarkers(double latitude, double longitude, String infoRubbish, String infoSup, String date, String key) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.infoRubbish = infoRubbish;
         this.infoSup = infoSup;
         this.date = date;
-        this.isCollected = isCollected;
+        this.key = key;
+        this.isCollected = false;
     }
 
     public RubbishMarkers() {

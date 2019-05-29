@@ -78,7 +78,9 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                 startActivity(intent);
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference markersRef = database.getReference("RubbishMarkers");
-                markersRef.push().setValue(location);
+                String key = markersRef.push().getKey();
+                location.setKey(key);
+                markersRef.child(key).setValue(location);
             }
         });
     }
