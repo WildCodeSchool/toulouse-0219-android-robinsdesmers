@@ -26,7 +26,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
         CheckBox checkBoxM = findViewById(R.id.cbMegot);
         CheckBox checkBoxP = findViewById(R.id.cbPlastique);
         CheckBox checkBoxV = findViewById(R.id.cbVerre);
-        Button btSend = findViewById(R.id.btSend);
+        Button btSend = findViewById(R.id.btSend5);
 
         checkBoxC.setOnClickListener(new View.OnClickListener() {
             @Override
