@@ -47,6 +47,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private boolean mMapInit = false;
     private LocationManager mLocationManager = null;
     private Location mLocationUser = null;
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    Intent goToHome = new Intent(MapsActivity.this, MainActivity.class);
+                    startActivity(goToHome);
+                    return true;
+                case R.id.navigation_mission:
+                    return true;
+                case R.id.navigation_carte:
+                    Intent goToMaps = new Intent(MapsActivity.this, MapsActivity.class);
+                    startActivity(goToMaps);
+                    return true;
+                case R.id.navigation_info:
+                    return true;
+                case R.id.navigation_profile:
+                    Intent goToProfile = new Intent(MapsActivity.this, UserProfileActivity.class);
+                    startActivity(goToProfile);
+                    return true;
+            }
+            return false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,7 +209,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 SimpleDateFormat d = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = calendar.getTime();
 
-                final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date),"");
+                final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
 
                 Intent intent = new Intent(MapsActivity.this, MarkerTypeActivity.class);
                 intent.putExtra("RubbishMarkers", location);
@@ -199,7 +225,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
                     RubbishMarkers locationMarker = markerSnapshot.getValue(RubbishMarkers.class);
                     final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
-                    if(!locationMarker.isCollected) {
+                    if (!locationMarker.isCollected) {
                         mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish)).position(locMarker).title("Déchet"));
                     }
                 }
@@ -210,31 +236,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    Intent goToHome = new Intent(MapsActivity.this, MainActivity.class);
-                    startActivity(goToHome);
-                    return true;
-                case R.id.navigation_mission:
-                    return true;
-                case R.id.navigation_carte:
-                    Intent goToMaps = new Intent (MapsActivity.this, MapsActivity.class);
-                    startActivity(goToMaps);
-                    return true;
-                case R.id.navigation_info:
-                    return true;
-                case R.id.navigation_profile:
-                    Intent goToProfile = new Intent(MapsActivity.this, UserProfileActivity.class);
-                    startActivity(goToProfile);
-                    return true;
-            }
-            return false;
-        }
-    };
 
 }

@@ -86,7 +86,7 @@ public class UserDetailsActivity extends AppCompatActivity {
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserDetailsActivity.this,MapsActivity.class);
+                Intent intent = new Intent(UserDetailsActivity.this, MapsActivity.class);
                 startActivity(intent);
             }
         });
