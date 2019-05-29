@@ -23,6 +23,8 @@ public class UserProfileActivity extends AppCompatActivity {
                 case R.id.navigation_mission:
                     return true;
                 case R.id.navigation_carte:
+                    Intent goToMaps = new Intent (UserProfileActivity.this, MapsActivity.class);
+                    startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
                     return true;
