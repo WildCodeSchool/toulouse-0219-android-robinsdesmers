@@ -32,42 +32,42 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String bouteille = etBt.getText().toString();
-                location.setInfoSup(bouteille + getString(R.string.bouteilles));
+                location.setInfoSup(bouteille + " " + getString(R.string.bouteilles));
             }
         });
         etMa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String metal = etMa.getText().toString();
-                location.setInfoSup(metal + getString(R.string.metal));
+                location.setInfoSup(metal + " " + getString(R.string.metal));
             }
         });
         etM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String megot = etM.getText().toString();
-                location.setInfoSup(megot + getString(R.string.megots));
+                location.setInfoSup(megot + " " + getString(R.string.megots));
             }
         });
         etC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String carton = etC.getText().toString();
-                location.setInfoSup(carton + getString(R.string.cartons));
+                location.setInfoSup(carton + " " + getString(R.string.cartons));
             }
         });
         etV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String verre = etV.getText().toString();
-                location.setInfoSup(verre + getString(R.string.dechets_en_verre));
+                location.setInfoSup(verre + " " + getString(R.string.dechets_en_verre));
             }
         });
         etP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String plastique = etP.getText().toString();
-                location.setInfoSup(plastique + getString(R.string.dechets_en_plastique));
+                location.setInfoSup(plastique + " " + getString(R.string.dechets_en_plastique));
             }
         });
 
@@ -75,10 +75,13 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
+                intent.putExtra("RubbishMarkers", location);
                 startActivity(intent);
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference markersRef = database.getReference("RubbishMarkers");
-                markersRef.push().setValue(location);
+                String rubbishKey = markersRef.push().getKey();
+                location.setKey(rubbishKey);
+                markersRef.child(rubbishKey).setValue(location);
             }
         });
     }

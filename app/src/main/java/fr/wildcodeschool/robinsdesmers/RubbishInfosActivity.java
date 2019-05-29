@@ -26,7 +26,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
         CheckBox checkBoxM = findViewById(R.id.cbMegot);
         CheckBox checkBoxP = findViewById(R.id.cbPlastique);
         CheckBox checkBoxV = findViewById(R.id.cbVerre);
-        Button btSend = findViewById(R.id.btSend);
+        Button btSend = findViewById(R.id.btSend4);
 
         checkBoxC.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,10 +68,14 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
+                intent.putExtra("RubbishMarkers", location);
                 startActivity(intent);
+
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference markersRef = database.getReference("RubbishMarkers");
-                markersRef.push().setValue(location);
+                String rubbishKey = markersRef.push().getKey();
+                location.setKey(rubbishKey);
+                markersRef.child(rubbishKey).setValue(location);
             }
         });
     }
