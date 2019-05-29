@@ -55,13 +55,10 @@ public class CollectPointInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
-                intent.putExtra("RubbishMarkers", location);
                 startActivity(intent);
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference markersRef = database.getReference("RubbishMarkers");
-                String rubbishKey = markersRef.push().getKey();
-                location.setKey(rubbishKey);
-                markersRef.child(rubbishKey).setValue(location);
+                markersRef.push().setValue(location);
             }
         });
     }
