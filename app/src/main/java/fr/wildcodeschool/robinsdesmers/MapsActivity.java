@@ -42,11 +42,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private static final int REQUEST_LOCATION = 4322;
     private static final float DEFAULT_ZOOM = 16.0f;
+    private static final int MIN_DISTANCE = 2;
     private GoogleMap mMap;
     private boolean mMapInit = false;
     private LocationManager mLocationManager = null;
     private Location mLocationUser = null;
-    private static final int MIN_DISTANCE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,6 +193,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference markersRef = database.getReference("RubbishMarkers");
         markersRef.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
@@ -203,6 +204,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     }
                 }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
