@@ -17,7 +17,7 @@ public class SignInActivity extends AppCompatActivity {
         imBtSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToHome = new Intent(SignInActivity.this, MainActivity.class);
+                Intent goToHome = new Intent(SignInActivity.this, MapsActivity.class);
                 startActivity(goToHome);
             }
         });

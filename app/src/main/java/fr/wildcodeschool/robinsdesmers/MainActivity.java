@@ -22,11 +22,13 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_mission:
                     return true;
                 case R.id.navigation_carte:
+                    Intent goToMaps = new Intent (MainActivity.this, MapsActivity.class);
+                    startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
                     return true;
                 case R.id.navigation_profile:
-                    Intent goToProfile = new Intent(MainActivity.this, UserProfile.class);
+                    Intent goToProfile = new Intent(MainActivity.this, UserProfileActivity.class);
                     startActivity(goToProfile);
                     return true;
             }

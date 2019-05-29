@@ -1,6 +1,7 @@
 package fr.wildcodeschool.robinsdesmers;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -21,6 +23,7 @@ public class UserDetailsActivity extends AppCompatActivity {
 
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,5 +81,14 @@ public class UserDetailsActivity extends AppCompatActivity {
         rvListDepartments.setLayoutManager(layoutManager);
         final ListDepartmentAdapter adapter = new ListDepartmentAdapter(departments);
         rvListDepartments.setAdapter(adapter);
+
+        ImageButton btSend = findViewById(R.id.imBtRegister2);
+        btSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserDetailsActivity.this, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

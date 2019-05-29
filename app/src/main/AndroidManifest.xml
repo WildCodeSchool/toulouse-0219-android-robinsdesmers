@@ -39,7 +39,7 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".UserProfile"
+            android:name=".UserProfileActivity"
             android:label="@string/title_activity_user_profile" />
         <activity android:name=".InscriptionActivity" />
         <activity android:name=".MainActivity" />

@@ -21,17 +21,28 @@ public class RubbishMarkers implements Parcelable {
     String infoRubbish;
     String infoSup;
     String date;
+    boolean isCollected;
+    String key;
 
-    public RubbishMarkers(double latitude, double longitude, String infoRubbish, String infoSup, String date) {
+    public RubbishMarkers(double latitude, double longitude, String infoRubbish, String infoSup, String date, String key) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.infoRubbish = infoRubbish;
         this.infoSup = infoSup;
         this.date = date;
+        this.key = key;
     }
 
     public RubbishMarkers() {
 
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     protected RubbishMarkers(Parcel in) {
@@ -41,7 +52,6 @@ public class RubbishMarkers implements Parcelable {
         infoSup = in.readString();
         date = in.readString();
     }
-
     public static Creator<RubbishMarkers> getCREATOR() {
         return CREATOR;
     }
@@ -98,5 +108,6 @@ public class RubbishMarkers implements Parcelable {
         dest.writeString(infoRubbish);
         dest.writeString(infoSup);
         dest.writeString(date);
+
     }
 }
