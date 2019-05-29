@@ -45,7 +45,6 @@ public class RubbishMarkers implements Parcelable {
         infoSup = in.readString();
         date = in.readString();
     }
-
     public static Creator<RubbishMarkers> getCREATOR() {
         return CREATOR;
     }
@@ -110,5 +109,6 @@ public class RubbishMarkers implements Parcelable {
         dest.writeString(infoRubbish);
         dest.writeString(infoSup);
         dest.writeString(date);
+
     }
 }
