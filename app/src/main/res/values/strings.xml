@@ -47,4 +47,9 @@
     <string name="personnalisation">Personnalisation</string>
     <string name="ton_departement">Ton département</string>
     <string name="hyphen">-</string>
+    <string name="recycling_info_description">Here you can enter the Item Recycling Info Description</string>
+    <string name="recycling_info_title">Item Recycling Info Title</string>
+    <string name="comprendre">Comprendre</string>
+    <string name="symboles">ces symboles sont importants,</string>
+    <string name="reconnaitre">apprenons à bien les reconnaître</string>
 </resources>
