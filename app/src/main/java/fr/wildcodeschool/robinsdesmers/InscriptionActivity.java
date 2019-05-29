@@ -18,7 +18,7 @@ public class InscriptionActivity extends AppCompatActivity {
         imBtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToHome = new Intent(InscriptionActivity.this, MainActivity.class);
+                Intent goToHome = new Intent(InscriptionActivity.this, UserDetailsActivity.class);
                 startActivity(goToHome);
             }
         });

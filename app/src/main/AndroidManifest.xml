@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".UserDetailsActivity"></activity>
         <activity android:name=".FirstPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,8 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CollectRubbishActivity"></activity>
-        <activity android:name=".SignInActivity"></activity>
+        <activity android:name=".CollectRubbishActivity" />
+        <activity android:name=".SignInActivity" />
         <activity android:name=".RubbishMultiInfosActivity" />
         <activity android:name=".CollectPointInfosActivity" />
         <activity android:name=".RubbishInfosActivity" />
@@ -36,7 +37,7 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity
             android:name=".UserProfile"
             android:label="@string/title_activity_user_profile" />
