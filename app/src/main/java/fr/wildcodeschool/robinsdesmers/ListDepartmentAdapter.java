@@ -1,6 +1,5 @@
 package fr.wildcodeschool.robinsdesmers;
 
-
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,7 +51,6 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
 
         @Override
         public void onClick(View view) {
-
             for (Departments departement : departments) {
                 departement.setSelected(false);
             }

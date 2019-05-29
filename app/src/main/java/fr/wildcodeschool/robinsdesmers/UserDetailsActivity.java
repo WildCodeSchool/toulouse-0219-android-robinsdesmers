@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -17,7 +16,6 @@ import java.util.Calendar;
 
 public class UserDetailsActivity extends AppCompatActivity {
 
-    private static final String TAG = "SecondInscripiton";
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
@@ -49,7 +47,6 @@ public class UserDetailsActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month + 1;
-                Log.d(TAG, "OnDataSet: date " + dayOfMonth + "/" + month + "/" + year);
                 String date = dayOfMonth + "/" + month + "/" + year;
                 mDisplayDate.setText(date);
             }
