@@ -11,8 +11,11 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class UserDetailsActivity extends AppCompatActivity {
 
@@ -46,20 +49,21 @@ public class UserDetailsActivity extends AppCompatActivity {
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                month = month + 1;
-                String date = dayOfMonth + "/" + month + "/" + year;
-                mDisplayDate.setText(date);
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                Calendar calendar = new GregorianCalendar(year, month, dayOfMonth);
+                Date date = calendar.getTime();
+                mDisplayDate.setText(format.format(date));
             }
         };
 
-        ArrayList<Departments> departments = new ArrayList<>();
-        Departments hauteGaronne = new Departments("Haute-Garonne", 31);
-        Departments correze = new Departments("Corrèze", 19);
-        Departments charente = new Departments("Charente-Maritime", 17);
-        Departments gers = new Departments("Gers", 32);
-        Departments hauteSavoie = new Departments("Haute Savoie", 85);
-        Departments vendee = new Departments("Vendée", 31);
-        Departments vaucluse = new Departments("Vaucluse", 84);
+        ArrayList<Department> departments = new ArrayList<>();
+        Department hauteGaronne = new Department("Haute-Garonne", 31);
+        Department correze = new Department("Corrèze", 19);
+        Department charente = new Department("Charente-Maritime", 17);
+        Department gers = new Department("Gers", 32);
+        Department hauteSavoie = new Department("Haute Savoie", 85);
+        Department vendee = new Department("Vendée", 31);
+        Department vaucluse = new Department("Vaucluse", 84);
         departments.add(hauteGaronne);
         departments.add(correze);
         departments.add(charente);

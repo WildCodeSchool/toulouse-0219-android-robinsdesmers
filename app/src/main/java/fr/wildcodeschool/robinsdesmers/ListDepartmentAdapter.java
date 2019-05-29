@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAdapter.DepartmentViewHolder> {
 
-    private ArrayList<Departments> departments;
+    private ArrayList<Department> departments;
 
-    public ListDepartmentAdapter(ArrayList<Departments> departments) {
+    public ListDepartmentAdapter(ArrayList<Department> departments) {
         this.departments = departments;
     }
 
@@ -25,8 +25,8 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
 
     @Override
     public void onBindViewHolder(DepartmentViewHolder holder, int position) {
-        Departments department = departments.get(position);
-        holder.tvName.setText(department.getNameDepartment());
+        Department department = departments.get(position);
+        holder.tvName.setText(department.getName());
         holder.tvNumber.setText(Integer.toString(department.getNumber()));
         holder.container.setSelected(department.isSelected());
     }
@@ -51,7 +51,7 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
 
         @Override
         public void onClick(View view) {
-            for (Departments departement : departments) {
+            for (Department departement : departments) {
                 departement.setSelected(false);
             }
             departments.get(getAdapterPosition()).setSelected(true);

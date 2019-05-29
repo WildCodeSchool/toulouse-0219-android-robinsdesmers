@@ -1,27 +1,27 @@
 package fr.wildcodeschool.robinsdesmers;
 
-public class Departments {
+public class Department {
 
-    private String nameDepartment;
+    private String name;
     private int number;
     private boolean selected;
 
-    public Departments() {
+    public Department() {
 
     }
 
-    public Departments(String nameDepartment, int number) {
-        this.nameDepartment = nameDepartment;
+    public Department(String nameDepartment, int number) {
+        this.name = nameDepartment;
         this.number = number;
         this.selected = false;
     }
 
-    public String getNameDepartment() {
-        return nameDepartment;
+    public String getName() {
+        return name;
     }
 
-    public void setNameDepartment(String nameDepartment) {
-        this.nameDepartment = nameDepartment;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getNumber() {
