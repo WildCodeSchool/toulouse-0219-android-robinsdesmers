@@ -8,6 +8,7 @@
     android:background="@color/vert_fonce">
 
     <EditText
+        android:background="@color/cardview_light_background"
         android:id="@+id/etBouteille"
         android:layout_width="30dp"
         android:layout_height="50dp"
@@ -20,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:background="@color/cardview_light_background"
         android:id="@+id/etVerre"
         android:layout_width="30dp"
         android:layout_height="50dp"
@@ -32,6 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etBouteille" />
 
     <EditText
+        android:background="@color/cardview_light_background"
         android:id="@+id/etPlastique"
         android:layout_width="30dp"
         android:layout_height="50dp"
@@ -44,6 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etVerre" />
 
     <EditText
+        android:background="@color/cardview_light_background"
         android:id="@+id/etMetal"
         android:layout_width="30dp"
         android:layout_height="50dp"
@@ -56,6 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etPlastique" />
 
     <EditText
+        android:background="@color/cardview_light_background"
         android:id="@+id/etMegot"
         android:layout_width="30dp"
         android:layout_height="50dp"
@@ -68,6 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etMetal" />
 
     <EditText
+        android:background="@color/cardview_light_background"
         android:id="@+id/etCarton"
         android:layout_width="30dp"
         android:layout_height="50dp"
@@ -80,6 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/etMegot" />
 
     <TextView
+        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvBouteille"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -92,6 +99,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvVerre"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -107,6 +115,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvBouteille" />
 
     <TextView
+        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvPlastique"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -123,6 +132,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvVerre" />
 
     <TextView
+        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvMetal"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -138,6 +148,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPlastique" />
 
     <TextView
+        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvMegot"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -153,6 +164,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvMetal" />
 
     <TextView
+        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvCarton"
         android:layout_width="wrap_content"
         android:layout_height="50dp"

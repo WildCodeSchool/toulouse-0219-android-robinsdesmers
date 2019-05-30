@@ -9,7 +9,7 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#17A09A">
+        android:background="@color/vert_fonce">
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/nameSign"
@@ -74,6 +74,7 @@
         </android.support.design.widget.TextInputLayout>
 
         <ImageButton
+            android:background="@color/vert_fonce"
             android:id="@+id/imBtSign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
