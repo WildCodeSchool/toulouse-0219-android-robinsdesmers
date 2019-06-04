@@ -201,11 +201,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Date date = calendar.getTime();
 
                 final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
-                final CollectPoint collectPoint = new CollectPoint(latLng.latitude,latLng.longitude,"","",d.format(date), "");
+                final CollectPoint collectPoint = new CollectPoint(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
 
                 Intent intent = new Intent(MapsActivity.this, MarkerTypeActivity.class);
                 intent.putExtra("RubbishMarkers", location);
-                intent.putExtra("CollectPoint",collectPoint);
+                intent.putExtra("CollectPoint", collectPoint);
                 startActivity(intent);
             }
         });
@@ -250,11 +250,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                if (marker.getTitle().equals("CollectPoint")){
-                    Intent intent1 = new Intent(MapsActivity.this,CollectPointDescriptionActivity.class);
+                if (marker.getTitle().equals("CollectPoint")) {
+                    Intent intent1 = new Intent(MapsActivity.this, CollectPointDescriptionActivity.class);
                     startActivity(intent1);
-                }
-                else{
+                } else {
                     Intent intent = new Intent(MapsActivity.this, CollectRubbishActivity.class);
                     startActivity(intent);
                 }
