@@ -47,11 +47,6 @@
     <string name="personnalisation">Personnalisation</string>
     <string name="ton_departement">Ton département</string>
     <string name="hyphen">-</string>
-    <string name="recycling_info_description">Here you can enter the Item Recycling Info Description</string>
-    <string name="recycling_info_title">Item Recycling Info Title</string>
-    <string name="comprendre">Comprendre</string>
-    <string name="symboles">ces symboles sont importants,</string>
-    <string name="reconnaitre">apprenons à bien les reconnaître</string>
     <string name="ton_rang">Ton rang</string>
     <string name="navigateur">Navigateur</string>
     <string name="citoyen">Citoyen</string>
@@ -60,6 +55,11 @@
     <string name="descEcosysteme">Association, entreprise de revalorisation, collectivité, autre initiative? \n Bienvenue, une belle collaboration commence !</string>
     <string name="ecosysteme">Ecosystème</string>
     <string name="mes_informations">Mes informations</string>
-    <string name="pseudo">pseudo</string>
     <string name="description">Description</string>
+    <string name="recycling_info_description">Here you can enter the Item Recycling Info Description</string>
+    <string name="recycling_info_title">Item Recycling Info Title</string>
+    <string name="comprendre">Comprendre</string>
+    <string name="symboles">ces symboles sont importants,</string>
+    <string name="reconnaitre">apprenons à bien les reconnaître</string>
+    <string name="le_point_de_collecte_n_est_plus_pr_sent">Le point de collecte n\'est plus présent</string>
 </resources>

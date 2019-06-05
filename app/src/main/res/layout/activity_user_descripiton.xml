@@ -47,7 +47,7 @@
         android:layout_marginRight="32dp"
         android:background="@drawable/border"
         android:ems="10"
-        android:hint="@string/pseudo"
+        android:hint="@string/nom_d_utilisateur"
         android:inputType="textPersonName"
         android:paddingLeft="14dp"
         app:layout_constraintEnd_toEndOf="parent"
