@@ -9,6 +9,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RecyclingAndSecurityActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -48,13 +51,25 @@ public class RecyclingAndSecurityActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        RecyclingInfoItem mobiusItem = new RecyclingInfoItem(R.drawable.logo_mobius, String.format(getString(R.string.mobius_title)), String.format("%s%s", getString(R.string.mobius_description_paragraph1), getString(R.string.mobius_description_paragraph2)));
+        RecyclingInfoItem triMan = new RecyclingInfoItem(R.drawable.logo_triman, getString(R.string.triman_title), getString(R.string.triman_description));
+        RecyclingInfoItem poubelleBarree = new RecyclingInfoItem(R.drawable.logo_poubelle_barree, getString(R.string.poubelle_barree_title), String.format("%s%s", getString(R.string.poubelle_barree_description), getString(R.string.poubelle_barree_description2)));
+        RecyclingInfoItem tidyMan = new RecyclingInfoItem(R.drawable.logo_tidyman, getString(R.string.tidyman_title), getString(R.string.tidyman_description));
+        RecyclingInfoItem pointVert = new RecyclingInfoItem(R.drawable.logo_point_vert, getString(R.string.point_vert_title), getString(R.string.point_vert_description));
+        List<RecyclingInfoItem> recyclingInfoItems = new ArrayList<>();
+        recyclingInfoItems.add(mobiusItem);
+        recyclingInfoItems.add(triMan);
+        recyclingInfoItems.add(poubelleBarree);
+        recyclingInfoItems.add(tidyMan);
+        recyclingInfoItems.add(pointVert);
+
         RecyclerView mRecyclerView;
         RecyclerView.Adapter mAdapter;
         RecyclerView.LayoutManager layoutManager;
         mRecyclerView = findViewById(R.id.rvRecyclingInfo);
         layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
-        mAdapter = new RecyclingInfoAdapter();
+        mAdapter = new RecyclingInfoAdapter(recyclingInfoItems);
         mRecyclerView.setAdapter(mAdapter);
     }
 }

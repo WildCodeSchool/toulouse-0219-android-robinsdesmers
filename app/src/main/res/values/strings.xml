@@ -52,4 +52,16 @@
     <string name="comprendre">Comprendre</string>
     <string name="symboles">ces symboles sont importants,</string>
     <string name="reconnaitre">apprenons à bien les reconnaître</string>
+    <string name="mobius_description_paragraph1">C\'est le symbole universel du recyclage. Les produits qui l\'arborent, ou leur emballage, sont recyclables. Néanmoins, ils seront recyclés si le système de collecte ou la filière du recyclage existe et si les consignes de tri sont correctement respectées.</string>
+    <string name="mobius_description_paragraph2"><![CDATA[ Attention : si vous voyez un chiffre à l’intérieur du symbole, il indique seulement la quantité de matières recyclées utilisées pour fabriquer votre produit.]]></string>
+    <string name="mobius_title"><![CDATA[Le ruban de Möbius : c’est recyclable!]]></string>
+    <string name="triman_description"><![CDATA[Ce symbole indique que votre emballage doit être jeté dans la poubelle de tri ou rapporté dans un point de collecte pour qu’il puisse être recyclé. Le symbole Triman n’apparait pas encore sur tous les emballages concerné donc attention, l’absence de logo ne veut pas dire que le déchet n’est pas recyclable. Un doute ? rdv sur www.quefairedemesdechets.fr]]></string>
+    <string name="triman_title"><![CDATA[Le Triman : C’est recyclable !]]></string>
+    <string name="poubelle_barree_title"><![CDATA[La poubelle barrée : magasin ou déchetterie !]]></string>
+    <string name="poubelle_barree_description">Ce symbole est présent sur vos produits électriques et électroniques, les lampes, les piles…</string>
+    <string name="poubelle_barree_description2"><![CDATA[Ces produits ne doivent pas être jetés dans la poubelle des déchets ménagers : il faut les rapporter en magasin ou dans une déchetterie.]]></string>
+    <string name="tidyman_title"><![CDATA[Le Tidy man : à ne pas confondre avec le triman !]]></string>
+    <string name="tidyman_description">Ce symbole vous incite juste à jeter le déchet dans une poubelle. Ce n’est pas un symbole de tri, ne pas confondre avec le triman.</string>
+    <string name="point_vert_title"><![CDATA[Le Point Vert : on se trompe souvent !]]></string>
+    <string name="point_vert_description">Ce symbole ne signifie pas que le produit est recyclable. Il veut simplement dire que l’entreprise verse une contribution à un organisme chargé du recyclage.</string>
 </resources>

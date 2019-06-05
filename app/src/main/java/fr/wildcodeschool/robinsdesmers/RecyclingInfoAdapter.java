@@ -8,7 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class RecyclingInfoAdapter extends RecyclerView.Adapter<RecyclingInfoAdapter.RecyclingInfoViewHolder> {
+
+    List<RecyclingInfoItem> recyclingInfoItems;
+
+    public RecyclingInfoAdapter(List<RecyclingInfoItem> recyclingInfoItems) {
+        this.recyclingInfoItems = recyclingInfoItems;
+    }
+
     @NonNull
     @Override
     public RecyclingInfoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -19,13 +28,17 @@ public class RecyclingInfoAdapter extends RecyclerView.Adapter<RecyclingInfoAdap
 
     @Override
     public void onBindViewHolder(@NonNull RecyclingInfoViewHolder recyclingInfoViewHolder, int i) {
-        recyclingInfoViewHolder.tvRecyclingInfoTitle.setText(R.string.recycling_info_title);
-        recyclingInfoViewHolder.tvRecyclingInfoDescription.setText(R.string.recycling_info_description);
+
+        RecyclingInfoItem recyclingInfoItem = recyclingInfoItems.get(i);
+
+        recyclingInfoViewHolder.tvRecyclingInfoTitle.setText(recyclingInfoItem.getTitleRecyclingInfo());
+        recyclingInfoViewHolder.tvRecyclingInfoDescription.setText(recyclingInfoItem.getDescriptionRecyclingInfo());
+        recyclingInfoViewHolder.ivRecyclingLogo.setImageResource(recyclingInfoItem.getLogoRecycling());
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return recyclingInfoItems.size();
     }
 
     public class RecyclingInfoViewHolder extends RecyclerView.ViewHolder {
