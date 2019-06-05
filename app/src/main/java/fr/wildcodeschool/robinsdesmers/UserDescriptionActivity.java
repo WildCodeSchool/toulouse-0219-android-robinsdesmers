@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class UserDescripitonActivity extends AppCompatActivity {
+public class UserDescriptionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class UserDescripitonActivity extends AppCompatActivity {
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserDescripitonActivity.this, UserProfileActivity.class);
+                Intent intent = new Intent(UserDescriptionActivity.this, UserProfileActivity.class);
                 startActivity(intent);
             }
         });

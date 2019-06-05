@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CollectPointDescriptionActivity"></activity>
-        <activity android:name=".UserDescripitonActivity"></activity>
+        <activity android:name=".UserDescriptionActivity"></activity>
         <activity android:name=".RecyclingAndSecurityActivity" />
         <activity android:name=".UserDetailsActivity" />
         <activity android:name=".UserCategoryActivity" />

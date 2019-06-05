@@ -14,32 +14,32 @@ public class UserCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_category);
 
-        ImageButton btSend = findViewById(R.id.imBtRegisterCatgory);
+        ImageButton btSend = findViewById(R.id.imBtRegisterCategory);
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserCategoryActivity.this, UserDescripitonActivity.class);
+                Intent intent = new Intent(UserCategoryActivity.this, UserDescriptionActivity.class);
                 startActivity(intent);
             }
         });
-        final Button btCitoyen = findViewById(R.id.btCategoryCitoyen);
-        final Button btNavigateur = findViewById(R.id.btCategoryNavigateur);
+        final Button btCitizen = findViewById(R.id.btCategoryCitizen);
+        final Button btNavigator = findViewById(R.id.btCategoryNavigator);
         final Button btEcosystem = findViewById(R.id.btCategoryEcosystem);
 
-        btCitoyen.setOnClickListener(new View.OnClickListener() {
+        btCitizen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btCitoyen.setSelected(true);
-                btNavigateur.setSelected(false);
+                btCitizen.setSelected(true);
+                btNavigator.setSelected(false);
                 btEcosystem.setSelected(false);
             }
         });
 
-        btNavigateur.setOnClickListener(new View.OnClickListener() {
+        btNavigator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                btNavigateur.setSelected(true);
-                btCitoyen.setSelected(false);
+                btNavigator.setSelected(true);
+                btCitizen.setSelected(false);
                 btEcosystem.setSelected(false);
             }
         });
@@ -48,8 +48,8 @@ public class UserCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btEcosystem.setSelected(true);
-                btCitoyen.setSelected(false);
-                btNavigateur.setSelected(false);
+                btCitizen.setSelected(false);
+                btNavigator.setSelected(false);
             }
         });
     }

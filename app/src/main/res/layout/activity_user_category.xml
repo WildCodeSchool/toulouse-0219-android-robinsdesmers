@@ -8,7 +8,7 @@
     tools:context=".UserCategoryActivity">
 
     <TextView
-        android:id="@+id/tvPersonnalisationCategory"
+        android:id="@+id/tvPersonalisationCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvTonRang"
+        android:id="@+id/tvRank"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -34,10 +34,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPersonnalisationCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPersonalisationCategory" />
 
     <Button
-        android:id="@+id/btCategoryCitoyen"
+        android:id="@+id/btCategoryCitizen"
         android:layout_width="189dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -50,10 +50,10 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTonRang" />
+        app:layout_constraintTop_toBottomOf="@+id/tvRank" />
 
     <Button
-        android:id="@+id/btCategoryNavigateur"
+        android:id="@+id/btCategoryNavigator"
         android:layout_width="189dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -66,7 +66,7 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescCitoyen" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDescCitizen" />
 
     <Button
         android:id="@+id/btCategoryEcosystem"
@@ -81,12 +81,12 @@
         android:textColor="@color/colorWhite"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescNavigateur" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDescNavigator" />
 
     <TextView
-        android:id="@+id/tvDescCitoyen"
+        android:id="@+id/tvDescCitizen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -95,10 +95,10 @@
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btCategoryCitoyen" />
+        app:layout_constraintTop_toBottomOf="@+id/btCategoryCitizen" />
 
     <TextView
-        android:id="@+id/tvDescNavigateur"
+        android:id="@+id/tvDescNavigator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -107,10 +107,10 @@
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btCategoryNavigateur" />
+        app:layout_constraintTop_toBottomOf="@+id/btCategoryNavigator" />
 
     <TextView
-        android:id="@+id/tvDescEcosysteme"
+        android:id="@+id/tvDescEcosystem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -123,7 +123,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btCategoryEcosystem" />
 
     <ImageButton
-        android:id="@+id/imBtRegisterCatgory"
+        android:id="@+id/imBtRegisterCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -131,7 +131,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDescEcosysteme"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescEcosystem"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/ic_launcher_button" />
 
