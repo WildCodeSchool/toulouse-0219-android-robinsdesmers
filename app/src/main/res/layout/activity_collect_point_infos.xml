@@ -48,6 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cbDecheterie" />
 
     <TextView
+        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvPoubelleC"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -60,6 +61,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvPoubelleT"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -72,6 +74,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPoubelleC" />
 
     <TextView
+        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvDecheterie"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -84,6 +87,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPoubelleT" />
 
     <TextView
+        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvBenne"
         android:layout_width="wrap_content"
         android:layout_height="30dp"

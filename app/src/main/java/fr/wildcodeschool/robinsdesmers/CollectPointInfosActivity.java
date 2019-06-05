@@ -18,7 +18,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_collect_point_infos);
 
         Intent intent = getIntent();
-        final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
+        final CollectPoint collectPoint = intent.getParcelableExtra("CollectPoint");
 
         CheckBox checkBoxP = findViewById(R.id.cbPoubelle);
         CheckBox checkBoxPT = findViewById(R.id.cbPoubelleTri);
@@ -29,26 +29,26 @@ public class CollectPointInfosActivity extends AppCompatActivity {
         checkBoxB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup(getString(R.string.benne_de_revalorisation));
+                collectPoint.setInfoSup(getString(R.string.benne_de_revalorisation));
             }
         });
         checkBoxP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup(getString(R.string.poubelle_classique));
+                collectPoint.setInfoSup(getString(R.string.poubelle_classique));
             }
         });
         checkBoxPT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup(getString(R.string.poubelle_de_tri));
+                collectPoint.setInfoSup(getString(R.string.poubelle_de_tri));
             }
 
         });
         checkBoxD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup(getString(R.string.decheterie));
+                collectPoint.setInfoSup(getString(R.string.decheterie));
             }
         });
         btSend.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +57,10 @@ public class CollectPointInfosActivity extends AppCompatActivity {
                 Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
                 startActivity(intent);
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference markersRef = database.getReference("RubbishMarkers");
-                markersRef.push().setValue(location);
+                DatabaseReference markersRef = database.getReference("CollectPoint");
+                String key = markersRef.push().getKey();
+                collectPoint.setKey(key);
+                markersRef.child(key).setValue(collectPoint);
             }
         });
     }

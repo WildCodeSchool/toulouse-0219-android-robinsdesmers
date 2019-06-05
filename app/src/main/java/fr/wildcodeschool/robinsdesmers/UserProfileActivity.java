@@ -27,6 +27,8 @@ public class UserProfileActivity extends AppCompatActivity {
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
+                    Intent goToInfo = new Intent(UserProfileActivity.this, RecyclingAndSecurityActivity.class);
+                    startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
                     Intent goToProfile = new Intent(UserProfileActivity.this, UserProfileActivity.class);

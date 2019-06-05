@@ -64,6 +64,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
+                    Intent goToInfo = new Intent(MapsActivity.this, RecyclingAndSecurityActivity.class);
+                    startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
                     Intent goToProfile = new Intent(MapsActivity.this, UserProfileActivity.class);
@@ -177,17 +179,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
             setUserLocation(mLocationUser);
         }
-        Intent intent = getIntent();
-        final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
-        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-            @Override
-            public void onInfoWindowClick(Marker marker) {
-                Intent intent = new Intent(MapsActivity.this, CollectRubbishActivity.class);
-                intent.putExtra("RubbishMarkers", location);
-                startActivity(intent);
-            }
-        });
-
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 
             @Override
@@ -210,14 +201,35 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Date date = calendar.getTime();
 
                 final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
+                final CollectPoint collectPoint = new CollectPoint(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
 
                 Intent intent = new Intent(MapsActivity.this, MarkerTypeActivity.class);
                 intent.putExtra("RubbishMarkers", location);
+                intent.putExtra("CollectPoint", collectPoint);
                 startActivity(intent);
             }
         });
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference markersRef = database.getReference("RubbishMarkers");
+        DatabaseReference markerRef = database.getReference("CollectPoint");
+        markerRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
+                    CollectPoint locationMarker2 = markerSnapshot.getValue(CollectPoint.class);
+                    final LatLng locMarker = new LatLng(locationMarker2.getLatitude(), locationMarker2.getLongitude());
+                    if (!locationMarker2.notHere) {
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish)).position(locMarker).title("CollectPoint"));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+
         markersRef.addValueEventListener(new ValueEventListener() {
 
             @Override
@@ -226,13 +238,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     RubbishMarkers locationMarker = markerSnapshot.getValue(RubbishMarkers.class);
                     final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
                     if (!locationMarker.isCollected) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish)).position(locMarker).title("Déchet"));
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish)).position(locMarker).title("RubbishMarker"));
                     }
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                if (marker.getTitle().equals("CollectPoint")) {
+                    Intent intent1 = new Intent(MapsActivity.this, CollectPointDescriptionActivity.class);
+                    startActivity(intent1);
+                } else {
+                    Intent intent = new Intent(MapsActivity.this, CollectRubbishActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
     }

@@ -3,59 +3,50 @@ package fr.wildcodeschool.robinsdesmers;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class RubbishMarkers implements Parcelable {
+public class CollectPoint implements Parcelable {
 
-    public static final Creator<RubbishMarkers> CREATOR = new Creator<RubbishMarkers>() {
-        @Override
-        public RubbishMarkers createFromParcel(Parcel in) {
-            return new RubbishMarkers(in);
-        }
-
-        @Override
-        public RubbishMarkers[] newArray(int size) {
-            return new RubbishMarkers[size];
-        }
-    };
     double latitude;
     double longitude;
-    String infoRubbish;
+    String infoCollectPoint;
     String infoSup;
     String date;
-    boolean isCollected;
+    boolean notHere;
     String key;
 
-    public RubbishMarkers(double latitude, double longitude, String infoRubbish, String infoSup, String date, String key) {
+    public CollectPoint(){
+
+    }
+
+    public CollectPoint(double latitude, double longitude, String infoCollectPoint, String infoSup, String date, String key) {
         this.latitude = latitude;
         this.longitude = longitude;
-        this.infoRubbish = infoRubbish;
+        this.infoCollectPoint = infoCollectPoint;
         this.infoSup = infoSup;
         this.date = date;
+        this.notHere = false;
         this.key = key;
-        this.isCollected = false;
     }
 
-    public RubbishMarkers() {
-
-    }
-
-    protected RubbishMarkers(Parcel in) {
+    protected CollectPoint(Parcel in) {
         latitude = in.readDouble();
         longitude = in.readDouble();
-        infoRubbish = in.readString();
+        infoCollectPoint = in.readString();
         infoSup = in.readString();
         date = in.readString();
-    }
-    public static Creator<RubbishMarkers> getCREATOR() {
-        return CREATOR;
+        key = in.readString();
     }
 
-    public String getKey() {
-        return key;
-    }
+    public static final Creator<CollectPoint> CREATOR = new Creator<CollectPoint>() {
+        @Override
+        public CollectPoint createFromParcel(Parcel in) {
+            return new CollectPoint(in);
+        }
 
-    public void setKey(String key) {
-        this.key = key;
-    }
+        @Override
+        public CollectPoint[] newArray(int size) {
+            return new CollectPoint[size];
+        }
+    };
 
     public double getLatitude() {
         return latitude;
@@ -73,12 +64,12 @@ public class RubbishMarkers implements Parcelable {
         this.longitude = longitude;
     }
 
-    public String getInfoRubbish() {
-        return infoRubbish;
+    public String getInfoCollectPoint() {
+        return infoCollectPoint;
     }
 
-    public void setInfoRubbish(String infoRubbish) {
-        this.infoRubbish = infoRubbish;
+    public void setInfoCollectPoint(String infoCollectPoint) {
+        this.infoCollectPoint = infoCollectPoint;
     }
 
     public String getInfoSup() {
@@ -97,18 +88,27 @@ public class RubbishMarkers implements Parcelable {
         this.date = date;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     @Override
     public int describeContents() {
         return 0;
     }
 
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeDouble(latitude);
         dest.writeDouble(longitude);
-        dest.writeString(infoRubbish);
+        dest.writeString(infoCollectPoint);
         dest.writeString(infoSup);
         dest.writeString(date);
-
+        dest.writeString(key);
     }
 }
