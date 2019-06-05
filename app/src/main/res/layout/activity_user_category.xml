@@ -36,7 +36,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPersonnalisationCategory" />
 
-
     <Button
         android:id="@+id/btCategoryCitoyen"
         android:layout_width="189dp"
