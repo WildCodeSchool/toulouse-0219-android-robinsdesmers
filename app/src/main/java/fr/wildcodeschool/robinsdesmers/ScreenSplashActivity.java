@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
-
 public class ScreenSplashActivity extends AppCompatActivity {
 
     @Override
@@ -30,7 +29,6 @@ public class ScreenSplashActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
         };
         myThread.start();
