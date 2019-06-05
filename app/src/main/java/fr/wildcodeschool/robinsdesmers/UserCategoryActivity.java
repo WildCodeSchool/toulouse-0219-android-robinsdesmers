@@ -3,7 +3,6 @@ package fr.wildcodeschool.robinsdesmers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -27,7 +26,6 @@ public class UserCategoryActivity extends AppCompatActivity {
         final Button btNavigateur = findViewById(R.id.btCategoryNavigateur);
         final Button btEcosystem = findViewById(R.id.btCategoryEcosystem);
 
-
         btCitoyen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,7 +34,6 @@ public class UserCategoryActivity extends AppCompatActivity {
                 btEcosystem.setSelected(false);
             }
         });
-
 
         btNavigateur.setOnClickListener(new View.OnClickListener() {
             @Override
