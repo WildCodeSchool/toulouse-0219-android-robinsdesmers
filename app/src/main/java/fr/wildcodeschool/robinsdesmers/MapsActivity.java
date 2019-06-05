@@ -64,6 +64,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
+                    Intent goToInfo = new Intent(MapsActivity.this, RecyclingAndSecurityActivity.class);
+                    startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
                     Intent goToProfile = new Intent(MapsActivity.this, UserProfileActivity.class);
@@ -177,17 +179,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
             setUserLocation(mLocationUser);
         }
-        Intent intent = getIntent();
-        final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
-        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-            @Override
-            public void onInfoWindowClick(Marker marker) {
-                Intent intent = new Intent(MapsActivity.this, CollectRubbishActivity.class);
-                intent.putExtra("RubbishMarkers", location);
-                startActivity(intent);
-            }
-        });
-
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 
             @Override
@@ -233,6 +224,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Intent intent = new Intent(MapsActivity.this, CollectRubbishActivity.class);
+                startActivity(intent);
             }
         });
     }
