@@ -6,27 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/orange"
-    tools:context=".RecyclingAndSecurityActivity">
+    tools:context=".RecyclingInfoActivity">
 
     <TextView
-        android:id="@+id/tvComprendreTitle"
+        android:id="@+id/tvUnderstandTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/comprendre"
+        android:text="@string/understand"
         android:textColor="@color/vert_fonce"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvComprendreDescriptionLine1"
+        app:layout_constraintBottom_toTopOf="@+id/tvUnderstandDescriptionLine1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvComprendreDescriptionLine1"
+        android:id="@+id/tvUnderstandDescriptionLine1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -39,22 +39,22 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvComprendreTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvUnderstandTitle" />
 
     <TextView
-        android:id="@+id/tvComprendreDescriptionLine2"
+        android:id="@+id/tvUnderstandDescriptionLine2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="@string/reconnaitre"
+        android:text="@string/recognise"
         android:textColor="@color/vert"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvComprendreDescriptionLine1" />
+        app:layout_constraintTop_toBottomOf="@+id/tvUnderstandDescriptionLine1" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvRecyclingInfo"
@@ -70,7 +70,7 @@
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvComprendreDescriptionLine2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvUnderstandDescriptionLine2" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/nav_view"

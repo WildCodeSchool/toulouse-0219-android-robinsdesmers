@@ -64,7 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
-                    Intent goToInfo = new Intent(MapsActivity.this, RecyclingAndSecurityActivity.class);
+                    Intent goToInfo = new Intent(MapsActivity.this, RecyclingInfoActivity.class);
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:

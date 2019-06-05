@@ -16,8 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InformationActivity"></activity>
-        <activity android:name=".RecyclingAndSecurityActivity" />
+        <activity android:name=".RecyclingInfoActivity" />
         <activity android:name=".UserDetailsActivity" />
         <activity android:name=".FirstPageActivity">
             <intent-filter>
