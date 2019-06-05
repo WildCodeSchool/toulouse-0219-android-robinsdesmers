@@ -1,14 +1,11 @@
 package fr.wildcodeschool.robinsdesmers;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.VideoView;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 
-import gr.net.maroulis.library.EasySplashScreen;
 
 public class ScreenSplashActivity extends AppCompatActivity {
 
@@ -17,10 +14,10 @@ public class ScreenSplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_splash);
 
-        VideoView vidview = (VideoView)findViewById(R.id.videoView);
-        String path = "android.resource://" + getPackageName() + "/" + R.raw.logo;
-        vidview.setVideoURI(Uri.parse(path));
-        vidview.start();
+        ImageView imageView = findViewById(R.id.imageView);
+        RotateAnimation rotate = new RotateAnimation(0 ,600);
+        rotate.setDuration(800);
+        imageView.startAnimation(rotate);
 
         Thread myThread = new Thread() {
 
