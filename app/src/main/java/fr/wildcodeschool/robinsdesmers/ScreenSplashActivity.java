@@ -13,7 +13,7 @@ public class ScreenSplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_splash);
 
-        ImageView imageView = findViewById(R.id.imageView);
+        ImageView imageView = findViewById(R.id.ivScreenImg);
         RotateAnimation rotate = new RotateAnimation(0 ,600);
         rotate.setDuration(800);
         imageView.startAnimation(rotate);
