@@ -18,13 +18,15 @@
         android:theme="@style/AppTheme">
         <activity android:name=".RecyclingInfoActivity" />
         <activity android:name=".UserDetailsActivity" />
-        <activity android:name=".FirstPageActivity">
+        <activity android:name=".FirstPageActivity" />
+        <activity android:name=".ScreenSplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CollectPointDescriptionActivity" />
         <activity android:name=".CollectRubbishActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".RubbishMultiInfosActivity" />

@@ -19,6 +19,7 @@ public class MarkerTypeActivity extends AppCompatActivity {
         Button buttonBack = findViewById(R.id.btBack);
 
         Intent intent = getIntent();
+        final CollectPoint collectPoint = intent.getParcelableExtra("CollectPoint");
         final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
 
         buttonD.setOnClickListener(new View.OnClickListener() {
@@ -42,9 +43,9 @@ public class MarkerTypeActivity extends AppCompatActivity {
         buttonC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoRubbish(getString(R.string.point_de_collecte));
+                collectPoint.setInfoCollectPoint(getString(R.string.point_de_collecte));
                 Intent intent = new Intent(MarkerTypeActivity.this, CollectPointInfosActivity.class);
-                intent.putExtra("RubbishMarkers", location);
+                intent.putExtra("CollectPoint", collectPoint);
                 startActivity(intent);
             }
         });
