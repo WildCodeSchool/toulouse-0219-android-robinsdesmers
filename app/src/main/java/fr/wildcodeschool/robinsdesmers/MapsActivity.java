@@ -184,7 +184,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onMapClick(LatLng latLng) {
 
-                MarkerOptions markerOptions = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish));
+                MarkerOptions markerOptions = new MarkerOptions();
 
                 markerOptions.position(latLng);
                 markerOptions.title(getString(R.string.dechet));
