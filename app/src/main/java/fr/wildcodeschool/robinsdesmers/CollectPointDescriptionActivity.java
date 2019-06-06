@@ -30,9 +30,9 @@ public class CollectPointDescriptionActivity extends AppCompatActivity {
                     TextView tvDate = findViewById(R.id.tvCollect1);
                     TextView tvName = findViewById(R.id.tvCollect2);
                     TextView tvDescription = findViewById(R.id.tvCollect3);
-                    tvDate.append(date);
-                    tvName.append(name);
-                    tvDescription.append(description);
+                    tvDate.setText(date);
+                    tvName.setText(name);
+                    tvDescription.setText(description);
                 }
             }
 

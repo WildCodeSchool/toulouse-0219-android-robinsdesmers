@@ -21,7 +21,8 @@
         <activity android:name=".RecyclingAndSecurityActivity" />
         <activity android:name=".UserDetailsActivity" />
         <activity android:name=".UserCategoryActivity" />
-        <activity android:name=".FirstPageActivity">
+        <activity android:name=".FirstPageActivity"/>
+        <activity android:name=".ScreenSplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
