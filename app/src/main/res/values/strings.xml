@@ -47,6 +47,15 @@
     <string name="personnalisation">Personnalisation</string>
     <string name="ton_departement">Ton département</string>
     <string name="hyphen">-</string>
+    <string name="ton_rang">Ton rang</string>
+    <string name="navigateur">Navigateur</string>
+    <string name="citoyen">Citoyen</string>
+    <string name="descCitoyen">Tu es citoyen de la terre, la navigation c\'est pas ton truc ? \n Tous dans le même bateau !</string>
+    <string name="descNavigateur">Navigateur du dimanche, ou affranchi ? \n Bienvenue à bord !</string>
+    <string name="descEcosysteme">Association, entreprise de revalorisation, collectivité, autre initiative? \n Bienvenue, une belle collaboration commence !</string>
+    <string name="ecosysteme">Ecosystème</string>
+    <string name="mes_informations">Mes informations</string>
+    <string name="description">Description</string>
     <string name="recycling_info_description">Here you can enter the Item Recycling Info Description</string>
     <string name="recycling_info_title">Item Recycling Info Title</string>
     <string name="comprendre">Comprendre</string>

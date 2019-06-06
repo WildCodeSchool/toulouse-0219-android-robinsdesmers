@@ -16,6 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CollectPointDescriptionActivity"></activity>
+        <activity android:name=".UserDescriptionActivity"></activity>
+        <activity android:name=".RecyclingAndSecurityActivity" />
+        <activity android:name=".UserDetailsActivity" />
+        <activity android:name=".UserCategoryActivity" />
+        <activity android:name=".FirstPageActivity"/>
         <activity android:name=".ScreenSplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,10 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CollectPointDescriptionActivity" />
-        <activity android:name=".RecyclingAndSecurityActivity" />
-        <activity android:name=".UserDetailsActivity" />
-        <activity android:name=".FirstPageActivity"></activity>
         <activity android:name=".CollectRubbishActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".RubbishMultiInfosActivity" />
