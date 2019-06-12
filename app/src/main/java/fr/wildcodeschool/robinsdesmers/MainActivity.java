@@ -8,9 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,11 +29,11 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_mission:
                     return true;
                 case R.id.navigation_carte:
-                    Intent goToMaps = new Intent (MainActivity.this, MapsActivity.class);
+                    Intent goToMaps = new Intent(MainActivity.this, MapsActivity.class);
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
-                    Intent goToInfo = new Intent (MainActivity.this, RecyclingAndSecurityActivity.class);
+                    Intent goToInfo = new Intent(MainActivity.this, RecyclingAndSecurityActivity.class);
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
@@ -61,12 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                int compteur = 0;
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
-                    User user2 = markerSnapshot.getValue(User.class);
-                    int compteur2 = 0;
-                    compteur2 += user2.getCompteur();
+                    User user = markerSnapshot.getValue(User.class);
+
+                    compteur += user.getCompteur();
                     TextView tvScore = findViewById(R.id.tvUserScore);
-                    tvScore.append(String.valueOf(compteur2));
+                    tvScore.setText(String.valueOf(compteur));
                 }
             }
 

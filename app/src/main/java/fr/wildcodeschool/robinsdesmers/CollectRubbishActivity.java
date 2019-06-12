@@ -16,6 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 public class CollectRubbishActivity extends AppCompatActivity {
 
     final User user = new User(0);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
