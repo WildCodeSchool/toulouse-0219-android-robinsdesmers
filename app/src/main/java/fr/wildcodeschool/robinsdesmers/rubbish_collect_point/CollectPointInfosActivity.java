@@ -17,6 +17,8 @@ import fr.wildcodeschool.robinsdesmers.model.CollectPoint;
 
 public class CollectPointInfosActivity extends AppCompatActivity {
 
+    final int SCORE_COLLECT_POINT = 10;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,22 +38,21 @@ public class CollectPointInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.benne_de_revalorisation));
-                user.setCompteur(10);
-
+                user.setScore(SCORE_COLLECT_POINT);
             }
         });
         checkBoxP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.poubelle_classique));
-                user.setCompteur(10);
+                user.setScore(SCORE_COLLECT_POINT);
             }
         });
         checkBoxPT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.poubelle_de_tri));
-                user.setCompteur(10);
+                user.setScore(SCORE_COLLECT_POINT);
             }
 
         });
@@ -59,7 +60,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.decheterie));
-                user.setCompteur(10);
+                user.setScore(SCORE_COLLECT_POINT);
             }
         });
         btSend.setOnClickListener(new View.OnClickListener() {

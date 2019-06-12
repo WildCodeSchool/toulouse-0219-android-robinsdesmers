@@ -5,14 +5,14 @@ import android.os.Parcelable;
 
 public class User implements Parcelable {
 
-    int compteur;
+    int score;
 
-    public User(int compteur) {
-        this.compteur = compteur;
+    public User(int score) {
+        this.score = score;
     }
 
     protected User(Parcel in) {
-        compteur = in.readInt();
+        score = in.readInt();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -27,12 +27,12 @@ public class User implements Parcelable {
         }
     };
 
-    public int getCompteur() {
-        return compteur;
+    public int getScore() {
+        return score;
     }
 
-    public void setCompteur(int compteur) {
-        this.compteur = compteur;
+    public void setScore(int score) {
+        this.score = score;
     }
 
     @Override
@@ -42,7 +42,7 @@ public class User implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(compteur);
+        dest.writeInt(score);
     }
 
     public User() {

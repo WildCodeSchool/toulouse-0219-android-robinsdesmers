@@ -43,7 +43,7 @@ public class CollectRubbishActivity extends AppCompatActivity {
                             DatabaseReference markersRef = database.getReference("RubbishMarkers").child(key).child("isCollected");
                             markersRef.setValue(true);
 
-                            user.setCompteur(10);
+                            user.setScore(10);
                             DatabaseReference userRef = database.getReference("User");
                             String key2 = userRef.push().getKey();
                             userRef.child(key2).setValue(user);

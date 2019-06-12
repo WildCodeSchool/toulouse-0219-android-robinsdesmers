@@ -17,6 +17,8 @@ import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
 
 public class RubbishInfosActivity extends AppCompatActivity {
 
+    final int SCORE_RUBBISH = 5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,42 +40,42 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.carton));
-                user.setCompteur(5);
+                user.setScore(SCORE_RUBBISH);
             }
         });
         checkBoxB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.bouteille));
-                user.setCompteur(5);
+                user.setScore(SCORE_RUBBISH);
             }
         });
         checkBoxMa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.metal));
-                user.setCompteur(5);
+                user.setScore(SCORE_RUBBISH);
             }
         });
         checkBoxM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.megot));
-                user.setCompteur(5);
+                user.setScore(SCORE_RUBBISH);
             }
         });
         checkBoxP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.plastique));
-                user.setCompteur(5);
+                user.setScore(SCORE_RUBBISH);
             }
         });
         checkBoxV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.verre));
-                user.setCompteur(5);
+                user.setScore(SCORE_RUBBISH);
             }
         });
 
@@ -93,7 +95,5 @@ public class RubbishInfosActivity extends AppCompatActivity {
                 userRef.child(key2).setValue(user);
             }
         });
-
-
     }
 }

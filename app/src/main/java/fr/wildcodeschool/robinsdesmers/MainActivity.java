@@ -60,13 +60,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                int compteur = 0;
+                int score = 0;
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
                     User user = markerSnapshot.getValue(User.class);
 
-                    compteur += user.getCompteur();
+                    score += user.getScore();
                     TextView tvScore = findViewById(R.id.tvUserScore);
-                    tvScore.setText(String.valueOf(compteur));
+                    tvScore.setText(String.valueOf(score));
                 }
             }
 
