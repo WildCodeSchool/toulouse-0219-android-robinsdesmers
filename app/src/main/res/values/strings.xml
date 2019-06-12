@@ -87,4 +87,10 @@
     <string name="enfant">Les enfants doivent être accompagnés d\'un adulte.</string>
     <string name="poids">Ne pas récupérer les déchets trop lourds.</string>
     <string name="mains">Lavez-vous les mains après la collecte.</string>
+    <string name="consignes_de_s_curit_pour_la_collecte_de_d_chets">Consignes de sécurité pour la collecte de déchets</string>
+    <string name="vous_voulez_participer_la_r_duction_des_d_chets_sauvages_en_mer_en_les_collectant">Vous voulez participer à la réduction des déchets sauvages en mer en les collectant ?</string>
+    <string name="merci_pour_votre_engagement">Merci pour votre engagement !!!</string>
+    <string name="avant_de_vous_lancer_voici_quelques_consignes_de_s_curit">Avant de vous lancer, voici quelques consignes de sécurité :</string>
+    <string name="pour_la_collecte">Pour la collecte :</string>
+    <string name="pour_jeter_vos_d_chets">Pour jeter vos déchets :</string>
 </resources>

@@ -32,7 +32,6 @@ public class RecyclingInfoAdapter extends RecyclerView.Adapter<RecyclingInfoAdap
     public void onBindViewHolder(@NonNull RecyclingInfoViewHolder recyclingInfoViewHolder, int i) {
 
         RecyclingInfoItem recyclingInfoItem = recyclingInfoItems.get(i);
-
         recyclingInfoViewHolder.tvRecyclingInfoTitle.setText(recyclingInfoItem.getTitleRecyclingInfo());
         recyclingInfoViewHolder.tvRecyclingInfoDescription.setText(recyclingInfoItem.getDescriptionRecyclingInfo());
         recyclingInfoViewHolder.ivRecyclingLogo.setImageResource(recyclingInfoItem.getLogoRecycling());

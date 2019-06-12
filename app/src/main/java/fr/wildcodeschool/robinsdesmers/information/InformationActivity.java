@@ -1,10 +1,10 @@
 package fr.wildcodeschool.robinsdesmers.information;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -29,11 +29,11 @@ public class InformationActivity extends AppCompatActivity {
                 case R.id.navigation_mission:
                     return true;
                 case R.id.navigation_carte:
-                    Intent goToMaps = new Intent (InformationActivity.this, MapsActivity.class);
+                    Intent goToMaps = new Intent(InformationActivity.this, MapsActivity.class);
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
-                    Intent goToInfo = new Intent (InformationActivity.this, InformationActivity.class);
+                    Intent goToInfo = new Intent(InformationActivity.this, InformationActivity.class);
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:

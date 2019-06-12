@@ -30,9 +30,7 @@ public class SecurityInfoAdapter extends RecyclerView.Adapter<SecurityInfoAdapte
 
     @Override
     public void onBindViewHolder(@NonNull SecurityInfoViewHolder securityInfoViewHolder, int i) {
-
         SecurityInfoItem securityInfoItem = securityInfoItems.get(i);
-
         securityInfoViewHolder.tvSecurityInfoTitle.setText(securityInfoItem.getSecurityInfoTitle());
     }
 
@@ -47,7 +45,6 @@ public class SecurityInfoAdapter extends RecyclerView.Adapter<SecurityInfoAdapte
         public SecurityInfoViewHolder(@NonNull View itemView) {
             super(itemView);
             tvSecurityInfoTitle = itemView.findViewById(R.id.tvSecurityInfoTitle);
-
         }
     }
 }
