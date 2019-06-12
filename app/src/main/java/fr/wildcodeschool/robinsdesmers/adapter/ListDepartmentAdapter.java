@@ -1,4 +1,4 @@
-package fr.wildcodeschool.robinsdesmers.Adapter;
+package fr.wildcodeschool.robinsdesmers.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

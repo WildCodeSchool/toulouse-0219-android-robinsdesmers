@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.model.RecyclingInfoItem;
 
 public class RecyclingInfoAdapter extends RecyclerView.Adapter<RecyclingInfoAdapter.RecyclingInfoViewHolder> {
 

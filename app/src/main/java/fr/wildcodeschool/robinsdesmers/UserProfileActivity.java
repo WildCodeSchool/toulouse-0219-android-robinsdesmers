@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 import fr.wildcodeschool.robinsdesmers.information.RecyclingInfoActivity;
 
 public class UserProfileActivity extends AppCompatActivity {
@@ -29,7 +30,7 @@ public class UserProfileActivity extends AppCompatActivity {
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
-                    Intent goToInfo = new Intent(UserProfileActivity.this, RecyclingInfoActivity.class);
+                    Intent goToInfo = new Intent(UserProfileActivity.this, InformationActivity.class);
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:

@@ -74,4 +74,8 @@
     <string name="point_vert_title"><![CDATA[Le Point Vert : on se trompe souvent !]]></string>
     <string name="point_vert_description">Ce symbole ne signifie pas que le produit est recyclable. Il veut simplement dire que l’entreprise verse une contribution à un organisme chargé du recyclage.</string>
     <string name="le_point_de_collecte_n_est_plus_pr_sent">Le point de collecte n\'est plus présent</string>
+    <string name="recycler">Le Recyclage</string>
+    <string name="securite">La sécurité</string>
+    <string name="a_propos">La communauté</string>
+    <string name="en_savoir_plus_sur">En savoir plus sur</string>
 </resources>

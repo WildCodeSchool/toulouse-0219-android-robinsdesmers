@@ -38,6 +38,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 import fr.wildcodeschool.robinsdesmers.information.RecyclingInfoActivity;
 import fr.wildcodeschool.robinsdesmers.model.CollectPoint;
 import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
@@ -71,7 +72,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
-                    Intent goToInfo = new Intent(MapsActivity.this, RecyclingInfoActivity.class);
+                    Intent goToInfo = new Intent(MapsActivity.this, InformationActivity.class);
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
