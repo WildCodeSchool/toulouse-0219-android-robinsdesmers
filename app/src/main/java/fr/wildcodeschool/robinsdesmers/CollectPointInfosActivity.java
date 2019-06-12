@@ -19,6 +19,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final CollectPoint collectPoint = intent.getParcelableExtra("CollectPoint");
+        final User user = intent.getParcelableExtra("User");
 
         CheckBox checkBoxP = findViewById(R.id.cbPoubelle);
         CheckBox checkBoxPT = findViewById(R.id.cbPoubelleTri);
@@ -30,18 +31,22 @@ public class CollectPointInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.benne_de_revalorisation));
+                user.setCompteur(10);
+
             }
         });
         checkBoxP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.poubelle_classique));
+                user.setCompteur(10);
             }
         });
         checkBoxPT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.poubelle_de_tri));
+                user.setCompteur(10);
             }
 
         });
@@ -49,6 +54,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.decheterie));
+                user.setCompteur(10);
             }
         });
         btSend.setOnClickListener(new View.OnClickListener() {
@@ -61,6 +67,10 @@ public class CollectPointInfosActivity extends AppCompatActivity {
                 String key = markersRef.push().getKey();
                 collectPoint.setKey(key);
                 markersRef.child(key).setValue(collectPoint);
+
+                DatabaseReference userRef = database.getReference("User");
+                String key2 = userRef.push().getKey();
+                userRef.child(key2).setValue(user);
             }
         });
     }

@@ -19,6 +19,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
+        final User user = intent.getParcelableExtra("User");
 
         CheckBox checkBoxB = findViewById(R.id.cbBouteille);
         CheckBox checkBoxC = findViewById(R.id.cbCarton);
@@ -32,50 +33,62 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.carton));
+                user.setCompteur(5);
             }
         });
         checkBoxB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.bouteille));
+                user.setCompteur(5);
             }
         });
         checkBoxMa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.metal));
+                user.setCompteur(5);
             }
         });
         checkBoxM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.megot));
+                user.setCompteur(5);
             }
         });
         checkBoxP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.plastique));
+                user.setCompteur(5);
             }
         });
         checkBoxV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.verre));
+                user.setCompteur(5);
             }
         });
+
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
                 startActivity(intent);
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                final FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference markersRef = database.getReference("RubbishMarkers");
                 String key = markersRef.push().getKey();
                 location.setKey(key);
                 markersRef.child(key).setValue(location);
 
+                DatabaseReference userRef = database.getReference("User");
+                String key2 = userRef.push().getKey();
+                userRef.child(key2).setValue(user);
             }
         });
+
+
     }
 }
