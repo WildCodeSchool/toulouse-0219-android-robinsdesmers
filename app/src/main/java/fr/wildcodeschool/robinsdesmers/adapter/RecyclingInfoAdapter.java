@@ -50,7 +50,7 @@ public class RecyclingInfoAdapter extends RecyclerView.Adapter<RecyclingInfoAdap
 
         public RecyclingInfoViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvRecyclingInfoTitle = itemView.findViewById(R.id.tvRecyclingInfoTitle);
+            tvRecyclingInfoTitle = itemView.findViewById(R.id.tvSecurityInfoTitle);
             tvRecyclingInfoDescription = itemView.findViewById(R.id.tvRecyclingInfoDescription);
             ivRecyclingLogo = itemView.findViewById(R.id.ivRecyclingLogo);
         }

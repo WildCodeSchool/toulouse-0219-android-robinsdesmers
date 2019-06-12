@@ -78,4 +78,13 @@
     <string name="securite">La sécurité</string>
     <string name="a_propos">La communauté</string>
     <string name="en_savoir_plus_sur">En savoir plus sur</string>
+    <string name="gants">Utiliser des gants anti-coupure.</string>
+    <string name="chaussure">Porter vos chaussures lors de la collecte.</string>
+    <string name="objDangereux">Ne récupérez pas les déchets dangereux (produits chimiques, seringues, objets coupants ou non identifiés.</string>
+    <string name="danger">Ne collectez pas dans des zones inaccessibles ou difficiles d\'accès et sans visibilité.</string>
+    <string name="circulation">Respectez les règles de circulation.</string>
+    <string name="lieuPublic">Restez sur les lieux publics, ne faites pas d\'actions de collecte sur des zones privées.</string>
+    <string name="enfant">Les enfants doivent être accompagnés d\'un adulte.</string>
+    <string name="poids">Ne pas récupérer les déchets trop lourds.</string>
+    <string name="mains">Lavez-vous les mains après la collecte.</string>
 </resources>

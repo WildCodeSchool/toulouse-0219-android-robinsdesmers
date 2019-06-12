@@ -15,10 +15,9 @@ import java.util.List;
 import fr.wildcodeschool.robinsdesmers.MainActivity;
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
-import fr.wildcodeschool.robinsdesmers.adapter.RecyclingInfoAdapter
-        ;
-import fr.wildcodeschool.robinsdesmers.model.RecyclingInfoItem;
+import fr.wildcodeschool.robinsdesmers.RecyclingInfoAdapter;
 import fr.wildcodeschool.robinsdesmers.UserProfileActivity;
+import fr.wildcodeschool.robinsdesmers.model.RecyclingInfoItem;
 
 public class RecyclingInfoActivity extends AppCompatActivity {
 
@@ -39,7 +38,7 @@ public class RecyclingInfoActivity extends AppCompatActivity {
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
-                    Intent goToInfo = new Intent(RecyclingInfoActivity.this, RecyclingInfoActivity.class);
+                    Intent goToInfo = new Intent(RecyclingInfoActivity.this, InformationActivity.class);
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:

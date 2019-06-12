@@ -33,7 +33,7 @@ public class SecurityInfoAdapter extends RecyclerView.Adapter<SecurityInfoAdapte
 
         SecurityInfoItem securityInfoItem = securityInfoItems.get(i);
 
-        securityInfoViewHolder.tvRecyclingInfoTitle.setText(securityInfoItem.getSecurityInfoTitle());
+        securityInfoViewHolder.tvSecurityInfoTitle.setText(securityInfoItem.getSecurityInfoTitle());
     }
 
     @Override
@@ -42,11 +42,11 @@ public class SecurityInfoAdapter extends RecyclerView.Adapter<SecurityInfoAdapte
     }
 
     public class SecurityInfoViewHolder extends RecyclerView.ViewHolder {
-        public TextView tvRecyclingInfoTitle;
+        public TextView tvSecurityInfoTitle;
 
         public SecurityInfoViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvRecyclingInfoTitle = itemView.findViewById(R.id.tvRecyclingInfoTitle);
+            tvSecurityInfoTitle = itemView.findViewById(R.id.tvSecurityInfoTitle);
 
         }
     }
