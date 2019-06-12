@@ -1,4 +1,4 @@
-package fr.wildcodeschool.robinsdesmers;
+package fr.wildcodeschool.robinsdesmers.rubbish_collect_point;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.widget.CheckBox;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import fr.wildcodeschool.robinsdesmers.MapsActivity;
+import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.User;
+import fr.wildcodeschool.robinsdesmers.model.CollectPoint;
 
 public class CollectPointInfosActivity extends AppCompatActivity {
 

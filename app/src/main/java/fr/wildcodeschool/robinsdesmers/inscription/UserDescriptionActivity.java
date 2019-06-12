@@ -1,10 +1,14 @@
-package fr.wildcodeschool.robinsdesmers;
+package fr.wildcodeschool.robinsdesmers.inscription;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+
+import fr.wildcodeschool.robinsdesmers.AvatarChoicesActivity;
+import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.UserProfileActivity;
 
 public class UserDescriptionActivity extends AppCompatActivity {
 
@@ -17,7 +21,7 @@ public class UserDescriptionActivity extends AppCompatActivity {
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserDescriptionActivity.this, UserProfileActivity.class);
+                Intent intent = new Intent(UserDescriptionActivity.this, AvatarChoicesActivity.class);
                 startActivity(intent);
             }
         });

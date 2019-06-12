@@ -1,4 +1,4 @@
-package fr.wildcodeschool.robinsdesmers;
+package fr.wildcodeschool.robinsdesmers.information;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+
+import fr.wildcodeschool.robinsdesmers.Adapter.RecyclingInfoAdapter;
+import fr.wildcodeschool.robinsdesmers.MainActivity;
+import fr.wildcodeschool.robinsdesmers.MapsActivity;
+import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.UserProfileActivity;
 
 public class RecyclingAndSecurityActivity extends AppCompatActivity {
 

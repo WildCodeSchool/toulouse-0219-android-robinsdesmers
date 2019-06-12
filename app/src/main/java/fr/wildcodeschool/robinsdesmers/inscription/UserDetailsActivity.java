@@ -1,4 +1,4 @@
-package fr.wildcodeschool.robinsdesmers;
+package fr.wildcodeschool.robinsdesmers.inscription;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -18,6 +18,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import fr.wildcodeschool.robinsdesmers.Adapter.ListDepartmentAdapter;
+import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.model.Department;
 
 public class UserDetailsActivity extends AppCompatActivity {
 

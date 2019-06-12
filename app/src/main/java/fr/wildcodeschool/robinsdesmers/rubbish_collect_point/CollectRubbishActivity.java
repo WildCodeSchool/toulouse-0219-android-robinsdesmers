@@ -1,4 +1,4 @@
-package fr.wildcodeschool.robinsdesmers;
+package fr.wildcodeschool.robinsdesmers.rubbish_collect_point;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import fr.wildcodeschool.robinsdesmers.MapsActivity;
+import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.User;
+import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
 
 public class CollectRubbishActivity extends AppCompatActivity {
 
