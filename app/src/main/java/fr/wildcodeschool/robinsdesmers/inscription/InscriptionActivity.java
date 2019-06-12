@@ -1,10 +1,12 @@
-package fr.wildcodeschool.robinsdesmers;
+package fr.wildcodeschool.robinsdesmers.inscription;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+
+import fr.wildcodeschool.robinsdesmers.R;
 
 public class InscriptionActivity extends AppCompatActivity {
 
