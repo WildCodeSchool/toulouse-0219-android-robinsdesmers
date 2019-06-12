@@ -12,17 +12,16 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
 
-public class AvatarChoiceActivity extends AppCompatActivity {
-
+public class AvatarChoicesActivity extends AppCompatActivity {
     ImageButton imBtNext, imBtPrevious;
     ImageSwitcher imageSwitcher;
     Integer[] images = {R.drawable.ic_essai_avatar, R.drawable.icon_cat_v1, R.drawable.icon_cat_v2, R.drawable.icon_cat_v3};
-    int i = 0;
+    int index = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choice_avatar);
+        setContentView(R.layout.activity_choices_avatar);
 
         imageSwitcher = findViewById(R.id.imSwitcherAvatars);
 
@@ -40,8 +39,7 @@ public class AvatarChoiceActivity extends AppCompatActivity {
         final Animation avatar_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_in);
         final Animation avatar_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_out);
 
-        imageSwitcher.setImageResource(images[i]);
-
+        imageSwitcher.setImageResource(images[index]);
         imBtPrevious = findViewById(R.id.imBtPrevious);
         imBtNext = findViewById(R.id.imBtNext);
 
@@ -49,23 +47,22 @@ public class AvatarChoiceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (i > 0) {
-                    i--;
+                if (index > 0) {
+                    index--;
                     imageSwitcher.setInAnimation(avatar_in);
-                    imageSwitcher.setImageResource(images[i]);
+                    imageSwitcher.setImageResource(images[index]);
                 }
             }
-
         });
 
         imBtNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (i < images.length - 1) {
-                    i++;
+                if (index < images.length - 1) {
+                    index++;
                     imageSwitcher.setInAnimation(avatar_out);
-                    imageSwitcher.setImageResource(images[i]);
+                    imageSwitcher.setImageResource(images[index]);
                 }
             }
         });
@@ -74,10 +71,9 @@ public class AvatarChoiceActivity extends AppCompatActivity {
         imBtAvatarChoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToMaps = new Intent(AvatarChoiceActivity.this, MapsActivity.class);
+                Intent goToMaps = new Intent(AvatarChoicesActivity.this, MapsActivity.class);
                 startActivity(goToMaps);
             }
         });
     }
 }
-
