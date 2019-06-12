@@ -16,12 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".rubbish_collect_point.CollectPointDescriptionActivity"></activity>
-        <activity android:name=".inscription.UserDescriptionActivity"></activity>
+        <activity android:name=".rubbish_collect_point.CollectPointDescriptionActivity" />
+        <activity android:name=".inscription.UserDescriptionActivity" />
         <activity android:name=".information.RecyclingAndSecurityActivity" />
         <activity android:name=".inscription.UserDetailsActivity" />
         <activity android:name=".inscription.UserCategoryActivity" />
-        <activity android:name=".FirstPageActivity"/>
+        <activity android:name=".FirstPageActivity" />
         <activity android:name=".ScreenSplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,6 +48,7 @@
             android:label="@string/title_activity_user_profile" />
         <activity android:name=".inscription.InscriptionActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".AvatarChoicesActivity" />
     </application>
 
 </manifest>
