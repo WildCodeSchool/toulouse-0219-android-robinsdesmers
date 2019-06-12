@@ -38,6 +38,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import fr.wildcodeschool.robinsdesmers.information.RecyclingInfoActivity;
+import fr.wildcodeschool.robinsdesmers.model.CollectPoint;
+import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
+import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectPointDescriptionActivity;
+import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectRubbishActivity;
+import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.MarkerTypeActivity;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_LOCATION = 4322;

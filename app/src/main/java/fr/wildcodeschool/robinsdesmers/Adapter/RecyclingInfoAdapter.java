@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import fr.wildcodeschool.robinsdesmers.R;
+
 public class RecyclingInfoAdapter extends RecyclerView.Adapter<RecyclingInfoAdapter.RecyclingInfoViewHolder> {
 
     List<RecyclingInfoItem> recyclingInfoItems;

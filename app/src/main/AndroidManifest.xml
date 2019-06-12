@@ -16,9 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RecyclingInfoActivity" />
-        <activity android:name=".UserDetailsActivity" />
-        <activity android:name=".FirstPageActivity" />
+        <activity android:name=".rubbish_collect_point.CollectPointDescriptionActivity"></activity>
+        <activity android:name=".inscription.UserDescriptionActivity"></activity>
+        <activity android:name=".information.RecyclingAndSecurityActivity" />
+        <activity android:name=".inscription.UserDetailsActivity" />
+        <activity android:name=".inscription.UserCategoryActivity" />
+        <activity android:name=".FirstPageActivity"/>
         <activity android:name=".ScreenSplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,13 +29,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CollectPointDescriptionActivity" />
-        <activity android:name=".CollectRubbishActivity" />
+        <activity android:name=".rubbish_collect_point.CollectRubbishActivity" />
         <activity android:name=".SignInActivity" />
-        <activity android:name=".RubbishMultiInfosActivity" />
-        <activity android:name=".CollectPointInfosActivity" />
-        <activity android:name=".RubbishInfosActivity" />
-        <activity android:name=".MarkerTypeActivity" />
+        <activity android:name=".rubbish_collect_point.RubbishMultiInfosActivity" />
+        <activity android:name=".rubbish_collect_point.CollectPointInfosActivity" />
+        <activity android:name=".rubbish_collect_point.RubbishInfosActivity" />
+        <activity android:name=".rubbish_collect_point.MarkerTypeActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -44,7 +46,7 @@
         <activity
             android:name=".UserProfileActivity"
             android:label="@string/title_activity_user_profile" />
-        <activity android:name=".InscriptionActivity" />
+        <activity android:name=".inscription.InscriptionActivity" />
         <activity android:name=".MainActivity" />
     </application>
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CollectPointInfosActivity"
+    tools:context=".rubbish_collect_point.CollectPointInfosActivity"
     android:background="@color/vert_fonce">
 
     <CheckBox

@@ -1,4 +1,4 @@
-package fr.wildcodeschool.robinsdesmers;
+package fr.wildcodeschool.robinsdesmers.information;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,13 @@ import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import fr.wildcodeschool.robinsdesmers.MainActivity;
+import fr.wildcodeschool.robinsdesmers.MapsActivity;
+import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.RecyclingInfoAdapter;
+import fr.wildcodeschool.robinsdesmers.RecyclingInfoItem;
+import fr.wildcodeschool.robinsdesmers.UserProfileActivity;
 
 public class RecyclingInfoActivity extends AppCompatActivity {
 
