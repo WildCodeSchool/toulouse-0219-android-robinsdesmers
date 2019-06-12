@@ -11,7 +11,7 @@
         android:id="@+id/tvPersonalisationCategory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="@string/personnalisation"
         android:textColor="@color/colorWhite"
@@ -56,7 +56,7 @@
         android:id="@+id/btCategoryNavigator"
         android:layout_width="189dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/button_category"
         android:gravity="center"
         android:paddingTop="12dp"
@@ -72,7 +72,7 @@
         android:id="@+id/btCategoryEcosystem"
         android:layout_width="189dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/button_category"
         android:gravity="center"
         android:paddingTop="12dp"
@@ -81,7 +81,6 @@
         android:textColor="@color/colorWhite"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescNavigator" />
 
@@ -118,7 +117,6 @@
         android:text="@string/descEcosysteme"
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btCategoryEcosystem" />
 
@@ -126,13 +124,13 @@
         android:id="@+id/imBtRegisterCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescEcosystem"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@mipmap/ic_launcher_button" />
 
 </android.support.constraint.ConstraintLayout>
