@@ -34,12 +34,12 @@
     <string name="metal">Métal</string>
     <string name="megot">Mégot</string>
     <string name="plastique">Plastique</string>
-    <string name="verre">Verre</string>
-    <string name="bouteilles">Bouteilles</string>
-    <string name="megots">Megots</string>
-    <string name="cartons">Cartons</string>
-    <string name="dechets_en_verre">Déchets en verre</string>
-    <string name="dechets_en_plastique">Déchets en plastique</string>
+    <string name="verre">  Verre</string>
+    <string name="bouteilles"> Bouteilles</string>
+    <string name="megots"> Megots</string>
+    <string name="cartons"> Cartons</string>
+    <string name="dechets_en_verre"> Déchets en verre</string>
+    <string name="dechets_en_plastique"> Déchets en plastique</string>
     <string name="poubelle_classique">Poubelle Classique</string>
     <string name="d_cheterie">Décheterie</string>
     <string name="inscripiton">Inscripiton</string>
@@ -74,6 +74,8 @@
     <string name="point_vert_title"><![CDATA[Le Point Vert : on se trompe souvent !]]></string>
     <string name="point_vert_description">Ce symbole ne signifie pas que le produit est recyclable. Il veut simplement dire que l’entreprise verse une contribution à un organisme chargé du recyclage.</string>
     <string name="le_point_de_collecte_n_est_plus_pr_sent">Le point de collecte n\'est plus présent</string>
+    <string name="score_utilisateur">Score Utilisateur</string>
+    <string name="choisis_ton_avatar">Choisis ton avatar</string>
     <string name="recycler">Le Recyclage</string>
     <string name="securite">La sécurité</string>
     <string name="a_propos">La communauté</string>

@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.User;
 import fr.wildcodeschool.robinsdesmers.model.CollectPoint;
 import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
 
@@ -26,6 +27,7 @@ public class MarkerTypeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final CollectPoint collectPoint = intent.getParcelableExtra("CollectPoint");
         final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
+        final User user = new User(0);
 
         buttonD.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +35,7 @@ public class MarkerTypeActivity extends AppCompatActivity {
                 location.setInfoRubbish(getString(R.string.dechet_seul));
                 Intent intent = new Intent(MarkerTypeActivity.this, RubbishInfosActivity.class);
                 intent.putExtra("RubbishMarkers", location);
+                intent.putExtra("User", user);
                 startActivity(intent);
             }
         });
@@ -42,6 +45,7 @@ public class MarkerTypeActivity extends AppCompatActivity {
                 location.setInfoRubbish(getString(R.string.amas_de_dechets));
                 Intent intent = new Intent(MarkerTypeActivity.this, RubbishMultiInfosActivity.class);
                 intent.putExtra("RubbishMarkers", location);
+                intent.putExtra("User", user);
                 startActivity(intent);
             }
         });
@@ -51,6 +55,7 @@ public class MarkerTypeActivity extends AppCompatActivity {
                 collectPoint.setInfoCollectPoint(getString(R.string.point_de_collecte));
                 Intent intent = new Intent(MarkerTypeActivity.this, CollectPointInfosActivity.class);
                 intent.putExtra("CollectPoint", collectPoint);
+                intent.putExtra("User", user);
                 startActivity(intent);
             }
         });

@@ -6,6 +6,13 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 
@@ -24,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_mission:
                     return true;
                 case R.id.navigation_carte:
-                    Intent goToMaps = new Intent (MainActivity.this, MapsActivity.class);
+                    Intent goToMaps = new Intent(MainActivity.this, MapsActivity.class);
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
@@ -46,5 +53,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference userRef = database.getReference("User");
+        userRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int score = 0;
+                for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
+                    User user = markerSnapshot.getValue(User.class);
+
+                    score += user.getScore();
+                    TextView tvScore = findViewById(R.id.tvUserScore);
+                    tvScore.setText(String.valueOf(score));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 }

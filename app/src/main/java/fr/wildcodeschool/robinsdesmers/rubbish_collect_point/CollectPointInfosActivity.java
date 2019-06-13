@@ -12,9 +12,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.User;
 import fr.wildcodeschool.robinsdesmers.model.CollectPoint;
 
 public class CollectPointInfosActivity extends AppCompatActivity {
+
+    final int SCORE_COLLECT_POINT = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final CollectPoint collectPoint = intent.getParcelableExtra("CollectPoint");
+        final User user = intent.getParcelableExtra("User");
 
         CheckBox checkBoxP = findViewById(R.id.cbPoubelle);
         CheckBox checkBoxPT = findViewById(R.id.cbPoubelleTri);
@@ -34,18 +38,21 @@ public class CollectPointInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.benne_de_revalorisation));
+                user.setScore(SCORE_COLLECT_POINT);
             }
         });
         checkBoxP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.poubelle_classique));
+                user.setScore(SCORE_COLLECT_POINT);
             }
         });
         checkBoxPT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.poubelle_de_tri));
+                user.setScore(SCORE_COLLECT_POINT);
             }
 
         });
@@ -53,6 +60,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.decheterie));
+                user.setScore(SCORE_COLLECT_POINT);
             }
         });
         btSend.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +73,10 @@ public class CollectPointInfosActivity extends AppCompatActivity {
                 String key = markersRef.push().getKey();
                 collectPoint.setKey(key);
                 markersRef.child(key).setValue(collectPoint);
+
+                DatabaseReference userRef = database.getReference("User");
+                String key2 = userRef.push().getKey();
+                userRef.child(key2).setValue(user);
             }
         });
     }

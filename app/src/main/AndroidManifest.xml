@@ -51,6 +51,7 @@
             android:label="@string/title_activity_user_profile" />
         <activity android:name=".inscription.InscriptionActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".AvatarChoicesActivity" />
     </application>
 
 </manifest>
