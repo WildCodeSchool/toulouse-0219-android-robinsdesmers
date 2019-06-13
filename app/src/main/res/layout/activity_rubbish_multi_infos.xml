@@ -88,7 +88,6 @@
         app:layout_constraintTop_toBottomOf="@+id/etMegot" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvBouteille"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -96,12 +95,13 @@
         android:layout_marginLeft="176dp"
         android:layout_marginTop="32dp"
         android:text="@string/bouteilles_plastique"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/etBouteille"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvVerre"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -111,13 +111,14 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="@string/verre"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/etVerre"
         app:layout_constraintTop_toBottomOf="@+id/tvBouteille" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvPlastique"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -127,14 +128,15 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="@string/autre_plastique"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.712"
         app:layout_constraintStart_toEndOf="@+id/etPlastique"
         app:layout_constraintTop_toBottomOf="@+id/tvVerre" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvMetal"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -144,13 +146,14 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="@string/m_tal"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/etMetal"
         app:layout_constraintTop_toBottomOf="@+id/tvPlastique" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvMegot"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -160,13 +163,14 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="@string/m_got"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/etMegot"
         app:layout_constraintTop_toBottomOf="@+id/tvMetal" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvCarton"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
@@ -176,7 +180,9 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:text="@string/carton"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/etCarton"
         app:layout_constraintTop_toBottomOf="@+id/tvMegot" />
@@ -194,6 +200,8 @@
         android:background="@drawable/button_rounded"
         android:backgroundTint="@color/orange"
         android:text="@string/envoyer"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
