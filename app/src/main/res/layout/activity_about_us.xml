@@ -21,7 +21,7 @@
         app:menu="@menu/bottom_nav_menu" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvQui"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -34,13 +34,13 @@
         android:textColor="@color/colorWhite"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/tvRobin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvRobin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -53,13 +53,13 @@
         android:textColor="@color/orange"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/tvCommunaute"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/tvQui" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvCommunaute"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -71,13 +71,13 @@
         android:text="C'est LA communauté des navigateurs et des citoyens engagés dans la réduction des déchets en mer."
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintBottom_toTopOf="@+id/tvMission"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvRobin" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvMission"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -89,13 +89,13 @@
         android:textColor="@color/orange"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintBottom_toTopOf="@+id/tvPermettre"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/tvCommunaute" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tvPermettre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -108,13 +108,13 @@
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintBottom_toTopOf="@+id/tvRealite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMission" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tvRealite"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -125,13 +125,13 @@
         android:text="- de mieux comprendre la réalité des déchets en mer."
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
+        app:layout_constraintBottom_toTopOf="@+id/tvFairePartie"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/tvPermettre" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvFairePartie"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -141,13 +141,13 @@
         android:text="- de faire partie d'une communauté engagée."
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintBottom_toTopOf="@+id/tvAgir"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/tvRealite" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tvAgir"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -159,10 +159,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/tvFairePartie" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/tvRetrouver"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -177,16 +177,74 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAgir" />
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="60dp"
-        android:layout_height="55dp"
-        android:background="@drawable/button_border"
+        android:id="@+id/btRdmLogo"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/button_rounded"
+        android:onClick="openRdm"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/empreinte"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="518dp" />
+        app:layout_constraintEnd_toStartOf="@+id/btFaceBkLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRetrouver"
+        app:srcCompat="@drawable/empreinte" />
+
+    <ImageButton
+        android:id="@+id/btFaceBkLogo"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/button_rounded"
+        android:onClick="openFaceBook"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@+id/btInstaLogo"
+        app:layout_constraintStart_toEndOf="@+id/btRdmLogo"
+        app:layout_constraintTop_toBottomOf="@+id/tvRetrouver"
+        app:srcCompat="@drawable/facebook_button" />
+
+    <ImageButton
+        android:id="@+id/btInstaLogo"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/button_rounded"
+        android:onClick="openInstagram"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toStartOf="@+id/btTwitterLogo"
+        app:layout_constraintStart_toEndOf="@+id/btFaceBkLogo"
+        app:layout_constraintTop_toBottomOf="@+id/tvRetrouver"
+        app:srcCompat="@drawable/instagram_button" />
+
+    <ImageButton
+        android:id="@+id/btTwitterLogo"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/button_rounded"
+        android:onClick="openTwitter"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btInstaLogo"
+        app:layout_constraintTop_toBottomOf="@+id/tvRetrouver"
+        app:srcCompat="@drawable/twitter_button" />
 
 </android.support.constraint.ConstraintLayout>

@@ -72,5 +72,13 @@ public class InformationActivity extends AppCompatActivity {
                 startActivity(goToSecurityInfo);
             }
         });
+
+        btAboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToAboutUs = new Intent(InformationActivity.this, AboutUsActivity.class);
+                startActivity(goToAboutUs);
+            }
+        });
     }
 }
