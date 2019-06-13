@@ -64,4 +64,6 @@
     <string name="le_point_de_collecte_n_est_plus_pr_sent">Le point de collecte n\'est plus présent</string>
     <string name="score_utilisateur">Score Utilisateur</string>
     <string name="choisis_ton_avatar">Choisis ton avatar</string>
+    <string name="que_voulez_vous_d_clarer">Que voulez-vous déclarer?</string>
+    <string name="est_collect">est collecté</string>
 </resources>

@@ -74,7 +74,6 @@
         app:layout_constraintTop_toBottomOf="@+id/cbMegot" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvBouteille"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
@@ -82,11 +81,13 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="32dp"
         android:text="@string/bouteilles_plastique"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cbBouteille"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvVerre"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
@@ -94,11 +95,13 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="70dp"
         android:text="@string/verre"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cbVerre"
         app:layout_constraintTop_toBottomOf="@+id/tvBouteille" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvPlastique"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
@@ -106,11 +109,13 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="70dp"
         android:text="@string/autre_plastique"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cbPlastique"
         app:layout_constraintTop_toBottomOf="@+id/tvVerre" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvMetal"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
@@ -118,11 +123,13 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="69dp"
         android:text="@string/m_tal"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cbMetal"
         app:layout_constraintTop_toBottomOf="@+id/tvPlastique" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvMegot"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
@@ -130,11 +137,13 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="70dp"
         android:text="@string/m_got"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cbMegot"
         app:layout_constraintTop_toBottomOf="@+id/tvMetal" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvCarton"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
@@ -142,6 +151,9 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="70dp"
         android:text="@string/carton"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cbCarton"
         app:layout_constraintTop_toBottomOf="@+id/tvMegot" />
 
@@ -154,10 +166,12 @@
         android:layout_marginEnd="162dp"
         android:layout_marginRight="162dp"
         android:layout_marginBottom="32dp"
+        android:alpha="0.70"
         android:background="@drawable/button_rounded"
         android:backgroundTint="@color/orange"
-        android:alpha="0.70"
         android:text="@string/envoyer"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
