@@ -167,7 +167,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mLocationUser.setLatitude(lat);
             mLocationUser.setLongitude(lng);
 
-
             if (mMap != null && !mMapInit) {
                 mMapInit = true;
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, DEFAULT_ZOOM));
@@ -228,7 +227,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     CollectPoint locationMarker2 = markerSnapshot.getValue(CollectPoint.class);
                     final LatLng locMarker = new LatLng(locationMarker2.getLatitude(), locationMarker2.getLongitude());
                     if (!locationMarker2.notHere) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.collectpoint)).position(locMarker).title("CollectPoint"));
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish)).position(locMarker).title("CollectPoint"));
                     }
                 }
             }

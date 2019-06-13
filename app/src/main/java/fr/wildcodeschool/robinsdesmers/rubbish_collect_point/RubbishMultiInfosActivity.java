@@ -12,9 +12,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.User;
 import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
 
 public class RubbishMultiInfosActivity extends AppCompatActivity {
+
+    final int SCORE_MULTI_RUBBISH = 10;
+    final int SCORE_MULTI_RUBBISH_SIMPLE = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
+        final User user = intent.getParcelableExtra("User");
 
         final EditText etBt = findViewById(R.id.etBouteille);
         final EditText etMa = findViewById(R.id.etMetal);
@@ -36,6 +41,11 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String bouteille = etBt.getText().toString();
+                if (Integer.parseInt(bouteille) > 5) {
+                    user.setScore(SCORE_MULTI_RUBBISH);
+                } else {
+                    user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
+                }
                 location.setInfoSup(bouteille + getString(R.string.bouteilles));
             }
         });
@@ -43,6 +53,11 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String metal = etMa.getText().toString();
+                if (Integer.parseInt(metal) > 5) {
+                    user.setScore(SCORE_MULTI_RUBBISH);
+                } else {
+                    user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
+                }
                 location.setInfoSup(metal + getString(R.string.metal));
             }
         });
@@ -50,6 +65,11 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String megot = etM.getText().toString();
+                if (Integer.parseInt(megot) > 5) {
+                    user.setScore(SCORE_MULTI_RUBBISH);
+                } else {
+                    user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
+                }
                 location.setInfoSup(megot + getString(R.string.megots));
             }
         });
@@ -57,6 +77,11 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String carton = etC.getText().toString();
+                if (Integer.parseInt(carton) > 5) {
+                    user.setScore(SCORE_MULTI_RUBBISH);
+                } else {
+                    user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
+                }
                 location.setInfoSup(carton + getString(R.string.cartons));
             }
         });
@@ -64,6 +89,11 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String verre = etV.getText().toString();
+                if (Integer.parseInt(verre) > 5) {
+                    user.setScore(SCORE_MULTI_RUBBISH);
+                } else {
+                    user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
+                }
                 location.setInfoSup(verre + getString(R.string.dechets_en_verre));
             }
         });
@@ -71,6 +101,12 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String plastique = etP.getText().toString();
+                if (Integer.parseInt(plastique) > 5) {
+                    user.setScore(SCORE_MULTI_RUBBISH);
+                } else {
+                    user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
+                }
+
                 location.setInfoSup(plastique + getString(R.string.dechets_en_plastique));
             }
         });
@@ -85,6 +121,10 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                 String key = markersRef.push().getKey();
                 location.setKey(key);
                 markersRef.child(key).setValue(location);
+
+                DatabaseReference userRef = database.getReference("User");
+                String key2 = userRef.push().getKey();
+                userRef.child(key2).setValue(user);
             }
         });
     }
