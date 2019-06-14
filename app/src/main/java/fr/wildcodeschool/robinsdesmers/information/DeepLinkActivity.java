@@ -1,8 +1,8 @@
 package fr.wildcodeschool.robinsdesmers.information;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -21,7 +21,7 @@ public class DeepLinkActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deep_link);
 
-        findViewById(R.id.button_ok).setOnClickListener(this);
+        findViewById(R.id.btOk).setOnClickListener(this);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class DeepLinkActivity extends AppCompatActivity implements
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.button_ok:
+            case R.id.btOk:
                 finish();
                 break;
         }

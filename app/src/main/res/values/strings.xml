@@ -95,4 +95,11 @@
     <string name="avant_de_vous_lancer_voici_quelques_consignes_de_s_curit">Avant de vous lancer, voici quelques consignes de sécurité :</string>
     <string name="pour_la_collecte">Pour la collecte :</string>
     <string name="pour_jeter_vos_d_chets">Pour jeter vos déchets :</string>
+    <string name="inviter_mes_contacts">Inviter mes contacts</string>
+    <string name="tu_as_re_u_une_invitation">Tu as reçu une invitation!</string>
+    <string name="le_lien_deep_link_n_est_pas_configur">Le lien Deep Link n\'est pas configuré.</string>
+    <string name="l_identification_n_est_pas_configur_e">L\'identification n\'est pas configurée</string>
+    <string name="info_jeter_dechets">Jetez vos déchets dans les poubelles publiques ou des structures dédiées accessibles au public.</string>
+    <string name="info_heure_ouverture">Respectez les heures d\'ouvertures des déchetteries et entreprises de revalorisation.</string>
+    <string name="info_laver_mains">Lavez-vous les mains après avoir jeté les déchets</string>
 </resources>

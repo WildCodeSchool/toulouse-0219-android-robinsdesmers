@@ -273,7 +273,7 @@
         android:gravity="center"
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
-        android:text="Inviter mes contacts"
+        android:text="@string/inviter_mes_contacts"
         android:textColor="@color/colorWhite"
         android:textSize="15sp"
         android:textStyle="bold"

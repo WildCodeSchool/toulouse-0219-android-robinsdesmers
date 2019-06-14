@@ -87,13 +87,14 @@ public class SecurityInfoActivity extends AppCompatActivity {
         mAdapter = new SecurityInfoAdapter(securityInfoItems);
         mRecyclerView.setAdapter(mAdapter);
 
-        SecurityInfoItem poubellePublic = new SecurityInfoItem("Jetez vos déchets dans les poubelles publiques ou des structures dédiées accessibles au public.");
-        SecurityInfoItem horaire = new SecurityInfoItem("Respectez les heures d'ouvertures des déchetteries et entreprises de revalorisation.");
-        SecurityInfoItem laverMains = new SecurityInfoItem("Lavez-vous les mains après avoir jeté les déchets");
+        SecurityInfoItem poubellePublic = new SecurityInfoItem(getString(R.string.info_jeter_dechets));
+        SecurityInfoItem horaire = new SecurityInfoItem(getString(R.string.info_heure_ouverture));
+        SecurityInfoItem laverMains = new SecurityInfoItem(getString(R.string.info_laver_mains));
         List<SecurityInfoItem> throwRubbishInfoItems = new ArrayList<>();
         throwRubbishInfoItems.add(poubellePublic);
         throwRubbishInfoItems.add(horaire);
         throwRubbishInfoItems.add(laverMains);
+
 
         RecyclerView mThrowRubbishRecyclerView;
         RecyclerView.Adapter mThrowRubbishAdapter;
