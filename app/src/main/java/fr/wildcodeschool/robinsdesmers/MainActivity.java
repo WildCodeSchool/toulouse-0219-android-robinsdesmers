@@ -14,7 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import fr.wildcodeschool.robinsdesmers.information.RecyclingAndSecurityActivity;
+import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
-                    Intent goToInfo = new Intent(MainActivity.this, RecyclingAndSecurityActivity.class);
+                    Intent goToInfo = new Intent (MainActivity.this, InformationActivity.class);
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:

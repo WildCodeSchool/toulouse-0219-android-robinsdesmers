@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import fr.wildcodeschool.robinsdesmers.AvatarChoicesActivity;
+import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserProfileActivity;
 

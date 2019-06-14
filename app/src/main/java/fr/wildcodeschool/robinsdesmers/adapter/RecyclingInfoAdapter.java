@@ -1,4 +1,4 @@
-package fr.wildcodeschool.robinsdesmers.Adapter;
+package fr.wildcodeschool.robinsdesmers;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,9 +8,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import fr.wildcodeschool.robinsdesmers.R;
+import java.util.List;
+
+import fr.wildcodeschool.robinsdesmers.model.RecyclingInfoItem;
 
 public class RecyclingInfoAdapter extends RecyclerView.Adapter<RecyclingInfoAdapter.RecyclingInfoViewHolder> {
+
+    List<RecyclingInfoItem> recyclingInfoItems;
+
+    public RecyclingInfoAdapter(List<RecyclingInfoItem> recyclingInfoItems) {
+        this.recyclingInfoItems = recyclingInfoItems;
+    }
+
     @NonNull
     @Override
     public RecyclingInfoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -21,13 +30,16 @@ public class RecyclingInfoAdapter extends RecyclerView.Adapter<RecyclingInfoAdap
 
     @Override
     public void onBindViewHolder(@NonNull RecyclingInfoViewHolder recyclingInfoViewHolder, int i) {
-        recyclingInfoViewHolder.tvRecyclingInfoTitle.setText(R.string.recycling_info_title);
-        recyclingInfoViewHolder.tvRecyclingInfoDescription.setText(R.string.recycling_info_description);
+
+        RecyclingInfoItem recyclingInfoItem = recyclingInfoItems.get(i);
+        recyclingInfoViewHolder.tvRecyclingInfoTitle.setText(recyclingInfoItem.getTitleRecyclingInfo());
+        recyclingInfoViewHolder.tvRecyclingInfoDescription.setText(recyclingInfoItem.getDescriptionRecyclingInfo());
+        recyclingInfoViewHolder.ivRecyclingLogo.setImageResource(recyclingInfoItem.getLogoRecycling());
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return recyclingInfoItems.size();
     }
 
     public class RecyclingInfoViewHolder extends RecyclerView.ViewHolder {
@@ -37,7 +49,7 @@ public class RecyclingInfoAdapter extends RecyclerView.Adapter<RecyclingInfoAdap
 
         public RecyclingInfoViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvRecyclingInfoTitle = itemView.findViewById(R.id.tvRecyclingInfoTitle);
+            tvRecyclingInfoTitle = itemView.findViewById(R.id.tvSecurityInfoTitle);
             tvRecyclingInfoDescription = itemView.findViewById(R.id.tvRecyclingInfoDescription);
             ivRecyclingLogo = itemView.findViewById(R.id.ivRecyclingLogo);
         }
