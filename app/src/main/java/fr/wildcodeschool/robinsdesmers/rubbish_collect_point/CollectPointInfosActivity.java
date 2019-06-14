@@ -32,7 +32,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
         CheckBox checkBoxPT = findViewById(R.id.cbPoubelleTri);
         CheckBox checkBoxD = findViewById(R.id.cbDecheterie);
         CheckBox checkBoxB = findViewById(R.id.cbBenne);
-        Button btSend = findViewById(R.id.btSend3);
+        Button btSend = findViewById(R.id.btSend);
 
         checkBoxB.setOnClickListener(new View.OnClickListener() {
             @Override
