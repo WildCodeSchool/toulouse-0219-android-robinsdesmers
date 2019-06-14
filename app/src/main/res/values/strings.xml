@@ -102,4 +102,31 @@
     <string name="info_jeter_dechets">Jetez vos déchets dans les poubelles publiques ou des structures dédiées accessibles au public.</string>
     <string name="info_heure_ouverture">Respectez les heures d\'ouvertures des déchetteries et entreprises de revalorisation.</string>
     <string name="info_laver_mains">Lavez-vous les mains après avoir jeté les déchets</string>
+    <string name="invite_tes_amis">Invite tes amis à rejoindre la communauté</string>
+    <string name="rejoindre_la_communaute">Salut! J\'ai découvert cette super communauté et je t\'invite à la rejoindre</string>
+    <string name="url_logo_google">https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png</string>
+    <string name="qui_sommes_nous">Qui sommes-nous ?</string>
+    <string name="robins_des_mers">Robins des Mers</string>
+    <string name="c_est_la_communaut_des_navigateurs_et_des_citoyens_engag_s_dans_la_r_duction_des_d_chets_en_mer">C\'est LA communauté des navigateurs et des citoyens engagés dans la réduction des déchets en mer.</string>
+    <string name="nos_missions">Nos missions :</string>
+    <string name="vous_permettre">Vous permettre :</string>
+    <string name="de_mieux_comprendre_la_r_alit_des_d_chets_en_mer">- de mieux comprendre la réalité des déchets en mer.</string>
+    <string name="de_faire_partie_d_une_communaut_engag_e">- de faire partie d\'une communauté engagée.</string>
+    <string name="d_agir_pour_collecter_et_revaloriser_les_d_chets_flottants_sur_l_ensemble_des_voies_navigables_de_la_ville_la_mer">- d\'agir pour collecter et revaloriser les déchets flottants sur l\'ensemble des voies navigables de la ville à la mer.</string>
+    <string name="retrouvez_nous_sur">Retrouvez-nous sur :</string>
+    <string name="url_rdm">http://www.robinsdesmers.fr</string>
+    <string name="facebook_url">https://www.facebook.com/groups/robinsdesmers/</string>
+    <string name="url_insta">https://www.instagram.com/robinsdesmers/</string>
+    <string name="url_twitter">https://twitter.com/RobinsDesmers</string>
+    <string name="on_connection_failed">onConnectionFailed:</string>
+    <string name="erreur_google">erreur des services de Google Play</string>
+    <string name="url_oessit">https://play.google.com/store/apps/details?id=fr.wildcodeschool.metro</string>
+    <string name="installer">Installer</string>
+    <string name="onActivityResult">onActivityResult: requestCode=%d, resultCode=%d</string>
+    <string name="on_connection_failed2">onConnectionFailed%s</string>
+    <string name="invitation_envoyées">%s invitations envoyées</string>
+    <string name="envoi_echoué">L\'envoi des invitations a échoué</string>
+    <string name="found_referral">Found Referral: %s:%s</string>
+    <string name="deep_link">Deep Link : %s</string>
+    <string name="invitation">Invitation: %s</string>
 </resources>

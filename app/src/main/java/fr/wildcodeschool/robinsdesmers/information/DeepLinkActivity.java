@@ -38,11 +38,11 @@ public class DeepLinkActivity extends AppCompatActivity implements
         String invitationId = AppInviteReferral.getInvitationId(intent);
         String deepLink = AppInviteReferral.getDeepLink(intent);
 
-        Log.d(TAG, "Found Referral: " + invitationId + ":" + deepLink);
+        Log.d(TAG, String.format(getString(R.string.found_referral), invitationId, deepLink));
         ((TextView) findViewById(R.id.deep_link_text))
-                .setText("Deep Link : " + deepLink);
+                .setText(String.format(getString(R.string.deep_link), deepLink));
         ((TextView) findViewById(R.id.invitation_id_text))
-                .setText("Invitation: " + invitationId);
+                .setText(String.format(getString(R.string.invitation), invitationId));
     }
 
     @Override
