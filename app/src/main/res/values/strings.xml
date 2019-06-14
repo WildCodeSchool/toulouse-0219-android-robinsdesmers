@@ -129,4 +129,6 @@
     <string name="found_referral">Found Referral: %s:%s</string>
     <string name="deep_link">Deep Link : %s</string>
     <string name="invitation">Invitation: %s</string>
+    <string name="que_voulez_vous_d_clarer">Que voulez-vous déclarer?</string>
+    <string name="est_collect">est collecté</string>
 </resources>
