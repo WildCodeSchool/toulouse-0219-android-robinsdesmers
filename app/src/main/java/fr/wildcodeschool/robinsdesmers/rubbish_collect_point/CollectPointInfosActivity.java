@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,27 +29,27 @@ public class CollectPointInfosActivity extends AppCompatActivity {
         final CollectPoint collectPoint = intent.getParcelableExtra("CollectPoint");
         final User user = intent.getParcelableExtra("User");
 
-        CheckBox checkBoxP = findViewById(R.id.cbPoubelle);
-        CheckBox checkBoxPT = findViewById(R.id.cbPoubelleTri);
-        CheckBox checkBoxD = findViewById(R.id.cbDecheterie);
-        CheckBox checkBoxB = findViewById(R.id.cbBenne);
-        Button btSend = findViewById(R.id.btSend);
+        final CheckBox cbPoubelle = findViewById(R.id.cbPoubelle);
+        final CheckBox cbPoubelleTri = findViewById(R.id.cbPoubelleTri);
+        final CheckBox cbDechetterie = findViewById(R.id.cbDechetterie);
+        final CheckBox cbBenne = findViewById(R.id.cbBenne);
+        ImageButton btSend = findViewById(R.id.btSend);
 
-        checkBoxB.setOnClickListener(new View.OnClickListener() {
+        cbBenne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.benne_de_revalorisation));
                 user.setScore(SCORE_COLLECT_POINT);
             }
         });
-        checkBoxP.setOnClickListener(new View.OnClickListener() {
+        cbPoubelle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.poubelle_classique));
                 user.setScore(SCORE_COLLECT_POINT);
             }
         });
-        checkBoxPT.setOnClickListener(new View.OnClickListener() {
+        cbPoubelleTri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.poubelle_de_tri));
@@ -56,7 +57,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
             }
 
         });
-        checkBoxD.setOnClickListener(new View.OnClickListener() {
+        cbDechetterie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 collectPoint.setInfoSup(getString(R.string.decheterie));

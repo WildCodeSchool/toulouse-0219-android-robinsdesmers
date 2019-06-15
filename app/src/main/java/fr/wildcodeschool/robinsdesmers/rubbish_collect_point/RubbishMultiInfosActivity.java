@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,13 +31,35 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
         final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
         final User user = intent.getParcelableExtra("User");
 
+        final Button btSurTerre = findViewById(R.id.btSurTerre);
+        final Button btSurMer = findViewById(R.id.btSurMer);
+
         final EditText etBt = findViewById(R.id.etBouteille);
         final EditText etMa = findViewById(R.id.etMetal);
         final EditText etM = findViewById(R.id.etMegot);
         final EditText etP = findViewById(R.id.etPlastique);
         final EditText etC = findViewById(R.id.etCarton);
         final EditText etV = findViewById(R.id.etVerre);
-        Button btSend = findViewById(R.id.btSend2);
+
+        CheckBox cbDechetRamasse = findViewById(R.id.cbDechetsRamasses);
+
+        ImageButton ibSendMutliRubbish = findViewById(R.id.ibSend);
+
+        btSurTerre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btSurTerre.setSelected(true);
+                btSurMer.setSelected(false);
+            }
+        });
+
+        btSurMer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btSurTerre.setSelected(false);
+                btSurMer.setSelected(true);
+            }
+        });
 
         etBt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +82,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                 } else {
                     user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
                 }
-                location.setInfoSup(metal + getString(R.string.metal));
+                location.setInfoSup(metal + getString(R.string.metaux));
             }
         });
         etM.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +94,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                 } else {
                     user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
                 }
-                location.setInfoSup(megot + getString(R.string.megots));
+                location.setInfoSup(megot + getString(R.string.m_gots));
             }
         });
         etC.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +135,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
             }
         });
 
-        btSend.setOnClickListener(new View.OnClickListener() {
+        ibSendMutliRubbish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,54 +29,105 @@ public class RubbishInfosActivity extends AppCompatActivity {
         final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
         final User user = intent.getParcelableExtra("User");
 
-        CheckBox checkBoxB = findViewById(R.id.cbBouteille);
-        CheckBox checkBoxC = findViewById(R.id.cbCarton);
-        CheckBox checkBoxMa = findViewById(R.id.cbMetal);
-        CheckBox checkBoxM = findViewById(R.id.cbMegot);
-        CheckBox checkBoxP = findViewById(R.id.cbPlastique);
-        CheckBox checkBoxV = findViewById(R.id.cbVerre);
-        Button btSend = findViewById(R.id.btSend4);
+        final Button btSurTerre = findViewById(R.id.btTerre);
+        final Button btSurMer = findViewById(R.id.btMer);
 
-        checkBoxC.setOnClickListener(new View.OnClickListener() {
+        CheckBox cbBouteille = findViewById(R.id.cbBouteille);
+        CheckBox cbVerre = findViewById(R.id.cbVerre);
+        CheckBox cbAutrePlastique = findViewById(R.id.cbAutrePlastique);
+        CheckBox cbMetal = findViewById(R.id.cbMetal);
+        CheckBox cbMegot = findViewById(R.id.cbAutres);
+        CheckBox cbCarton = findViewById(R.id.cbCarton);
+        CheckBox cbTissus = findViewById(R.id.cbTissus);
+        CheckBox cbAutres = findViewById(R.id.cbAutres);
+
+        CheckBox cbDechetRamasse = findViewById(R.id.cbDechetRamasse);
+
+        ImageButton btSend = findViewById(R.id.ibSendRubbish);
+
+        btSurTerre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoSup(getString(R.string.carton));
-                user.setScore(SCORE_RUBBISH);
+                btSurTerre.setSelected(true);
+                btSurMer.setSelected(false);
             }
         });
-        checkBoxB.setOnClickListener(new View.OnClickListener() {
+
+        btSurMer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btSurTerre.setSelected(false);
+                btSurMer.setSelected(true);
+            }
+        });
+
+        cbBouteille.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.bouteille));
                 user.setScore(SCORE_RUBBISH);
             }
         });
-        checkBoxMa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                location.setInfoSup(getString(R.string.metal));
-                user.setScore(SCORE_RUBBISH);
-            }
-        });
-        checkBoxM.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                location.setInfoSup(getString(R.string.megot));
-                user.setScore(SCORE_RUBBISH);
-            }
-        });
-        checkBoxP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                location.setInfoSup(getString(R.string.plastique));
-                user.setScore(SCORE_RUBBISH);
-            }
-        });
-        checkBoxV.setOnClickListener(new View.OnClickListener() {
+
+        cbVerre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 location.setInfoSup(getString(R.string.verre));
                 user.setScore(SCORE_RUBBISH);
+            }
+        });
+
+        cbAutrePlastique.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                location.setInfoSup(getString(R.string.autre_plastique));
+                user.setScore(SCORE_RUBBISH);
+            }
+        });
+
+        cbMetal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                location.setInfoSup(getString(R.string.m_tal));
+                user.setScore(SCORE_RUBBISH);
+            }
+        });
+
+        cbMegot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                location.setInfoSup(getString(R.string.m_got));
+                user.setScore(SCORE_RUBBISH);
+            }
+        });
+
+        cbCarton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                location.setInfoSup(getString(R.string.carton));
+                user.setScore(SCORE_RUBBISH);
+            }
+        });
+
+        cbTissus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                location.setInfoSup(getString(R.string.tissus));
+                user.setScore(SCORE_RUBBISH);
+            }
+        });
+
+        cbAutres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                location.setInfoSup(getString(R.string.autres));
+                user.setScore(SCORE_RUBBISH);
+            }
+        });
+
+        cbDechetRamasse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             }
         });
 
