@@ -228,7 +228,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     CollectPoint locationMarker2 = markerSnapshot.getValue(CollectPoint.class);
                     final LatLng locMarker = new LatLng(locationMarker2.getLatitude(), locationMarker2.getLongitude());
                     if (!locationMarker2.notHere) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.new_rubbish)).position(locMarker).title("Point de Collecte"));
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.new_rubbish)).position(locMarker).title("CollectPoint"));
                     }
                 }
             }
@@ -246,7 +246,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     RubbishMarkers locationMarker = markerSnapshot.getValue(RubbishMarkers.class);
                     final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
                     if (!locationMarker.isCollected) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(locMarker).title("Déchets"));
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(locMarker).title("RubbishMarkers"));
                     }
                 }
             }

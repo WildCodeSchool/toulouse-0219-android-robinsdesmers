@@ -101,13 +101,13 @@
         android:textColor="@color/colorWhite"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintBottom_toTopOf="@+id/divTop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cbDechetterie" />
 
     <View
-        android:id="@+id/divider"
+        android:id="@+id/divTop"
         android:layout_width="0dp"
         android:layout_height="3dp"
         android:layout_marginStart="8dp"
@@ -137,7 +137,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        app:layout_constraintTop_toBottomOf="@+id/divTop" />
 
     <CheckBox
         android:id="@+id/cbClassique"
@@ -157,6 +157,26 @@
         app:layout_constraintBottom_toTopOf="@+id/cbRecyclable"
         app:layout_constraintEnd_toStartOf="@+id/cbMegotPdc"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTypeTri" />
+
+    <CheckBox
+        android:id="@+id/cbMegotPdc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="8dp"
+        android:button="@drawable/checkbox_button"
+        android:text="@string/m_got"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cbCanette"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cbClassique"
         app:layout_constraintTop_toBottomOf="@+id/tvTypeTri" />
 
     <CheckBox
@@ -200,26 +220,6 @@
         app:layout_constraintTop_toBottomOf="@+id/cbMegotPdc" />
 
     <CheckBox
-        android:id="@+id/cbPlastique"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="16dp"
-        android:button="@drawable/checkbox_button"
-        android:text="@string/plastique"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/cbAutres"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cbVerre"
-        app:layout_constraintTop_toBottomOf="@+id/cbCanette" />
-
-    <CheckBox
         android:id="@+id/cbVerre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -240,6 +240,26 @@
         app:layout_constraintTop_toBottomOf="@+id/cbRecyclable" />
 
     <CheckBox
+        android:id="@+id/cbPlastique"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="16dp"
+        android:button="@drawable/checkbox_button"
+        android:text="@string/plastique"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cbAutres"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cbVerre"
+        app:layout_constraintTop_toBottomOf="@+id/cbCanette" />
+
+    <CheckBox
         android:id="@+id/cbAutres"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -257,6 +277,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cbPlastique" />
 
+    <View
+        android:id="@+id/divBottom"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/orange"
+        app:layout_constraintBottom_toTopOf="@+id/btSend"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbAutres" />
+
     <ImageButton
         android:id="@+id/btSend"
         android:layout_width="wrap_content"
@@ -272,44 +308,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2"
+        app:layout_constraintTop_toBottomOf="@+id/divBottom"
         app:srcCompat="@drawable/empreinte" />
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="0dp"
-        android:layout_height="3dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/orange"
-        app:layout_constraintBottom_toTopOf="@+id/btSend"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbAutres" />
-
-    <CheckBox
-        android:id="@+id/cbMegotPdc"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="8dp"
-        android:button="@drawable/checkbox_button"
-        android:text="Mégot"
-        android:textColor="@color/colorWhite"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/cbCanette"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cbClassique"
-        app:layout_constraintTop_toBottomOf="@+id/tvTypeTri" />
 
 
 </android.support.constraint.ConstraintLayout>
