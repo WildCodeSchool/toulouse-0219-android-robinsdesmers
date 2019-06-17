@@ -15,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
+import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class MainActivity extends AppCompatActivity {
 

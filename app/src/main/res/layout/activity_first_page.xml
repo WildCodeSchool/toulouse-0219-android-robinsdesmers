@@ -1,56 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/vert_fonce"
     tools:context=".FirstPageActivity">
 
-    <android.support.constraint.ConstraintLayout
+    <ImageButton
+        android:id="@+id/ibRegisterPrincipal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/register"
+        app:layout_constraintBottom_toTopOf="@+id/ibSignPrincipal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ibSignPrincipal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/sign_in"
+        app:layout_constraintBottom_toTopOf="@+id/ibVisitorPrincipal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibRegisterPrincipal" />
 
-        <ImageButton
-            android:id="@+id/ibRegisterPrincipal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:padding="0dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/register"
-            app:layout_constraintBottom_toTopOf="@+id/ibSignPrincipal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/ibSignPrincipal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:padding="0dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/sign_in"
-            app:layout_constraintBottom_toTopOf="@+id/ibVisitorPrincipal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ibRegisterPrincipal" />
-
-        <ImageButton
-            android:id="@+id/ibVisitorPrincipal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:padding="0dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/visitor"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ibSignPrincipal"
-            app:layout_constraintVertical_bias="0.0" />
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+    <ImageButton
+        android:id="@+id/ibVisitorPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/visitor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibSignPrincipal"
+        app:layout_constraintVertical_bias="0.0" />
+</android.support.constraint.ConstraintLayout>

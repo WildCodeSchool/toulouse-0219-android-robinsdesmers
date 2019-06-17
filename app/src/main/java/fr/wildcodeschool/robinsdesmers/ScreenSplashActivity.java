@@ -7,10 +7,10 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
 public class ScreenSplashActivity extends AppCompatActivity {
-    final int MILLIS = 3000;
+    final int MILLIS = 2000;
     final int ROTATION_START = 0;
-    final int ROTATION_END = 600;
-    final int DURATION = 800;
+    final int ROTATION_END = 300;
+    final int DURATION = 1300;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

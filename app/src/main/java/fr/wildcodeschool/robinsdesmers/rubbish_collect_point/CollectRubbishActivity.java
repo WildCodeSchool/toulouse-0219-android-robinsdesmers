@@ -15,7 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
-import fr.wildcodeschool.robinsdesmers.User;
+import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
 
 public class CollectRubbishActivity extends AppCompatActivity {

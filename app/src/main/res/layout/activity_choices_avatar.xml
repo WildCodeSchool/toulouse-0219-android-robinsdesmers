@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AvatarChoiceActivity"
-    android:background="@color/colorPrimary">
+    android:background="@color/vert_fonce"
+    tools:context=".AvatarChoiceActivity">
 
     <TextView
         android:id="@+id/tvPersonnalisationChoiceAvatar"
@@ -45,7 +45,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:adjustViewBounds="true"
-        android:background="@color/colorPrimary"
+        android:background="@color/vert_fonce"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toTopOf="@+id/imBtAvatarChoice"
         app:layout_constraintEnd_toStartOf="@+id/imSwitcherAvatars"
@@ -63,7 +63,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:adjustViewBounds="true"
-        android:background="@color/colorPrimary"
+        android:background="@color/vert_fonce"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toTopOf="@+id/imBtAvatarChoice"
         app:layout_constraintEnd_toEndOf="parent"
@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:layout_marginBottom="32dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/vert_fonce"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

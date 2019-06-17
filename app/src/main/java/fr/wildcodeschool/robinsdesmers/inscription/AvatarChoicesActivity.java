@@ -1,4 +1,4 @@
-package fr.wildcodeschool.robinsdesmers;
+package fr.wildcodeschool.robinsdesmers.inscription;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
+
+import fr.wildcodeschool.robinsdesmers.MapsActivity;
+import fr.wildcodeschool.robinsdesmers.R;
 
 public class AvatarChoicesActivity extends AppCompatActivity {
     ImageButton imBtNext, imBtPrevious;
