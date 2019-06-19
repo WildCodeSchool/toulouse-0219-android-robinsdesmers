@@ -246,7 +246,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     RubbishMarkers locationMarker = markerSnapshot.getValue(RubbishMarkers.class);
                     final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
                     if (!locationMarker.isCollected) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(locMarker).title("RubbishMarker"));
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(locMarker).title("RubbishMarkers"));
                     }
                 }
             }

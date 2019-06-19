@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
-import fr.wildcodeschool.robinsdesmers.User;
+import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.model.CollectPoint;
 import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
 

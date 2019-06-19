@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@color/vert_fonce"
     tools:context=".inscription.UserDescriptionActivity">
 
     <TextView
@@ -80,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginBottom="48dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/vert_fonce"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
