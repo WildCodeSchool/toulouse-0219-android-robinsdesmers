@@ -90,7 +90,9 @@ public class AboutUsActivity extends AppCompatActivity implements GoogleApiClien
         if (requestCode == REQUEST_INVITE) {
             if (resultCode == RESULT_OK) {
                 String[] ids = AppInviteInvitation.getInvitationIds(resultCode, data);
-                Log.d(TAG, String.format(getString(R.string.invitation_envoyées), ids));
+                for (String id : ids) {
+                    Log.d(TAG, String.format(getString(R.string.invitation_envoyées), id));
+                }
             } else {
                 showMessage(getString(R.string.envoi_echoué));
             }

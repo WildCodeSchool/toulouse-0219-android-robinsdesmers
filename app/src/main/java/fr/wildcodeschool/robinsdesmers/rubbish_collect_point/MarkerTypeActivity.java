@@ -8,9 +8,9 @@ import android.widget.Button;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
+import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
-import fr.wildcodeschool.robinsdesmers.model.CollectPoint;
-import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
 
 public class MarkerTypeActivity extends AppCompatActivity {
 
@@ -19,47 +19,47 @@ public class MarkerTypeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_marker_type);
 
-        Button buttonD = findViewById(R.id.btDéchetSeul);
-        Button buttonA = findViewById(R.id.btAmas);
-        Button buttonC = findViewById(R.id.btLieu);
-        Button buttonBack = findViewById(R.id.btBack);
+        Button btOneRubbish = findViewById(R.id.btDéchetSeul);
+        Button btMultiRubbish = findViewById(R.id.btAmas);
+        Button btCollectPoint = findViewById(R.id.btLieu);
+        Button btBackToMap = findViewById(R.id.btBack);
 
         Intent intent = getIntent();
-        final CollectPoint collectPoint = intent.getParcelableExtra("CollectPoint");
-        final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
+        final CollectPointItem collectPointItem = intent.getParcelableExtra("CollectPointItem");
+        final RubbishItem rubbishItem = intent.getParcelableExtra("RubbishItem");
         final User user = new User(0);
 
-        buttonD.setOnClickListener(new View.OnClickListener() {
+        btOneRubbish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoRubbish(getString(R.string.dechet_seul));
+                rubbishItem.setInfoRubbish(getString(R.string.dechet_seul));
                 Intent intent = new Intent(MarkerTypeActivity.this, RubbishInfosActivity.class);
-                intent.putExtra("RubbishMarkers", location);
+                intent.putExtra("RubbishItem", rubbishItem);
                 intent.putExtra("User", user);
                 startActivity(intent);
             }
         });
-        buttonA.setOnClickListener(new View.OnClickListener() {
+        btMultiRubbish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                location.setInfoRubbish(getString(R.string.amas_de_dechets));
+                rubbishItem.setInfoRubbish(getString(R.string.amas_de_dechets));
                 Intent intent = new Intent(MarkerTypeActivity.this, RubbishMultiInfosActivity.class);
-                intent.putExtra("RubbishMarkers", location);
+                intent.putExtra("RubbishItem", rubbishItem);
                 intent.putExtra("User", user);
                 startActivity(intent);
             }
         });
-        buttonC.setOnClickListener(new View.OnClickListener() {
+        btCollectPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collectPoint.setInfoCollectPoint(getString(R.string.point_de_collecte));
+                collectPointItem.setInfoCollectPoint(getString(R.string.point_de_collecte));
                 Intent intent = new Intent(MarkerTypeActivity.this, CollectPointInfosActivity.class);
-                intent.putExtra("CollectPoint", collectPoint);
+                intent.putExtra("CollectPointItem", collectPointItem);
                 intent.putExtra("User", user);
                 startActivity(intent);
             }
         });
-        buttonBack.setOnClickListener(new View.OnClickListener() {
+        btBackToMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MarkerTypeActivity.this, MapsActivity.class);

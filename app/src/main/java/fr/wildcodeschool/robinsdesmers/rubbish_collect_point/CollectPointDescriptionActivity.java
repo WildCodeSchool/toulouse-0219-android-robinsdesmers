@@ -11,7 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import fr.wildcodeschool.robinsdesmers.R;
-import fr.wildcodeschool.robinsdesmers.model.CollectPoint;
+import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 
 public class CollectPointDescriptionActivity extends AppCompatActivity {
 
@@ -21,15 +21,15 @@ public class CollectPointDescriptionActivity extends AppCompatActivity {
         setContentView(R.layout.collect_point_description);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference markersRef = database.getReference("CollectPoint");
+        DatabaseReference markersRef = database.getReference("CollectPointItem");
         markersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
-                    CollectPoint collectPoint = markerSnapshot.getValue(CollectPoint.class);
-                    final String date = collectPoint.getDate();
-                    final String name = collectPoint.getInfoCollectPoint();
-                    final String description = collectPoint.getInfoSup();
+                    CollectPointItem collectPointItem = markerSnapshot.getValue(CollectPointItem.class);
+                    final String date = collectPointItem.getDate();
+                    final String name = collectPointItem.getInfoCollectPoint();
+                    final String description = collectPointItem.getInfoSup();
                     TextView tvDate = findViewById(R.id.tvDateCollectPoint);
                     TextView tvName = findViewById(R.id.tvNameCollectPoint);
                     TextView tvDescription = findViewById(R.id.tvDescCollectPoint);

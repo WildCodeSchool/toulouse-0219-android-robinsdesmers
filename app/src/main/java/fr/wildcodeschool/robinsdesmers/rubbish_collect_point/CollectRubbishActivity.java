@@ -15,8 +15,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
-import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
 
 public class CollectRubbishActivity extends AppCompatActivity {
 
@@ -28,19 +28,19 @@ public class CollectRubbishActivity extends AppCompatActivity {
         setContentView(R.layout.activity_collect_rubbish);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference markersRef = database.getReference("RubbishMarkers");
+        DatabaseReference markersRef = database.getReference("RubbishItem");
         markersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
-                    RubbishMarkers locationMarker = markerSnapshot.getValue(RubbishMarkers.class);
+                    RubbishItem locationMarker = markerSnapshot.getValue(RubbishItem.class);
                     final String key = locationMarker.getKey();
                     final CheckBox cbCollect = findViewById(R.id.cbIsCollected);
                     cbCollect.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            DatabaseReference markersRef = database.getReference("RubbishMarkers").child(key).child("isCollected");
+                            DatabaseReference markersRef = database.getReference("RubbishItem").child(key).child("isCollected");
                             markersRef.setValue(true);
 
                             user.setScore(10);
