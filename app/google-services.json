@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "596514508872-mdvtqtckk9lcao5d7d1dq6nboonakfub.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wildcodeschool.robinsdesmers",
+            "certificate_hash": "6590c2064aacca2a8b68447d113d5e998dffc310"
+          }
+        },
+        {
           "client_id": "596514508872-rp9781jsolnvonc2qto88bt7tj6b3kh0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

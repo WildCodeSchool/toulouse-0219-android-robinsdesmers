@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.model.User;
-import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
+import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 
 public class RubbishMultiInfosActivity extends AppCompatActivity {
 
@@ -28,7 +28,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rubbish_multi_infos);
 
         Intent intent = getIntent();
-        final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
+        final RubbishItem location = intent.getParcelableExtra("RubbishItem");
         final User user = intent.getParcelableExtra("User");
 
         final Button btSurTerre = findViewById(R.id.btSurTerre);
@@ -141,7 +141,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                 Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
                 startActivity(intent);
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference markersRef = database.getReference("RubbishMarkers");
+                DatabaseReference markersRef = database.getReference("RubbishItem");
                 String key = markersRef.push().getKey();
                 location.setKey(key);
                 markersRef.child(key).setValue(location);

@@ -39,9 +39,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
-import fr.wildcodeschool.robinsdesmers.information.RecyclingInfoActivity;
-import fr.wildcodeschool.robinsdesmers.model.CollectPoint;
-import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
+import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
+import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectPointDescriptionActivity;
 import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectRubbishActivity;
 import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.MarkerTypeActivity;
@@ -208,27 +207,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 SimpleDateFormat d = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = calendar.getTime();
 
-                final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
-                final CollectPoint collectPoint = new CollectPoint(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
+                final RubbishItem rubbishItem = new RubbishItem(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
+                final CollectPointItem collectPointItem = new CollectPointItem(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
 
                 Intent intent = new Intent(MapsActivity.this, MarkerTypeActivity.class);
-                intent.putExtra("RubbishMarkers", location);
-                intent.putExtra("CollectPoint", collectPoint);
+                intent.putExtra("RubbishItem", rubbishItem);
+                intent.putExtra("CollectPointItem", collectPointItem);
                 startActivity(intent);
             }
         });
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference markersRef = database.getReference("RubbishMarkers");
-        DatabaseReference markerRef = database.getReference("CollectPoint");
+        DatabaseReference markersRef = database.getReference("RubbishItem");
+        DatabaseReference markerRef = database.getReference("CollectPointItem");
         markerRef.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
-                    CollectPoint locationMarker2 = markerSnapshot.getValue(CollectPoint.class);
+                    CollectPointItem locationMarker2 = markerSnapshot.getValue(CollectPointItem.class);
                     final LatLng locMarker = new LatLng(locationMarker2.getLatitude(), locationMarker2.getLongitude());
                     if (!locationMarker2.notHere) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.new_rubbish)).position(locMarker).title("CollectPoint"));
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.new_rubbish)).position(locMarker).title("CollectPointItem"));
                     }
                 }
             }
@@ -243,10 +242,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
-                    RubbishMarkers locationMarker = markerSnapshot.getValue(RubbishMarkers.class);
+                    RubbishItem locationMarker = markerSnapshot.getValue(RubbishItem.class);
                     final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
                     if (!locationMarker.isCollected) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(locMarker).title("RubbishMarkers"));
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(locMarker).title("RubbishItem"));
                     }
                 }
             }
@@ -258,7 +257,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                if (marker.getTitle().equals("CollectPoint")) {
+                if (marker.getTitle().equals("CollectPointItem")) {
                     Intent intent1 = new Intent(MapsActivity.this, CollectPointDescriptionActivity.class);
                     startActivity(intent1);
                 } else {

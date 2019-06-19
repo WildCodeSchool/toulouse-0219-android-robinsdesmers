@@ -13,7 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.model.User;
-import fr.wildcodeschool.robinsdesmers.model.CollectPoint;
+import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 
 public class CollectPointInfosActivity extends AppCompatActivity {
 
@@ -25,7 +25,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_collect_point_infos);
 
         Intent intent = getIntent();
-        final CollectPoint collectPoint = intent.getParcelableExtra("CollectPoint");
+        final CollectPointItem collectPointItem = intent.getParcelableExtra("CollectPointItem");
         final User user = intent.getParcelableExtra("User");
 
         final CheckBox cbPoubelle = findViewById(R.id.cbPoubelle);
@@ -37,21 +37,21 @@ public class CollectPointInfosActivity extends AppCompatActivity {
         cbBenne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collectPoint.setInfoSup(getString(R.string.benne_de_revalorisation));
+                collectPointItem.setInfoSup(getString(R.string.benne_de_revalorisation));
                 user.setScore(SCORE_COLLECT_POINT);
             }
         });
         cbPoubelle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collectPoint.setInfoSup(getString(R.string.poubelle_classique));
+                collectPointItem.setInfoSup(getString(R.string.poubelle_classique));
                 user.setScore(SCORE_COLLECT_POINT);
             }
         });
         cbPoubelleTri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collectPoint.setInfoSup(getString(R.string.poubelle_de_tri));
+                collectPointItem.setInfoSup(getString(R.string.poubelle_de_tri));
                 user.setScore(SCORE_COLLECT_POINT);
             }
 
@@ -59,7 +59,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
         cbDechetterie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collectPoint.setInfoSup(getString(R.string.decheterie));
+                collectPointItem.setInfoSup(getString(R.string.decheterie));
                 user.setScore(SCORE_COLLECT_POINT);
             }
         });
@@ -69,10 +69,10 @@ public class CollectPointInfosActivity extends AppCompatActivity {
                 Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
                 startActivity(intent);
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference markersRef = database.getReference("CollectPoint");
+                DatabaseReference markersRef = database.getReference("CollectPointItem");
                 String key = markersRef.push().getKey();
-                collectPoint.setKey(key);
-                markersRef.child(key).setValue(collectPoint);
+                collectPointItem.setKey(key);
+                markersRef.child(key).setValue(collectPointItem);
 
                 DatabaseReference userRef = database.getReference("User");
                 String key2 = userRef.push().getKey();

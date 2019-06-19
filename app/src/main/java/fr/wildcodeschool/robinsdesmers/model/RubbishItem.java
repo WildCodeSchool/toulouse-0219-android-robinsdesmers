@@ -3,17 +3,17 @@ package fr.wildcodeschool.robinsdesmers.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class RubbishMarkers implements Parcelable {
+public class RubbishItem implements Parcelable {
 
-    public static final Creator<RubbishMarkers> CREATOR = new Creator<RubbishMarkers>() {
+    public static final Creator<RubbishItem> CREATOR = new Creator<RubbishItem>() {
         @Override
-        public RubbishMarkers createFromParcel(Parcel in) {
-            return new RubbishMarkers(in);
+        public RubbishItem createFromParcel(Parcel in) {
+            return new RubbishItem(in);
         }
 
         @Override
-        public RubbishMarkers[] newArray(int size) {
-            return new RubbishMarkers[size];
+        public RubbishItem[] newArray(int size) {
+            return new RubbishItem[size];
         }
     };
     double latitude;
@@ -24,7 +24,7 @@ public class RubbishMarkers implements Parcelable {
     public boolean isCollected;
     String key;
 
-    public RubbishMarkers(double latitude, double longitude, String infoRubbish, String infoSup, String date, String key) {
+    public RubbishItem(double latitude, double longitude, String infoRubbish, String infoSup, String date, String key) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.infoRubbish = infoRubbish;
@@ -34,18 +34,18 @@ public class RubbishMarkers implements Parcelable {
         this.isCollected = false;
     }
 
-    public RubbishMarkers() {
+    public RubbishItem() {
 
     }
 
-    protected RubbishMarkers(Parcel in) {
+    protected RubbishItem(Parcel in) {
         latitude = in.readDouble();
         longitude = in.readDouble();
         infoRubbish = in.readString();
         infoSup = in.readString();
         date = in.readString();
     }
-    public static Creator<RubbishMarkers> getCREATOR() {
+    public static Creator<RubbishItem> getCREATOR() {
         return CREATOR;
     }
 
