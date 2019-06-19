@@ -3,17 +3,17 @@ package fr.wildcodeschool.robinsdesmers.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class CollectPoint implements Parcelable {
+public class CollectPointItem implements Parcelable {
 
-    public static final Creator<CollectPoint> CREATOR = new Creator<CollectPoint>() {
+    public static final Creator<CollectPointItem> CREATOR = new Creator<CollectPointItem>() {
         @Override
-        public CollectPoint createFromParcel(Parcel in) {
-            return new CollectPoint(in);
+        public CollectPointItem createFromParcel(Parcel in) {
+            return new CollectPointItem(in);
         }
 
         @Override
-        public CollectPoint[] newArray(int size) {
-            return new CollectPoint[size];
+        public CollectPointItem[] newArray(int size) {
+            return new CollectPointItem[size];
         }
     };
     double latitude;
@@ -24,10 +24,10 @@ public class CollectPoint implements Parcelable {
     public boolean notHere;
     String key;
 
-    public CollectPoint() {
+    public CollectPointItem() {
     }
 
-    public CollectPoint(double latitude, double longitude, String infoCollectPoint, String infoSup, String date, String key) {
+    public CollectPointItem(double latitude, double longitude, String infoCollectPoint, String infoSup, String date, String key) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.infoCollectPoint = infoCollectPoint;
@@ -37,7 +37,7 @@ public class CollectPoint implements Parcelable {
         this.key = key;
     }
 
-    protected CollectPoint(Parcel in) {
+    protected CollectPointItem(Parcel in) {
         latitude = in.readDouble();
         longitude = in.readDouble();
         infoCollectPoint = in.readString();
