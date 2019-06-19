@@ -16,12 +16,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".rubbish_collect_point.CollectPointDescriptionActivity"></activity>
-        <activity android:name=".inscription.UserDescriptionActivity"></activity>
-        <activity android:name=".information.RecyclingAndSecurityActivity" />
+        <activity android:name=".information.DeepLinkActivity"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".information.AboutUsActivity" />
+        <activity android:name=".information.SecurityInfoActivity" />
+        <activity android:name=".information.InformationActivity" />
+        <activity android:name=".rubbish_collect_point.CollectPointDescriptionActivity" />
+        <activity android:name=".inscription.UserDescriptionActivity" />
+        <activity android:name=".information.RecyclingInfoActivity" />
         <activity android:name=".inscription.UserDetailsActivity" />
         <activity android:name=".inscription.UserCategoryActivity" />
-        <activity android:name=".FirstPageActivity"/>
+        <activity android:name=".FirstPageActivity" />
         <activity android:name=".ScreenSplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,19 +47,11 @@
         <activity android:name=".rubbish_collect_point.CollectPointInfosActivity" />
         <activity android:name=".rubbish_collect_point.RubbishInfosActivity" />
         <activity android:name=".rubbish_collect_point.MarkerTypeActivity" />
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
-
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
-        <activity
-            android:name=".UserProfileActivity"
-            android:label="@string/title_activity_user_profile" />
+        <activity android:name=".MapsActivity" />
+        <activity android:name=".UserProfileActivity" />
         <activity android:name=".inscription.InscriptionActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".AvatarChoicesActivity" />
     </application>
 
 </manifest>

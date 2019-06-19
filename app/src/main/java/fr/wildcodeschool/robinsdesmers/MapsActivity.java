@@ -38,7 +38,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import fr.wildcodeschool.robinsdesmers.information.RecyclingAndSecurityActivity;
+import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
+import fr.wildcodeschool.robinsdesmers.information.RecyclingInfoActivity;
 import fr.wildcodeschool.robinsdesmers.model.CollectPoint;
 import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
 import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectPointDescriptionActivity;
@@ -71,7 +72,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
-                    Intent goToInfo = new Intent(MapsActivity.this, RecyclingAndSecurityActivity.class);
+                    Intent goToInfo = new Intent(MapsActivity.this, InformationActivity.class);
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
@@ -167,7 +168,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mLocationUser.setLatitude(lat);
             mLocationUser.setLongitude(lng);
 
-
             if (mMap != null && !mMapInit) {
                 mMapInit = true;
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, DEFAULT_ZOOM));
@@ -228,7 +228,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     CollectPoint locationMarker2 = markerSnapshot.getValue(CollectPoint.class);
                     final LatLng locMarker = new LatLng(locationMarker2.getLatitude(), locationMarker2.getLongitude());
                     if (!locationMarker2.notHere) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.collectpoint)).position(locMarker).title("CollectPoint"));
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.new_rubbish)).position(locMarker).title("CollectPoint"));
                     }
                 }
             }
@@ -246,7 +246,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     RubbishMarkers locationMarker = markerSnapshot.getValue(RubbishMarkers.class);
                     final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
                     if (!locationMarker.isCollected) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish)).position(locMarker).title("RubbishMarker"));
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(locMarker).title("RubbishMarker"));
                     }
                 }
             }

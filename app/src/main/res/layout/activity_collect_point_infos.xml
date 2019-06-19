@@ -48,7 +48,6 @@
         app:layout_constraintTop_toBottomOf="@+id/cbDecheterie" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvPoubelleC"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -56,12 +55,13 @@
         android:layout_marginLeft="122dp"
         android:layout_marginTop="100dp"
         android:text="@string/poubelle_classique"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cbPoubelle"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvPoubelleT"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -69,12 +69,13 @@
         android:layout_marginLeft="122dp"
         android:layout_marginTop="50dp"
         android:text="@string/poubelle_de_tri"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cbPoubelleTri"
         app:layout_constraintTop_toBottomOf="@+id/tvPoubelleC" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvDecheterie"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -82,12 +83,13 @@
         android:layout_marginLeft="122dp"
         android:layout_marginTop="50dp"
         android:text="@string/d_cheterie"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cbDecheterie"
         app:layout_constraintTop_toBottomOf="@+id/tvPoubelleT" />
 
     <TextView
-        android:textColor="@color/cardview_light_background"
         android:id="@+id/tvBenne"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -95,7 +97,9 @@
         android:layout_marginLeft="120dp"
         android:layout_marginTop="50dp"
         android:text="@string/benne_de_revalorisation"
+        android:textColor="@color/cardview_light_background"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/cbBenne"
         app:layout_constraintTop_toBottomOf="@+id/tvDecheterie" />
 
@@ -112,6 +116,8 @@
         android:background="@drawable/button_rounded"
         android:backgroundTint="@color/orange"
         android:text="@string/envoyer"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

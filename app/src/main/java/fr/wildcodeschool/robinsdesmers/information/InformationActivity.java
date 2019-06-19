@@ -5,17 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
-import fr.wildcodeschool.robinsdesmers.Adapter.RecyclingInfoAdapter;
 import fr.wildcodeschool.robinsdesmers.MainActivity;
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserProfileActivity;
 
-public class RecyclingAndSecurityActivity extends AppCompatActivity {
+public class InformationActivity extends AppCompatActivity {
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -24,21 +23,21 @@ public class RecyclingAndSecurityActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    Intent goToHome = new Intent(RecyclingAndSecurityActivity.this, MainActivity.class);
+                    Intent goToHome = new Intent(InformationActivity.this, MainActivity.class);
                     startActivity(goToHome);
                     return true;
                 case R.id.navigation_mission:
                     return true;
                 case R.id.navigation_carte:
-                    Intent goToMaps = new Intent(RecyclingAndSecurityActivity.this, MapsActivity.class);
+                    Intent goToMaps = new Intent(InformationActivity.this, MapsActivity.class);
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
-                    Intent goToInfo = new Intent(RecyclingAndSecurityActivity.this, RecyclingAndSecurityActivity.class);
+                    Intent goToInfo = new Intent(InformationActivity.this, InformationActivity.class);
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
-                    Intent goToProfile = new Intent(RecyclingAndSecurityActivity.this, UserProfileActivity.class);
+                    Intent goToProfile = new Intent(InformationActivity.this, UserProfileActivity.class);
                     startActivity(goToProfile);
                     return true;
             }
@@ -49,18 +48,37 @@ public class RecyclingAndSecurityActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycling_and_security);
+        setContentView(R.layout.activity_information);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        RecyclerView mRecyclerView;
-        RecyclerView.Adapter mAdapter;
-        RecyclerView.LayoutManager layoutManager;
-        mRecyclerView = findViewById(R.id.rvRecyclingInfo);
-        layoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mAdapter = new RecyclingInfoAdapter();
-        mRecyclerView.setAdapter(mAdapter);
+        Button btRecycle = findViewById(R.id.btRecyclingInfo);
+        Button btSecurity = findViewById(R.id.btSecurityInfo);
+        Button btAboutUs = findViewById(R.id.btAboutUs);
+
+        btRecycle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToRecyclingInfo = new Intent(InformationActivity.this, RecyclingInfoActivity.class);
+                startActivity(goToRecyclingInfo);
+            }
+        });
+
+        btSecurity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToSecurityInfo = new Intent(InformationActivity.this, SecurityInfoActivity.class);
+                startActivity(goToSecurityInfo);
+            }
+        });
+
+        btAboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goToAboutUs = new Intent(InformationActivity.this, AboutUsActivity.class);
+                startActivity(goToAboutUs);
+            }
+        });
     }
 }
