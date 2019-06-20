@@ -8,10 +8,22 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,15 +31,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import fr.wildcodeschool.robinsdesmers.adapter.ListDepartmentAdapter;
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.adapter.ListDepartmentAdapter;
 import fr.wildcodeschool.robinsdesmers.model.Department;
+
 
 public class UserDetailsActivity extends AppCompatActivity {
 
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,29 +74,47 @@ public class UserDetailsActivity extends AppCompatActivity {
                 mDisplayDate.setText(format.format(date));
             }
         };
+        final ArrayList<Department> departments = new ArrayList<>();
 
-        ArrayList<Department> departments = new ArrayList<>();
-        Department hauteGaronne = new Department("Haute-Garonne", 31);
-        Department correze = new Department("Corrèze", 19);
-        Department charente = new Department("Charente-Maritime", 17);
-        Department gers = new Department("Gers", 32);
-        Department hauteSavoie = new Department("Haute Savoie", 85);
-        Department vendee = new Department("Vendée", 31);
-        Department vaucluse = new Department("Vaucluse", 84);
-        departments.add(hauteGaronne);
-        departments.add(correze);
-        departments.add(charente);
-        departments.add(gers);
-        departments.add(hauteSavoie);
-        departments.add(vendee);
-        departments.add(vaucluse);
+        RequestQueue requestQueue = Volley.newRequestQueue(UserDetailsActivity.this);
+        String url = "https://geo.api.gouv.fr/departements?fields=nom";
 
-        RecyclerView rvListDepartments = findViewById(R.id.rvListDepartments);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        rvListDepartments.setLayoutManager(layoutManager);
-        final ListDepartmentAdapter adapter = new ListDepartmentAdapter(departments);
-        rvListDepartments.setAdapter(adapter);
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            for (int i = 0; i < response.length(); i++) {
+                                JSONObject detailsDep = response.getJSONObject(i);
+                                String name = detailsDep.getString("nom");
+                                String code = detailsDep.getString("code");
+                                Department department = new Department(name, code);
+                                departments.add(department);
+                            }
+
+                            final RecyclerView rvListDepartments = findViewById(R.id.rvListDepartments);
+
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(UserDetailsActivity.this, LinearLayoutManager.VERTICAL, false);
+                            rvListDepartments.setLayoutManager(layoutManager);
+                            final ListDepartmentAdapter adapter = new ListDepartmentAdapter(departments);
+                            rvListDepartments.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Afficher l'erreur
+                        Log.d("VOLLEY_ERROR", "onErrorResponse: " + error.getMessage());
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
 
         ImageButton btSend = findViewById(R.id.imBtRegister2);
         btSend.setOnClickListener(new View.OnClickListener() {

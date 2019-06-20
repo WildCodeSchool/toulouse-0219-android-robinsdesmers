@@ -30,7 +30,7 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
     public void onBindViewHolder(DepartmentViewHolder holder, int position) {
         Department department = departments.get(position);
         holder.tvName.setText(department.getName());
-        holder.tvNumber.setText(Integer.toString(department.getNumber()));
+        holder.tvNumber.setText(department.getNumber());
         holder.container.setSelected(department.isSelected());
     }
 
