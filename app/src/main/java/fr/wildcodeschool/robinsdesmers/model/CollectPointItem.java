@@ -5,6 +5,50 @@ import android.os.Parcelable;
 
 public class CollectPointItem implements Parcelable {
 
+    private Long id;
+    private String title;
+    private String description;
+    private Integer sommePoubelle;
+    private Long latitude;
+    private Long longitude;
+
+    public CollectPointItem(Long id, String title, String description, Integer sommePoubelle, Long latitude, Long longitude) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.sommePoubelle = sommePoubelle;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public CollectPointItem() {
+    }
+
+    protected CollectPointItem(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readLong();
+        }
+        title = in.readString();
+        description = in.readString();
+        if (in.readByte() == 0) {
+            sommePoubelle = null;
+        } else {
+            sommePoubelle = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            latitude = null;
+        } else {
+            latitude = in.readLong();
+        }
+        if (in.readByte() == 0) {
+            longitude = null;
+        } else {
+            longitude = in.readLong();
+        }
+    }
+
     public static final Creator<CollectPointItem> CREATOR = new Creator<CollectPointItem>() {
         @Override
         public CollectPointItem createFromParcel(Parcel in) {
@@ -16,90 +60,53 @@ public class CollectPointItem implements Parcelable {
             return new CollectPointItem[size];
         }
     };
-    double latitude;
-    double longitude;
-    String infoCollectPoint;
-    String infoSup;
-    String date;
-    public boolean notHere;
-    String key;
 
-    public CollectPointItem() {
+    public Long getId() {
+        return id;
     }
 
-    public CollectPointItem(double latitude, double longitude, String infoCollectPoint, String infoSup, String date, String key) {
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.infoCollectPoint = infoCollectPoint;
-        this.infoSup = infoSup;
-        this.date = date;
-        this.notHere = false;
-        this.key = key;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    protected CollectPointItem(Parcel in) {
-        latitude = in.readDouble();
-        longitude = in.readDouble();
-        infoCollectPoint = in.readString();
-        infoSup = in.readString();
-        date = in.readString();
-        key = in.readString();
+    public String getTitle() {
+        return title;
     }
 
-    public double getLatitude() {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getSommePoubelle() {
+        return sommePoubelle;
+    }
+
+    public void setSommePoubelle(Integer sommePoubelle) {
+        this.sommePoubelle = sommePoubelle;
+    }
+
+    public Long getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(Long latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public Long getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(Long longitude) {
         this.longitude = longitude;
-    }
-
-    public String getInfoCollectPoint() {
-        return infoCollectPoint;
-    }
-
-    public void setInfoCollectPoint(String infoCollectPoint) {
-        this.infoCollectPoint = infoCollectPoint;
-    }
-
-    public String getInfoSup() {
-        return infoSup;
-    }
-
-    public void setInfoSup(String infoSup) {
-        this.infoSup = infoSup;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public boolean isNotHere() {
-        return notHere;
-    }
-
-    public void setNotHere(boolean notHere) {
-        this.notHere = notHere;
     }
 
     @Override
@@ -109,11 +116,31 @@ public class CollectPointItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeDouble(latitude);
-        dest.writeDouble(longitude);
-        dest.writeString(infoCollectPoint);
-        dest.writeString(infoSup);
-        dest.writeString(date);
-        dest.writeString(key);
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(id);
+        }
+        dest.writeString(title);
+        dest.writeString(description);
+        if (sommePoubelle == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(sommePoubelle);
+        }
+        if (latitude == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(latitude);
+        }
+        if (longitude == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(longitude);
+        }
     }
 }
