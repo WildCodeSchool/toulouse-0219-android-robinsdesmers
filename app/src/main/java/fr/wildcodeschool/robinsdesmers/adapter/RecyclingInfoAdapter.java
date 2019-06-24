@@ -1,4 +1,4 @@
-package fr.wildcodeschool.robinsdesmers;
+package fr.wildcodeschool.robinsdesmers.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.model.RecyclingInfoItem;
 
 public class RecyclingInfoAdapter extends RecyclerView.Adapter<RecyclingInfoAdapter.RecyclingInfoViewHolder> {

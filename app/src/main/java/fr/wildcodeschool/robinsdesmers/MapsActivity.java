@@ -207,8 +207,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 SimpleDateFormat d = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = calendar.getTime();
 
-                final RubbishItem rubbishItem = new RubbishItem(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
-                final CollectPointItem collectPointItem = new CollectPointItem(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
+                final RubbishItem rubbishItem = new RubbishItem(latLng.latitude, latLng.longitude, "", "", 0, true,false);
+                final CollectPointItem collectPointItem = new CollectPointItem(2,"","",latLng.latitude, latLng.longitude, "", false, "");
 
                 Intent intent = new Intent(MapsActivity.this, MarkerTypeActivity.class);
                 intent.putExtra("RubbishItem", rubbishItem);

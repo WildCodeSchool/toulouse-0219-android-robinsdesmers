@@ -5,6 +5,64 @@ import android.os.Parcelable;
 
 public class RubbishItem implements Parcelable {
 
+    private double latitude;
+    private double longitude;
+    private String title;
+    private String description;
+    private Integer sommeDechet;
+    private boolean isAtSea;
+    public boolean isCollected;
+
+    public RubbishItem(double latitude, double longitude, String title, String description, Integer sommeDechet, boolean isAtSea, boolean isCollected) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.title = title;
+        this.description = description;
+        this.sommeDechet = sommeDechet;
+        this.isAtSea = isAtSea;
+        this.isCollected = isCollected;
+    }
+
+    public RubbishItem() {
+
+    }
+
+
+    protected RubbishItem(Parcel in) {
+        latitude = in.readDouble();
+        longitude = in.readDouble();
+        title = in.readString();
+        description = in.readString();
+        if (in.readByte() == 0) {
+            sommeDechet = null;
+        } else {
+            sommeDechet = in.readInt();
+        }
+        isAtSea = in.readByte() != 0;
+        isCollected = in.readByte() != 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeDouble(latitude);
+        dest.writeDouble(longitude);
+        dest.writeString(title);
+        dest.writeString(description);
+        if (sommeDechet == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(sommeDechet);
+        }
+        dest.writeByte((byte) (isAtSea ? 1 : 0));
+        dest.writeByte((byte) (isCollected ? 1 : 0));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
     public static final Creator<RubbishItem> CREATOR = new Creator<RubbishItem>() {
         @Override
         public RubbishItem createFromParcel(Parcel in) {
@@ -16,46 +74,6 @@ public class RubbishItem implements Parcelable {
             return new RubbishItem[size];
         }
     };
-    double latitude;
-    double longitude;
-    String infoRubbish;
-    String infoSup;
-    String date;
-    public boolean isCollected;
-    String key;
-
-    public RubbishItem(double latitude, double longitude, String infoRubbish, String infoSup, String date, String key) {
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.infoRubbish = infoRubbish;
-        this.infoSup = infoSup;
-        this.date = date;
-        this.key = key;
-        this.isCollected = false;
-    }
-
-    public RubbishItem() {
-
-    }
-
-    protected RubbishItem(Parcel in) {
-        latitude = in.readDouble();
-        longitude = in.readDouble();
-        infoRubbish = in.readString();
-        infoSup = in.readString();
-        date = in.readString();
-    }
-    public static Creator<RubbishItem> getCREATOR() {
-        return CREATOR;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
 
     public double getLatitude() {
         return latitude;
@@ -73,42 +91,48 @@ public class RubbishItem implements Parcelable {
         this.longitude = longitude;
     }
 
-    public String getInfoRubbish() {
-        return infoRubbish;
+    public String getTitle() {
+        return title;
     }
 
-    public void setInfoRubbish(String infoRubbish) {
-        this.infoRubbish = infoRubbish;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getInfoSup() {
-        return infoSup;
+    public String getDescription() {
+        return description;
     }
 
-    public void setInfoSup(String infoSup) {
-        this.infoSup = infoSup;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getDate() {
-        return date;
+    public Integer getSommeDechet() {
+        return sommeDechet;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setSommeDechet(Integer sommeDechet) {
+        this.sommeDechet = sommeDechet;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public boolean isAtSea() {
+        return isAtSea;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeDouble(latitude);
-        dest.writeDouble(longitude);
-        dest.writeString(infoRubbish);
-        dest.writeString(infoSup);
-        dest.writeString(date);
-
+    public void setAtSea(boolean atSea) {
+        isAtSea = atSea;
     }
+
+    public boolean isCollected() {
+        return isCollected;
+    }
+
+    public void setCollected(boolean collected) {
+        isCollected = collected;
+    }
+
+    public static Creator<RubbishItem> getCREATOR() {
+        return CREATOR;
+    }
+
 }

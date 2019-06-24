@@ -20,21 +20,20 @@ import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class CollectRubbishActivity extends AppCompatActivity {
 
-    final User user = new User(0);
+    final User user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collect_rubbish);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+       /* FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference markersRef = database.getReference("RubbishItem");
         markersRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
                     RubbishItem locationMarker = markerSnapshot.getValue(RubbishItem.class);
-                    final String key = locationMarker.getKey();
                     final CheckBox cbCollect = findViewById(R.id.cbIsCollected);
                     cbCollect.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -55,7 +54,7 @@ public class CollectRubbishActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
-        });
+        }); */
         Button btSend = findViewById(R.id.btSendCollect);
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
