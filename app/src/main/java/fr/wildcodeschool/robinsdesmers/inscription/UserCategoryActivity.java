@@ -8,8 +8,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class UserCategoryActivity extends AppCompatActivity {
+    Intent intent = getIntent();
+    User user = intent.getParcelableExtra("user");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,7 @@ public class UserCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserCategoryActivity.this, UserDescriptionActivity.class);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -32,6 +36,7 @@ public class UserCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btCitizen.setSelected(true);
+                user.setCategory("Citoyen");
                 btNavigator.setSelected(false);
                 btEcosystem.setSelected(false);
             }
@@ -41,6 +46,7 @@ public class UserCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btNavigator.setSelected(true);
+                user.setCategory("Navigateur");
                 btCitizen.setSelected(false);
                 btEcosystem.setSelected(false);
             }
@@ -50,6 +56,7 @@ public class UserCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btEcosystem.setSelected(true);
+                user.setCategory("Ecosystème");
                 btCitizen.setSelected(false);
                 btNavigator.setSelected(false);
             }

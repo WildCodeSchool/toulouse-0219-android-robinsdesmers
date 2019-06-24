@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import fr.wildcodeschool.robinsdesmers.DepartmentSingleton;
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.model.Department;
 
@@ -58,6 +59,8 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
                 departement.setSelected(false);
             }
             departments.get(getAdapterPosition()).setSelected(true);
+            DepartmentSingleton department2 = DepartmentSingleton.getInstance();
+            department2.setDepartmentInstance(new Department(departments.get(getAdapterPosition()).getName(), departments.get(getAdapterPosition()).getNumber()));
             notifyDataSetChanged();
         }
     }
