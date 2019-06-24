@@ -27,7 +27,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
-
     <TextView
         android:id="@+id/tvPersonalisation"
         android:layout_width="0dp"
@@ -103,7 +102,6 @@
             android:text="@string/femme"
             android:textColor="@color/colorWhite"
             android:textSize="20dp" />
-
 
         <RadioButton
             android:id="@+id/radioBtMale"
