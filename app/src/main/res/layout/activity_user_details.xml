@@ -13,25 +13,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         android:background="@drawable/border"
         android:paddingLeft="20dp"
-        android:paddingTop="10dp"
+        android:paddingTop="5dp"
         android:paddingRight="20dp"
-        android:paddingBottom="10dp"
+        android:paddingBottom="5dp"
         android:text="@string/date_de_naissance"
-        android:textSize="24sp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPersonalisation" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <TextView
         android:id="@+id/tvPersonalisation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="@string/personnalisation"
         android:textColor="@color/colorWhite"
@@ -52,7 +52,6 @@
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateOfBirth" />
 
@@ -82,4 +81,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@mipmap/ic_launcher_button" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPersonalisation">
+
+        <RadioButton
+            android:id="@+id/radioBtFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:onClick="buttonchecked"
+            android:text="@string/femme"
+            android:textColor="@color/colorWhite"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:id="@+id/radioBtMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:onClick="buttonchecked"
+            android:text="@string/homme"
+            android:textColor="@color/colorWhite"
+            android:textSize="20dp" />
+
+    </RadioGroup>
 </android.support.constraint.ConstraintLayout>
