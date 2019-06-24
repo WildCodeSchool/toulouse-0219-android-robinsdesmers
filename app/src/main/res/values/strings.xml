@@ -148,4 +148,6 @@
     <string name="vous_g_olocalisez">Vous géolocalisez :</string>
     <string name="femme">Femme</string>
     <string name="homme">Homme</string>
+    <string name="prenom">Prénom</string>
+    <string name="nom">Nom</string>
 </resources>

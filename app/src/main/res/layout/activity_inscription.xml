@@ -26,7 +26,31 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/border"
-            android:hint="@string/nom_d_utilisateur"
+            android:hint="@string/nom"
+            android:inputType="text"
+            android:paddingLeft="20dp" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/firstNameRegister"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameRegister"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border"
+            android:hint="@string/prenom"
             android:inputType="text"
             android:paddingLeft="20dp" />
     </android.support.design.widget.TextInputLayout>
@@ -43,7 +67,7 @@
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameRegister"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameRegister"
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
@@ -65,7 +89,6 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
-
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,12 +106,12 @@
     </android.support.design.widget.TextInputLayout>
 
     <ImageButton
-        android:background="@color/vert_fonce"
         android:id="@+id/imBtRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="32dp"
+        android:background="@color/vert_fonce"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
