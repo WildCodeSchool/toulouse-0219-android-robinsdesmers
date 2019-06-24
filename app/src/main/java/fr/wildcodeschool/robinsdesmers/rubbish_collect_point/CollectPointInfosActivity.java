@@ -37,21 +37,21 @@ public class CollectPointInfosActivity extends AppCompatActivity {
         cbBenne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collectPointItem.setInfoSup(getString(R.string.benne_de_revalorisation));
+                collectPointItem.setDescription(getString(R.string.benne_de_revalorisation));
                 user.setScore(SCORE_COLLECT_POINT);
             }
         });
         cbPoubelle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collectPointItem.setInfoSup(getString(R.string.poubelle_classique));
+                collectPointItem.setDescription(getString(R.string.poubelle_classique));
                 user.setScore(SCORE_COLLECT_POINT);
             }
         });
         cbPoubelleTri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collectPointItem.setInfoSup(getString(R.string.poubelle_de_tri));
+                collectPointItem.setDescription(getString(R.string.poubelle_de_tri));
                 user.setScore(SCORE_COLLECT_POINT);
             }
 
@@ -59,11 +59,11 @@ public class CollectPointInfosActivity extends AppCompatActivity {
         cbDechetterie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collectPointItem.setInfoSup(getString(R.string.decheterie));
+                collectPointItem.setDescription(getString(R.string.decheterie));
                 user.setScore(SCORE_COLLECT_POINT);
             }
         });
-        btSend.setOnClickListener(new View.OnClickListener() {
+        /*btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
@@ -78,6 +78,6 @@ public class CollectPointInfosActivity extends AppCompatActivity {
                 String key2 = userRef.push().getKey();
                 userRef.child(key2).setValue(user);
             }
-        });
+        });*/
     }
 }

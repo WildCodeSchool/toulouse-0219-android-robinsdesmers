@@ -8,17 +8,17 @@ public class RubbishItem implements Parcelable {
     private Long id;
     private String title;
     private String description;
-    private Integer sommeDechet;
+    private Integer sumRubbish;
     private boolean isAtSea;
-    private boolean isCollected;
-    private Long latitude;
-    private Long longitude;
+    public boolean isCollected;
+    private double latitude;
+    private double longitude;
 
-    public RubbishItem(Long id, String title, String description, Integer sommeDechet, boolean isAtSea, boolean isCollected, Long latitude, Long longitude) {
+    public RubbishItem(Long id, String title, String description, Integer sumRubbish, boolean isAtSea, boolean isCollected, double latitude, double longitude) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.sommeDechet = sommeDechet;
+        this.sumRubbish = sumRubbish;
         this.isAtSea = isAtSea;
         this.isCollected = isCollected;
         this.latitude = latitude;
@@ -37,22 +37,14 @@ public class RubbishItem implements Parcelable {
         title = in.readString();
         description = in.readString();
         if (in.readByte() == 0) {
-            sommeDechet = null;
+            sumRubbish = null;
         } else {
-            sommeDechet = in.readInt();
+            sumRubbish = in.readInt();
         }
         isAtSea = in.readByte() != 0;
         isCollected = in.readByte() != 0;
-        if (in.readByte() == 0) {
-            latitude = null;
-        } else {
-            latitude = in.readLong();
-        }
-        if (in.readByte() == 0) {
-            longitude = null;
-        } else {
-            longitude = in.readLong();
-        }
+        latitude = in.readDouble();
+        longitude = in.readDouble();
     }
 
     public static final Creator<RubbishItem> CREATOR = new Creator<RubbishItem>() {
@@ -91,12 +83,12 @@ public class RubbishItem implements Parcelable {
         this.description = description;
     }
 
-    public Integer getSommeDechet() {
-        return sommeDechet;
+    public Integer getSumRubbish() {
+        return sumRubbish;
     }
 
-    public void setSommeDechet(Integer sommeDechet) {
-        this.sommeDechet = sommeDechet;
+    public void setSumRubbish(Integer sumRubbish) {
+        this.sumRubbish = sumRubbish;
     }
 
     public boolean isAtSea() {
@@ -115,19 +107,19 @@ public class RubbishItem implements Parcelable {
         isCollected = collected;
     }
 
-    public Long getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Long latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public Long getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Long longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
@@ -138,33 +130,8 @@ public class RubbishItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        if (id == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeLong(id);
-        }
-        dest.writeString(title);
-        dest.writeString(description);
-        if (sommeDechet == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(sommeDechet);
-        }
-        dest.writeByte((byte) (isAtSea ? 1 : 0));
-        dest.writeByte((byte) (isCollected ? 1 : 0));
-        if (latitude == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeLong(latitude);
-        }
-        if (longitude == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeLong(longitude);
-        }
+
     }
+
+
 }
