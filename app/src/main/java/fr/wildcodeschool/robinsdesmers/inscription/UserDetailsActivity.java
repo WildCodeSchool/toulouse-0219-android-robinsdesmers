@@ -41,7 +41,7 @@ public class UserDetailsActivity extends AppCompatActivity {
 
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
-    String gender = "";
+    private String gender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,19 +127,19 @@ public class UserDetailsActivity extends AppCompatActivity {
             }
         });
     }
+
     public void buttonchecked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
         switch (view.getId()) {
-            case R.id.RadioBtFemale:
+            case R.id.radioBtFemale:
                 if (checked)
                     //TODO getGender
                     gender = "Femme";
                 break;
-            case  R.id.RadioBtMale:
+            case R.id.radioBtMale:
                 if (checked)
                     gender = "Homme";
                 break;
-
         }
     }
 }
