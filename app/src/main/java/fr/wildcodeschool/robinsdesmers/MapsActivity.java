@@ -33,11 +33,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
@@ -93,7 +88,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         checkPermission();
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
     }
 
     private void checkPermission() {
@@ -199,16 +193,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                 mMap.addMarker(markerOptions);
 
-                Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                Calendar calendar = new GregorianCalendar(year, month, day);
-                SimpleDateFormat d = new SimpleDateFormat("dd/MM/yyyy");
-                Date date = calendar.getTime();
-
-                final RubbishItem rubbishItem = new RubbishItem(1l,"","",0,false,false, latLng.latitude, latLng.longitude);
-                final CollectPointItem collectPointItem = new CollectPointItem(1l,"","",1,latLng.latitude, latLng.longitude );
+                final RubbishItem rubbishItem = new RubbishItem("", "", 0, false, false, latLng.latitude, latLng.longitude);
+                final CollectPointItem collectPointItem = new CollectPointItem(1l, "", "", 1, latLng.latitude, latLng.longitude);
 
                 Intent intent = new Intent(MapsActivity.this, MarkerTypeActivity.class);
                 intent.putExtra("RubbishItem", rubbishItem);
@@ -226,7 +212,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
                     CollectPointItem locationMarker2 = markerSnapshot.getValue(CollectPointItem.class);
                     final LatLng locMarker = new LatLng(locationMarker2.getLatitude(), locationMarker2.getLongitude());
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.new_rubbish)).position(locMarker).title("CollectPointItem"));
+                    mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.new_rubbish)).position(locMarker).title("CollectPointItem"));
                 }
             }
 
@@ -242,7 +228,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
                     RubbishItem locationMarker = markerSnapshot.getValue(RubbishItem.class);
                     final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
-                    if (!locationMarker.isCollected) {
+                    if (!locationMarker.isCollected()) {
                         mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(locMarker).title("RubbishItem"));
                     }
                 }
@@ -262,9 +248,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Intent intent = new Intent(MapsActivity.this, CollectRubbishActivity.class);
                     startActivity(intent);
                 }
-
             }
         });
     }
-
 }

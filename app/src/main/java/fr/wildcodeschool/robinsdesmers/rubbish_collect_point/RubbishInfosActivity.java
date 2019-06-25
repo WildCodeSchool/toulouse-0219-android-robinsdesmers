@@ -8,14 +8,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.VolleySingleton;
-import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
+import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class RubbishInfosActivity extends AppCompatActivity {
 
@@ -38,7 +35,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
         CheckBox cbVerre = findViewById(R.id.cbVerre);
         CheckBox cbAutrePlastique = findViewById(R.id.cbAutrePlastique);
         CheckBox cbMetal = findViewById(R.id.cbMetal);
-        CheckBox cbMegot = findViewById(R.id.cbAutres);
+        CheckBox cbMegot = findViewById(R.id.cbMegot);
         CheckBox cbCarton = findViewById(R.id.cbCarton);
         CheckBox cbTissus = findViewById(R.id.cbTissus);
         CheckBox cbAutres = findViewById(R.id.cbAutres);
@@ -151,15 +148,6 @@ public class RubbishInfosActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
                 startActivity(intent);
-                /*final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference markersRef = database.getReference("RubbishItem");
-                String key = markersRef.push().getKey();
-                rubbishItem.setKey(key);
-                markersRef.child(key).setValue(rubbishItem);
-
-                DatabaseReference userRef = database.getReference("User");
-                String key2 = userRef.push().getKey();
-                userRef.child(key2).setValue(user);*/
                 VolleySingleton.getInstance(RubbishInfosActivity.this).postRubbish(rubbishItem, user);
             }
         });

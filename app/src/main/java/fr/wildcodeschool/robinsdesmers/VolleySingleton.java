@@ -14,7 +14,6 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -50,32 +49,39 @@ public class VolleySingleton {
         }
         return requestQueue;
     }
-    public void postRubbish(RubbishItem rubbishItem, User user) {
-        String url = REQUEST_URL + "/users/" + user.getId() + "/rubbishes";
 
+    public void postRubbish(RubbishItem rubbishItem, User user) {
+
+        String url = REQUEST_URL + "users/" + user.getId() + "/rubbishes";
         GsonBuilder gsonBuilder = new GsonBuilder();
         final Gson gson = gsonBuilder.create();
         final String requestBody = gson.toJson(rubbishItem);
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
-                url, null, new Response.Listener<JSONObject>(){
-            @Override    public void onResponse(JSONObject response) {
+                url, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
                 Log.i("Response",String.valueOf(response));
-                RubbishItem rubbishItem1= gson.fromJson(response.toString(), RubbishItem.class);
+                RubbishItem rubbishItem1 = gson.fromJson(response.toString(), RubbishItem.class);
             }
         }, new Response.ErrorListener() {
-            @Override    public void onErrorResponse(VolleyError error) {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
                 VolleyLog.e("Error: ", error.getMessage());
             }
         }){
-            @Override    public Map<String, String> getHeaders() throws AuthFailureError {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("Content-Type", "application/json");
                 return headers;
             }
 
-
-            @Override    public byte[] getBody() {
+            @Override
+            public byte[] getBody() {
                 try {
                     return requestBody == null ? null : requestBody.getBytes("utf-8");
                 } catch (UnsupportedEncodingException uee) {
@@ -84,10 +90,7 @@ public class VolleySingleton {
                     return null;
                 }
             }
-
-
         };
-
         requestQueue.add(jsonObjectRequest);
     }
 }
