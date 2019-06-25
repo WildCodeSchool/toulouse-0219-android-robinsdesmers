@@ -9,13 +9,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
-import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
+import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class RubbishMultiInfosActivity extends AppCompatActivity {
 
@@ -70,7 +66,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                 } else {
                     user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
                 }
-                location.setInfoSup(bouteille + getString(R.string.bouteilles));
+                location.setDescription(bouteille + getString(R.string.bouteilles));
             }
         });
         etMa.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +78,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                 } else {
                     user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
                 }
-                location.setInfoSup(metal + getString(R.string.metaux));
+                location.setDescription(metal + getString(R.string.metaux));
             }
         });
         etM.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +90,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                 } else {
                     user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
                 }
-                location.setInfoSup(megot + getString(R.string.m_gots));
+                location.setDescription(megot + getString(R.string.m_gots));
             }
         });
         etC.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +102,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                 } else {
                     user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
                 }
-                location.setInfoSup(carton + getString(R.string.cartons));
+                location.setDescription(carton + getString(R.string.cartons));
             }
         });
         etV.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +114,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                 } else {
                     user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
                 }
-                location.setInfoSup(verre + getString(R.string.dechets_en_verre));
+                location.setDescription(verre + getString(R.string.dechets_en_verre));
             }
         });
         etP.setOnClickListener(new View.OnClickListener() {
@@ -131,25 +127,9 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
                 }
 
-                location.setInfoSup(plastique + getString(R.string.dechets_en_plastique));
+                location.setDescription(plastique + getString(R.string.dechets_en_plastique));
             }
         });
 
-        ibSendMutliRubbish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
-                startActivity(intent);
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference markersRef = database.getReference("RubbishItem");
-                String key = markersRef.push().getKey();
-                location.setKey(key);
-                markersRef.child(key).setValue(location);
-
-                DatabaseReference userRef = database.getReference("User");
-                String key2 = userRef.push().getKey();
-                userRef.child(key2).setValue(user);
-            }
-        });
     }
 }

@@ -5,6 +5,42 @@ import android.os.Parcelable;
 
 public class CollectPointItem implements Parcelable {
 
+    private Long id;
+    private String title;
+    private String description;
+    private Integer sumCollectPoint;
+    private double latitude;
+    private double longitude;
+
+    public CollectPointItem(Long id, String title, String description, Integer sumCollectPoint, double latitude, double longitude) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.sumCollectPoint = sumCollectPoint;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public CollectPointItem() {
+    }
+
+    protected CollectPointItem(Parcel in) {
+        if (in.readByte() == 0) {
+            id = null;
+        } else {
+            id = in.readLong();
+        }
+        title = in.readString();
+        description = in.readString();
+        if (in.readByte() == 0) {
+            sumCollectPoint = null;
+        } else {
+            sumCollectPoint = in.readInt();
+        }
+        latitude = in.readDouble();
+        longitude = in.readDouble();
+    }
+
     public static final Creator<CollectPointItem> CREATOR = new Creator<CollectPointItem>() {
         @Override
         public CollectPointItem createFromParcel(Parcel in) {
@@ -16,34 +52,62 @@ public class CollectPointItem implements Parcelable {
             return new CollectPointItem[size];
         }
     };
-    double latitude;
-    double longitude;
-    String infoCollectPoint;
-    String infoSup;
-    String date;
-    public boolean notHere;
-    String key;
 
-    public CollectPointItem() {
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public CollectPointItem(double latitude, double longitude, String infoCollectPoint, String infoSup, String date, String key) {
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.infoCollectPoint = infoCollectPoint;
-        this.infoSup = infoSup;
-        this.date = date;
-        this.notHere = false;
-        this.key = key;
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(id);
+        }
+        dest.writeString(title);
+        dest.writeString(description);
+        if (sumCollectPoint == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(sumCollectPoint);
+        }
+        dest.writeDouble(latitude);
+        dest.writeDouble(longitude);
     }
 
-    protected CollectPointItem(Parcel in) {
-        latitude = in.readDouble();
-        longitude = in.readDouble();
-        infoCollectPoint = in.readString();
-        infoSup = in.readString();
-        date = in.readString();
-        key = in.readString();
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getSumCollectPoint() {
+        return sumCollectPoint;
+    }
+
+    public void setSumCollectPoint(Integer sumCollectPoint) {
+        this.sumCollectPoint = sumCollectPoint;
     }
 
     public double getLatitude() {
@@ -62,58 +126,7 @@ public class CollectPointItem implements Parcelable {
         this.longitude = longitude;
     }
 
-    public String getInfoCollectPoint() {
-        return infoCollectPoint;
-    }
-
-    public void setInfoCollectPoint(String infoCollectPoint) {
-        this.infoCollectPoint = infoCollectPoint;
-    }
-
-    public String getInfoSup() {
-        return infoSup;
-    }
-
-    public void setInfoSup(String infoSup) {
-        this.infoSup = infoSup;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public boolean isNotHere() {
-        return notHere;
-    }
-
-    public void setNotHere(boolean notHere) {
-        this.notHere = notHere;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeDouble(latitude);
-        dest.writeDouble(longitude);
-        dest.writeString(infoCollectPoint);
-        dest.writeString(infoSup);
-        dest.writeString(date);
-        dest.writeString(key);
+    public static Creator<CollectPointItem> getCREATOR() {
+        return CREATOR;
     }
 }

@@ -32,9 +32,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import fr.wildcodeschool.robinsdesmers.DepartmentSingleton;
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.adapter.ListDepartmentAdapter;
 import fr.wildcodeschool.robinsdesmers.model.Department;
+import fr.wildcodeschool.robinsdesmers.model.User;
 
 
 public class UserDetailsActivity extends AppCompatActivity {
@@ -42,13 +44,14 @@ public class UserDetailsActivity extends AppCompatActivity {
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private String gender;
+    Intent intent = getIntent();
+    User user = intent.getParcelableExtra("user");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
         mDisplayDate = findViewById(R.id.dateOfBirth);
-
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +77,7 @@ public class UserDetailsActivity extends AppCompatActivity {
                 Calendar calendar = new GregorianCalendar(year, month, dayOfMonth);
                 Date date = calendar.getTime();
                 mDisplayDate.setText(format.format(date));
+                user.setDateOfBirth(format.format(date));
             }
         };
         final ArrayList<Department> departments = new ArrayList<>();
@@ -103,6 +107,7 @@ public class UserDetailsActivity extends AppCompatActivity {
                             final ListDepartmentAdapter adapter = new ListDepartmentAdapter(departments);
                             rvListDepartments.setAdapter(adapter);
 
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -123,6 +128,10 @@ public class UserDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserDetailsActivity.this, UserCategoryActivity.class);
+                DepartmentSingleton department2 = DepartmentSingleton.getInstance();
+                String userDepartment = department2.toString();
+                user.setDepartment(userDepartment);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -135,10 +144,12 @@ public class UserDetailsActivity extends AppCompatActivity {
                 if (checked)
                     //TODO getGender
                     gender = "Femme";
+                    user.setGender(gender);
                 break;
             case R.id.radioBtMale:
                 if (checked)
                     gender = "Homme";
+                    user.setGender(gender);
                 break;
         }
     }

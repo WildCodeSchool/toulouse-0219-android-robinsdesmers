@@ -27,12 +27,12 @@ public class MarkerTypeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final CollectPointItem collectPointItem = intent.getParcelableExtra("CollectPointItem");
         final RubbishItem rubbishItem = intent.getParcelableExtra("RubbishItem");
-        final User user = new User(0);
+        final User user = new User();
 
         btOneRubbish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rubbishItem.setInfoRubbish(getString(R.string.dechet_seul));
+                rubbishItem.setTitle(getString(R.string.dechet_seul));
                 Intent intent = new Intent(MarkerTypeActivity.this, RubbishInfosActivity.class);
                 intent.putExtra("RubbishItem", rubbishItem);
                 intent.putExtra("User", user);
@@ -42,7 +42,7 @@ public class MarkerTypeActivity extends AppCompatActivity {
         btMultiRubbish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rubbishItem.setInfoRubbish(getString(R.string.amas_de_dechets));
+                rubbishItem.setTitle(getString(R.string.amas_de_dechets));
                 Intent intent = new Intent(MarkerTypeActivity.this, RubbishMultiInfosActivity.class);
                 intent.putExtra("RubbishItem", rubbishItem);
                 intent.putExtra("User", user);
@@ -52,7 +52,7 @@ public class MarkerTypeActivity extends AppCompatActivity {
         btCollectPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collectPointItem.setInfoCollectPoint(getString(R.string.point_de_collecte));
+                collectPointItem.setTitle(getString(R.string.point_de_collecte));
                 Intent intent = new Intent(MarkerTypeActivity.this, CollectPointInfosActivity.class);
                 intent.putExtra("CollectPointItem", collectPointItem);
                 intent.putExtra("User", user);

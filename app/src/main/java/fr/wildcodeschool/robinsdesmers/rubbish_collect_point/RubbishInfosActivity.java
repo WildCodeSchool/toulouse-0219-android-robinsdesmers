@@ -64,7 +64,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
         cbBouteille.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rubbishItem.setInfoSup(getString(R.string.bouteille));
+                rubbishItem.setDescription(getString(R.string.bouteille));
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -72,7 +72,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
         cbVerre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rubbishItem.setInfoSup(getString(R.string.verre));
+                rubbishItem.setDescription(getString(R.string.verre));
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -80,7 +80,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
         cbAutrePlastique.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rubbishItem.setInfoSup(getString(R.string.autre_plastique));
+                rubbishItem.setDescription(getString(R.string.autre_plastique));
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -88,7 +88,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
         cbMetal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rubbishItem.setInfoSup(getString(R.string.m_tal));
+                rubbishItem.setDescription(getString(R.string.m_tal));
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -96,7 +96,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
         cbMegot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rubbishItem.setInfoSup(getString(R.string.m_got));
+                rubbishItem.setDescription(getString(R.string.m_got));
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -104,7 +104,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
         cbCarton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rubbishItem.setInfoSup(getString(R.string.carton));
+                rubbishItem.setDescription(getString(R.string.carton));
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -112,7 +112,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
         cbTissus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rubbishItem.setInfoSup(getString(R.string.tissus));
+                rubbishItem.setDescription(getString(R.string.tissus));
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -120,7 +120,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
         cbAutres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rubbishItem.setInfoSup(getString(R.string.autres));
+                rubbishItem.setDescription(getString(R.string.autres));
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -131,21 +131,5 @@ public class RubbishInfosActivity extends AppCompatActivity {
             }
         });
 
-        btSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
-                startActivity(intent);
-                final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference markersRef = database.getReference("RubbishItem");
-                String key = markersRef.push().getKey();
-                rubbishItem.setKey(key);
-                markersRef.child(key).setValue(rubbishItem);
-
-                DatabaseReference userRef = database.getReference("User");
-                String key2 = userRef.push().getKey();
-                userRef.child(key2).setValue(user);
-            }
-        });
     }
 }

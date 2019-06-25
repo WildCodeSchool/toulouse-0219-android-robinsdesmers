@@ -27,13 +27,11 @@ public class CollectPointDescriptionActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
                     CollectPointItem collectPointItem = markerSnapshot.getValue(CollectPointItem.class);
-                    final String date = collectPointItem.getDate();
-                    final String name = collectPointItem.getInfoCollectPoint();
-                    final String description = collectPointItem.getInfoSup();
+                    final String name = collectPointItem.getTitle();
+                    final String description = collectPointItem.getDescription();
                     TextView tvDate = findViewById(R.id.tvDateCollectPoint);
                     TextView tvName = findViewById(R.id.tvNameCollectPoint);
                     TextView tvDescription = findViewById(R.id.tvDescCollectPoint);
-                    tvDate.setText(date);
                     tvName.setText(name);
                     tvDescription.setText(description);
                 }

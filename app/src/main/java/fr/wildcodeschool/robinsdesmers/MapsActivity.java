@@ -207,8 +207,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 SimpleDateFormat d = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = calendar.getTime();
 
-                final RubbishItem rubbishItem = new RubbishItem(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
-                final CollectPointItem collectPointItem = new CollectPointItem(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
+                final RubbishItem rubbishItem = new RubbishItem(1l,"","",0,false,false, latLng.latitude, latLng.longitude);
+                final CollectPointItem collectPointItem = new CollectPointItem(1l,"","",1,latLng.latitude, latLng.longitude );
 
                 Intent intent = new Intent(MapsActivity.this, MarkerTypeActivity.class);
                 intent.putExtra("RubbishItem", rubbishItem);
@@ -226,9 +226,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
                     CollectPointItem locationMarker2 = markerSnapshot.getValue(CollectPointItem.class);
                     final LatLng locMarker = new LatLng(locationMarker2.getLatitude(), locationMarker2.getLongitude());
-                    if (!locationMarker2.notHere) {
                         mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.new_rubbish)).position(locMarker).title("CollectPointItem"));
-                    }
                 }
             }
 
