@@ -5,27 +5,38 @@ import android.os.Parcelable;
 
 public class RubbishItem implements Parcelable {
 
+    public static final Creator<RubbishItem> CREATOR = new Creator<RubbishItem>() {
+        @Override
+        public RubbishItem createFromParcel(Parcel in) {
+            return new RubbishItem(in);
+        }
+
+        @Override
+        public RubbishItem[] newArray(int size) {
+            return new RubbishItem[size];
+        }
+    };
+
     private Long id;
     private String title;
     private String description;
     private Integer sumRubbish;
-    private boolean isAtSea;
-    public boolean isCollected;
-    private double latitude;
-    private double longitude;
+    private boolean atSea;
+    private boolean collected;
+    private Double latitude;
+    private Double longitude;
 
-    public RubbishItem(Long id, String title, String description, Integer sumRubbish, boolean isAtSea, boolean isCollected, double latitude, double longitude) {
-        this.id = id;
+    public RubbishItem() {
+    }
+
+    public RubbishItem(String title, String description, Integer sumRubbish, boolean atSea, boolean collected, Double latitude, Double longitude) {
         this.title = title;
         this.description = description;
         this.sumRubbish = sumRubbish;
-        this.isAtSea = isAtSea;
-        this.isCollected = isCollected;
+        this.atSea = atSea;
+        this.collected = collected;
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public RubbishItem() {
     }
 
     protected RubbishItem(Parcel in) {
@@ -41,23 +52,19 @@ public class RubbishItem implements Parcelable {
         } else {
             sumRubbish = in.readInt();
         }
-        isAtSea = in.readByte() != 0;
-        isCollected = in.readByte() != 0;
-        latitude = in.readDouble();
-        longitude = in.readDouble();
+        atSea = in.readByte() != 0;
+        collected = in.readByte() != 0;
+        if (in.readByte() == 0) {
+            latitude = null;
+        } else {
+            latitude = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            longitude = null;
+        } else {
+            longitude = in.readDouble();
+        }
     }
-
-    public static final Creator<RubbishItem> CREATOR = new Creator<RubbishItem>() {
-        @Override
-        public RubbishItem createFromParcel(Parcel in) {
-            return new RubbishItem(in);
-        }
-
-        @Override
-        public RubbishItem[] newArray(int size) {
-            return new RubbishItem[size];
-        }
-    };
 
     public Long getId() {
         return id;
@@ -92,34 +99,34 @@ public class RubbishItem implements Parcelable {
     }
 
     public boolean isAtSea() {
-        return isAtSea;
+        return atSea;
     }
 
     public void setAtSea(boolean atSea) {
-        isAtSea = atSea;
+        this.atSea = atSea;
     }
 
     public boolean isCollected() {
-        return isCollected;
+        return collected;
     }
 
     public void setCollected(boolean collected) {
-        isCollected = collected;
+        this.collected = collected;
     }
 
-    public double getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
@@ -130,8 +137,33 @@ public class RubbishItem implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(id);
+        }
+        dest.writeString(title);
+        dest.writeString(description);
+        if (sumRubbish == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(sumRubbish);
+        }
+        dest.writeByte((byte) (atSea ? 1 : 0));
+        dest.writeByte((byte) (collected ? 1 : 0));
+        if (latitude == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(latitude);
+        }
+        if (longitude == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(longitude);
+        }
     }
-
-
 }
