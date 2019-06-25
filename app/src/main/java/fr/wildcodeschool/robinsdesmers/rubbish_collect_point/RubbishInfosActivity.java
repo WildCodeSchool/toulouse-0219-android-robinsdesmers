@@ -13,12 +13,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.VolleySingleton;
 import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 
 public class RubbishInfosActivity extends AppCompatActivity {
 
-    final int SCORE_RUBBISH = 5;
+    final Integer SCORE_RUBBISH = 5;
+    final Integer SCORE_RUBBISH_COLLECTED = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
             public void onClick(View v) {
                 btSurTerre.setSelected(true);
                 btSurMer.setSelected(false);
+                rubbishItem.setAtSea(false);
             }
         });
 
@@ -58,6 +61,8 @@ public class RubbishInfosActivity extends AppCompatActivity {
             public void onClick(View v) {
                 btSurTerre.setSelected(false);
                 btSurMer.setSelected(true);
+                rubbishItem.setAtSea(true);
+
             }
         });
 
@@ -65,6 +70,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rubbishItem.setDescription(getString(R.string.bouteille));
+                rubbishItem.setSumRubbish(1);
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -73,6 +79,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rubbishItem.setDescription(getString(R.string.verre));
+                rubbishItem.setSumRubbish(1);
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -81,6 +88,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rubbishItem.setDescription(getString(R.string.autre_plastique));
+                rubbishItem.setSumRubbish(1);
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -89,6 +97,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rubbishItem.setDescription(getString(R.string.m_tal));
+                rubbishItem.setSumRubbish(1);
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -97,6 +106,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rubbishItem.setDescription(getString(R.string.m_got));
+                rubbishItem.setSumRubbish(1);
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -105,6 +115,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rubbishItem.setDescription(getString(R.string.carton));
+                rubbishItem.setSumRubbish(1);
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -113,6 +124,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rubbishItem.setDescription(getString(R.string.tissus));
+                rubbishItem.setSumRubbish(1);
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -121,6 +133,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rubbishItem.setDescription(getString(R.string.autres));
+                rubbishItem.setSumRubbish(1);
                 user.setScore(SCORE_RUBBISH);
             }
         });
@@ -128,15 +141,17 @@ public class RubbishInfosActivity extends AppCompatActivity {
         cbDechetRamasse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                user.setScore(SCORE_RUBBISH_COLLECTED);
+                rubbishItem.setCollected(true);
             }
         });
 
-        /*btSend.setOnClickListener(new View.OnClickListener() {
+        btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
                 startActivity(intent);
-                final FirebaseDatabase database = FirebaseDatabase.getInstance();
+                /*final FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference markersRef = database.getReference("RubbishItem");
                 String key = markersRef.push().getKey();
                 rubbishItem.setKey(key);
@@ -144,8 +159,9 @@ public class RubbishInfosActivity extends AppCompatActivity {
 
                 DatabaseReference userRef = database.getReference("User");
                 String key2 = userRef.push().getKey();
-                userRef.child(key2).setValue(user);
+                userRef.child(key2).setValue(user);*/
+                VolleySingleton.getInstance(RubbishInfosActivity.this).postRubbish(rubbishItem, user);
             }
-        });*/
+        });
     }
 }

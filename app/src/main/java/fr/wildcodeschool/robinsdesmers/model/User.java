@@ -16,10 +16,10 @@ public class User implements Parcelable {
     private String category;
     private String pseudo;
     private String description;
-    private int avatar;
-    private int score;
+    private Integer avatar;
+    private Integer score;
 
-    public User(Long id, String firstName, String lastName, String email, String password, String gender, String dateOfBirth, String department, String category, String pseudo, String description, int avatar, int score) {
+    public User(Long id, String firstName, String lastName, String email, String password, String gender, String dateOfBirth, String department, String category, String pseudo, String description, Integer avatar, Integer score) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -158,19 +158,19 @@ public class User implements Parcelable {
         this.description = description;
     }
 
-    public int getAvatar() {
+    public Integer getAvatar() {
         return avatar;
     }
 
-    public void setAvatar(int avatar) {
+    public void setAvatar(Integer avatar) {
         this.avatar = avatar;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 

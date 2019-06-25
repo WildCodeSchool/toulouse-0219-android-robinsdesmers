@@ -27,7 +27,7 @@ public class MarkerTypeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final CollectPointItem collectPointItem = intent.getParcelableExtra("CollectPointItem");
         final RubbishItem rubbishItem = intent.getParcelableExtra("RubbishItem");
-        final User user = new User();
+        final User user = new User(1l, "Seb", "Dubois", "", "", "male", "14/06/83", "31 - Haute-Garonne", "Citoyen", "Labuse", "Un bon belge une fois", R.drawable.ic_essai_avatar, 0);
 
         btOneRubbish.setOnClickListener(new View.OnClickListener() {
             @Override
