@@ -59,7 +59,6 @@ public class RubbishInfosActivity extends AppCompatActivity {
                 btSurTerre.setSelected(false);
                 btSurMer.setSelected(true);
                 rubbishItem.setAtSea(true);
-
             }
         });
 

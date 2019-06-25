@@ -14,6 +14,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.util.Consumer;
 import android.view.MenuItem;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -32,6 +33,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.List;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
@@ -202,6 +205,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(intent);
             }
         });
+        VolleySingleton.getInstance(MapsActivity.this).getAllRubbish(new Consumer<List<RubbishItem>>() {
+            @Override
+            public void accept(List<RubbishItem> rubbishItems) {
+                for(RubbishItem rubbish : rubbishItems) {
+                    final LatLng rubbishCoord = new LatLng(rubbish.getLatitude(), rubbish.getLongitude());
+                    if (!rubbish.isCollected()) {
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(rubbishCoord).title("RubbishItem"));
+                    }
+                }
+            }
+        });
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference markersRef = database.getReference("RubbishItem");
         DatabaseReference markerRef = database.getReference("CollectPointItem");
@@ -221,7 +236,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });
 
-        markersRef.addValueEventListener(new ValueEventListener() {
+        /*markersRef.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -237,7 +252,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
-        });
+        });*/
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {

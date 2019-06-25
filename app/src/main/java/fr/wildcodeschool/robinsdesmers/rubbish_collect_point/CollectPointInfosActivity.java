@@ -7,13 +7,9 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
-import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
+import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class CollectPointInfosActivity extends AppCompatActivity {
 
@@ -63,21 +59,5 @@ public class CollectPointInfosActivity extends AppCompatActivity {
                 user.setScore(SCORE_COLLECT_POINT);
             }
         });
-        /*btSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
-                startActivity(intent);
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference markersRef = database.getReference("CollectPointItem");
-                String key = markersRef.push().getKey();
-                collectPointItem.setKey(key);
-                markersRef.child(key).setValue(collectPointItem);
-
-                DatabaseReference userRef = database.getReference("User");
-                String key2 = userRef.push().getKey();
-                userRef.child(key2).setValue(user);
-            }
-        });*/
     }
 }
