@@ -8,18 +8,14 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
-
-import fr.wildcodeschool.robinsdesmers.inscription.AvatarChoicesActivity;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public abstract class VolleyRequest extends Context {
 
-    public static User getInscriptionActivityDetails(Context context){
+    public static void getInscriptionActivityDetails(Context context){
         RequestQueue requestQueue = Volley.newRequestQueue(context);
 
         // TODO : URL de la requête vers l'API
@@ -48,7 +44,6 @@ public abstract class VolleyRequest extends Context {
         // On ajoute la requête à la file d'attente
         requestQueue.add(jsonArrayRequest);
 
-        return user;
     }
 
 

@@ -131,21 +131,5 @@ public class RubbishInfosActivity extends AppCompatActivity {
             }
         });
 
-        /*btSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
-                startActivity(intent);
-                final FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference markersRef = database.getReference("RubbishItem");
-                String key = markersRef.push().getKey();
-                rubbishItem.setKey(key);
-                markersRef.child(key).setValue(rubbishItem);
-
-                DatabaseReference userRef = database.getReference("User");
-                String key2 = userRef.push().getKey();
-                userRef.child(key2).setValue(user);
-            }
-        });*/
     }
 }

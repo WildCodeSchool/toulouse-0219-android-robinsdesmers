@@ -9,13 +9,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
-import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
+import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class RubbishMultiInfosActivity extends AppCompatActivity {
 
@@ -135,21 +131,5 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
             }
         });
 
-       /* ibSendMutliRubbish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
-                startActivity(intent);
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference markersRef = database.getReference("RubbishItem");
-                String key = markersRef.push().getKey();
-                location.setKey(key);
-                markersRef.child(key).setValue(location);
-
-                DatabaseReference userRef = database.getReference("User");
-                String key2 = userRef.push().getKey();
-                userRef.child(key2).setValue(user);
-            }
-        });*/
     }
 }
