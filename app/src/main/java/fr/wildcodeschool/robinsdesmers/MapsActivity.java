@@ -28,11 +28,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -197,7 +192,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.addMarker(markerOptions);
 
                 final RubbishItem rubbishItem = new RubbishItem("", "", 0, false, false, latLng.latitude, latLng.longitude);
-                final CollectPointItem collectPointItem = new CollectPointItem(1l, "", "", 1, latLng.latitude, latLng.longitude);
+                final CollectPointItem collectPointItem = new CollectPointItem("", "", 1, latLng.latitude, latLng.longitude);
 
                 Intent intent = new Intent(MapsActivity.this, MarkerTypeActivity.class);
                 intent.putExtra("RubbishItem", rubbishItem);
@@ -205,54 +200,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(intent);
             }
         });
+
         VolleySingleton.getInstance(MapsActivity.this).getAllRubbish(new Consumer<List<RubbishItem>>() {
             @Override
             public void accept(List<RubbishItem> rubbishItems) {
-                for(RubbishItem rubbish : rubbishItems) {
+                for (RubbishItem rubbish : rubbishItems) {
                     final LatLng rubbishCoord = new LatLng(rubbish.getLatitude(), rubbish.getLongitude());
                     if (!rubbish.isCollected()) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(rubbishCoord).title("RubbishItem"));
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
                     }
                 }
             }
         });
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference markersRef = database.getReference("RubbishItem");
-        DatabaseReference markerRef = database.getReference("CollectPointItem");
-        markerRef.addValueEventListener(new ValueEventListener() {
-
+        VolleySingleton.getInstance(MapsActivity.this).getAllCollectPoint(new Consumer<List<CollectPointItem>>() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
-                    CollectPointItem locationMarker2 = markerSnapshot.getValue(CollectPointItem.class);
-                    final LatLng locMarker = new LatLng(locationMarker2.getLatitude(), locationMarker2.getLongitude());
-                    mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.new_rubbish)).position(locMarker).title("CollectPointItem"));
+            public void accept(List<CollectPointItem> collectPointItems) {
+                for (CollectPointItem collectPoint : collectPointItems) {
+                    final LatLng collectPointCoord = new LatLng(collectPoint.getLatitude(), collectPoint.getLongitude());
+                    mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.new_rubbish)).position(collectPointCoord).title(collectPoint.getTitle()).snippet(collectPoint.getDescription()));
                 }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
             }
         });
 
-        /*markersRef.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
-                    RubbishItem locationMarker = markerSnapshot.getValue(RubbishItem.class);
-                    final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
-                    if (!locationMarker.isCollected()) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(locMarker).title("RubbishItem"));
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });*/
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {

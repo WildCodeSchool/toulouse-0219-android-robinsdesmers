@@ -52,7 +52,6 @@ public class MarkerTypeActivity extends AppCompatActivity {
         btCollectPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                collectPointItem.setTitle(getString(R.string.point_de_collecte));
                 Intent intent = new Intent(MarkerTypeActivity.this, CollectPointInfosActivity.class);
                 intent.putExtra("CollectPointItem", collectPointItem);
                 intent.putExtra("User", user);
