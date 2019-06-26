@@ -21,8 +21,8 @@ public class AvatarChoicesActivity extends AppCompatActivity {
     ImageSwitcher imageSwitcher;
     Integer[] images = {R.drawable.ic_essai_avatar, R.drawable.icon_cat_v1, R.drawable.icon_cat_v2, R.drawable.icon_cat_v3};
     int index = 0;
-    Intent intent = getIntent();
-    User user = intent.getParcelableExtra("user");
+    /*Intent intent = getIntent();
+    User user = intent.getParcelableExtra("user");*/
 
 
     @Override
@@ -78,7 +78,7 @@ public class AvatarChoicesActivity extends AppCompatActivity {
         imBtAvatarChoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setAvatar(images[index]);
+                //user.setAvatar(images[index]);
                /* if(index == 0){
                     user.setAvatar(R.drawable.ic_essai_avatar);
                 }

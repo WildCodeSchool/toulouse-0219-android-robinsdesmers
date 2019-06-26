@@ -40,7 +40,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
         CheckBox cbTissus = findViewById(R.id.cbTissus);
         CheckBox cbAutres = findViewById(R.id.cbAutres);
 
-        CheckBox cbDechetRamasse = findViewById(R.id.cbDechetRamasse);
+        final CheckBox cbDechetRamasse = findViewById(R.id.cbDechetRamasse);
 
         ImageButton btSend = findViewById(R.id.ibSendRubbish);
 
@@ -130,7 +130,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
             public void onClick(View v) {
                 rubbishItem.setDescription(getString(R.string.autres));
                 rubbishItem.setSumRubbish(1);
-                user.setScore(SCORE_RUBBISH);
+                user.setScore(user.getScore() + SCORE_RUBBISH);
             }
         });
 
@@ -145,6 +145,10 @@ public class RubbishInfosActivity extends AppCompatActivity {
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (cbDechetRamasse.isChecked()) {
+                    user.setScore(user.getScore() + SCORE_RUBBISH_COLLECTED);
+                }
+                user.setScore(user.getScore() + SCORE_RUBBISH);
                 Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
                 startActivity(intent);
                 VolleySingleton.getInstance(RubbishInfosActivity.this).postRubbish(rubbishItem, user);

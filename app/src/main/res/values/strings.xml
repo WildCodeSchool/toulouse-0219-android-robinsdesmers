@@ -148,4 +148,5 @@
     <string name="vous_g_olocalisez">Vous géolocalisez :</string>
     <string name="femme">Femme</string>
     <string name="homme">Homme</string>
+    <string name="space">%d %s</string>
 </resources>

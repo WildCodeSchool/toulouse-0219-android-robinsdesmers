@@ -207,7 +207,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (RubbishItem rubbish : rubbishItems) {
                     final LatLng rubbishCoord = new LatLng(rubbish.getLatitude(), rubbish.getLongitude());
                     if (!rubbish.isCollected()) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription() + rubbish.getSumRubbish()));
                     }
                 }
             }

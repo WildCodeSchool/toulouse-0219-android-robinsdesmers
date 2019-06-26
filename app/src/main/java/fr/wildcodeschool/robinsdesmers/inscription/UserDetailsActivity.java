@@ -44,8 +44,8 @@ public class UserDetailsActivity extends AppCompatActivity {
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private String gender;
-    Intent intent = getIntent();
-    User user = intent.getParcelableExtra("user");
+    /*Intent intent = getIntent();
+    User user = intent.getParcelableExtra("user");*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +77,7 @@ public class UserDetailsActivity extends AppCompatActivity {
                 Calendar calendar = new GregorianCalendar(year, month, dayOfMonth);
                 Date date = calendar.getTime();
                 mDisplayDate.setText(format.format(date));
-                user.setDateOfBirth(format.format(date));
+                //user.setDateOfBirth(format.format(date));
             }
         };
         final ArrayList<Department> departments = new ArrayList<>();
@@ -130,8 +130,8 @@ public class UserDetailsActivity extends AppCompatActivity {
                 Intent intent = new Intent(UserDetailsActivity.this, UserCategoryActivity.class);
                 DepartmentSingleton department2 = DepartmentSingleton.getInstance();
                 String userDepartment = department2.toString();
-                user.setDepartment(userDepartment);
-                intent.putExtra("user",user);
+                //user.setDepartment(userDepartment);
+                //intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
@@ -144,12 +144,12 @@ public class UserDetailsActivity extends AppCompatActivity {
                 if (checked)
                     //TODO getGender
                     gender = "Femme";
-                    user.setGender(gender);
+                   // user.setGender(gender);
                 break;
             case R.id.radioBtMale:
                 if (checked)
                     gender = "Homme";
-                    user.setGender(gender);
+                   // user.setGender(gender);
                 break;
         }
     }

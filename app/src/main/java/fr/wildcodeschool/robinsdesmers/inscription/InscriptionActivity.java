@@ -23,14 +23,14 @@ public class InscriptionActivity extends AppCompatActivity {
         imBtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText nameRegister = findViewById(R.id.nameRegister);
+               /* EditText nameRegister = findViewById(R.id.nameRegister);
                 EditText email = findViewById(R.id.mailRegister);
                 EditText password = findViewById(R.id.passwordRegister);
                 user.setFirstName(nameRegister.getText().toString());
                 user.setEmail(email.getText().toString());
-                user.setPassword(password.getText().toString());
+                user.setPassword(password.getText().toString());*/
                 Intent goToHome = new Intent(InscriptionActivity.this, UserDetailsActivity.class);
-                goToHome.putExtra("user",user);
+                //goToHome.putExtra("user",user);
                 startActivity(goToHome);
             }
         });

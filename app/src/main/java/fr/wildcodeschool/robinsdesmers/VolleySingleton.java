@@ -50,8 +50,6 @@ public class VolleySingleton {
 
     public RequestQueue getRequestQueue() {
         if (requestQueue == null) {
-            // getApplicationContext() is key, it keeps you from leaking the
-            // Activity or BroadcastReceiver if someone passes one in.
             requestQueue = Volley.newRequestQueue(ctx.getApplicationContext());
         }
         return requestQueue;
@@ -115,16 +113,6 @@ public class VolleySingleton {
                         List<RubbishItem> rubbishItemList = new ArrayList<>();
                         if (response.length() > 0) {
                              rubbishItemList = Arrays.asList(gson.fromJson(response.toString(), RubbishItem[].class));
-                            /* TODO : suppression du code mort
-                               for (RubbishItem rubbishItem : rubbishItemList) {
-                                // GOT THE OBJECT of PEOPLE
-                                String title = rubbishItem.getTitle();
-                                String description = rubbishItem.getDescription();
-                                String sumRubbish = rubbishItem.getSumRubbish().toString();
-                                boolean collected = rubbishItem.isCollected();
-                                Double latitude = rubbishItem.getLatitude();
-                                Double longitude = rubbishItem.getLongitude();
-                            }*/
                         }
                         rubbishListener.accept(rubbishItemList);
                     }
@@ -198,6 +186,59 @@ public class VolleySingleton {
                             collectPointItems = Arrays.asList(gson.fromJson(response.toString(), CollectPointItem[].class));
                         }
                         collectPointListener.accept(collectPointItems);
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        });
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    public void getAllUsers(final Consumer<List<User>> userListener) {
+        String url = REQUEST_URL + "users";
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        final Gson gson = gsonBuilder.create();
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        List<User> usersList = new ArrayList<>();
+                        if (response.length() > 0) {
+                            usersList = Arrays.asList(gson.fromJson(response.toString(), User[].class));
+                        }
+                        userListener.accept(usersList);
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        });
+        requestQueue.add(jsonArrayRequest);
+    }
+    public void getOneUser(final Consumer<List<User>> userListener) {
+        String url = REQUEST_URL + "users";
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        final Gson gson = gsonBuilder.create();
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        List<User> usersList = new ArrayList<>();
+                        if (response.length() > 0) {
+                            usersList = Arrays.asList(gson.fromJson(response.toString(), User[].class));
+                        }
+                        userListener.accept(usersList);
                     }
                 }, new Response.ErrorListener() {
 
