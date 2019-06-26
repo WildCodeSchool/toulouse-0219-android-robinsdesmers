@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 
+import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.VolleySingleton;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
@@ -57,6 +59,15 @@ public class CollectPointInfosActivity extends AppCompatActivity {
             public void onClick(View v) {
                 collectPointItem.setDescription(getString(R.string.decheterie));
                 user.setScore(SCORE_COLLECT_POINT);
+            }
+        });
+
+        btSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
+                VolleySingleton.getInstance(CollectPointInfosActivity.this).postRubbish(collectPointItem, user);
+                startActivity(intent);
             }
         });
     }
