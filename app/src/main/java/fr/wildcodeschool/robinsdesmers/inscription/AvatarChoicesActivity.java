@@ -21,14 +21,15 @@ public class AvatarChoicesActivity extends AppCompatActivity {
     ImageSwitcher imageSwitcher;
     Integer[] images = {R.drawable.ic_essai_avatar, R.drawable.icon_cat_v1, R.drawable.icon_cat_v2, R.drawable.icon_cat_v3};
     int index = 0;
-    /*Intent intent = getIntent();
-    User user = intent.getParcelableExtra("user");*/
-
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choices_avatar);
+
+        Intent intent = getIntent();
+        user = intent.getParcelableExtra("user");
 
         imageSwitcher = findViewById(R.id.imSwitcherAvatars);
 
@@ -78,21 +79,11 @@ public class AvatarChoicesActivity extends AppCompatActivity {
         imBtAvatarChoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //user.setAvatar(images[index]);
-               /* if(index == 0){
-                    user.setAvatar(R.drawable.ic_essai_avatar);
-                }
-                if(index == 1){
-                    user.setAvatar(R.drawable.icon_cat_v1);
-                }
-                if(index == 2){
-                    user.setAvatar(R.drawable.ic_essai_avatar);
-                }
-                if(index == 3){
-                    user.setAvatar(R.drawable.ic_essai_avatar);
-                }*/
+                user.setAvatar(images[index]);
 
                 Intent goToMaps = new Intent(AvatarChoicesActivity.this, MapsActivity.class);
+                goToMaps.putExtra("user", user);
+                //TODO : appel à volley
                 startActivity(goToMaps);
             }
         });

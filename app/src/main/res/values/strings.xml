@@ -161,4 +161,6 @@
     <string name="description_megots">%s%s %s</string>
     <string name="description_metaux">%s%s %s</string>
     <string name="description_btl_plastiques">%s%s %s</string>
+    <string name="prenom">Prénom</string>
+    <string name="nom">Nom</string>
 </resources>

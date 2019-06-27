@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import fr.wildcodeschool.robinsdesmers.DepartmentSingleton;
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.model.Department;
 
@@ -40,7 +39,7 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
         return departments.size();
     }
 
-    class DepartmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class DepartmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private View container;
         private TextView tvName;
         private TextView tvNumber;
@@ -59,8 +58,6 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
                 departement.setSelected(false);
             }
             departments.get(getAdapterPosition()).setSelected(true);
-            DepartmentSingleton department2 = DepartmentSingleton.getInstance();
-            department2.setDepartmentInstance(new Department(departments.get(getAdapterPosition()).getName(), departments.get(getAdapterPosition()).getNumber()));
             notifyDataSetChanged();
         }
     }
