@@ -207,7 +207,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (RubbishItem rubbish : rubbishItems) {
                     final LatLng rubbishCoord = new LatLng(rubbish.getLatitude(), rubbish.getLongitude());
                     if (!rubbish.isCollected()) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription() + rubbish.getSumRubbish()));
+                        mMap.addMarker(new MarkerOptions()
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish_simple))
+                                .position(rubbishCoord)
+                                .title(rubbish.getTitle())
+                                .snippet(getString(R.string.somme_totale) + rubbish.getSumRubbish() + " " + rubbish.getDescription()));
                     }
                 }
             }
@@ -218,7 +222,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void accept(List<CollectPointItem> collectPointItems) {
                 for (CollectPointItem collectPoint : collectPointItems) {
                     final LatLng collectPointCoord = new LatLng(collectPoint.getLatitude(), collectPoint.getLongitude());
-                    mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.new_rubbish)).position(collectPointCoord).title(collectPoint.getTitle()).snippet(collectPoint.getDescription()));
+                    mMap.addMarker(new MarkerOptions()
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.new_rubbish))
+                            .position(collectPointCoord)
+                            .title(collectPoint.getTitle())
+                            .snippet(collectPoint.getDescription()));
                 }
             }
         });

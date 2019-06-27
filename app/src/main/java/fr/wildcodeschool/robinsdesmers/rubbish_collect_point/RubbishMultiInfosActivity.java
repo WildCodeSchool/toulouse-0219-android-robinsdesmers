@@ -2,6 +2,7 @@ package fr.wildcodeschool.robinsdesmers.rubbish_collect_point;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -68,40 +69,40 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 final String strBtlPlastique = etBtlPlastique.getText().toString();
-                if(!strBtlPlastique.isEmpty()) {
-                    rubbishItem.setDescription(rubbishItem.getDescription() + strBtlPlastique + " " + getString(R.string.bouteilles_plastique));
+                if (!strBtlPlastique.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.description_btl_plastiques), rubbishItem.getDescription(), strBtlPlastique, getString(R.string.bouteilles_plastique)));
                     Integer nbBtlPlastique = Integer.parseInt(strBtlPlastique);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbBtlPlastique);
                     user.setScore(user.getScore() + (nbBtlPlastique * SCORE_DECLARED));
                 }
 
                 final String strMetaux = etMetal.getText().toString();
-                if(!strMetaux.isEmpty()) {
-                    rubbishItem.setDescription(rubbishItem.getDescription() + strMetaux + " " + getString(R.string.metaux));
+                if (!strMetaux.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.description_metaux), rubbishItem.getDescription(), strMetaux, getString(R.string.metaux)));
                     Integer nbMetaux = Integer.parseInt(strMetaux);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbMetaux);
                     user.setScore(user.getScore() + (nbMetaux * SCORE_DECLARED));
                 }
 
                 final String strMegots = etMegot.getText().toString();
-                if(!strMegots.isEmpty()) {
-                    rubbishItem.setDescription(rubbishItem.getDescription() + strMegots + " " + getString(R.string.m_gots));
+                if (!strMegots.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.description_megots), rubbishItem.getDescription(), strMegots, getString(R.string.m_gots)));
                     Integer nbMegots = Integer.parseInt(strMegots);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbMegots);
                     user.setScore(user.getScore() + (nbMegots * SCORE_DECLARED));
                 }
 
                 final String strPlastique = etPlastique.getText().toString();
-                if(!strPlastique.isEmpty()) {
-                    rubbishItem.setDescription(rubbishItem.getDescription() + strPlastique + " " + getString(R.string.autres_plastique));
+                if (!strPlastique.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.descripiton_autres_plastiques), rubbishItem.getDescription(), strPlastique, getString(R.string.autres_plastique)));
                     Integer nbPlastiques = Integer.parseInt(strPlastique);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbPlastiques);
                     user.setScore(user.getScore() + (nbPlastiques * SCORE_DECLARED));
                 }
 
                 final String strCartons = etCarton.getText().toString();
-                if(!strCartons.isEmpty()) {
-                    rubbishItem.setDescription(rubbishItem.getDescription() + strCartons + " " + getString(R.string.cartons));
+                if (!strCartons.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.descripiton_cartons), rubbishItem.getDescription(), strCartons, getString(R.string.cartons)));
                     Integer nbCartons = Integer.parseInt(strCartons);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbCartons);
                     user.setScore(user.getScore() + (nbCartons * SCORE_DECLARED));
@@ -109,24 +110,24 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                 }
 
                 final String strVerres = etVerre.getText().toString();
-                if(!strVerres.isEmpty()) {
-                    rubbishItem.setDescription(rubbishItem.getDescription() + strVerres + " " + getString(R.string.verres));
+                if (!strVerres.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.descripiton_verres), rubbishItem.getDescription(), strVerres, getString(R.string.verres)));
                     Integer nbVerres = Integer.parseInt(strVerres);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbVerres);
                     user.setScore(user.getScore() + (nbVerres * SCORE_DECLARED));
                 }
 
                 final String strTissus = etTissus.getText().toString();
-                if(!strTissus.isEmpty()) {
-                    rubbishItem.setDescription(rubbishItem.getDescription() + strTissus + " " + getString(R.string.tissus));
+                if (!strTissus.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.descripiton_tissus), rubbishItem.getDescription(), strTissus, getString(R.string.tissus)));
                     Integer nbrTissus = Integer.parseInt(strTissus);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbrTissus);
                     user.setScore(user.getScore() + (nbrTissus * SCORE_DECLARED));
                 }
 
                 final String strAutres = etAutre.getText().toString();
-                if(!strAutres.isEmpty()) {
-                    rubbishItem.setDescription(rubbishItem.getDescription() + strAutres + " " + getString(R.string.autres));
+                if (!strAutres.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.descripiton_autres), rubbishItem.getDescription(), strAutres, getString(R.string.autres)));
                     Integer nbrAutres = Integer.parseInt(strAutres);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbrAutres);
                     user.setScore(user.getScore() + (nbrAutres * SCORE_DECLARED));
@@ -137,9 +138,18 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     user.setScore(user.getScore() + (rubbishItem.getSumRubbish() * SCORE_COLLECTED));
                 }
 
-                Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
-                startActivity(intent);
-                VolleySingleton.getInstance(RubbishMultiInfosActivity.this).postRubbish(rubbishItem, user);
+                if (!btSurTerre.isSelected() && !btSurMer.isSelected() || rubbishItem.getSumRubbish() == 0) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RubbishMultiInfosActivity.this);
+                    builder.setTitle(R.string.merci_de);
+                    builder.setMessage(R.string.remplir);
+                    builder.setPositiveButton(R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+                    Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
+                    startActivity(intent);
+                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).postRubbish(rubbishItem, user);
+                }
             }
         });
     }

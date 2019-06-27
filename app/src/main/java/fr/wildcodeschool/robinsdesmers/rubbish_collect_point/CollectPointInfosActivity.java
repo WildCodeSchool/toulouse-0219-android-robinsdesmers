@@ -40,82 +40,58 @@ public class CollectPointInfosActivity extends AppCompatActivity {
         final CheckBox cbAutres = findViewById(R.id.cbAutres);
 
         ImageButton btSend = findViewById(R.id.btSend);
-
-        cbBenne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectPointItem.setTitle(getString(R.string.benne_de_revalorisation));
-                user.setScore(SCORE_COLLECT_POINT);
-            }
-        });
-        cbPoubelle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectPointItem.setTitle(getString(R.string.poubelle_classique));
-                user.setScore(SCORE_COLLECT_POINT);
-            }
-        });
-        cbPoubelleTri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectPointItem.setTitle(getString(R.string.poubelle_de_tri));
-                user.setScore(SCORE_COLLECT_POINT);
-            }
-
-        });
-        cbDechetterie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectPointItem.setTitle(getString(R.string.decheterie));
-                user.setScore(SCORE_COLLECT_POINT);
-            }
-        });
-        cbClassique.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectPointItem.setDescription(getString(R.string.classique));
-            }
-        });
-        cbMegotPdc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectPointItem.setDescription(getString(R.string.m_got));
-            }
-        });
-        cbRecyclable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectPointItem.setDescription(getString(R.string.recyclable));
-            }
-        });
-        cbCanette.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectPointItem.setDescription(getString(R.string.canettes));
-            }
-        });
-        cbVerre.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectPointItem.setDescription(getString(R.string.verre));
-            }
-        });
-        cbPlastique.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectPointItem.setDescription(getString(R.string.plastique));
-            }
-        });
-        cbAutres.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectPointItem.setDescription(getString(R.string.autres));
-            }
-        });
-
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (cbBenne.isChecked()) {
+                    collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation));
+                    user.setScore(user.getScore() + SCORE_COLLECT_POINT);
+                }
+
+                if (cbPoubelle.isChecked()) {
+                    collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.poubelle_classique));
+                    user.setScore(user.getScore() + SCORE_COLLECT_POINT);
+                }
+
+                if (cbPoubelleTri.isChecked()) {
+                    collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation));
+                    user.setScore(user.getScore() + SCORE_COLLECT_POINT);
+                }
+
+                if (cbDechetterie.isChecked()) {
+                    collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation));
+                    user.setScore(user.getScore() + SCORE_COLLECT_POINT);
+                }
+
+                if (cbClassique.isChecked()) {
+                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.classique));
+                }
+
+                if (cbMegotPdc.isChecked()) {
+                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.m_got));
+                }
+
+                if (cbRecyclable.isChecked()) {
+                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.recyclable));
+                }
+
+                if (cbCanette.isChecked()) {
+                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.canettes));
+                }
+
+                if (cbVerre.isChecked()) {
+                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.verre));
+                }
+
+                if (cbPlastique.isChecked()) {
+                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.plastique));
+                }
+
+                if (cbAutres.isChecked()) {
+                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.autres));
+                }
+
                 Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
                 startActivity(intent);
                 VolleySingleton.getInstance(CollectPointInfosActivity.this).postCollectPoint(collectPointItem, user);

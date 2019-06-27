@@ -148,5 +148,17 @@
     <string name="vous_g_olocalisez">Vous géolocalisez :</string>
     <string name="femme">Femme</string>
     <string name="homme">Homme</string>
-    <string name="space">%d %s</string>
+    <string name="sss">%s%s%s</string>
+    <string name="remplir">Remplir tous les champs</string>
+    <string name="merci_de">Merci de :</string>
+    <string name="ok">OK</string>
+    <string name="somme_totale">Somme totale de déchets:</string>
+    <string name="descripiton_verres">%s%s %s</string>
+    <string name="descripiton_tissus">%s%s %s</string>
+    <string name="descripiton_autres">%s%s %s</string>
+    <string name="descripiton_cartons">%s%s %s</string>
+    <string name="descripiton_autres_plastiques">%s%s %s</string>
+    <string name="description_megots">%s%s %s</string>
+    <string name="description_metaux">%s%s %s</string>
+    <string name="description_btl_plastiques">%s%s %s</string>
 </resources>
