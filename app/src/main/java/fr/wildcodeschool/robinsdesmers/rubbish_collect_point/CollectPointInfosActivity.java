@@ -2,6 +2,7 @@ package fr.wildcodeschool.robinsdesmers.rubbish_collect_point;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
@@ -92,9 +93,18 @@ public class CollectPointInfosActivity extends AppCompatActivity {
                     collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.autres));
                 }
 
-                Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
-                startActivity(intent);
-                VolleySingleton.getInstance(CollectPointInfosActivity.this).postCollectPoint(collectPointItem, user);
+                if (collectPointItem.getTitle().isEmpty() || collectPointItem.getDescription().isEmpty()) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CollectPointInfosActivity.this);
+                    builder.setTitle(R.string.merci_de);
+                    builder.setMessage(R.string.remplir);
+                    builder.setPositiveButton(R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+                    Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
+                    startActivity(intent);
+                    VolleySingleton.getInstance(CollectPointInfosActivity.this).postCollectPoint(collectPointItem, user);
+                }
             }
         });
     }
