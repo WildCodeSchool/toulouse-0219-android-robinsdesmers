@@ -168,7 +168,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:button="@drawable/checkbox_button"
-            android:text="Tissus"
+            android:text="@string/tissus"
             android:textColor="@color/colorWhite"
             android:textSize="18sp"
             android:textStyle="bold"
