@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.util.Consumer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -13,6 +14,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.List;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 import fr.wildcodeschool.robinsdesmers.model.User;
@@ -55,24 +58,13 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference userRef = database.getReference("User");
-        userRef.addValueEventListener(new ValueEventListener() {
-
+        VolleySingleton.getInstance(MainActivity.this).getAllUsers(new Consumer<List<User>>() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                int score = 0;
-                for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
-                    User user = markerSnapshot.getValue(User.class);
-
-                    score += user.getScore();
+            public void accept(List<User> users) {
+                for (User user : users) {
                     TextView tvScore = findViewById(R.id.tvUserScore);
-                    tvScore.setText(String.valueOf(score));
+                    tvScore.setText(String.valueOf(user.getScore()));
                 }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
             }
         });
     }
