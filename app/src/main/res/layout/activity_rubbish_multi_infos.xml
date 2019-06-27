@@ -334,7 +334,7 @@
         android:ems="2"
         android:gravity="center"
         android:hint="0"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/etAutres"
         app:layout_constraintEnd_toStartOf="@+id/tvTissus"
@@ -449,6 +449,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cbDechetsRamasses"
-        app:srcCompat="@drawable/empreinte" />
+        app:srcCompat="@drawable/btn_empreinte" />
 
 </android.support.constraint.ConstraintLayout>

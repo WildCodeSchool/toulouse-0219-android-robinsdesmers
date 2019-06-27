@@ -2,26 +2,42 @@ package fr.wildcodeschool.robinsdesmers.inscription;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class UserCategoryActivity extends AppCompatActivity {
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_category);
 
+        Intent intent = getIntent();
+        user = intent.getParcelableExtra("user");
+
         ImageButton btSend = findViewById(R.id.imBtRegisterCategory);
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserCategoryActivity.this, UserDescriptionActivity.class);
-                startActivity(intent);
+                if (user.getCategory().isEmpty()) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(UserCategoryActivity.this);
+                    builder.setTitle(R.string.merci_de);
+                    builder.setMessage(R.string.remplir);
+                    builder.setPositiveButton(R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+                    Intent intent = new Intent(UserCategoryActivity.this, UserDescriptionActivity.class);
+                    intent.putExtra("user", user);
+                    startActivity(intent);
+                }
             }
         });
         final Button btCitizen = findViewById(R.id.btCategoryCitizen);
@@ -32,6 +48,7 @@ public class UserCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btCitizen.setSelected(true);
+                user.setCategory(getString(R.string.citoyen));
                 btNavigator.setSelected(false);
                 btEcosystem.setSelected(false);
             }
@@ -41,6 +58,7 @@ public class UserCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btNavigator.setSelected(true);
+                user.setCategory(getString(R.string.navigateur));
                 btCitizen.setSelected(false);
                 btEcosystem.setSelected(false);
             }
@@ -50,6 +68,7 @@ public class UserCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btEcosystem.setSelected(true);
+                user.setCategory(getString(R.string.ecosysteme));
                 btCitizen.setSelected(false);
                 btNavigator.setSelected(false);
             }

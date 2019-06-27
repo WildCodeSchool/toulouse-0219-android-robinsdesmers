@@ -33,7 +33,7 @@
     <string name="dechet_seul">Déchet seul</string>
     <string name="amas_de_dechets">Amas de déchets</string>
     <string name="point_de_collecte">Point de collecte</string>
-    <string name="bouteille">Bouteille</string>
+    <string name="bouteille">Bouteille plastique</string>
     <string name="metaux">Métaux</string>
     <string name="verre">Verre</string>
     <string name="verres">Verres</string>
@@ -148,6 +148,19 @@
     <string name="vous_g_olocalisez">Vous géolocalisez :</string>
     <string name="femme">Femme</string>
     <string name="homme">Homme</string>
+    <string name="sss">%s%s%s</string>
+    <string name="remplir">Remplir tous les champs</string>
+    <string name="merci_de">Merci de :</string>
+    <string name="ok">OK</string>
+    <string name="somme_totale">Somme totale de déchets:</string>
+    <string name="descripiton_verres">%s%s %s</string>
+    <string name="descripiton_tissus">%s%s %s</string>
+    <string name="descripiton_autres">%s%s %s</string>
+    <string name="descripiton_cartons">%s%s %s</string>
+    <string name="descripiton_autres_plastiques">%s%s %s</string>
+    <string name="description_megots">%s%s %s</string>
+    <string name="description_metaux">%s%s %s</string>
+    <string name="description_btl_plastiques">%s%s %s</string>
     <string name="prenom">Prénom</string>
     <string name="nom">Nom</string>
 </resources>

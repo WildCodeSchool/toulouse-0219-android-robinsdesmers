@@ -6,7 +6,7 @@ public class Department {
     private String number;
     private boolean selected;
 
-    public Department() {
+    public Department(Department department) {
 
     }
 

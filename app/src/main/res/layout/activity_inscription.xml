@@ -23,6 +23,7 @@
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/etNameRegister"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/border"
@@ -47,6 +48,7 @@
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/etFirstNameRegister"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/border"
@@ -71,7 +73,7 @@
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
-
+            android:id="@+id/etMailRegister"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/border"
@@ -96,6 +98,7 @@
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/etPasswordRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border"
@@ -116,7 +119,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordRegister"
-        app:srcCompat="@mipmap/ic_launcher_button" />
+        app:srcCompat="@drawable/btn_empreinte" />
 
     <TextView
         android:id="@+id/tvInscripiton"

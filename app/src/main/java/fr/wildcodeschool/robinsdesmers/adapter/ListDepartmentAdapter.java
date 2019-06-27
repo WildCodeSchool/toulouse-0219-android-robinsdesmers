@@ -39,7 +39,7 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
         return departments.size();
     }
 
-    class DepartmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class DepartmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private View container;
         private TextView tvName;
         private TextView tvNumber;

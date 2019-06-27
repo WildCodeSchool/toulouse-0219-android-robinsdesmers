@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -35,6 +36,7 @@ import java.util.GregorianCalendar;
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.adapter.ListDepartmentAdapter;
 import fr.wildcodeschool.robinsdesmers.model.Department;
+import fr.wildcodeschool.robinsdesmers.model.User;
 
 
 public class UserDetailsActivity extends AppCompatActivity {
@@ -42,13 +44,15 @@ public class UserDetailsActivity extends AppCompatActivity {
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private String gender;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
+        Intent intent = getIntent();
+        user = intent.getParcelableExtra("user");
         mDisplayDate = findViewById(R.id.dateOfBirth);
-
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +78,7 @@ public class UserDetailsActivity extends AppCompatActivity {
                 Calendar calendar = new GregorianCalendar(year, month, dayOfMonth);
                 Date date = calendar.getTime();
                 mDisplayDate.setText(format.format(date));
+                user.setDateOfBirth(format.format(date));
             }
         };
         final ArrayList<Department> departments = new ArrayList<>();
@@ -95,14 +100,11 @@ public class UserDetailsActivity extends AppCompatActivity {
                                 Department department = new Department(name, code);
                                 departments.add(department);
                             }
-
                             final RecyclerView rvListDepartments = findViewById(R.id.rvListDepartments);
-
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(UserDetailsActivity.this, LinearLayoutManager.VERTICAL, false);
                             rvListDepartments.setLayoutManager(layoutManager);
                             final ListDepartmentAdapter adapter = new ListDepartmentAdapter(departments);
                             rvListDepartments.setAdapter(adapter);
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -122,8 +124,18 @@ public class UserDetailsActivity extends AppCompatActivity {
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(UserDetailsActivity.this, UserCategoryActivity.class);
-                startActivity(intent);
+                if (user.getGender().isEmpty() || user.getDateOfBirth().isEmpty()) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(UserDetailsActivity.this);
+                    builder.setTitle(R.string.merci_de);
+                    builder.setMessage(R.string.remplir);
+                    builder.setPositiveButton(R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+                    Intent intent = new Intent(UserDetailsActivity.this, UserCategoryActivity.class);
+                    intent.putExtra("user", user);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -133,12 +145,13 @@ public class UserDetailsActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.radioBtFemale:
                 if (checked)
-                    //TODO getGender
                     gender = "Femme";
+                user.setGender(gender);
                 break;
             case R.id.radioBtMale:
                 if (checked)
                     gender = "Homme";
+                user.setGender(gender);
                 break;
         }
     }
