@@ -5,23 +5,34 @@ import android.os.Parcelable;
 
 public class CollectPointItem implements Parcelable {
 
+    public static final Creator<CollectPointItem> CREATOR = new Creator<CollectPointItem>() {
+        @Override
+        public CollectPointItem createFromParcel(Parcel in) {
+            return new CollectPointItem(in);
+        }
+
+        @Override
+        public CollectPointItem[] newArray(int size) {
+            return new CollectPointItem[size];
+        }
+    };
+
     private Long id;
     private String title;
     private String description;
     private Integer sumCollectPoint;
-    private double latitude;
-    private double longitude;
+    private Double latitude;
+    private Double longitude;
 
-    public CollectPointItem(Long id, String title, String description, Integer sumCollectPoint, double latitude, double longitude) {
-        this.id = id;
+    public CollectPointItem() {
+    }
+
+    public CollectPointItem(String title, String description, Integer sumCollectPoint, Double latitude, Double longitude) {
         this.title = title;
         this.description = description;
         this.sumCollectPoint = sumCollectPoint;
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public CollectPointItem() {
     }
 
     protected CollectPointItem(Parcel in) {
@@ -37,45 +48,16 @@ public class CollectPointItem implements Parcelable {
         } else {
             sumCollectPoint = in.readInt();
         }
-        latitude = in.readDouble();
-        longitude = in.readDouble();
-    }
-
-    public static final Creator<CollectPointItem> CREATOR = new Creator<CollectPointItem>() {
-        @Override
-        public CollectPointItem createFromParcel(Parcel in) {
-            return new CollectPointItem(in);
-        }
-
-        @Override
-        public CollectPointItem[] newArray(int size) {
-            return new CollectPointItem[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        if (id == null) {
-            dest.writeByte((byte) 0);
+        if (in.readByte() == 0) {
+            latitude = null;
         } else {
-            dest.writeByte((byte) 1);
-            dest.writeLong(id);
+            latitude = in.readDouble();
         }
-        dest.writeString(title);
-        dest.writeString(description);
-        if (sumCollectPoint == null) {
-            dest.writeByte((byte) 0);
+        if (in.readByte() == 0) {
+            longitude = null;
         } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(sumCollectPoint);
+            longitude = in.readDouble();
         }
-        dest.writeDouble(latitude);
-        dest.writeDouble(longitude);
     }
 
     public Long getId() {
@@ -110,23 +92,54 @@ public class CollectPointItem implements Parcelable {
         this.sumCollectPoint = sumCollectPoint;
     }
 
-    public double getLatitude() {
+    public Double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public Double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
-    public static Creator<CollectPointItem> getCREATOR() {
-        return CREATOR;
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(id);
+        }
+        dest.writeString(title);
+        dest.writeString(description);
+        if (sumCollectPoint == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(sumCollectPoint);
+        }
+        if (latitude == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(latitude);
+        }
+        if (longitude == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(longitude);
+        }
     }
 }

@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
@@ -104,7 +105,6 @@ public class VolleySingleton {
         String url = REQUEST_URL + "rubbishes";
         GsonBuilder gsonBuilder = new GsonBuilder();
         final Gson gson = gsonBuilder.create();
-        //final JSONObject jsonObject = null;
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET, url, null,
@@ -127,6 +127,77 @@ public class VolleySingleton {
                             }*/
                         }
                         rubbishListener.accept(rubbishItemList);
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        });
+        requestQueue.add(jsonArrayRequest);
+    }
+
+    public void postCollectPoint(CollectPointItem collectPointItem, User user) {
+
+        String url = REQUEST_URL + "users/" + user.getId() + "/collectPoints";
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        final Gson gson = gsonBuilder.create();
+        final String requestBody = gson.toJson(collectPointItem);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                url, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.i("Response", String.valueOf(response));
+                CollectPointItem collectPointItem1 = gson.fromJson(response.toString(), CollectPointItem.class);
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                return headers;
+            }
+
+            @Override
+            public byte[] getBody() {
+                try {
+                    return requestBody == null ? null : requestBody.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s",
+                            requestBody, "utf-8");
+                    return null;
+                }
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    public void getAllCollectPoint(final Consumer<List<CollectPointItem>> collectPointListener) {
+        String url = REQUEST_URL + "collectPoints";
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        final Gson gson = gsonBuilder.create();
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+                Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        List<CollectPointItem> collectPointItems = new ArrayList<>();
+                        if (response.length() > 0) {
+                            collectPointItems = Arrays.asList(gson.fromJson(response.toString(), CollectPointItem[].class));
+                        }
+                        collectPointListener.accept(collectPointItems);
                     }
                 }, new Response.ErrorListener() {
 
