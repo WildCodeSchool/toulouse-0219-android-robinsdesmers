@@ -2,6 +2,7 @@ package fr.wildcodeschool.robinsdesmers.rubbish_collect_point;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -65,9 +66,18 @@ public class RubbishInfosActivity extends AppCompatActivity {
                     user.setScore(user.getScore() + SCORE_RUBBISH_COLLECTED);
                 }
                 user.setScore(user.getScore() + SCORE_RUBBISH);
-                Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
-                startActivity(intent);
-                VolleySingleton.getInstance(RubbishInfosActivity.this).postRubbish(rubbishItem, user);
+                if (!btSurTerre.isSelected() && !btSurMer.isSelected() || rubbishItem.getSumRubbish() == 0) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RubbishInfosActivity.this);
+                    builder.setTitle(R.string.merci_de);
+                    builder.setMessage(R.string.remplir);
+                    builder.setPositiveButton(R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+                    Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
+                    startActivity(intent);
+                    VolleySingleton.getInstance(RubbishInfosActivity.this).postRubbish(rubbishItem, user);
+                }
             }
         });
     }
