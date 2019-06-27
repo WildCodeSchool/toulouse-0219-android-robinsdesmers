@@ -43,6 +43,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final int REQUEST_LOCATION = 4322;
     private static final float DEFAULT_ZOOM = 16.0f;
     private static final int MIN_DISTANCE = 2;
+    private UserSingleton userSingleton = UserSingleton.getUserInstance();
     private GoogleMap mMap;
     private boolean mMapInit = false;
     private LocationManager mLocationManager = null;
@@ -124,6 +125,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onSuccess(Location location) {
                 setUserLocation(location);
+                userSingleton.getUser().setLatitude(location.getLatitude());
+                userSingleton.getUser().setLongitude(location.getLongitude());
+                userSingleton.getUser().setConnected(true);
             }
         });
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);

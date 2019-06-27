@@ -7,7 +7,6 @@ public class Department {
     private boolean selected;
 
     public Department(Department department) {
-
     }
 
     public Department(String nameDepartment, String number) {
