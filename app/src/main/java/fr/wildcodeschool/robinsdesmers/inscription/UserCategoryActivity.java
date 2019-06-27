@@ -9,24 +9,22 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import fr.wildcodeschool.robinsdesmers.R;
-import fr.wildcodeschool.robinsdesmers.model.User;
+import fr.wildcodeschool.robinsdesmers.UserSingleton;
 
 public class UserCategoryActivity extends AppCompatActivity {
-    private User user;
+
+    private UserSingleton userSingleton = UserSingleton.getUserInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_category);
 
-        Intent intent = getIntent();
-        user = intent.getParcelableExtra("user");
-
         ImageButton btSend = findViewById(R.id.imBtRegisterCategory);
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user.getCategory().isEmpty()) {
+                if (userSingleton.getUser().getCategory().isEmpty()) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(UserCategoryActivity.this);
                     builder.setTitle(R.string.merci_de);
                     builder.setMessage(R.string.remplir);
@@ -35,7 +33,6 @@ public class UserCategoryActivity extends AppCompatActivity {
                     dialog.show();
                 } else {
                     Intent intent = new Intent(UserCategoryActivity.this, UserDescriptionActivity.class);
-                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
             }
@@ -48,7 +45,7 @@ public class UserCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btCitizen.setSelected(true);
-                user.setCategory(getString(R.string.citoyen));
+                userSingleton.getUser().setCategory(getString(R.string.citoyen));
                 btNavigator.setSelected(false);
                 btEcosystem.setSelected(false);
             }
@@ -58,7 +55,7 @@ public class UserCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btNavigator.setSelected(true);
-                user.setCategory(getString(R.string.navigateur));
+                userSingleton.getUser().setCategory(getString(R.string.navigateur));
                 btCitizen.setSelected(false);
                 btEcosystem.setSelected(false);
             }
@@ -68,7 +65,7 @@ public class UserCategoryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btEcosystem.setSelected(true);
-                user.setCategory(getString(R.string.ecosysteme));
+                userSingleton.getUser().setCategory(getString(R.string.ecosysteme));
                 btCitizen.setSelected(false);
                 btNavigator.setSelected(false);
             }
