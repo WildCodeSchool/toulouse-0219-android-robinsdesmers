@@ -19,7 +19,7 @@ import fr.wildcodeschool.robinsdesmers.UserSingleton;
 public class AvatarChoicesActivity extends AppCompatActivity {
     ImageButton imBtNext, imBtPrevious;
     ImageSwitcher imageSwitcher;
-    Integer[] images = {R.drawable.ic_essai_avatar, R.drawable.icon_cat_v1, R.drawable.icon_cat_v2, R.drawable.icon_cat_v3};
+    Integer[] images = {R.drawable.persohero, R.drawable.persoheroine, R.drawable.persomarin, R.drawable.icon_cat_v3};
     int index = 0;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
 

@@ -84,6 +84,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_button" />
+        app:srcCompat="@drawable/btn_empreinte" />
 
 </android.support.constraint.ConstraintLayout>
