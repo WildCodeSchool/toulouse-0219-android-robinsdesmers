@@ -2,6 +2,7 @@ package fr.wildcodeschool.robinsdesmers.rubbish_collect_point;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.util.Consumer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -147,9 +148,14 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 } else {
-                    Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
-                    startActivity(intent);
-                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).postRubbish(rubbishItem, userSingleton.getUser());
+
+                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).postRubbish(rubbishItem, userSingleton.getUser(), new Consumer<RubbishItem>() {
+                        @Override
+                        public void accept(RubbishItem rubbishItem) {
+                            Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
         });

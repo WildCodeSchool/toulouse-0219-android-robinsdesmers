@@ -2,9 +2,13 @@ package fr.wildcodeschool.robinsdesmers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.util.Consumer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class ScreenSplashActivity extends AppCompatActivity {
     final int MILLIS = 2000;
@@ -22,6 +26,13 @@ public class ScreenSplashActivity extends AppCompatActivity {
         rotate.setDuration(DURATION);
         imageView.startAnimation(rotate);
 
+        VolleySingleton.getInstance(ScreenSplashActivity.this).getOneUser(1l, new Consumer<User>() {
+            @Override
+            public void accept(User user) {
+                Toast.makeText(ScreenSplashActivity.this, user.getFirstName(), Toast.LENGTH_SHORT).show();
+                UserSingleton.getUserInstance().registerUser(user);
+            }
+        });
         Thread myThread = new Thread() {
 
             public void run() {

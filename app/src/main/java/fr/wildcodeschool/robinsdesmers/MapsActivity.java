@@ -211,7 +211,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (RubbishItem rubbish : rubbishItems) {
                     final LatLng rubbishCoord = new LatLng(rubbish.getLatitude(), rubbish.getLongitude());
                     if (!rubbish.isCollected()) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.dechet)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
+                        Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.dechet)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
+                        marker.setTag(rubbish);
                     }
                 }
             }
@@ -234,7 +235,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Intent intent1 = new Intent(MapsActivity.this, CollectPointDescriptionActivity.class);
                     startActivity(intent1);
                 } else {
+                    RubbishItem rubbishItem = (RubbishItem) marker.getTag();
                     Intent intent = new Intent(MapsActivity.this, CollectRubbishActivity.class);
+                    intent.putExtra("rubbishId", rubbishItem.getId());
                     startActivity(intent);
                 }
             }

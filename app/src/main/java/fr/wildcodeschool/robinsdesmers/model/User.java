@@ -21,13 +21,8 @@ public class User implements Parcelable {
     private Double latitude;
     private Double longitude;
     private boolean connected;
-    private User user;
 
     public User() {
-    }
-
-    public User(User user) {
-        this.user = user;
     }
 
     public static Creator<User> getCREATOR() {
@@ -92,7 +87,6 @@ public class User implements Parcelable {
             longitude = in.readDouble();
         }
         connected = in.readByte() != 0;
-        user = in.readParcelable(User.class.getClassLoader());
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -235,14 +229,6 @@ public class User implements Parcelable {
         this.connected = connected;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -291,6 +277,5 @@ public class User implements Parcelable {
             dest.writeDouble(longitude);
         }
         dest.writeByte((byte) (connected ? 1 : 0));
-        dest.writeParcelable(user, flags);
     }
 }

@@ -20,7 +20,7 @@ public class UserSingleton {
     }
 
     public void registerUser(User newUser) {
-        user = new User(newUser);
+        user = newUser;
     }
 
     public void setUserLocation(Location location) {
@@ -29,6 +29,9 @@ public class UserSingleton {
     }
 
     public User getUser() {
+        if (user.getScore() == null) {
+            user.setScore(0);
+        }
         return user;
     }
 }
