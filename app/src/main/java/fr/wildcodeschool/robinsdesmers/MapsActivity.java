@@ -14,6 +14,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.util.Consumer;
 import android.view.MenuItem;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -27,22 +28,22 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.List;
+
+import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
+import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
+import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
+import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectPointDescriptionActivity;
+import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectRubbishActivity;
+import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.MarkerTypeActivity;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_LOCATION = 4322;
     private static final float DEFAULT_ZOOM = 16.0f;
     private static final int MIN_DISTANCE = 2;
+    private UserSingleton userSingleton = UserSingleton.getUserInstance();
     private GoogleMap mMap;
     private boolean mMapInit = false;
     private LocationManager mLocationManager = null;
@@ -64,7 +65,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
-                    Intent goToInfo = new Intent(MapsActivity.this, RecyclingAndSecurityActivity.class);
+                    Intent goToInfo = new Intent(MapsActivity.this, InformationActivity.class);
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
@@ -86,7 +87,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         checkPermission();
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
     }
 
     private void checkPermission() {
@@ -125,6 +125,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onSuccess(Location location) {
                 setUserLocation(location);
+                userSingleton.getUser().setLatitude(location.getLatitude());
+                userSingleton.getUser().setLongitude(location.getLongitude());
+                userSingleton.getUser().setConnected(true);
             }
         });
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -160,7 +163,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mLocationUser.setLatitude(lat);
             mLocationUser.setLongitude(lng);
 
-
             if (mMap != null && !mMapInit) {
                 mMapInit = true;
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, DEFAULT_ZOOM));
@@ -193,74 +195,49 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                 mMap.addMarker(markerOptions);
 
-                Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                Calendar calendar = new GregorianCalendar(year, month, day);
-                SimpleDateFormat d = new SimpleDateFormat("dd/MM/yyyy");
-                Date date = calendar.getTime();
-
-                final RubbishMarkers location = new RubbishMarkers(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
-                final CollectPoint collectPoint = new CollectPoint(latLng.latitude, latLng.longitude, "", "", d.format(date), "");
+                final RubbishItem rubbishItem = new RubbishItem("", "", 0, false, false, latLng.latitude, latLng.longitude);
+                final CollectPointItem collectPointItem = new CollectPointItem("", "", 1, latLng.latitude, latLng.longitude);
 
                 Intent intent = new Intent(MapsActivity.this, MarkerTypeActivity.class);
-                intent.putExtra("RubbishMarkers", location);
-                intent.putExtra("CollectPoint", collectPoint);
+                intent.putExtra("RubbishItem", rubbishItem);
+                intent.putExtra("CollectPointItem", collectPointItem);
                 startActivity(intent);
             }
         });
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference markersRef = database.getReference("RubbishMarkers");
-        DatabaseReference markerRef = database.getReference("CollectPoint");
-        markerRef.addValueEventListener(new ValueEventListener() {
 
+        VolleySingleton.getInstance(MapsActivity.this).getAllRubbish(new Consumer<List<RubbishItem>>() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
-                    CollectPoint locationMarker2 = markerSnapshot.getValue(CollectPoint.class);
-                    final LatLng locMarker = new LatLng(locationMarker2.getLatitude(), locationMarker2.getLongitude());
-                    if (!locationMarker2.notHere) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.collectpoint)).position(locMarker).title("CollectPoint"));
+            public void accept(List<RubbishItem> rubbishItems) {
+                for (RubbishItem rubbish : rubbishItems) {
+                    final LatLng rubbishCoord = new LatLng(rubbish.getLatitude(), rubbish.getLongitude());
+                    if (!rubbish.isCollected()) {
+                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.dechet)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
                     }
                 }
             }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
         });
 
-        markersRef.addValueEventListener(new ValueEventListener() {
-
+        VolleySingleton.getInstance(MapsActivity.this).getAllCollectPoint(new Consumer<List<CollectPointItem>>() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot markerSnapshot : dataSnapshot.getChildren()) {
-                    RubbishMarkers locationMarker = markerSnapshot.getValue(RubbishMarkers.class);
-                    final LatLng locMarker = new LatLng(locationMarker.getLatitude(), locationMarker.getLongitude());
-                    if (!locationMarker.isCollected) {
-                        mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.rubbish)).position(locMarker).title("RubbishMarker"));
-                    }
+            public void accept(List<CollectPointItem> collectPointItems) {
+                for (CollectPointItem collectPoint : collectPointItems) {
+                    final LatLng collectPointCoord = new LatLng(collectPoint.getLatitude(), collectPoint.getLongitude());
+                    mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.pointcollecte)).position(collectPointCoord).title(collectPoint.getTitle()).snippet(collectPoint.getDescription()));
                 }
             }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
         });
+
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                if (marker.getTitle().equals("CollectPoint")) {
+                if (marker.getTitle().equals("CollectPointItem")) {
                     Intent intent1 = new Intent(MapsActivity.this, CollectPointDescriptionActivity.class);
                     startActivity(intent1);
                 } else {
                     Intent intent = new Intent(MapsActivity.this, CollectRubbishActivity.class);
                     startActivity(intent);
                 }
-
             }
         });
     }
-
 }

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/vert_fonce"
+    tools:context=".AvatarChoiceActivity">
+
+    <TextView
+        android:id="@+id/tvPersonnalisationChoiceAvatar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/personnalisation"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvChoiceAvatar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:alpha="0.6"
+        android:gravity="center"
+        android:text="@string/choisis_ton_avatar"
+        android:textColor="@color/colorWhite"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPersonnalisationChoiceAvatar" />
+
+    <ImageButton
+        android:id="@+id/imBtPrevious"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:adjustViewBounds="true"
+        android:background="@color/vert_fonce"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toTopOf="@+id/imBtAvatarChoice"
+        app:layout_constraintEnd_toStartOf="@+id/imSwitcherAvatars"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_left" />
+
+    <ImageButton
+        android:id="@+id/imBtNext"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:adjustViewBounds="true"
+        android:background="@color/vert_fonce"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toTopOf="@+id/imBtAvatarChoice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imSwitcherAvatars"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_right" />
+
+    <ImageSwitcher
+        android:id="@+id/imSwitcherAvatars"
+        android:layout_width="172dp"
+        android:layout_height="359dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/imBtAvatarChoice"
+        app:layout_constraintEnd_toStartOf="@+id/imBtNext"
+        app:layout_constraintStart_toEndOf="@+id/imBtPrevious"
+        app:layout_constraintTop_toBottomOf="@+id/tvChoiceAvatar">
+
+    </ImageSwitcher>
+
+    <ImageButton
+        android:id="@+id/imBtAvatarChoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:background="@color/vert_fonce"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChoiceAvatar"
+        app:layout_constraintVertical_bias="0.819"
+        app:srcCompat="@drawable/btn_empreinte" />
+</android.support.constraint.ConstraintLayout>

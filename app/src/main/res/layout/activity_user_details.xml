@@ -5,27 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/vert_fonce"
-    tools:context=".UserDetailsActivity">
+    tools:context=".inscription.UserDetailsActivity">
 
     <TextView
         android:id="@+id/dateOfBirth"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
         android:background="@drawable/border"
         android:paddingLeft="20dp"
+        android:paddingTop="5dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="5dp"
         android:text="@string/date_de_naissance"
-        android:textSize="24sp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPersonnalisation" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <TextView
-        android:id="@+id/tvPersonnalisation"
+        android:id="@+id/tvPersonalisation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="@string/personnalisation"
         android:textColor="@color/colorWhite"
@@ -39,14 +45,13 @@
         android:id="@+id/tvTonDepartment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:alpha="0.6"
         android:gravity="center"
         android:text="@string/ton_departement"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateOfBirth" />
 
@@ -54,8 +59,8 @@
         android:id="@+id/rvListDepartments"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:background="@color/colorPrimaryDark"
         android:paddingTop="40dp"
         android:paddingBottom="40dp"
@@ -67,14 +72,46 @@
         tools:listitem="@layout/item_list_departments" />
 
     <ImageButton
-        android:background="@color/vert_fonce"
         android:id="@+id/imBtRegister2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:background="@color/vert_fonce"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@mipmap/ic_launcher_button" />
+        app:srcCompat="@drawable/btn_empreinte" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPersonalisation">
+
+        <RadioButton
+            android:id="@+id/radioBtFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:onClick="buttonchecked"
+            android:text="@string/femme"
+            android:textColor="@color/colorWhite"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:id="@+id/radioBtMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:onClick="buttonchecked"
+            android:text="@string/homme"
+            android:textColor="@color/colorWhite"
+            android:textSize="20dp" />
+
+    </RadioGroup>
 </android.support.constraint.ConstraintLayout>
