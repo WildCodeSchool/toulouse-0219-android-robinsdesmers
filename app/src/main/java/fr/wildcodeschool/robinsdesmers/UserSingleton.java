@@ -29,7 +29,7 @@ public class UserSingleton {
     }
 
     public User getUser() {
-        if( user.getScore() == null){
+        if (user.getScore() == null) {
             user.setScore(0);
         }
         return user;

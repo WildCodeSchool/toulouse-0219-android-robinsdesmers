@@ -24,7 +24,6 @@ public class RubbishInfosActivity extends AppCompatActivity {
     private static final Integer SCORE_RUBBISH_COLLECTED = 10;
     private RubbishItem rubbishItem;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
-    private User user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,8 +82,6 @@ public class RubbishInfosActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
-
-
                 }
             }
         });
