@@ -24,7 +24,7 @@ public class UserCategoryActivity extends AppCompatActivity {
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (userSingleton.getUser().getCategory().isEmpty()) {
+                if (userSingleton.getUser().getCategory() == null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(UserCategoryActivity.this);
                     builder.setTitle(R.string.merci_de);
                     builder.setMessage(R.string.remplir);

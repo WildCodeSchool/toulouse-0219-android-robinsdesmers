@@ -29,7 +29,8 @@
             android:background="@drawable/border"
             android:hint="@string/nom"
             android:inputType="text"
-            android:paddingLeft="20dp" />
+            android:paddingLeft="20dp"
+            android:textColor="@color/colorBlack" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -79,7 +80,8 @@
             android:background="@drawable/border"
             android:hint="@string/adresse_mail"
             android:inputType="textEmailAddress"
-            android:paddingLeft="20dp" />
+            android:paddingLeft="20dp"
+            android:textColorHighlight="@color/color_transparent" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -105,7 +107,8 @@
             android:hint="@string/mot_de_passe"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
-            android:paddingRight="20dp" />
+            android:paddingRight="20dp"
+            android:textColorHighlight="@color/color_transparent" />
     </android.support.design.widget.TextInputLayout>
 
     <ImageButton

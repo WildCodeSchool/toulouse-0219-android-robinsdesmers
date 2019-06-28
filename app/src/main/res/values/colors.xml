@@ -8,4 +8,5 @@
     <color name="orange">#FECB2E</color>
     <color name="vert_fonce">#0A5F59</color>
     <color name="colorBlack">#000000</color>
+    <color name="color_transparent">#00FFFFFF</color>
 </resources>

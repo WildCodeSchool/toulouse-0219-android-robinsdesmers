@@ -123,8 +123,8 @@ public class UserDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (userSingleton.getUser().getGender().isEmpty() || userSingleton.getUser().getDateOfBirth().isEmpty()
-                        || userSingleton.getUser().getDepartment().isEmpty()) {
+                if (userSingleton.getUser().getGender() == null || userSingleton.getUser().getDateOfBirth() == null
+                        || userSingleton.getUser().getDepartment() == null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(UserDetailsActivity.this);
                     builder.setTitle(R.string.merci_de);
                     builder.setMessage(R.string.remplir);
