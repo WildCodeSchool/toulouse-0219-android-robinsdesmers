@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.UserSingleton;
 import fr.wildcodeschool.robinsdesmers.VolleySingleton;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
@@ -17,6 +18,8 @@ import fr.wildcodeschool.robinsdesmers.model.User;
 public class CollectPointInfosActivity extends AppCompatActivity {
 
     final int SCORE_COLLECT_POINT = 10;
+    private UserSingleton userSingleton = UserSingleton.getUserInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,6 @@ public class CollectPointInfosActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final CollectPointItem collectPointItem = intent.getParcelableExtra("CollectPointItem");
-        final User user = intent.getParcelableExtra("User");
 
         final CheckBox cbPoubelle = findViewById(R.id.cbPoubelle);
         final CheckBox cbPoubelleTri = findViewById(R.id.cbPoubelleTri);
@@ -47,22 +49,22 @@ public class CollectPointInfosActivity extends AppCompatActivity {
 
                 if (cbBenne.isChecked()) {
                     collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation));
-                    user.setScore(user.getScore() + SCORE_COLLECT_POINT);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
                 }
 
                 if (cbPoubelle.isChecked()) {
                     collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.poubelle_classique));
-                    user.setScore(user.getScore() + SCORE_COLLECT_POINT);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
                 }
 
                 if (cbPoubelleTri.isChecked()) {
                     collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation));
-                    user.setScore(user.getScore() + SCORE_COLLECT_POINT);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
                 }
 
                 if (cbDechetterie.isChecked()) {
                     collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation));
-                    user.setScore(user.getScore() + SCORE_COLLECT_POINT);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
                 }
 
                 if (cbClassique.isChecked()) {
@@ -103,7 +105,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
                     startActivity(intent);
-                    VolleySingleton.getInstance(CollectPointInfosActivity.this).postCollectPoint(collectPointItem, user);
+                    VolleySingleton.getInstance(CollectPointInfosActivity.this).postCollectPoint(collectPointItem, userSingleton.getUser());
                 }
             }
         });

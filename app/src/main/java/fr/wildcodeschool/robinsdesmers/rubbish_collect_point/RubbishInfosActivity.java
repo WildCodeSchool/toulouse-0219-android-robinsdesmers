@@ -2,6 +2,7 @@ package fr.wildcodeschool.robinsdesmers.rubbish_collect_point;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.util.Consumer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.RadioButton;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.UserSingleton;
 import fr.wildcodeschool.robinsdesmers.VolleySingleton;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
@@ -21,7 +23,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
     private static final Integer SCORE_RUBBISH = 5;
     private static final Integer SCORE_RUBBISH_COLLECTED = 10;
     private RubbishItem rubbishItem;
-    private User user;
+    private UserSingleton userSingleton = UserSingleton.getUserInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,6 @@ public class RubbishInfosActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         rubbishItem = intent.getParcelableExtra("RubbishItem");
-        user = intent.getParcelableExtra("User");
 
         final Button btSurTerre = findViewById(R.id.btTerre);
         final Button btSurMer = findViewById(R.id.btMer);
@@ -63,9 +64,8 @@ public class RubbishInfosActivity extends AppCompatActivity {
 
                 if (cbDechetRamasse.isChecked()) {
                     rubbishItem.setCollected(true);
-                    user.setScore(user.getScore() + SCORE_RUBBISH_COLLECTED);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_RUBBISH_COLLECTED);
                 }
-                user.setScore(user.getScore() + SCORE_RUBBISH);
                 if (!btSurTerre.isSelected() && !btSurMer.isSelected() || rubbishItem.getSumRubbish() == 0) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RubbishInfosActivity.this);
                     builder.setTitle(R.string.merci_de);
@@ -74,9 +74,14 @@ public class RubbishInfosActivity extends AppCompatActivity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 } else {
-                    Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
-                    startActivity(intent);
-                    VolleySingleton.getInstance(RubbishInfosActivity.this).postRubbish(rubbishItem, user);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_RUBBISH);
+                    VolleySingleton.getInstance(RubbishInfosActivity.this).postRubbish(rubbishItem, userSingleton.getUser(), new Consumer<RubbishItem>() {
+                        @Override
+                        public void accept(RubbishItem rubbishItem) {
+                            Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
         });

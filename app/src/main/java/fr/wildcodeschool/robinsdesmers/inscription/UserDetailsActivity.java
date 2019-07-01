@@ -34,9 +34,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.UserSingleton;
 import fr.wildcodeschool.robinsdesmers.adapter.ListDepartmentAdapter;
 import fr.wildcodeschool.robinsdesmers.model.Department;
-import fr.wildcodeschool.robinsdesmers.model.User;
 
 
 public class UserDetailsActivity extends AppCompatActivity {
@@ -44,14 +44,12 @@ public class UserDetailsActivity extends AppCompatActivity {
     private TextView mDisplayDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private String gender;
-    private User user;
+    private UserSingleton userSingleton = UserSingleton.getUserInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
-        Intent intent = getIntent();
-        user = intent.getParcelableExtra("user");
         mDisplayDate = findViewById(R.id.dateOfBirth);
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +76,7 @@ public class UserDetailsActivity extends AppCompatActivity {
                 Calendar calendar = new GregorianCalendar(year, month, dayOfMonth);
                 Date date = calendar.getTime();
                 mDisplayDate.setText(format.format(date));
-                user.setDateOfBirth(format.format(date));
+                userSingleton.getUser().setDateOfBirth(format.format(date));
             }
         };
         final ArrayList<Department> departments = new ArrayList<>();
@@ -124,7 +122,9 @@ public class UserDetailsActivity extends AppCompatActivity {
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user.getGender().isEmpty() || user.getDateOfBirth().isEmpty()) {
+
+                if (userSingleton.getUser().getGender() == null || userSingleton.getUser().getDateOfBirth() == null
+                        || userSingleton.getUser().getDepartment() == null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(UserDetailsActivity.this);
                     builder.setTitle(R.string.merci_de);
                     builder.setMessage(R.string.remplir);
@@ -133,7 +133,6 @@ public class UserDetailsActivity extends AppCompatActivity {
                     dialog.show();
                 } else {
                     Intent intent = new Intent(UserDetailsActivity.this, UserCategoryActivity.class);
-                    intent.putExtra("user", user);
                     startActivity(intent);
                 }
             }
@@ -145,13 +144,13 @@ public class UserDetailsActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.radioBtFemale:
                 if (checked)
-                    gender = "Femme";
-                user.setGender(gender);
+                    gender = getString(R.string.femme);
+                userSingleton.getUser().setGender(gender);
                 break;
             case R.id.radioBtMale:
                 if (checked)
-                    gender = "Homme";
-                user.setGender(gender);
+                    gender = getString(R.string.homme);
+                userSingleton.getUser().setGender(gender);
                 break;
         }
     }

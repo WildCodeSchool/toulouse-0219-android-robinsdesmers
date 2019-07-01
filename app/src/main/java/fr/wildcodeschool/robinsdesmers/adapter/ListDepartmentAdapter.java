@@ -9,11 +9,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.UserSingleton;
 import fr.wildcodeschool.robinsdesmers.model.Department;
 
 public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAdapter.DepartmentViewHolder> {
 
     private ArrayList<Department> departments;
+    private UserSingleton userSingleton = UserSingleton.getUserInstance();
 
     public ListDepartmentAdapter(ArrayList<Department> departments) {
         this.departments = departments;
@@ -32,6 +34,9 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
         holder.tvName.setText(department.getName());
         holder.tvNumber.setText(department.getNumber());
         holder.container.setSelected(department.isSelected());
+        if (holder.container.isSelected()) {
+            userSingleton.getUser().setDepartment(department.getName() + " " + department.getNumber());
+        }
     }
 
     @Override

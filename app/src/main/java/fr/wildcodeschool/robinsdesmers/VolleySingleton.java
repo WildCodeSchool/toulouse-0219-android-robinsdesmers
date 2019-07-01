@@ -32,7 +32,7 @@ import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class VolleySingleton {
     private static final String REQUEST_URL = "http://10.0.2.2:8080/";
-    //private static final String REQUEST_URL = "http://80.12.58.174/";
+    //private static final String REQUEST_URL = "http://80.12.58.174:8080/";
     private static VolleySingleton instance;
     private static Context ctx;
     private RequestQueue requestQueue;
@@ -56,7 +56,7 @@ public class VolleySingleton {
         return requestQueue;
     }
 
-    public void postRubbish(RubbishItem rubbishItem, User user) {
+    public void postRubbish(RubbishItem rubbishItem, User user, final Consumer<RubbishItem> rubbishListener) {
 
         String url = REQUEST_URL + "users/" + user.getId() + "/rubbishes";
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -70,6 +70,7 @@ public class VolleySingleton {
             public void onResponse(JSONObject response) {
                 Log.i("Response", String.valueOf(response));
                 RubbishItem rubbishItem1 = gson.fromJson(response.toString(), RubbishItem.class);
+                rubbishListener.accept(rubbishItem1);
             }
         }, new Response.ErrorListener() {
 
@@ -224,22 +225,19 @@ public class VolleySingleton {
         });
         requestQueue.add(jsonArrayRequest);
     }
-    public void getOneUser(final Consumer<List<User>> userListener) {
-        String url = REQUEST_URL + "users";
+    public void getOneUser(Long userId, final Consumer<User> userListener) {
+        String url = REQUEST_URL + "users/" + userId;
         GsonBuilder gsonBuilder = new GsonBuilder();
         final Gson gson = gsonBuilder.create();
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET, url, null,
-                new Response.Listener<JSONArray>() {
+                new Response.Listener<JSONObject>() {
 
                     @Override
-                    public void onResponse(JSONArray response) {
-                        List<User> usersList = new ArrayList<>();
-                        if (response.length() > 0) {
-                            usersList = Arrays.asList(gson.fromJson(response.toString(), User[].class));
-                        }
-                        userListener.accept(usersList);
+                    public void onResponse(JSONObject response) {
+                        User user = gson.fromJson(response.toString(), User.class);
+                        userListener.accept(user);
                     }
                 }, new Response.ErrorListener() {
 
@@ -248,6 +246,30 @@ public class VolleySingleton {
                 VolleyLog.e("Error: ", error.getMessage());
             }
         });
-        requestQueue.add(jsonArrayRequest);
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    public void collectRubbish( Long rubbishId, final Consumer <RubbishItem> rubbishListener) {
+        String url = REQUEST_URL + "rubbishes/" + rubbishId + "/collected";
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        final Gson gson = gsonBuilder.create();
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.PUT, url, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        RubbishItem rubbishItem = gson.fromJson(response.toString(), RubbishItem.class);
+                        rubbishListener.accept(rubbishItem);
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
     }
 }

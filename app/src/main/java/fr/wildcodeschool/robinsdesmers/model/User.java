@@ -18,8 +18,20 @@ public class User implements Parcelable {
     private String description;
     private Integer avatar;
     private Integer score;
+    private Double latitude;
+    private Double longitude;
+    private boolean connected;
 
-    public User(Long id, String firstName, String lastName, String email, String password, String gender, String dateOfBirth, String department, String category, String pseudo, String description, Integer avatar, Integer score) {
+    public User() {
+    }
+
+    public static Creator<User> getCREATOR() {
+        return CREATOR;
+    }
+
+    public User(Long id, String firstName, String lastName, String email, String password, String gender, String dateOfBirth,
+                String department, String category, String pseudo, String description, Integer avatar, Integer score,
+                Double latitude, Double longitude, boolean connected) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -33,12 +45,12 @@ public class User implements Parcelable {
         this.description = description;
         this.avatar = avatar;
         this.score = score;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.connected = connected;
     }
 
-    public User() {
-    }
-
-    protected User(Parcel in) {
+    public User(Parcel in) {
         if (in.readByte() == 0) {
             id = null;
         } else {
@@ -54,8 +66,27 @@ public class User implements Parcelable {
         category = in.readString();
         pseudo = in.readString();
         description = in.readString();
-        avatar = in.readInt();
-        score = in.readInt();
+        if (in.readByte() == 0) {
+            avatar = null;
+        } else {
+            avatar = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            score = null;
+        } else {
+            score = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            latitude = null;
+        } else {
+            latitude = in.readDouble();
+        }
+        if (in.readByte() == 0) {
+            longitude = null;
+        } else {
+            longitude = in.readDouble();
+        }
+        connected = in.readByte() != 0;
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -174,6 +205,30 @@ public class User implements Parcelable {
         this.score = score;
     }
 
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public boolean isConnected() {
+        return connected;
+    }
+
+    public void setConnected(boolean connected) {
+        this.connected = connected;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -197,7 +252,30 @@ public class User implements Parcelable {
         dest.writeString(category);
         dest.writeString(pseudo);
         dest.writeString(description);
-        dest.writeInt(avatar);
-        dest.writeInt(score);
+        if (avatar == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(avatar);
+        }
+        if (score == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(score);
+        }
+        if (latitude == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(latitude);
+        }
+        if (longitude == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(longitude);
+        }
+        dest.writeByte((byte) (connected ? 1 : 0));
     }
 }

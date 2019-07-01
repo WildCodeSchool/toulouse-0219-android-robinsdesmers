@@ -2,6 +2,7 @@ package fr.wildcodeschool.robinsdesmers.rubbish_collect_point;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.util.Consumer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ImageButton;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.UserSingleton;
 import fr.wildcodeschool.robinsdesmers.VolleySingleton;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
@@ -20,6 +22,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
 
     final Integer SCORE_COLLECTED = 10;
     final Integer SCORE_DECLARED = 5;
+    private UserSingleton userSingleton = UserSingleton.getUserInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,6 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final RubbishItem rubbishItem = intent.getParcelableExtra("RubbishItem");
-        final User user = intent.getParcelableExtra("User");
 
         final Button btSurTerre = findViewById(R.id.btSurTerre);
         final Button btSurMer = findViewById(R.id.btSurMer);
@@ -73,7 +75,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     rubbishItem.setDescription(String.format(getString(R.string.description_btl_plastiques), rubbishItem.getDescription(), strBtlPlastique, getString(R.string.bouteilles_plastique)));
                     Integer nbBtlPlastique = Integer.parseInt(strBtlPlastique);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbBtlPlastique);
-                    user.setScore(user.getScore() + (nbBtlPlastique * SCORE_DECLARED));
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbBtlPlastique * SCORE_DECLARED));
                 }
 
                 final String strMetaux = etMetal.getText().toString();
@@ -81,7 +83,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     rubbishItem.setDescription(String.format(getString(R.string.description_metaux), rubbishItem.getDescription(), strMetaux, getString(R.string.metaux)));
                     Integer nbMetaux = Integer.parseInt(strMetaux);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbMetaux);
-                    user.setScore(user.getScore() + (nbMetaux * SCORE_DECLARED));
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbMetaux * SCORE_DECLARED));
                 }
 
                 final String strMegots = etMegot.getText().toString();
@@ -89,7 +91,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     rubbishItem.setDescription(String.format(getString(R.string.description_megots), rubbishItem.getDescription(), strMegots, getString(R.string.m_gots)));
                     Integer nbMegots = Integer.parseInt(strMegots);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbMegots);
-                    user.setScore(user.getScore() + (nbMegots * SCORE_DECLARED));
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbMegots * SCORE_DECLARED));
                 }
 
                 final String strPlastique = etPlastique.getText().toString();
@@ -97,7 +99,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     rubbishItem.setDescription(String.format(getString(R.string.descripiton_autres_plastiques), rubbishItem.getDescription(), strPlastique, getString(R.string.autres_plastique)));
                     Integer nbPlastiques = Integer.parseInt(strPlastique);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbPlastiques);
-                    user.setScore(user.getScore() + (nbPlastiques * SCORE_DECLARED));
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbPlastiques * SCORE_DECLARED));
                 }
 
                 final String strCartons = etCarton.getText().toString();
@@ -105,7 +107,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     rubbishItem.setDescription(String.format(getString(R.string.descripiton_cartons), rubbishItem.getDescription(), strCartons, getString(R.string.cartons)));
                     Integer nbCartons = Integer.parseInt(strCartons);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbCartons);
-                    user.setScore(user.getScore() + (nbCartons * SCORE_DECLARED));
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbCartons * SCORE_DECLARED));
 
                 }
 
@@ -114,7 +116,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     rubbishItem.setDescription(String.format(getString(R.string.descripiton_verres), rubbishItem.getDescription(), strVerres, getString(R.string.verres)));
                     Integer nbVerres = Integer.parseInt(strVerres);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbVerres);
-                    user.setScore(user.getScore() + (nbVerres * SCORE_DECLARED));
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbVerres * SCORE_DECLARED));
                 }
 
                 final String strTissus = etTissus.getText().toString();
@@ -122,7 +124,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     rubbishItem.setDescription(String.format(getString(R.string.descripiton_tissus), rubbishItem.getDescription(), strTissus, getString(R.string.tissus)));
                     Integer nbrTissus = Integer.parseInt(strTissus);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbrTissus);
-                    user.setScore(user.getScore() + (nbrTissus * SCORE_DECLARED));
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbrTissus * SCORE_DECLARED));
                 }
 
                 final String strAutres = etAutre.getText().toString();
@@ -130,12 +132,12 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     rubbishItem.setDescription(String.format(getString(R.string.descripiton_autres), rubbishItem.getDescription(), strAutres, getString(R.string.autres)));
                     Integer nbrAutres = Integer.parseInt(strAutres);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbrAutres);
-                    user.setScore(user.getScore() + (nbrAutres * SCORE_DECLARED));
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbrAutres * SCORE_DECLARED));
                 }
 
                 if (cbDechetRamasse.isChecked()) {
                     rubbishItem.setCollected(true);
-                    user.setScore(user.getScore() + (rubbishItem.getSumRubbish() * SCORE_COLLECTED));
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (rubbishItem.getSumRubbish() * SCORE_COLLECTED));
                 }
 
                 if (!btSurTerre.isSelected() && !btSurMer.isSelected() || rubbishItem.getSumRubbish() == 0) {
@@ -146,9 +148,14 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 } else {
-                    Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
-                    startActivity(intent);
-                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).postRubbish(rubbishItem, user);
+
+                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).postRubbish(rubbishItem, userSingleton.getUser(), new Consumer<RubbishItem>() {
+                        @Override
+                        public void accept(RubbishItem rubbishItem) {
+                            Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
+                            startActivity(intent);
+                        }
+                    });
                 }
             }
         });
