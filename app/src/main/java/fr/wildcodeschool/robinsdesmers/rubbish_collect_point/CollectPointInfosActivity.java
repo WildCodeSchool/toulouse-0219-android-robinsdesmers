@@ -20,7 +20,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
 
     final int SCORE_COLLECT_POINT = 10;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
-    private static final Long userId = 1l;
+    private final Long userId = userSingleton.getUser().getId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -24,7 +24,7 @@ public class RubbishInfosActivity extends AppCompatActivity {
     private static final Integer SCORE_RUBBISH_COLLECTED = 10;
     private RubbishItem rubbishItem;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
-    private static final Long userId = 1l;
+    private final Long userId = userSingleton.getUser().getId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

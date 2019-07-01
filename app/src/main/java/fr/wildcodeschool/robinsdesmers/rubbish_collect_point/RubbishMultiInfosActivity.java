@@ -23,7 +23,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
     final Integer SCORE_COLLECTED = 10;
     final Integer SCORE_DECLARED = 5;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
-    private static final Long userId = 1l;
+    private final Long userId = userSingleton.getUser().getId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
