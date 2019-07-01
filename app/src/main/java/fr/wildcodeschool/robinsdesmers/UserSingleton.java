@@ -1,7 +1,5 @@
 package fr.wildcodeschool.robinsdesmers;
 
-import android.location.Location;
-
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class UserSingleton {
@@ -23,17 +21,17 @@ public class UserSingleton {
         user = newUser;
     }
 
-    public void setUserLocation(Location location) {
-        user.setLatitude(location.getLatitude());
-        user.setLongitude(location.getLongitude());
-    }
-
     public User getUser() {
         if (user.getScore() == null) {
             user.setScore(0);
         }
         return user;
     }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 }
 
 
