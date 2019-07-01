@@ -5,6 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/vert_fonce"
     tools:context=".UserProfileActivity">
 
     <android.support.design.widget.BottomNavigationView
@@ -18,5 +19,85 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_nav_menu" />
+
+    <ImageView
+        android:id="@+id/ivBackgroundProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/fish" />
+
+    <ImageView
+        android:id="@+id/ivAvatarProfile"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvNameProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivBackgroundProfile"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+    <TextView
+        android:id="@+id/tvNameProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBackgroundProfile" />
+
+    <TextView
+        android:id="@+id/tvDescripitonProfile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvCategoryProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameProfile" />
+
+    <TextView
+        android:id="@+id/tvCategoryProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/button_rounded"
+        android:backgroundTint="@color/orange"
+        android:gravity="center"
+        android:paddingLeft="25dp"
+        android:paddingTop="10dp"
+        android:paddingRight="25dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBackgroundProfile" />
+
+    <TextView
+        android:id="@+id/tvDepartmentProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginRight="42dp"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCategoryProfile" />
 
 </android.support.constraint.ConstraintLayout>
