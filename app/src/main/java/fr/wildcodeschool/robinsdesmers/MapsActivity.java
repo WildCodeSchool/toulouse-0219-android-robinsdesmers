@@ -162,7 +162,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mLocationUser = new Location("");
             mLocationUser.setLatitude(lat);
             mLocationUser.setLongitude(lng);
-            UserSingleton.getUserInstance().setUserLocation(mLocationUser);
 
             if (mMap != null && !mMapInit) {
                 mMapInit = true;
