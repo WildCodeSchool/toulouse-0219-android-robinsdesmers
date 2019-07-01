@@ -35,7 +35,7 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
         holder.tvNumber.setText(department.getNumber());
         holder.container.setSelected(department.isSelected());
         if (holder.container.isSelected()) {
-            userSingleton.getUser().setDepartment(department.getName() + " " + department.getNumber());
+            userSingleton.getUser().setDepartment(department.getNumber() + " " + holder.container.getContext().getString(R.string.hyphen) + " " + department.getName());
         }
     }
 
