@@ -40,6 +40,7 @@
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/etEmailSignIn"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/border"
@@ -60,6 +61,7 @@
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/etPasswordSignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border"
