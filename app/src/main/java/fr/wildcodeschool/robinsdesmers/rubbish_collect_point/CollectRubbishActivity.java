@@ -21,6 +21,7 @@ import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class CollectRubbishActivity extends AppCompatActivity {
+    private static final Long userId = 1l;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,12 @@ public class CollectRubbishActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkBox.isChecked()){
+                    VolleySingleton.getInstance(CollectRubbishActivity.this).updateUserScore(userId, new Consumer<User>() {
+                        @Override
+                        public void accept(User user) {
+
+                        }
+                    });
                     VolleySingleton.getInstance(CollectRubbishActivity.this).collectRubbish(rubbishId, new Consumer<RubbishItem>() {
                         @Override
                         public void accept(RubbishItem rubbishItem) {

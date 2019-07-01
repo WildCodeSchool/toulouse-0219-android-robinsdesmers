@@ -272,4 +272,28 @@ public class VolleySingleton {
         });
         requestQueue.add(jsonObjectRequest);
     }
+
+    public void updateUserScore( Long userId, final Consumer <User> userListener) {
+        String url = REQUEST_URL + "users/" + userId + "/score";
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        final Gson gson = gsonBuilder.create();
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.PUT, url, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        User user = gson.fromJson(response.toString(), User.class);
+                        userListener.accept(user);
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
 }
