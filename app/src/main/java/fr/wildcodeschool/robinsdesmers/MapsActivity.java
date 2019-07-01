@@ -223,7 +223,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void accept(List<CollectPointItem> collectPointItems) {
                 for (CollectPointItem collectPoint : collectPointItems) {
                     final LatLng collectPointCoord = new LatLng(collectPoint.getLatitude(), collectPoint.getLongitude());
-                    mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.pointcollecte)).position(collectPointCoord).title(collectPoint.getTitle()).snippet(collectPoint.getDescription()));
+                    Marker markerCollect = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.pointcollecte)).position(collectPointCoord).title(collectPoint.getTitle()).snippet(collectPoint.getDescription()).alpha(0.99f));
+                    markerCollect.setTag(collectPoint);
                 }
             }
         });
@@ -231,8 +232,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                if (marker.getTitle().equals("CollectPointItem")) {
+                if (marker.getAlpha() == 0.99f) {
+                    CollectPointItem collectPointItem = (CollectPointItem) marker.getTag();
                     Intent intent1 = new Intent(MapsActivity.this, CollectPointDescriptionActivity.class);
+                    intent1.putExtra("collectPointId",collectPointItem.getId());
                     startActivity(intent1);
                 } else {
                     RubbishItem rubbishItem = (RubbishItem) marker.getTag();

@@ -2,6 +2,7 @@ package fr.wildcodeschool.robinsdesmers.rubbish_collect_point;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.util.Consumer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,7 +20,7 @@ public class CollectPointInfosActivity extends AppCompatActivity {
 
     final int SCORE_COLLECT_POINT = 10;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
-
+    private static final Long userId = 1l;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,21 +51,46 @@ public class CollectPointInfosActivity extends AppCompatActivity {
                 if (cbBenne.isChecked()) {
                     collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation));
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
+                    VolleySingleton.getInstance(CollectPointInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
+                        @Override
+                        public void accept(User user) {
+
+                        }
+                    });
+
                 }
 
                 if (cbPoubelle.isChecked()) {
                     collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.poubelle_classique));
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
+                    VolleySingleton.getInstance(CollectPointInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
+                        @Override
+                        public void accept(User user) {
+
+                        }
+                    });
                 }
 
                 if (cbPoubelleTri.isChecked()) {
                     collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation));
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
+                    VolleySingleton.getInstance(CollectPointInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
+                        @Override
+                        public void accept(User user) {
+
+                        }
+                    });
                 }
 
                 if (cbDechetterie.isChecked()) {
                     collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation));
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
+                    VolleySingleton.getInstance(CollectPointInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
+                        @Override
+                        public void accept(User user) {
+
+                        }
+                    });
                 }
 
                 if (cbClassique.isChecked()) {

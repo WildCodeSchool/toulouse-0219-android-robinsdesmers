@@ -29,7 +29,6 @@ public class ScreenSplashActivity extends AppCompatActivity {
         VolleySingleton.getInstance(ScreenSplashActivity.this).getOneUser(1l, new Consumer<User>() {
             @Override
             public void accept(User user) {
-                Toast.makeText(ScreenSplashActivity.this, user.getFirstName(), Toast.LENGTH_SHORT).show();
                 UserSingleton.getUserInstance().registerUser(user);
             }
         });
