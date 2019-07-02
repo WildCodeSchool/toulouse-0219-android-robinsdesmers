@@ -1,45 +1,65 @@
-package fr.wildcodeschool.robinsdesmers.inscription;
+package fr.wildcodeschool.robinsdesmers.updateUser;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
+import android.support.v4.util.Consumer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.UserProfileActivity;
 import fr.wildcodeschool.robinsdesmers.UserSingleton;
+import fr.wildcodeschool.robinsdesmers.VolleySingleton;
+import fr.wildcodeschool.robinsdesmers.model.User;
 
-public class UserCategoryActivity extends AppCompatActivity {
+public class CategoryUserDetailsActivity extends AppCompatActivity {
 
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
+    private final Long userId = userSingleton.getUser().getId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_category);
+        setContentView(R.layout.activity_category_user_details);
 
         ImageButton btSend = findViewById(R.id.imBtRegisterCategoryEdit);
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (userSingleton.getUser().getCategory() == null) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(UserCategoryActivity.this);
-                    builder.setTitle(R.string.merci_de);
-                    builder.setMessage(R.string.remplir);
-                    builder.setPositiveButton(R.string.ok, null);
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                } else {
-                    Intent intent = new Intent(UserCategoryActivity.this, UserDescriptionActivity.class);
-                    startActivity(intent);
-                }
+
+                VolleySingleton.getInstance(CategoryUserDetailsActivity.this).updateUser(userId, userSingleton.getUser(), new Consumer<User>() {
+                    @Override
+                    public void accept(User user) {
+                        Intent intent = new Intent(CategoryUserDetailsActivity.this, UserProfileActivity.class);
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
+
+        VolleySingleton.getInstance(CategoryUserDetailsActivity.this).getOneUser(userId, new Consumer<User>() {
+            @Override
+            public void accept(User user) {
+
             }
         });
         final Button btCitizen = findViewById(R.id.btCategoryCitizenEdit);
         final Button btNavigator = findViewById(R.id.btCategoryNavigatorEdit);
         final Button btEcosystem = findViewById(R.id.btCategoryEcosystemEdit);
+
+        if (userSingleton.getUser().getCategory().equals(getString(R.string.citoyen))) {
+            btCitizen.setSelected(true);
+        }
+
+        if (userSingleton.getUser().getCategory().equals(getString(R.string.navigateur))) {
+            btNavigator.setSelected(true);
+        }
+
+        if (userSingleton.getUser().getCategory().equals(getString(R.string.ecosysteme))) {
+            btEcosystem.setSelected(true);
+        }
 
         btCitizen.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -128,7 +128,7 @@ public class VolleySingleton {
         requestQueue.add(jsonArrayRequest);
     }
 
-    public void postCollectPoint(CollectPointItem collectPointItem, User user) {
+    public void postCollectPoint(final CollectPointItem collectPointItem, User user, final Consumer<CollectPointItem> collectPointItemConsumer) {
 
         String url = REQUEST_URL + "users/" + user.getId() + "/collectPoints";
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -142,6 +142,7 @@ public class VolleySingleton {
             public void onResponse(JSONObject response) {
                 Log.i("Response", String.valueOf(response));
                 CollectPointItem collectPointItem1 = gson.fromJson(response.toString(), CollectPointItem.class);
+                collectPointItemConsumer.accept(collectPointItem1);
             }
         }, new Response.ErrorListener() {
 
@@ -295,30 +296,6 @@ public class VolleySingleton {
         requestQueue.add(jsonObjectRequest);
     }
 
-    public void updateUser(Long userId, final Consumer<User> userListener) {
-        String url = REQUEST_URL + "users/" + userId;
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        final Gson gson = gsonBuilder.create();
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.PUT, url, null,
-                new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        User user = gson.fromJson(response.toString(), User.class);
-                        userListener.accept(user);
-                    }
-                }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.e("Error: ", error.getMessage());
-            }
-        });
-        requestQueue.add(jsonObjectRequest);
-    }
-
     public void collectRubbish(Long rubbishId, final Consumer<RubbishItem> rubbishListener) {
         String url = REQUEST_URL + "rubbishes/" + rubbishId + "/collected";
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -356,6 +333,73 @@ public class VolleySingleton {
                     public void onResponse(JSONObject response) {
                         User user = gson.fromJson(response.toString(), User.class);
                         userListener.accept(user);
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    public void updateUser(Long userId, User user, final Consumer<User> userListener) {
+        String url = REQUEST_URL + "users/" + userId;
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        final Gson gson = gsonBuilder.create();
+        final String requestBody = gson.toJson(user);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.PUT, url, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        User user = gson.fromJson(response.toString(), User.class);
+                        userListener.accept(user);
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<String, String>();
+                headers.put("Content-Type", "application/json");
+                return headers;
+            }
+
+            @Override
+            public byte[] getBody() {
+                try {
+                    return requestBody == null ? null : requestBody.getBytes("utf-8");
+                } catch (UnsupportedEncodingException uee) {
+                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s",
+                            requestBody, "utf-8");
+                    return null;
+                }
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+    }
+    public void getOneRubbish(Long rubbishId, final Consumer<RubbishItem> rubbishListener) {
+        String url = REQUEST_URL + "rubbishes/" + rubbishId;
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        final Gson gson = gsonBuilder.create();
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        RubbishItem rubbishItem = gson.fromJson(response.toString(), RubbishItem.class);
+                        rubbishListener.accept(rubbishItem);
                     }
                 }, new Response.ErrorListener() {
 

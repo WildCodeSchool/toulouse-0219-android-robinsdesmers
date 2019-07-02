@@ -4,14 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.util.Consumer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 import fr.wildcodeschool.robinsdesmers.model.User;
+import fr.wildcodeschool.robinsdesmers.updateUser.PersonalDetailsActivity;
 
 public class UserProfileActivity extends AppCompatActivity {
 
@@ -48,7 +51,6 @@ public class UserProfileActivity extends AppCompatActivity {
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
     private final Long userId = userSingleton.getUser().getId();
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +61,7 @@ public class UserProfileActivity extends AppCompatActivity {
         VolleySingleton.getInstance(UserProfileActivity.this).getOneUser(userId, new Consumer<User>() {
             @Override
             public void accept(User user) {
+
                 if (!(userSingleton.getUser().getPseudo().isEmpty())) {
                     TextView pseudoUser = findViewById(R.id.tvNameProfile);
                     pseudoUser.setText(userSingleton.getUser().getPseudo());
@@ -71,6 +74,7 @@ public class UserProfileActivity extends AppCompatActivity {
                     TextView description = findViewById(R.id.tvDescripitonProfile);
                     description.setText(userSingleton.getUser().getDescription());
                 }
+
                 ImageView imageViewAvatar = findViewById(R.id.ivAvatarProfile);
                 imageViewAvatar.setImageResource(userSingleton.getUser().getAvatar());
 
@@ -79,6 +83,15 @@ public class UserProfileActivity extends AppCompatActivity {
 
                 TextView departmentUser = findViewById(R.id.tvDepartmentProfile);
                 departmentUser.setText(userSingleton.getUser().getDepartment());
+            }
+        });
+
+        FloatingActionButton floatBtSetting = findViewById(R.id.floatBtProfile);
+        floatBtSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserProfileActivity.this, PersonalDetailsActivity.class);
+                startActivity(intent);
             }
         });
     }

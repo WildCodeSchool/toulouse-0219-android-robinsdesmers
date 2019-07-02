@@ -11,13 +11,12 @@ import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import java.util.List;
-
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class MainActivity extends AppCompatActivity {
-    private static final UserSingleton userSingleton = UserSingleton.getUserInstance();
+    private final UserSingleton userSingleton = UserSingleton.getUserInstance();
+    private final Long userId = userSingleton.getUser().getId();
     private ProgressBar progressBar;
     private Handler handler = new Handler();
 
@@ -57,13 +56,11 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        VolleySingleton.getInstance(MainActivity.this).getAllUsers(new Consumer<List<User>>() {
+        VolleySingleton.getInstance(MainActivity.this).getOneUser(userId, new Consumer<User>() {
             @Override
-            public void accept(List<User> users) {
-                for (User user : users) {
-                    TextView tvScore = findViewById(R.id.tvUserScore);
-                    tvScore.setText(String.valueOf(user.getScore()));
-                }
+            public void accept(User user) {
+                TextView tvScore = findViewById(R.id.tvUserScore);
+                tvScore.setText(String.valueOf(user.getScore()));
             }
         });
 
@@ -86,6 +83,5 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }).start();
-
     }
 }

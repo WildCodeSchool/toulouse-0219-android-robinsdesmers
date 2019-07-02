@@ -10,7 +10,6 @@ import android.widget.ImageButton;
 
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserSingleton;
-import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class InscriptionActivity extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class InscriptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inscription);
 
-        ImageButton imBtRegister = findViewById(R.id.imBtRegister);
+        ImageButton imBtRegister = findViewById(R.id.imBtEditLessPerso);
 
         imBtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
