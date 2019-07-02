@@ -8,6 +8,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.google.common.hash.HashCode;
+import com.google.common.hash.Hashing;
+
+import java.nio.charset.Charset;
+
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserSingleton;
 
@@ -32,7 +37,8 @@ public class InscriptionActivity extends AppCompatActivity {
                 userSingleton.getUser().setFirstName(firstNameRegister.getText().toString());
                 userSingleton.getUser().setLastName(nameRegister.getText().toString());
                 userSingleton.getUser().setEmail(email.getText().toString());
-                userSingleton.getUser().setPassword(password.getText().toString());
+                HashCode hashCode = Hashing.sha256().hashString(password.getText().toString(), Charset.defaultCharset());
+                userSingleton.getUser().setPassword(hashCode.toString());
 
                 if (userSingleton.getUser().getLastName().isEmpty() || userSingleton.getUser().getFirstName().isEmpty()
                         || userSingleton.getUser().getEmail().isEmpty() || userSingleton.getUser().getPassword().isEmpty()) {
