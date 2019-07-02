@@ -19,6 +19,7 @@ public class CollectRubbishActivity extends AppCompatActivity {
 
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
     private final Long userId = userSingleton.getUser().getId();
+    private  RubbishItem rubbishItem1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +30,19 @@ public class CollectRubbishActivity extends AppCompatActivity {
         Button btSend = findViewById(R.id.btSendCollect);
         Intent intent = getIntent();
         final Long rubbishId = intent.getLongExtra("rubbishId", -1);
+        VolleySingleton.getInstance(CollectRubbishActivity.this).getOneRubbish(rubbishId, new Consumer<RubbishItem>() {
+            @Override
+            public void accept(RubbishItem rubbishItem) {
+                rubbishItem1 = rubbishItem;
+            }
+        });
 
         btSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkBox.isChecked()) {
-                    VolleySingleton.getInstance(CollectRubbishActivity.this).updateUserScore(userId, new Consumer<User>() {
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (rubbishItem1.getSumRubbish() * 10));
+                    VolleySingleton.getInstance(CollectRubbishActivity.this).updateUser(userId, userSingleton.getUser(), new Consumer<User>() {
                         @Override
                         public void accept(User user) {
 

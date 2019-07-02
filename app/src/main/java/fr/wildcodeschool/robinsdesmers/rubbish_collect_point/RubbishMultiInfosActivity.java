@@ -78,12 +78,6 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbBtlPlastique);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbBtlPlastique * SCORE_DECLARED));
 
-                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
-
-                        }
-                    });
                 }
 
                 final String strMetaux = etMetal.getText().toString();
@@ -92,12 +86,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     Integer nbMetaux = Integer.parseInt(strMetaux);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbMetaux);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbMetaux * SCORE_DECLARED));
-                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
 
-                        }
-                    });
                 }
 
                 final String strMegots = etMegot.getText().toString();
@@ -106,12 +95,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     Integer nbMegots = Integer.parseInt(strMegots);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbMegots);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbMegots * SCORE_DECLARED));
-                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
 
-                        }
-                    });
                 }
 
                 final String strPlastique = etPlastique.getText().toString();
@@ -120,12 +104,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     Integer nbPlastiques = Integer.parseInt(strPlastique);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbPlastiques);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbPlastiques * SCORE_DECLARED));
-                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
 
-                        }
-                    });
                 }
 
                 final String strCartons = etCarton.getText().toString();
@@ -134,13 +113,6 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     Integer nbCartons = Integer.parseInt(strCartons);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbCartons);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbCartons * SCORE_DECLARED));
-                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
-
-                        }
-                    });
-
                 }
 
                 final String strVerres = etVerre.getText().toString();
@@ -149,12 +121,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     Integer nbVerres = Integer.parseInt(strVerres);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbVerres);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbVerres * SCORE_DECLARED));
-                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
 
-                        }
-                    });
                 }
 
                 final String strTissus = etTissus.getText().toString();
@@ -163,12 +130,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     Integer nbrTissus = Integer.parseInt(strTissus);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbrTissus);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbrTissus * SCORE_DECLARED));
-                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
 
-                        }
-                    });
                 }
 
                 final String strAutres = etAutre.getText().toString();
@@ -177,23 +139,13 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                     Integer nbrAutres = Integer.parseInt(strAutres);
                     rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbrAutres);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbrAutres * SCORE_DECLARED));
-                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
 
-                        }
-                    });
                 }
 
                 if (cbDechetRamasse.isChecked()) {
                     rubbishItem.setCollected(true);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (rubbishItem.getSumRubbish() * SCORE_COLLECTED));
-                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
 
-                        }
-                    });
                 }
 
                 if (!btSurTerre.isSelected() && !btSurMer.isSelected() || rubbishItem.getSumRubbish() == 0) {
@@ -212,6 +164,13 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
+                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).updateUser(userId,userSingleton.getUser(), new Consumer<User>() {
+                        @Override
+                        public void accept(User user) {
+
+                        }
+                    });
+
                 }
             }
         });

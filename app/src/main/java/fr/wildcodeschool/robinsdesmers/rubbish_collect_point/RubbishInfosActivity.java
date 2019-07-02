@@ -62,11 +62,12 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 if (cbDechetRamasse.isChecked()) {
                     rubbishItem.setCollected(true);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_RUBBISH_COLLECTED);
 
-                    VolleySingleton.getInstance(RubbishInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
+                    VolleySingleton.getInstance(RubbishInfosActivity.this).updateUser(userId,userSingleton.getUser(), new Consumer<User>() {
                         @Override
                         public void accept(User user) {
 
@@ -83,16 +84,18 @@ public class RubbishInfosActivity extends AppCompatActivity {
 
                 } else {
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_RUBBISH);
-                    VolleySingleton.getInstance(RubbishInfosActivity.this).postRubbish(rubbishItem, userSingleton.getUser(), new Consumer<RubbishItem>() {
-                        @Override
-                        public void accept(RubbishItem rubbishItem) {
-                        }
-                    });
-                    VolleySingleton.getInstance(RubbishInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
+                    VolleySingleton.getInstance(RubbishInfosActivity.this).updateUser(userId,userSingleton.getUser(), new Consumer<User>() {
                         @Override
                         public void accept(User user) {
                             Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
                             startActivity(intent);
+                        }
+                    });
+
+                    VolleySingleton.getInstance(RubbishInfosActivity.this).postRubbish(rubbishItem, userSingleton.getUser(), new Consumer<RubbishItem>() {
+                        @Override
+                        public void accept(RubbishItem rubbishItem) {
+
                         }
                     });
                 }
