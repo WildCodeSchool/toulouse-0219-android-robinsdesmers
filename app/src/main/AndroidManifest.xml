@@ -17,6 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".updateUser.CategoryUserDetailsActivity"></activity>
+        <activity android:name=".updateUser.AvatarUserDetailsActivity" />
+        <activity android:name=".updateUser.LessPersoDetailsActivity" />
+        <activity android:name=".updateUser.UserPersoDetailsActivity" />
+        <activity android:name=".updateUser.PersonalDetailsActivity" />
         <activity android:name=".information.DeepLinkActivity" />
 
         <meta-data
