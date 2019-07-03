@@ -168,4 +168,7 @@
     <string name="donn_es_moins_personnelles">Données moins personnelles</string>
     <string name="avatar">Avatar</string>
     <string name="categorie">Catégorie</string>
+    <string name="ton_score">Ton score :</string>
+    <string name="ton_grade">Ton grade :</string>
+    <string name="grade_utilisateur">Grade Utilisateur</string>
 </resources>
