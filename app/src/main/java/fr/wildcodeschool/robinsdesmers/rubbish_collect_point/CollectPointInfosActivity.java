@@ -14,13 +14,14 @@ import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserSingleton;
 import fr.wildcodeschool.robinsdesmers.VolleySingleton;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
+import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class CollectPointInfosActivity extends AppCompatActivity {
 
     final int SCORE_COLLECT_POINT = 10;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
-    private static final Long userId = 1l;
+    private final Long userId = userSingleton.getUser().getId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +132,12 @@ public class CollectPointInfosActivity extends AppCompatActivity {
                 } else {
                     Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
                     startActivity(intent);
-                    VolleySingleton.getInstance(CollectPointInfosActivity.this).postCollectPoint(collectPointItem, userSingleton.getUser());
+                    VolleySingleton.getInstance(CollectPointInfosActivity.this).postCollectPoint(collectPointItem, userSingleton.getUser(), new Consumer<CollectPointItem>() {
+                        @Override
+                        public void accept(CollectPointItem collectPointItem) {
+
+                        }
+                    });
                 }
             }
         });

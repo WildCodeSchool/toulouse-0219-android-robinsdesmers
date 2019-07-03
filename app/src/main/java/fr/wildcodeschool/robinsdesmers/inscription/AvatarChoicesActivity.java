@@ -2,6 +2,7 @@ package fr.wildcodeschool.robinsdesmers.inscription;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.util.Consumer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,13 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
 
+import java.util.List;
+
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserSingleton;
+import fr.wildcodeschool.robinsdesmers.VolleySingleton;
+import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class AvatarChoicesActivity extends AppCompatActivity {
     ImageButton imBtNext, imBtPrevious;
@@ -77,9 +82,28 @@ public class AvatarChoicesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userSingleton.getUser().setAvatar(images[index]);
-                Intent goToMaps = new Intent(AvatarChoicesActivity.this, MapsActivity.class);
-                //TODO : appel à volley
-                startActivity(goToMaps);
+                VolleySingleton.getInstance(AvatarChoicesActivity.this).postUser(userSingleton.getUser(), new Consumer<User>() {
+                    @Override
+                    public void accept(User user) {
+                        VolleySingleton.getInstance(AvatarChoicesActivity.this).getAllUsers(new Consumer<List<User>>() {
+                            @Override
+                            public void accept(List<User> users) {
+                                for (User user : users) {
+                                    if (userSingleton.getUser().getEmail().equals(user.getEmail()) && userSingleton.getUser().getPassword().equals(user.getPassword())) {
+                                        VolleySingleton.getInstance(AvatarChoicesActivity.this).getOneUser(user.getId(), new Consumer<User>() {
+                                            @Override
+                                            public void accept(User user) {
+                                                UserSingleton.getUserInstance().setUser(user);
+                                                Intent goToHome = new Intent(AvatarChoicesActivity.this, MapsActivity.class);
+                                                startActivity(goToHome);
+                                            }
+                                        });
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
             }
         });
     }

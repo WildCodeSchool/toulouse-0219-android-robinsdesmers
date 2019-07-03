@@ -163,4 +163,12 @@
     <string name="description_btl_plastiques">%s%s %s</string>
     <string name="prenom">Prénom</string>
     <string name="nom">Nom</string>
+    <string name="modification">Modification du profil</string>
+    <string name="donn_es_personnelles">Données personnelles</string>
+    <string name="donn_es_moins_personnelles">Données moins personnelles</string>
+    <string name="avatar">Avatar</string>
+    <string name="categorie">Catégorie</string>
+    <string name="ton_score">Ton score :</string>
+    <string name="ton_grade">Ton grade :</string>
+    <string name="grade_utilisateur">Grade Utilisateur</string>
 </resources>

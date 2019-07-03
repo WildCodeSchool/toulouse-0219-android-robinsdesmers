@@ -7,20 +7,13 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.util.Consumer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.List;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class MainActivity extends AppCompatActivity {
+    private final UserSingleton userSingleton = UserSingleton.getUserInstance();
+    private final Long userId = userSingleton.getUser().getId();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -39,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(goToMaps);
                     return true;
                 case R.id.navigation_info:
-                    Intent goToInfo = new Intent (MainActivity.this, InformationActivity.class);
+                    Intent goToInfo = new Intent(MainActivity.this, InformationActivity.class);
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
@@ -58,14 +51,13 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        VolleySingleton.getInstance(MainActivity.this).getAllUsers(new Consumer<List<User>>() {
+        VolleySingleton.getInstance(MainActivity.this).getOneUser(userId, new Consumer<User>() {
             @Override
-            public void accept(List<User> users) {
-                for (User user : users) {
-                    TextView tvScore = findViewById(R.id.tvUserScore);
-                    tvScore.setText(String.valueOf(user.getScore()));
-                }
+            public void accept(User user) {
+
             }
         });
+
+
     }
 }

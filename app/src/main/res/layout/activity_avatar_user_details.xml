@@ -5,15 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/vert_fonce"
-    tools:context=".AvatarChoiceActivity">
+    tools:context=".updateUser.AvatarUserDetailsActivity">
 
     <TextView
-        android:id="@+id/tvPersonnalisationChoiceAvatar"
+        android:id="@+id/tvModificationEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginRight="90dp"
         android:gravity="center"
-        android:text="@string/personnalisation"
+        android:text="@string/modification"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,23 +25,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvChoiceAvatar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:alpha="0.6"
-        android:gravity="center"
-        android:text="@string/choisis_ton_avatar"
-        android:textColor="@color/colorWhite"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPersonnalisationChoiceAvatar" />
-
     <ImageButton
-        android:id="@+id/imBtPrevious"
+        android:id="@+id/imBtPreviousEdit"
         android:layout_width="150px"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -47,15 +36,15 @@
         android:adjustViewBounds="true"
         android:background="@color/vert_fonce"
         android:scaleType="fitStart"
-        app:layout_constraintBottom_toTopOf="@+id/imBtAvatarChoice"
-        app:layout_constraintEnd_toStartOf="@+id/imSwitcherAvatars"
+        app:layout_constraintBottom_toTopOf="@+id/imBtEditAvatarUser"
+        app:layout_constraintEnd_toStartOf="@+id/imSwitcherAvatarsEdit"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvChoiceAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/tvModificationEdit"
         app:srcCompat="@drawable/left_arrow_avatar_green" />
 
     <ImageButton
-        android:id="@+id/imBtNext"
+        android:id="@+id/imBtNextEdit"
         android:layout_width="150px"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -65,14 +54,14 @@
         android:adjustViewBounds="true"
         android:background="@color/vert_fonce"
         android:scaleType="fitStart"
-        app:layout_constraintBottom_toTopOf="@+id/imBtAvatarChoice"
+        app:layout_constraintBottom_toTopOf="@+id/imBtEditAvatarUser"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imSwitcherAvatars"
-        app:layout_constraintTop_toBottomOf="@+id/tvChoiceAvatar"
+        app:layout_constraintStart_toEndOf="@+id/imSwitcherAvatarsEdit"
+        app:layout_constraintTop_toBottomOf="@+id/tvModificationEdit"
         app:srcCompat="@drawable/right_arrow_avatar_green" />
 
     <ImageSwitcher
-        android:id="@+id/imSwitcherAvatars"
+        android:id="@+id/imSwitcherAvatarsEdit"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -81,23 +70,23 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/imBtAvatarChoice"
-        app:layout_constraintEnd_toStartOf="@+id/imBtNext"
-        app:layout_constraintStart_toEndOf="@+id/imBtPrevious"
-        app:layout_constraintTop_toBottomOf="@+id/tvChoiceAvatar">
+        app:layout_constraintBottom_toTopOf="@+id/imBtEditAvatarUser"
+        app:layout_constraintEnd_toStartOf="@+id/imBtNextEdit"
+        app:layout_constraintStart_toEndOf="@+id/imBtPreviousEdit"
+        app:layout_constraintTop_toBottomOf="@+id/tvModificationEdit">
 
     </ImageSwitcher>
 
     <ImageButton
-        android:id="@+id/imBtAvatarChoice"
+        android:id="@+id/imBtEditAvatarUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="32dp"
         android:background="@color/vert_fonce"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imSwitcherAvatars"
         app:srcCompat="@drawable/btn_empreinte" />
+
 </android.support.constraint.ConstraintLayout>

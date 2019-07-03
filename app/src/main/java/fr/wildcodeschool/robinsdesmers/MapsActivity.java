@@ -123,7 +123,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
             @Override
-            public void onSuccess(Location location) {
+            public void onSuccess(final Location location) {
                 setUserLocation(location);
                 userSingleton.getUser().setLatitude(location.getLatitude());
                 userSingleton.getUser().setLongitude(location.getLongitude());
@@ -235,7 +235,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (marker.getAlpha() == 0.99f) {
                     CollectPointItem collectPointItem = (CollectPointItem) marker.getTag();
                     Intent intent1 = new Intent(MapsActivity.this, CollectPointDescriptionActivity.class);
-                    intent1.putExtra("collectPointId",collectPointItem.getId());
+                    intent1.putExtra("collectPointId", collectPointItem.getId());
                     startActivity(intent1);
                 } else {
                     RubbishItem rubbishItem = (RubbishItem) marker.getTag();
