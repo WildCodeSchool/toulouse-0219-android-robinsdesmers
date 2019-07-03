@@ -168,6 +168,4 @@
     <string name="donn_es_moins_personnelles">Données moins personnelles</string>
     <string name="avatar">Avatar</string>
     <string name="categorie">Catégorie</string>
-    <string name="title_activity_avatar_user_details">AvatarUserDetailsActivity</string>
-    <string name="reinitialiser_mot_passe">bien vouloir réinitialiser votre mot de passe</string>
 </resources>
