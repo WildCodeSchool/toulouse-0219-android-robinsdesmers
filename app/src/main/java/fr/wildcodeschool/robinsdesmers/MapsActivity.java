@@ -34,12 +34,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.util.List;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
-import fr.wildcodeschool.robinsdesmers.inscription.UserDetailsActivity;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
-import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectPointDescriptionActivity;
-import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectRubbishActivity;
 import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.MarkerTypeActivity;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -239,16 +236,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onInfoWindowClick(final Marker marker) {
                 if (marker.getAlpha() == 0.99f) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
-                    builder.setMessage("Ce point de collecte est-il toujours présent?");
-                    builder.setPositiveButton("Oui", null);
-                    builder.setNegativeButton("Non",new DialogInterface.OnClickListener() {
+                    builder.setMessage(R.string.collectPoint_present);
+                    builder.setPositiveButton(R.string.oui, null);
+                    builder.setNegativeButton(R.string.non, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             CollectPointItem collectPointItem = (CollectPointItem) marker.getTag();
                             VolleySingleton.getInstance(MapsActivity.this).deleteOneCollectPoint(collectPointItem.getId(), new Consumer<CollectPointItem>() {
                                 @Override
                                 public void accept(CollectPointItem collectPointItem) {
-
                                 }
                             });
                             startActivity(new Intent(MapsActivity.this, MapsActivity.class));
@@ -258,8 +254,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     dialog.show();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
-                    builder.setTitle("Avez-vous collecté ce(s) déchet(s) ?");
-                    builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                    builder.setTitle(R.string.dechet_collecte);
+                    builder.setPositiveButton(getString(R.string.oui), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             RubbishItem rubbishItem = (RubbishItem) marker.getTag();
@@ -267,7 +263,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             VolleySingleton.getInstance(MapsActivity.this).updateUser(userId, userSingleton.getUser(), new Consumer<User>() {
                                 @Override
                                 public void accept(User user) {
-
                                 }
                             });
                             VolleySingleton.getInstance(MapsActivity.this).collectRubbish(rubbishItem.getId(), new Consumer<RubbishItem>() {
@@ -276,10 +271,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                                     startActivity(new Intent(MapsActivity.this, MapsActivity.class));
                                 }
                             });
-
                         }
                     });
-                    builder.setNegativeButton("non", null);
+                    builder.setNegativeButton(getString(R.string.non), null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }
