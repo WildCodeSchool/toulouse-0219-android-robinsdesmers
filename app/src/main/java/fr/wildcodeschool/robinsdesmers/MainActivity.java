@@ -2,14 +2,11 @@ package fr.wildcodeschool.robinsdesmers;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.util.Consumer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 import fr.wildcodeschool.robinsdesmers.model.User;
@@ -17,8 +14,6 @@ import fr.wildcodeschool.robinsdesmers.model.User;
 public class MainActivity extends AppCompatActivity {
     private final UserSingleton userSingleton = UserSingleton.getUserInstance();
     private final Long userId = userSingleton.getUser().getId();
-    private ProgressBar progressBar;
-    private Handler handler = new Handler();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -59,29 +54,10 @@ public class MainActivity extends AppCompatActivity {
         VolleySingleton.getInstance(MainActivity.this).getOneUser(userId, new Consumer<User>() {
             @Override
             public void accept(User user) {
-                TextView tvScore = findViewById(R.id.tvUserScore);
-                tvScore.setText(String.valueOf(user.getScore()));
+
             }
         });
 
-        progressBar = findViewById(R.id.progressBarScore);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                int progressStatus = 0;
-                final int mprogress = userSingleton.getUser().getScore();
-                while (progressStatus < mprogress) {
-                    progressStatus++;
-
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            progressBar.setProgress(mprogress);
-                        }
-                    });
-                }
-            }
-        }).start();
     }
 }
