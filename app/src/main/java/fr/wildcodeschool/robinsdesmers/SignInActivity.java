@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.google.common.hash.HashCode;
+import com.google.common.hash.Hashing;
+
+import java.nio.charset.Charset;
 import java.util.List;
 
 import fr.wildcodeschool.robinsdesmers.model.User;
@@ -27,11 +31,13 @@ public class SignInActivity extends AppCompatActivity {
                 EditText password = findViewById(R.id.etPasswordSignIn);
                 final String emailStr = email.getText().toString();
                 final String passwordStr = password.getText().toString();
+                HashCode hashCode = Hashing.sha256().hashString(passwordStr, Charset.defaultCharset());
+                final String passwordHash = hashCode.toString();
                 VolleySingleton.getInstance(SignInActivity.this).getAllUsers(new Consumer<List<User>>() {
                     @Override
                     public void accept(List<User> users) {
                         for (User user : users) {
-                            if (emailStr.equals(user.getEmail()) && passwordStr.equals(user.getPassword())) {
+                            if (emailStr.equals(user.getEmail()) && passwordHash.equals(user.getPassword())) {
                                 VolleySingleton.getInstance(SignInActivity.this).getOneUser(user.getId(), new Consumer<User>() {
                                     @Override
                                     public void accept(User user) {
