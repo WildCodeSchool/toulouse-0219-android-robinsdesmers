@@ -58,7 +58,6 @@ public class VolleySingleton {
     }
 
     public void postRubbish(RubbishItem rubbishItem, User user, final Consumer<RubbishItem> rubbishListener) {
-
         String url = REQUEST_URL + "users/" + user.getId() + "/rubbishes";
         GsonBuilder gsonBuilder = new GsonBuilder();
         final Gson gson = gsonBuilder.create();
@@ -124,7 +123,6 @@ public class VolleySingleton {
     }
 
     public void postCollectPoint(final CollectPointItem collectPointItem, User user, final Consumer<CollectPointItem> collectPointItemConsumer) {
-
         String url = REQUEST_URL + "users/" + user.getId() + "/collectPoints";
         GsonBuilder gsonBuilder = new GsonBuilder();
         final Gson gson = gsonBuilder.create();
@@ -380,6 +378,30 @@ public class VolleySingleton {
                         rubbishListener.accept(rubbishItem);
                     }
                 }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    public void deleteOneCollectPoint(Long collectPointId, final Consumer<CollectPointItem> collectPointItemConsumer) {
+        String url = REQUEST_URL + "collectPoints/" + collectPointId;
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        final Gson gson = gsonBuilder.create();
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.DELETE,
+                url, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.i("Response", String.valueOf(response));
+                CollectPointItem collectPointItem1 = gson.fromJson(response.toString(), CollectPointItem.class);
+                collectPointItemConsumer.accept(collectPointItem1);
+            }
+        }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError error) {
