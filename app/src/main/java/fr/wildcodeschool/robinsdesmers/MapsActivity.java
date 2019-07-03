@@ -5,10 +5,13 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.renderscript.Allocation;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -128,6 +131,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 userSingleton.getUser().setLatitude(location.getLatitude());
                 userSingleton.getUser().setLongitude(location.getLongitude());
                 userSingleton.getUser().setConnected(true);
+
+
+
+               /* Drawable drawableHeroTete = getResources().getDrawable(tete);
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(latLng);
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) drawableHeroTete;
+                markerOptions.icon(bitmapDrawable);
+                mMap.addMarker(markerOptions);*/
             }
         });
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
