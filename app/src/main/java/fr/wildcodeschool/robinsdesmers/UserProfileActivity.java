@@ -2,6 +2,7 @@ package fr.wildcodeschool.robinsdesmers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
@@ -17,6 +19,11 @@ import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.updateUser.PersonalDetailsActivity;
 
 public class UserProfileActivity extends AppCompatActivity {
+
+    private UserSingleton userSingleton = UserSingleton.getUserInstance();
+    private final Long userId = userSingleton.getUser().getId();
+    private ProgressBar progressBar;
+    private Handler handler = new Handler();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -47,9 +54,6 @@ public class UserProfileActivity extends AppCompatActivity {
             return false;
         }
     };
-
-    private UserSingleton userSingleton = UserSingleton.getUserInstance();
-    private final Long userId = userSingleton.getUser().getId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,8 +87,31 @@ public class UserProfileActivity extends AppCompatActivity {
 
                 TextView departmentUser = findViewById(R.id.tvDepartmentProfile);
                 departmentUser.setText(userSingleton.getUser().getDepartment());
+
+                TextView tvScore = findViewById(R.id.tvScoreVolley);
+                tvScore.setText(String.valueOf(user.getScore()));
             }
         });
+
+        progressBar = findViewById(R.id.progressBarScore);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int progressStatus = 0;
+                final int mprogress = userSingleton.getUser().getScore();
+                while (progressStatus < mprogress) {
+                    progressStatus++;
+
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressBar.setProgress(mprogress);
+                        }
+                    });
+                }
+            }
+        }).start();
 
         FloatingActionButton floatBtSetting = findViewById(R.id.floatBtProfile);
         floatBtSetting.setOnClickListener(new View.OnClickListener() {
