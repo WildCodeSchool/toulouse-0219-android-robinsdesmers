@@ -171,4 +171,33 @@
     <string name="ton_score">Ton score :</string>
     <string name="ton_grade">Ton grade :</string>
     <string name="grade_utilisateur">Grade Utilisateur</string>
+    <string name="plancton">Robin plancton</string>
+    <string name="corail">Robin corail</string>
+    <string name="crevette">Robin crevette</string>
+    <string name="oursin">Robin oursin</string>
+    <string name="crabe">Robin crabe</string>
+    <string name="globe">Robin globe</string>
+    <string name="hermite">Robin l\'hermite</string>
+    <string name="poulpe">Robin poulpe</string>
+    <string name="robin">Murène robin</string>
+    <string name="tortue">Robin tortue</string>
+    <string name="requin">Robin requin</string>
+    <string name="baleine">Robin baleine</string>
+    <string name="plique">Robin\'pliqué</string>
+    <string name="trepide">Robin\'trépide</string>
+    <string name="cent_cinquante">%d / 150</string>
+    <string name="quatre_cent_cinquante">%d / 450</string>
+    <string name="mille">%d / 1000</string>
+    <string name="deux_mille">%d / 2000</string>
+    <string name="quatre_mille">%d / 4000</string>
+    <string name="six_mille">%d / 6000</string>
+    <string name="huit_mille">%d / 8000</string>
+    <string name="dix_mille">%d / 10000</string>
+    <string name="douze_mille">%d / 12000</string>
+    <string name="quatorze_mille">%d / 14000</string>
+    <string name="seize_mille">%d / 16000</string>
+    <string name="dix_huit_mille">%d / 18000</string>
+    <string name="vingt_mille">%d / 20000</string>
+    <string name="trente_mille">%d / 30000</string>
+
 </resources>
