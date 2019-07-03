@@ -1,5 +1,6 @@
 package fr.wildcodeschool.robinsdesmers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,57 +21,36 @@ import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class SignInActivity extends AppCompatActivity {
 
-    public static final String PREFS_NAME = "MyPrefsFile";
-    private SharedPreferences mPrefs;
-    private EditText email, password;
-    private String emailStr, passwordStr;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        final SharedPreferences sharePreference = SignInActivity.this.getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharePreference.edit();
+        final EditText email = findViewById(R.id.etEmailSignIn);
+        final EditText password = findViewById(R.id.etPasswordSignIn);
+        final CheckBox checkBox = findViewById(R.id.chbRemember);
 
         ImageButton imBtSignIn = findViewById(R.id.imBtSign);
         imBtSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                email = findViewById(R.id.etEmailSignIn);
-                password = findViewById(R.id.etPasswordSignIn);
-                emailStr = email.getText().toString();
-                passwordStr = password.getText().toString();
+                final String emailStr = email.getText().toString();
+                final String passwordStr = password.getText().toString();
 
-                HashCode hashCode = Hashing.sha256().hashString(passwordStr, Charset.defaultCharset());
-                final String passwordHash = hashCode.toString();
-                final CheckBox mcheckboxRemember= findViewById(R.id.chbRemember);
-
-                mPrefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-                SharedPreferences sp = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-                if(sp.contains("pref_mail")) {
-                    String s = sp.getString("pref_mail", "");
-                    email.setText(s.toString());
-                }
-
-                if(sp.contains("pref_password")) {
-                    String p = sp.getString("pref_password", "");
-                    password.setText(p.toString());
-                }
-
-                if(sp.contains("pref_check")) {
-                    Boolean b = sp.getBoolean("pref_check", false);
-                    mcheckboxRemember.setChecked(b);
-                }
-
-                if(mcheckboxRemember.isChecked()) {
-                    final Boolean booleanCheked = mcheckboxRemember.isChecked();
-                    SharedPreferences.Editor editor = mPrefs.edit();
-                    editor.putString("pref_mail", emailStr);
-                    editor.putString("pref_password", passwordStr);
-                    editor.putBoolean("pref_check", booleanCheked);
+                if (checkBox.isChecked()) {
+                    editor.putString("saveEmail", emailStr);
+                    editor.putString("savePassword", passwordStr);
+                    editor.putBoolean("checked", true);
                     editor.apply();
                 } else {
-                    mPrefs.edit().clear().apply();
+                    editor.clear();
+                    editor.commit();
                 }
+                HashCode hashCode = Hashing.sha256().hashString(passwordStr, Charset.defaultCharset());
+                final String passwordHash = hashCode.toString();
 
                 VolleySingleton.getInstance(SignInActivity.this).getAllUsers(new Consumer<List<User>>() {
                     @Override
@@ -89,12 +69,10 @@ public class SignInActivity extends AppCompatActivity {
                         }
                     }
                 });
-
             }
         });
-
-        /* TODO : link for forgot password
-        TextView tvForgotPassword = findViewById(R.id.tvForgotPassword);
-        */
+        email.setText(sharePreference.getString("saveEmail", null));
+        password.setText(sharePreference.getString("savePassword", null));
+        checkBox.setChecked(sharePreference.getBoolean("checked", false));
     }
 }
