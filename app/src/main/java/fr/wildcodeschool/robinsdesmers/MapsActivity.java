@@ -3,6 +3,7 @@ package fr.wildcodeschool.robinsdesmers;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -15,6 +16,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Consumer;
+import android.support.v7.app.AlertDialog;
 import android.view.MenuItem;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -34,8 +36,7 @@ import java.util.List;
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
-import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectPointDescriptionActivity;
-import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectRubbishActivity;
+import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.MarkerTypeActivity;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -44,6 +45,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final float DEFAULT_ZOOM = 16.0f;
     private static final int MIN_DISTANCE = 2;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
+    private Long userId;
     private GoogleMap mMap;
     private boolean mMapInit = false;
     private LocationManager mLocationManager = null;
@@ -231,17 +233,49 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
-            public void onInfoWindowClick(Marker marker) {
+            public void onInfoWindowClick(final Marker marker) {
                 if (marker.getAlpha() == 0.99f) {
-                    CollectPointItem collectPointItem = (CollectPointItem) marker.getTag();
-                    Intent intent1 = new Intent(MapsActivity.this, CollectPointDescriptionActivity.class);
-                    intent1.putExtra("collectPointId", collectPointItem.getId());
-                    startActivity(intent1);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+                    builder.setMessage(R.string.collectPoint_present);
+                    builder.setPositiveButton(R.string.oui, null);
+                    builder.setNegativeButton(R.string.non, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            CollectPointItem collectPointItem = (CollectPointItem) marker.getTag();
+                            VolleySingleton.getInstance(MapsActivity.this).deleteOneCollectPoint(collectPointItem.getId(), new Consumer<CollectPointItem>() {
+                                @Override
+                                public void accept(CollectPointItem collectPointItem) {
+                                }
+                            });
+                            startActivity(new Intent(MapsActivity.this, MapsActivity.class));
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 } else {
-                    RubbishItem rubbishItem = (RubbishItem) marker.getTag();
-                    Intent intent = new Intent(MapsActivity.this, CollectRubbishActivity.class);
-                    intent.putExtra("rubbishId", rubbishItem.getId());
-                    startActivity(intent);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+                    builder.setTitle(R.string.dechet_collecte);
+                    builder.setPositiveButton(getString(R.string.oui), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            RubbishItem rubbishItem = (RubbishItem) marker.getTag();
+                            userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (rubbishItem.getSumRubbish() * 10));
+                            VolleySingleton.getInstance(MapsActivity.this).updateUser(userId, userSingleton.getUser(), new Consumer<User>() {
+                                @Override
+                                public void accept(User user) {
+                                }
+                            });
+                            VolleySingleton.getInstance(MapsActivity.this).collectRubbish(rubbishItem.getId(), new Consumer<RubbishItem>() {
+                                @Override
+                                public void accept(RubbishItem rubbishItem) {
+                                    startActivity(new Intent(MapsActivity.this, MapsActivity.class));
+                                }
+                            });
+                        }
+                    });
+                    builder.setNegativeButton(getString(R.string.non), null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
             }
         });
