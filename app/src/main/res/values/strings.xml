@@ -26,9 +26,9 @@
     <string name="cartons">Cartons</string>
     <string name="retour_carte">Retour Carte</string>
     <string name="envoyer">Envoyer</string>
-    <string name="benne_de_revalorisation">Benne de revalorisation</string>
-    <string name="poubelle_de_tri"> Poubelle de Tri</string>
-    <string name="decheterie">Décheterie</string>
+    <string name="benne_de_revalorisation">Benne de revalorisation </string>
+    <string name="poubelle_de_tri"> Poubelle de Tri </string>
+    <string name="decheterie">Décheterie </string>
     <string name="dechet">Déchet</string>
     <string name="dechet_seul">Déchet seul</string>
     <string name="amas_de_dechets">Amas de déchets</string>
@@ -40,7 +40,7 @@
     <string name="bouteilles">Bouteilles</string>
     <string name="dechets_en_verre">Déchets en verre</string>
     <string name="dechets_en_plastique">Déchets en plastique</string>
-    <string name="poubelle_classique">Poubelle Classique</string>
+    <string name="poubelle_classique">Poubelle classique </string>
     <string name="d_cheterie">Décheterie</string>
     <string name="inscription">Inscription</string>
     <string name="date_de_naissance">Date de naissance</string>
