@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.wildcodeschool.robinsdesmers.model.Authentication;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
@@ -276,6 +277,30 @@ public class VolleySingleton {
         requestQueue.add(jsonObjectRequest);
     }
 
+    public void signByToken(String token, final Consumer<User> userListener) {
+        String url = REQUEST_URL + "users/token/" + token;
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        final Gson gson = gsonBuilder.create();
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        User user = gson.fromJson(response.toString(), User.class);
+                        userListener.accept(user);
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+
     public void collectRubbish(Long rubbishId, final Consumer<RubbishItem> rubbishListener) {
         String url = REQUEST_URL + "rubbishes/" + rubbishId + "/collected";
         GsonBuilder gsonBuilder = new GsonBuilder();
@@ -377,6 +402,30 @@ public class VolleySingleton {
                 collectPointItemConsumer.accept(collectPointItem1);
             }
         }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    public void getAuthentication(String email, String password, final Consumer<Authentication> authenticationListener) {
+        String url = REQUEST_URL + "users/" + email + "/" + password;
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        final Gson gson = gsonBuilder.create();
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Authentication authentication = gson.fromJson(response.toString(), Authentication.class);
+                        authenticationListener.accept(authentication);
+                    }
+                }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError error) {

@@ -15,8 +15,8 @@ import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
 
 import java.nio.charset.Charset;
-import java.util.List;
 
+import fr.wildcodeschool.robinsdesmers.model.Authentication;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class SignInActivity extends AppCompatActivity {
@@ -40,18 +40,20 @@ public class SignInActivity extends AppCompatActivity {
                 final String emailStr = email.getText().toString();
                 final String passwordStr = password.getText().toString();
 
-
                 HashCode hashCode = Hashing.sha256().hashString(passwordStr, Charset.defaultCharset());
                 final String passwordHash = hashCode.toString();
 
-                VolleySingleton.getInstance(SignInActivity.this).getAllUsers(new Consumer<List<User>>() {
+                VolleySingleton.getInstance(SignInActivity.this).getAuthentication(emailStr, passwordHash, new Consumer<Authentication>() {
                     @Override
-                    public void accept(List<User> users) {
-                        for (User user : users) {
-
+                    public void accept(Authentication authentication) {
+                        if (authentication.getError() != null) {
+                            //TODO gestion d'erreur
+                        } else if (authentication.getUser() == null) {
+                            //TODO gestion erreur
+                        } else {
+                            User user = authentication.getUser();
                             if (checkBox.isChecked()) {
-                                editor.putString("saveEmail", emailStr);
-                                editor.putString("savePassword", passwordStr);
+                                editor.putString("token", user.getToken());
                                 editor.putBoolean("checked", true);
                                 editor.putBoolean("isLoggedIn", true);
                                 editor.putLong("userId", user.getId());
@@ -76,8 +78,5 @@ public class SignInActivity extends AppCompatActivity {
                 });
             }
         });
-        email.setText(sharePreference.getString("saveEmail", null));
-        password.setText(sharePreference.getString("savePassword", null));
-        checkBox.setChecked(sharePreference.getBoolean("checked", false));
     }
 }
