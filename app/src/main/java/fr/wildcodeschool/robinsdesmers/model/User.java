@@ -5,6 +5,17 @@ import android.os.Parcelable;
 
 public class User implements Parcelable {
 
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
     private Long id;
     private String firstName;
     private String lastName;
@@ -21,36 +32,12 @@ public class User implements Parcelable {
     private Double latitude;
     private Double longitude;
     private boolean connected;
+    private String token;
 
     public User() {
     }
 
-    public static Creator<User> getCREATOR() {
-        return CREATOR;
-    }
-
-    public User(Long id, String firstName, String lastName, String email, String password, String gender, String dateOfBirth,
-                String department, String category, String pseudo, String description, Integer avatar, Integer score,
-                Double latitude, Double longitude, boolean connected) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
-        this.department = department;
-        this.category = category;
-        this.pseudo = pseudo;
-        this.description = description;
-        this.avatar = avatar;
-        this.score = score;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.connected = connected;
-    }
-
-    public User(Parcel in) {
+    protected User(Parcel in) {
         if (in.readByte() == 0) {
             id = null;
         } else {
@@ -87,19 +74,84 @@ public class User implements Parcelable {
             longitude = in.readDouble();
         }
         connected = in.readByte() != 0;
+        token = in.readString();
     }
 
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
+    public User(Long id, String firstName, String lastName, String email, String password, String gender, String dateOfBirth,
+                String department, String category, String pseudo, String description, Integer avatar, Integer score,
+                Double latitude, Double longitude, boolean connected) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.department = department;
+        this.category = category;
+        this.pseudo = pseudo;
+        this.description = description;
+        this.avatar = avatar;
+        this.score = score;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.connected = connected;
+    }
 
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
+    public static Creator<User> getCREATOR() {
+        return CREATOR;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        if (id == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeLong(id);
         }
-    };
+        dest.writeString(firstName);
+        dest.writeString(lastName);
+        dest.writeString(email);
+        dest.writeString(password);
+        dest.writeString(gender);
+        dest.writeString(dateOfBirth);
+        dest.writeString(department);
+        dest.writeString(category);
+        dest.writeString(pseudo);
+        dest.writeString(description);
+        if (avatar == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(avatar);
+        }
+        if (score == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(score);
+        }
+        if (latitude == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(latitude);
+        }
+        if (longitude == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(longitude);
+        }
+        dest.writeByte((byte) (connected ? 1 : 0));
+        dest.writeString(token);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
     public Long getId() {
         return id;
@@ -229,53 +281,11 @@ public class User implements Parcelable {
         this.connected = connected;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getToken() {
+        return token;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        if (id == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeLong(id);
-        }
-        dest.writeString(firstName);
-        dest.writeString(lastName);
-        dest.writeString(email);
-        dest.writeString(password);
-        dest.writeString(gender);
-        dest.writeString(dateOfBirth);
-        dest.writeString(department);
-        dest.writeString(category);
-        dest.writeString(pseudo);
-        dest.writeString(description);
-        if (avatar == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(avatar);
-        }
-        if (score == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeInt(score);
-        }
-        if (latitude == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(latitude);
-        }
-        if (longitude == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(longitude);
-        }
-        dest.writeByte((byte) (connected ? 1 : 0));
+    public void setToken(String token) {
+        this.token = token;
     }
 }

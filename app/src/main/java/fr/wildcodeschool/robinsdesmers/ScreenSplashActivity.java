@@ -55,8 +55,8 @@ public class ScreenSplashActivity extends AppCompatActivity {
 
         final SharedPreferences preferences = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
         if (preferences.getBoolean("isLoggedIn", false)) {
-            Long userId = preferences.getLong("userId", 0);
-            VolleySingleton.getInstance(ScreenSplashActivity.this).getOneUser(userId, new Consumer<User>() {
+            String token = preferences.getString("token", null);
+            VolleySingleton.getInstance(ScreenSplashActivity.this).signByToken(token, new Consumer<User>() {
                 @Override
                 public void accept(User user) {
                     UserSingleton.getUserInstance().setUser(user);

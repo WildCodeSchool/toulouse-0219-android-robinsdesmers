@@ -53,8 +53,7 @@ public class SignInActivity extends AppCompatActivity {
                         } else {
                             User user = authentication.getUser();
                             if (checkBox.isChecked()) {
-                                editor.putString("saveEmail", emailStr);
-                                editor.putString("savePassword", passwordStr);
+                                editor.putString("token", user.getToken());
                                 editor.putBoolean("checked", true);
                                 editor.putBoolean("isLoggedIn", true);
                                 editor.putLong("userId", user.getId());
@@ -76,12 +75,8 @@ public class SignInActivity extends AppCompatActivity {
                             }
                         }
                     }
-
                 });
             }
         });
-        email.setText(sharePreference.getString("saveEmail", null));
-        password.setText(sharePreference.getString("savePassword", null));
-        checkBox.setChecked(sharePreference.getBoolean("checked", false));
     }
 }
