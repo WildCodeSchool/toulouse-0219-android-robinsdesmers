@@ -132,7 +132,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 userSingleton.getUser().setLongitude(location.getLongitude());
                 userSingleton.getUser().setConnected(true);
 
-                Integer tete = 0;
+                Integer tete = R.drawable.tete_hero;
                 if(userSingleton.getUser().getAvatar() == R.drawable.persohero){
                     tete = R.drawable.tete_hero;
                 }

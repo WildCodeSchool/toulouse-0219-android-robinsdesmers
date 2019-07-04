@@ -174,4 +174,7 @@
     <string name="nombre_robins">Nombre de Robins :</string>
     <string name="dechet_main">Déchets déclarés :</string>
     <string name="pointcollecte_main">Points de collecte :</string>
+    <string name="robins_main">Robins :</string>
+    <string name="collect_points_main">Points de collecte</string>
+    <string name="dechets_declares">Déchets déclarés</string>
 </resources>
