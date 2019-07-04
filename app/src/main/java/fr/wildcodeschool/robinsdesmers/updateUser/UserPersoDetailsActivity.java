@@ -3,7 +3,6 @@ package fr.wildcodeschool.robinsdesmers.updateUser;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.util.Consumer;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -18,7 +17,6 @@ import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserProfileActivity;
 import fr.wildcodeschool.robinsdesmers.UserSingleton;
 import fr.wildcodeschool.robinsdesmers.VolleySingleton;
-import fr.wildcodeschool.robinsdesmers.inscription.InscriptionActivity;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class UserPersoDetailsActivity extends AppCompatActivity {
@@ -36,16 +34,11 @@ public class UserPersoDetailsActivity extends AppCompatActivity {
         final EditText etPassword = findViewById(R.id.etPassword);
         final EditText etPseudo = findViewById(R.id.etPseudo);
         final EditText etDescription = findViewById(R.id.etDescription);
-        VolleySingleton.getInstance(UserPersoDetailsActivity.this).getOneUser(userId, new Consumer<User>() {
-            @Override
-            public void accept(User user) {
-                etLastName.setText(userSingleton.getUser().getLastName());
-                etFirstName.setText(userSingleton.getUser().getFirstName());
-                etEmail.setText(userSingleton.getUser().getEmail());
-                etPseudo.setText(userSingleton.getUser().getPseudo());
-                etDescription.setText(userSingleton.getUser().getDescription());
-            }
-        });
+        etLastName.setText(userSingleton.getUser().getLastName());
+        etFirstName.setText(userSingleton.getUser().getFirstName());
+        etEmail.setText(userSingleton.getUser().getEmail());
+        etPseudo.setText(userSingleton.getUser().getPseudo());
+        etDescription.setText(userSingleton.getUser().getDescription());
 
         ImageButton btSendEdit = findViewById(R.id.imBtEditLessPerso);
         btSendEdit.setOnClickListener(new View.OnClickListener() {
@@ -56,13 +49,11 @@ public class UserPersoDetailsActivity extends AppCompatActivity {
                 final String firstNameStr = etFirstName.getText().toString();
                 final String emailStr = etEmail.getText().toString();
                 final String passwordStr = etPassword.getText().toString();
-
                 final String pseudoStr = etPseudo.getText().toString();
                 final String descriptionStr = etDescription.getText().toString();
                 userSingleton.getUser().setLastName(lastNameStr);
                 userSingleton.getUser().setFirstName(firstNameStr);
                 userSingleton.getUser().setEmail(emailStr);
-
                 userSingleton.getUser().setPseudo(pseudoStr);
                 userSingleton.getUser().setDescription(descriptionStr);
 

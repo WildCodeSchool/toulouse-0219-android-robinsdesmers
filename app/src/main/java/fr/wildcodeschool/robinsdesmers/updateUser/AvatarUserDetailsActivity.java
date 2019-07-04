@@ -33,52 +33,47 @@ public class AvatarUserDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avatar_user_details);
 
-        VolleySingleton.getInstance(AvatarUserDetailsActivity.this).getOneUser(userId, new Consumer<User>() {
+        imageSwitcher = findViewById(R.id.imSwitcherAvatarsEdit);
+
+        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
-            public void accept(User user) {
-                imageSwitcher = findViewById(R.id.imSwitcherAvatarsEdit);
+            public View makeView() {
+                ImageView imageView = new ImageView(getApplicationContext());
+                imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                imageView.setLayoutParams(new ImageSwitcher.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT));
+                return imageView;
+            }
+        });
 
-                imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
-                    @Override
-                    public View makeView() {
-                        ImageView imageView = new ImageView(getApplicationContext());
-                        imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-                        imageView.setLayoutParams(new ImageSwitcher.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.MATCH_PARENT));
-                        return imageView;
-                    }
-                });
+        final Animation avatar_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_in);
+        final Animation avatar_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_out);
 
-                final Animation avatar_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_in);
-                final Animation avatar_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_out);
+        imageSwitcher.setImageResource(images[index]);
+        imBtPrevious = findViewById(R.id.imBtPreviousEdit);
+        imBtNext = findViewById(R.id.imBtNextEdit);
 
-                imageSwitcher.setImageResource(images[index]);
-                imBtPrevious = findViewById(R.id.imBtPreviousEdit);
-                imBtNext = findViewById(R.id.imBtNextEdit);
+        imBtPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                imBtPrevious.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                if (index > 0) {
+                    index--;
+                    imageSwitcher.setInAnimation(avatar_in);
+                    imageSwitcher.setImageResource(images[index]);
+                }
+            }
+        });
 
-                        if (index > 0) {
-                            index--;
-                            imageSwitcher.setInAnimation(avatar_in);
-                            imageSwitcher.setImageResource(images[index]);
-                        }
-                    }
-                });
+        imBtNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                imBtNext.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        if (index < images.length - 1) {
-                            index++;
-                            imageSwitcher.setInAnimation(avatar_out);
-                            imageSwitcher.setImageResource(images[index]);
-                        }
-                    }
-                });
+                if (index < images.length - 1) {
+                    index++;
+                    imageSwitcher.setInAnimation(avatar_out);
+                    imageSwitcher.setImageResource(images[index]);
+                }
             }
         });
 

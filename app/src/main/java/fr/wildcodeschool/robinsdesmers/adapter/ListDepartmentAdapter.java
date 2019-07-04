@@ -19,7 +19,6 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
 
     private ArrayList<Department> departments;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
-    private final Long userId = userSingleton.getUser().getId();
 
     public ListDepartmentAdapter(ArrayList<Department> departments) {
         this.departments = departments;
@@ -34,14 +33,6 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
 
     @Override
     public void onBindViewHolder(DepartmentViewHolder holder, final int position) {
-        VolleySingleton.getInstance(holder.container.getContext()).getOneUser(userId, new Consumer<User>() {
-            @Override
-            public void accept(User user) {
-                if (userSingleton.getUser().getDepartment().substring(0,2).equals(departments.get(position).getNumber())) {
-                    departments.get(position).setSelected(true);
-                }
-            }
-        });
         Department department = departments.get(position);
         holder.tvName.setText(department.getName());
         holder.tvNumber.setText(department.getNumber());

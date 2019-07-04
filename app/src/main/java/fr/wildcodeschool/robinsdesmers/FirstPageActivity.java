@@ -10,6 +10,9 @@ import fr.wildcodeschool.robinsdesmers.inscription.InscriptionActivity;
 
 public class FirstPageActivity extends AppCompatActivity {
 
+    private UserSingleton userSingleton = UserSingleton.getUserInstance();
+    private final Long userId = userSingleton.getUser().getId();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +28,7 @@ public class FirstPageActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton imBtSignIn = findViewById(R.id.ibSignPrincipal);
+        final ImageButton imBtSignIn = findViewById(R.id.ibSignPrincipal);
 
         imBtSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
