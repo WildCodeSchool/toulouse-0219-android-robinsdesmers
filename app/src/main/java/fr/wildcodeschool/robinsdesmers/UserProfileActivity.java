@@ -1,6 +1,8 @@
 package fr.wildcodeschool.robinsdesmers;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -23,7 +25,6 @@ public class UserProfileActivity extends AppCompatActivity {
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
     private final Long userId = userSingleton.getUser().getId();
     private ProgressBar progressBar;
-    private Handler handler = new Handler();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -94,89 +95,85 @@ public class UserProfileActivity extends AppCompatActivity {
                 progressBar = findViewById(R.id.progressBarScore);
                 final TextView gradeUser = findViewById(R.id.tvGradeVolley);
                 gradeUser.setText(getString(R.string.plancton));
-
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        int progressStatus = 0;
-                        while (progressStatus < userSingleton.getUser().getScore()) {
-                            progressStatus++;
-
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    progressBar.setProgress(userSingleton.getUser().getScore());
-
-                                    if (userSingleton.getUser().getScore() > 150) {
-                                        progressBar.setMax(450);
-                                        gradeUser.setText(getString(R.string.corail));
-                                        tvScore.setText(String.format(getString(R.string.quatre_cent_cinquante), userSingleton.getUser().getScore()));
-                                    }
-                                    if (userSingleton.getUser().getScore() > 450) {
-                                        progressBar.setMax(1000);
-                                        gradeUser.setText(getString(R.string.crevette));
-                                        tvScore.setText(String.format(getString(R.string.mille), userSingleton.getUser().getScore()));
-                                    }
-                                    if (userSingleton.getUser().getScore() > 1000) {
-                                        progressBar.setMax(2000);
-                                        gradeUser.setText(getString(R.string.oursin));
-                                        tvScore.setText(String.format(getString(R.string.deux_mille), userSingleton.getUser().getScore()));
-                                    }
-                                    if (userSingleton.getUser().getScore() > 2000) {
-                                        progressBar.setMax(4000);
-                                        gradeUser.setText(getString(R.string.crabe));
-                                        tvScore.setText(String.format(getString(R.string.quatre_mille), userSingleton.getUser().getScore()));
-                                    }
-                                    if (userSingleton.getUser().getScore() > 4000) {
-                                        progressBar.setMax(6000);
-                                        gradeUser.setText(getString(R.string.globe));
-                                        tvScore.setText(String.format(getString(R.string.six_mille), userSingleton.getUser().getScore()));
-                                    }
-                                    if (userSingleton.getUser().getScore() > 6000) {
-                                        progressBar.setMax(8000);
-                                        gradeUser.setText(getString(R.string.hermite));
-                                        tvScore.setText(String.format(getString(R.string.huit_mille), userSingleton.getUser().getScore()));
-                                    }
-                                    if (userSingleton.getUser().getScore() > 8000) {
-                                        progressBar.setMax(10000);
-                                        gradeUser.setText(getString(R.string.poulpe));
-                                        tvScore.setText(String.format(getString(R.string.dix_mille), userSingleton.getUser().getScore()));
-                                    }
-                                    if (userSingleton.getUser().getScore() > 10000) {
-                                        progressBar.setMax(12000);
-                                        gradeUser.setText(getString(R.string.robin));
-                                        tvScore.setText(String.format(getString(R.string.douze_mille), userSingleton.getUser().getScore()));
-                                    }
-                                    if (userSingleton.getUser().getScore() > 12000) {
-                                        progressBar.setMax(14000);
-                                        gradeUser.setText(getString(R.string.tortue));
-                                        tvScore.setText(String.format(getString(R.string.quatorze_mille), userSingleton.getUser().getScore()));
-                                    }
-                                    if (userSingleton.getUser().getScore() > 14000) {
-                                        progressBar.setMax(16000);
-                                        gradeUser.setText(getString(R.string.requin));
-                                        tvScore.setText(String.format(getString(R.string.seize_mille), userSingleton.getUser().getScore()));
-                                    }
-                                    if (userSingleton.getUser().getScore() > 16000) {
-                                        progressBar.setMax(18000);
-                                        gradeUser.setText(getString(R.string.baleine));
-                                        tvScore.setText(String.format(getString(R.string.dix_huit_mille), userSingleton.getUser().getScore()));
-                                    }
-                                    if (userSingleton.getUser().getScore() > 18000) {
-                                        progressBar.setMax(20000);
-                                        gradeUser.setText(getString(R.string.plique));
-                                        tvScore.setText(String.format(getString(R.string.vingt_mille), userSingleton.getUser().getScore()));
-                                    }
-                                    if (userSingleton.getUser().getScore() > 20000) {
-                                        progressBar.setMax(30000);
-                                        gradeUser.setText(getString(R.string.trepide));
-                                        tvScore.setText(String.format(getString(R.string.trente_mille), userSingleton.getUser().getScore()));
-                                    }
-                                }
-                            });
-                        }
-                    }
-                }).start();
+                progressBar.setProgress(userSingleton.getUser().getScore());
+                if (userSingleton.getUser().getScore() > 150) {
+                    progressBar.setMax(450);
+                    gradeUser.setText(getString(R.string.corail));
+                    tvScore.setText(String.format(getString(R.string.quatre_cent_cinquante), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
+                if (userSingleton.getUser().getScore() > 450) {
+                    progressBar.setMax(1000);
+                    gradeUser.setText(getString(R.string.crevette));
+                    tvScore.setText(String.format(getString(R.string.mille), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
+                if (userSingleton.getUser().getScore() > 1000) {
+                    progressBar.setMax(2000);
+                    gradeUser.setText(getString(R.string.oursin));
+                    tvScore.setText(String.format(getString(R.string.deux_mille), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
+                if (userSingleton.getUser().getScore() > 2000) {
+                    progressBar.setMax(4000);
+                    gradeUser.setText(getString(R.string.crabe));
+                    tvScore.setText(String.format(getString(R.string.quatre_mille), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
+                if (userSingleton.getUser().getScore() > 4000) {
+                    progressBar.setMax(6000);
+                    gradeUser.setText(getString(R.string.globe));
+                    tvScore.setText(String.format(getString(R.string.six_mille), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
+                if (userSingleton.getUser().getScore() > 6000) {
+                    progressBar.setMax(8000);
+                    gradeUser.setText(getString(R.string.hermite));
+                    tvScore.setText(String.format(getString(R.string.huit_mille), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
+                if (userSingleton.getUser().getScore() > 8000) {
+                    progressBar.setMax(10000);
+                    gradeUser.setText(getString(R.string.poulpe));
+                    tvScore.setText(String.format(getString(R.string.dix_mille), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
+                if (userSingleton.getUser().getScore() > 10000) {
+                    progressBar.setMax(12000);
+                    gradeUser.setText(getString(R.string.robin));
+                    tvScore.setText(String.format(getString(R.string.douze_mille), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
+                if (userSingleton.getUser().getScore() > 12000) {
+                    progressBar.setMax(14000);
+                    gradeUser.setText(getString(R.string.tortue));
+                    tvScore.setText(String.format(getString(R.string.quatorze_mille), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
+                if (userSingleton.getUser().getScore() > 14000) {
+                    progressBar.setMax(16000);
+                    gradeUser.setText(getString(R.string.requin));
+                    tvScore.setText(String.format(getString(R.string.seize_mille), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
+                if (userSingleton.getUser().getScore() > 16000) {
+                    progressBar.setMax(18000);
+                    gradeUser.setText(getString(R.string.baleine));
+                    tvScore.setText(String.format(getString(R.string.dix_huit_mille), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
+                if (userSingleton.getUser().getScore() > 18000) {
+                    progressBar.setMax(20000);
+                    gradeUser.setText(getString(R.string.plique));
+                    tvScore.setText(String.format(getString(R.string.vingt_mille), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
+                if (userSingleton.getUser().getScore() > 20000) {
+                    progressBar.setMax(30000);
+                    gradeUser.setText(getString(R.string.trepide));
+                    tvScore.setText(String.format(getString(R.string.trente_mille), userSingleton.getUser().getScore()));
+                    progressBar.setProgress(userSingleton.getUser().getScore());
+                }
             }
         });
 
@@ -185,6 +182,19 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserProfileActivity.this, PersonalDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton floatBtLogout = findViewById(R.id.floatingBtLogout);
+        floatBtLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences preferences = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.apply();
+                Intent intent = new Intent(UserProfileActivity.this, SignInActivity.class);
                 startActivity(intent);
             }
         });
