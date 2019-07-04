@@ -38,13 +38,6 @@ public class CategoryUserDetailsActivity extends AppCompatActivity {
                 });
             }
         });
-
-        VolleySingleton.getInstance(CategoryUserDetailsActivity.this).getOneUser(userId, new Consumer<User>() {
-            @Override
-            public void accept(User user) {
-
-            }
-        });
         final Button btCitizen = findViewById(R.id.btCategoryCitizenEdit);
         final Button btNavigator = findViewById(R.id.btCategoryNavigatorEdit);
         final Button btEcosystem = findViewById(R.id.btCategoryEcosystemEdit);

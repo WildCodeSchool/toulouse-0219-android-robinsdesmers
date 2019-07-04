@@ -64,14 +64,9 @@ public class SignInActivity extends AppCompatActivity {
                             }
 
                             if (emailStr.equals(user.getEmail()) && passwordHash.equals(user.getPassword())) {
-                                VolleySingleton.getInstance(SignInActivity.this).getOneUser(user.getId(), new Consumer<User>() {
-                                    @Override
-                                    public void accept(User user) {
-                                        UserSingleton.getUserInstance().setUser(user);
-                                        Intent goToHome = new Intent(SignInActivity.this, MapsActivity.class);
-                                        startActivity(goToHome);
-                                    }
-                                });
+                                UserSingleton.getUserInstance().setUser(user);
+                                Intent goToHome = new Intent(SignInActivity.this, MapsActivity.class);
+                                startActivity(goToHome);
                             }
                         }
                     }
