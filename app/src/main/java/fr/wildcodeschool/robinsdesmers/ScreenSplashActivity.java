@@ -12,10 +12,7 @@ import android.widget.ImageView;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class ScreenSplashActivity extends AppCompatActivity {
-    final int MILLIS = 2000;
-    final int ROTATION_START = 0;
-    final int ROTATION_END = 300;
-    final int DURATION = 1300;
+    final int MILLIS = 3000;
     private User mUser = null;
     private boolean loading = true;
     private boolean animation = true;
@@ -24,11 +21,6 @@ public class ScreenSplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_splash);
-
-        ImageView imageView = findViewById(R.id.ivScreenImg);
-        RotateAnimation rotate = new RotateAnimation(ROTATION_START, ROTATION_END);
-        rotate.setDuration(DURATION);
-        imageView.startAnimation(rotate);
 
         Thread myThread = new Thread() {
 

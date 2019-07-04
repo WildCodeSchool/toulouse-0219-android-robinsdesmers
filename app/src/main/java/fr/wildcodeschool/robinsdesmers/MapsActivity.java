@@ -134,7 +134,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 userSingleton.getUser().setLongitude(location.getLongitude());
                 userSingleton.getUser().setConnected(true);
 
-                Integer tete = R.drawable.tete_hero;
+                /*Integer tete = R.drawable.tete_hero;
                 if(userSingleton.getUser().getAvatar() == R.drawable.persohero){
                     tete = R.drawable.tete_hero;
                 }
@@ -148,7 +148,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
                 markerOptions.position(latLng);
                 markerOptions.icon(BitmapDescriptorFactory.fromResource(tete));
-                mMap.addMarker(markerOptions);
+                mMap.addMarker(markerOptions);*/
             }
         });
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);

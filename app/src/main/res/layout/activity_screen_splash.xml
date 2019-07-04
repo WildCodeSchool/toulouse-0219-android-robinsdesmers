@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/ivScreenImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
@@ -22,4 +22,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="277dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:indeterminate="true"
+        android:max="500"
+        android:progressDrawable="@drawable/progress_bar_screensplash"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivScreenImg" />
 </android.support.constraint.ConstraintLayout>
