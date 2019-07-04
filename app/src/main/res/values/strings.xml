@@ -199,5 +199,9 @@
     <string name="dix_huit_mille">%d / 18000</string>
     <string name="vingt_mille">%d / 20000</string>
     <string name="trente_mille">%d / 30000</string>
+    <string name="collectPoint_present">Ce point de collecte est-il toujours présent?</string>
+    <string name="oui">Oui</string>
+    <string name="non">Non</string>
+    <string name="dechet_collecte">Avez-vous collecté ce(s) déchet(s) ?</string>
 
 </resources>
