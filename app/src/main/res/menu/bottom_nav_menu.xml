@@ -4,31 +4,31 @@
     <item
         android:id="@+id/navigation_home"
         android:enabled="true"
-        android:icon="@drawable/nav_bar_home_dark_green"
+        android:icon="@drawable/icon_home"
         android:title="@string/home" />
 
     <item
         android:id="@+id/navigation_mission"
         android:enabled="true"
-        android:icon="@drawable/nav_bar_alert_dark_green"
+        android:icon="@drawable/icon_mission"
         android:title="@string/mission" />
 
     <item
         android:id="@+id/navigation_carte"
         android:enabled="true"
-        android:icon="@drawable/nav_bar_map_dark_green"
+        android:icon="@drawable/icon_map"
         android:title="@string/map" />
 
     <item
         android:id="@+id/navigation_info"
         android:enabled="true"
-        android:icon="@drawable/nav_bar_info_dark_green"
+        android:icon="@drawable/icon_info"
         android:title="@string/info" />
 
     <item
         android:id="@+id/navigation_profile"
         android:enabled="true"
-        android:icon="@drawable/nav_bar_profile_dark_green"
+        android:icon="@drawable/icon_profile"
         android:title="@string/profile" />
 
 </menu>

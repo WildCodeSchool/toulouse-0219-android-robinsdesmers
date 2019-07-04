@@ -32,8 +32,8 @@ import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class VolleySingleton {
-    private static final String REQUEST_URL = "http://10.0.2.2:8080/";
-    //private static final String REQUEST_URL = "http://192.168.8.119:8080/";
+    //private static final String REQUEST_URL = "http://10.0.2.2:8080/";
+    private static final String REQUEST_URL = "http://192.168.8.124:8080/";
     private static VolleySingleton instance;
     private static Context ctx;
     private RequestQueue requestQueue;
