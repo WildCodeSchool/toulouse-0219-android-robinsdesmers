@@ -27,7 +27,7 @@ public class SignInActivity extends AppCompatActivity {
         imBtSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*EditText email = findViewById(R.id.etEmailSigni);
+                EditText email = findViewById(R.id.etEmailSignIn);
                 EditText password = findViewById(R.id.etPasswordSignIn);
                 final String emailStr = email.getText().toString();
                 final String passwordStr = password.getText().toString();
@@ -49,7 +49,7 @@ public class SignInActivity extends AppCompatActivity {
                             }
                         }
                     }
-                });*/
+                });
             }
         });
         /* TODO : link for forgot password
