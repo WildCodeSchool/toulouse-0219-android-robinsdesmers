@@ -140,7 +140,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tvCollectPoint"
+        android:id="@+id/tvRubbishes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -154,7 +154,7 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <TextView
-        android:id="@+id/tvRubbish"
+        android:id="@+id/tvCollectPoints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -167,11 +167,11 @@
         app:layout_constraintBottom_toBottomOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pbCollectPoint"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/ivCollectPointContainer" />
 
     <View
         android:id="@+id/divider"
-        android:layout_width="395dp"
+        android:layout_width="0dp"
         android:layout_height="4dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -185,13 +185,13 @@
     <View
         android:id="@+id/divider2"
         android:layout_width="4dp"
-        android:layout_height="715dp"
+        android:layout_height="0dp"
         android:background="@color/orange"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintStart_toEndOf="@+id/pbCollectPoint" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivCollectPointContainer"
         android:layout_width="144dp"
         android:layout_height="134dp"
         android:alpha="0.6"
@@ -210,9 +210,9 @@
         android:layout_marginBottom="8dp"
         android:textColor="#FFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/ivCollectPointContainer"
+        app:layout_constraintEnd_toEndOf="@+id/ivCollectPointContainer"
+        app:layout_constraintStart_toStartOf="@+id/ivCollectPointContainer"
+        app:layout_constraintTop_toTopOf="@+id/ivCollectPointContainer" />
 
 </android.support.constraint.ConstraintLayout>

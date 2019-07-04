@@ -29,6 +29,7 @@ import java.util.Map;
 import fr.wildcodeschool.robinsdesmers.model.Authentication;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
+import fr.wildcodeschool.robinsdesmers.model.Stats;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class VolleySingleton {
@@ -424,6 +425,30 @@ public class VolleySingleton {
                     public void onResponse(JSONObject response) {
                         Authentication authentication = gson.fromJson(response.toString(), Authentication.class);
                         authenticationListener.accept(authentication);
+                    }
+                }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.e("Error: ", error.getMessage());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    public void getStats(final Consumer<Stats> statsConsumer){
+        String url = REQUEST_URL + "stats" ;
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        final Gson gson = gsonBuilder.create();
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Stats stats = gson.fromJson(response.toString(), Stats.class);
+                        statsConsumer.accept(stats);
                     }
                 }, new Response.ErrorListener() {
 
