@@ -40,15 +40,7 @@ public class SignInActivity extends AppCompatActivity {
                 final String emailStr = email.getText().toString();
                 final String passwordStr = password.getText().toString();
 
-                if (checkBox.isChecked()) {
-                    editor.putString("saveEmail", emailStr);
-                    editor.putString("savePassword", passwordStr);
-                    editor.putBoolean("checked", true);
-                    editor.apply();
-                } else {
-                    editor.clear();
-                    editor.commit();
-                }
+
                 HashCode hashCode = Hashing.sha256().hashString(passwordStr, Charset.defaultCharset());
                 final String passwordHash = hashCode.toString();
 
@@ -56,6 +48,19 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void accept(List<User> users) {
                         for (User user : users) {
+
+                            if (checkBox.isChecked()) {
+                                editor.putString("saveEmail", emailStr);
+                                editor.putString("savePassword", passwordStr);
+                                editor.putBoolean("checked", true);
+                                editor.putBoolean("isLoggedIn", true);
+                                editor.putLong("userId", user.getId());
+                                editor.apply();
+                            } else {
+                                editor.clear();
+                                editor.commit();
+                            }
+
                             if (emailStr.equals(user.getEmail()) && passwordHash.equals(user.getPassword())) {
                                 VolleySingleton.getInstance(SignInActivity.this).getOneUser(user.getId(), new Consumer<User>() {
                                     @Override

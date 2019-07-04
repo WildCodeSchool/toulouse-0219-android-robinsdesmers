@@ -1,6 +1,8 @@
 package fr.wildcodeschool.robinsdesmers;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -185,6 +187,19 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserProfileActivity.this, PersonalDetailsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        FloatingActionButton floatBtLogout = findViewById(R.id.floatingBtLogout);
+        floatBtLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences preferences = getSharedPreferences("sharedPref", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.apply();
+                Intent intent = new Intent(UserProfileActivity.this, SignInActivity.class);
                 startActivity(intent);
             }
         });
