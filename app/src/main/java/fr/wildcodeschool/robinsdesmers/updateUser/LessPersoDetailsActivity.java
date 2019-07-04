@@ -54,10 +54,6 @@ public class LessPersoDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_less_perso_details);
 
-        VolleySingleton.getInstance(LessPersoDetailsActivity.this).getOneUser(userId, new Consumer<User>() {
-            @Override
-            public void accept(User user) {
-
                 mDisplayDate = findViewById(R.id.dateOfBirthEdit);
                 mDisplayDate.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -75,8 +71,6 @@ public class LessPersoDetailsActivity extends AppCompatActivity {
                         dialog.show();
                     }
                 });
-            }
-        });
 
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
