@@ -14,7 +14,6 @@ import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserSingleton;
 import fr.wildcodeschool.robinsdesmers.VolleySingleton;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
-import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class CollectPointInfosActivity extends AppCompatActivity {
@@ -49,96 +48,75 @@ public class CollectPointInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (cbBenne.isChecked()) {
-                    collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation));
-                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
-                    VolleySingleton.getInstance(CollectPointInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
+                VolleySingleton.getInstance(CollectPointInfosActivity.this).updateUser(userId, userSingleton.getUser(), new Consumer<User>() {
+                    @Override
+                    public void accept(User user) {
 
+                        if (cbBenne.isChecked()) {
+                            collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation) + " ");
+                            userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
                         }
-                    });
 
-                }
-
-                if (cbPoubelle.isChecked()) {
-                    collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.poubelle_classique));
-                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
-                    VolleySingleton.getInstance(CollectPointInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
-
+                        if (cbPoubelle.isChecked()) {
+                            collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.poubelle_classique) + " ");
+                            userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
                         }
-                    });
-                }
 
-                if (cbPoubelleTri.isChecked()) {
-                    collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation));
-                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
-                    VolleySingleton.getInstance(CollectPointInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
-
+                        if (cbPoubelleTri.isChecked()) {
+                            collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.poubelle_de_tri) + " ");
+                            userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
                         }
-                    });
-                }
 
-                if (cbDechetterie.isChecked()) {
-                    collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.benne_de_revalorisation));
-                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
-                    VolleySingleton.getInstance(CollectPointInfosActivity.this).updateUserScore(userId, new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
-
+                        if (cbDechetterie.isChecked()) {
+                            collectPointItem.setTitle(collectPointItem.getTitle() + getString(R.string.decheterie) + " ");
+                            userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_COLLECT_POINT);
                         }
-                    });
-                }
-
-                if (cbClassique.isChecked()) {
-                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.classique));
-                }
-
-                if (cbMegotPdc.isChecked()) {
-                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.m_got));
-                }
-
-                if (cbRecyclable.isChecked()) {
-                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.recyclable));
-                }
-
-                if (cbCanette.isChecked()) {
-                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.canettes));
-                }
-
-                if (cbVerre.isChecked()) {
-                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.verre));
-                }
-
-                if (cbPlastique.isChecked()) {
-                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.plastique));
-                }
-
-                if (cbAutres.isChecked()) {
-                    collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.autres));
-                }
-
-                if (collectPointItem.getTitle().isEmpty() || collectPointItem.getDescription().isEmpty()) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(CollectPointInfosActivity.this);
-                    builder.setTitle(R.string.merci_de);
-                    builder.setMessage(R.string.remplir);
-                    builder.setPositiveButton(R.string.ok, null);
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                } else {
-                    Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
-                    startActivity(intent);
-                    VolleySingleton.getInstance(CollectPointInfosActivity.this).postCollectPoint(collectPointItem, userSingleton.getUser(), new Consumer<CollectPointItem>() {
-                        @Override
-                        public void accept(CollectPointItem collectPointItem) {
-
+                        if (cbClassique.isChecked()) {
+                            collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.classique) + " ");
                         }
-                    });
-                }
+
+                        if (cbMegotPdc.isChecked()) {
+                            collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.m_got) + " ");
+                        }
+
+                        if (cbRecyclable.isChecked()) {
+                            collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.recyclable) + " ");
+                        }
+
+                        if (cbCanette.isChecked()) {
+                            collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.canettes) + " ");
+                        }
+
+                        if (cbVerre.isChecked()) {
+                            collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.verre) + " ");
+                        }
+
+                        if (cbPlastique.isChecked()) {
+                            collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.plastique) + " ");
+                        }
+
+                        if (cbAutres.isChecked()) {
+                            collectPointItem.setDescription(collectPointItem.getDescription() + getString(R.string.autres) + " ");
+                        }
+
+                        if (collectPointItem.getTitle().isEmpty() || collectPointItem.getDescription().isEmpty()) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(CollectPointInfosActivity.this);
+                            builder.setTitle(R.string.merci_de);
+                            builder.setMessage(R.string.remplir);
+                            builder.setPositiveButton(R.string.ok, null);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        } else {
+                            Intent intent = new Intent(CollectPointInfosActivity.this, MapsActivity.class);
+                            startActivity(intent);
+                            VolleySingleton.getInstance(CollectPointInfosActivity.this).postCollectPoint(collectPointItem, userSingleton.getUser(), new Consumer<CollectPointItem>() {
+                                @Override
+                                public void accept(CollectPointItem collectPointItem) {
+                                }
+                            });
+                        }
+                    }
+                });
             }
         });
     }
