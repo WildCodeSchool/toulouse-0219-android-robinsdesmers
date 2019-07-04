@@ -6,10 +6,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.renderscript.Allocation;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -130,6 +133,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 userSingleton.getUser().setLatitude(location.getLatitude());
                 userSingleton.getUser().setLongitude(location.getLongitude());
                 userSingleton.getUser().setConnected(true);
+
+                Integer tete = R.drawable.tete_hero;
+                if(userSingleton.getUser().getAvatar() == R.drawable.persohero){
+                    tete = R.drawable.tete_hero;
+                }
+                if(userSingleton.getUser().getAvatar() == R.drawable.persoheroine){
+                    tete = R.drawable.tete_heroine;
+                }
+                if(userSingleton.getUser().getAvatar() == R.drawable.persomarin){
+                    tete = R.drawable.tete_marin;
+                }
+                MarkerOptions markerOptions = new MarkerOptions();
+                LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
+                markerOptions.position(latLng);
+                markerOptions.icon(BitmapDescriptorFactory.fromResource(tete));
+                mMap.addMarker(markerOptions);
             }
         });
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
