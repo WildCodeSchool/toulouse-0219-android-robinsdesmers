@@ -34,7 +34,7 @@
             android:id="@+id/ivLogoRdm"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/empreinte" />
+            android:src="@drawable/btn_empreinte" />
 
     </LinearLayout>
 

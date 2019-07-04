@@ -200,7 +200,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btFaceBkLogo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRetrouver"
-        app:srcCompat="@drawable/empreinte" />
+        app:srcCompat="@drawable/btn_empreinte" />
 
     <ImageButton
         android:id="@+id/btFaceBkLogo"
@@ -219,7 +219,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btInstaLogo"
         app:layout_constraintStart_toEndOf="@+id/btRdmLogo"
         app:layout_constraintTop_toBottomOf="@+id/tvRetrouver"
-        app:srcCompat="@drawable/facebook_button" />
+        app:srcCompat="@drawable/logo_facebook" />
 
     <ImageButton
         android:id="@+id/btInstaLogo"
@@ -238,7 +238,7 @@
         app:layout_constraintEnd_toStartOf="@+id/btTwitterLogo"
         app:layout_constraintStart_toEndOf="@+id/btFaceBkLogo"
         app:layout_constraintTop_toBottomOf="@+id/tvRetrouver"
-        app:srcCompat="@drawable/instagram_button" />
+        app:srcCompat="@drawable/logo_insta" />
 
     <ImageButton
         android:id="@+id/btTwitterLogo"
@@ -257,7 +257,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btInstaLogo"
         app:layout_constraintTop_toBottomOf="@+id/tvRetrouver"
-        app:srcCompat="@drawable/twitter_button" />
+        app:srcCompat="@drawable/logo_twitter" />
 
     <Button
         android:id="@+id/btInviteFriends"
