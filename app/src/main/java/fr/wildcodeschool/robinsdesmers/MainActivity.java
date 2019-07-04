@@ -77,19 +77,13 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        /*VolleySingleton.getInstance(MainActivity.this).getOneUser(userId, new Consumer<User>() {
-            @Override
-            public void accept(User user) {
-
-            }
-        });*/
         VolleySingleton.getInstance(MainActivity.this).getAllUsers(new Consumer<List<User>>() {
             @Override
             public void accept(List<User> users) {
                 for (User user : users) {
                     mProgress++;
                 }
-                textView.setText("Nombre de Robins : " + String.valueOf(mProgress));
+                textView.setText(getString(R.string.nombre_robins) + String.valueOf(mProgress));
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -115,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 for (RubbishItem rubbish : rubbishItems) {
                     mProgress1++;
                 }
-                textView1.setText("Déchets déclarés : " + String.valueOf(mProgress1));
+                textView1.setText(getString(R.string.dechet_main) + String.valueOf(mProgress1));
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -142,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                 for (CollectPointItem collectPointItem : collectPointItems) {
                     mProgress2++;
                 }
-                textView2.setText("Points de collecte : " + String.valueOf(mProgress2));
+                textView2.setText(getString(R.string.pointcollecte_main) + String.valueOf(mProgress2));
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
