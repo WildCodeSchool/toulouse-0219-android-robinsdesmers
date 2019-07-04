@@ -4,12 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.util.Consumer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
-import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class MainActivity extends AppCompatActivity {
     private final UserSingleton userSingleton = UserSingleton.getUserInstance();
@@ -50,14 +48,5 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        VolleySingleton.getInstance(MainActivity.this).getOneUser(userId, new Consumer<User>() {
-            @Override
-            public void accept(User user) {
-
-            }
-        });
-
-
     }
 }
