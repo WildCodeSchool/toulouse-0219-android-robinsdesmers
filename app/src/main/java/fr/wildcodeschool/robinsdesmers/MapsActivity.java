@@ -136,28 +136,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 userSingleton.getUser().setLongitude(location.getLongitude());
                 userSingleton.getUser().setConnected(true);
 
-                Integer tete = R.drawable.tete_hero;
-                if(userSingleton.getUser().getAvatar() == 0){
-                    tete = R.drawable.tete_hero;
-                }
-                if(userSingleton.getUser().getAvatar() == 1){
-                    tete = R.drawable.tete_heroine;
-                }
-                if(userSingleton.getUser().getAvatar() == 2){
-                    tete = R.drawable.tete_marin;
-                }
-                if(userSingleton.getUser().getAvatar() == 3){
-                    tete = R.drawable.tete_fille_bonnet_map;
-                }
-                if(userSingleton.getUser().getAvatar() == 4){
-                    tete = R.drawable.tete_garcon_meche_map;
+                if(userSingleton.getUser().getAvatar() != null){
+                     Integer tete;
+                     tete = avatarList.get(0);
+                    if(userSingleton.getUser().getAvatar() == 0){
+                        tete = R.drawable.tete_hero;
+                    }
+                    if(userSingleton.getUser().getAvatar() == 1){
+                        tete = R.drawable.tete_heroine;
+                    }
+                    if(userSingleton.getUser().getAvatar() == 2){
+                        tete = R.drawable.tete_marin;
+                    }
+                    if(userSingleton.getUser().getAvatar() == 3){
+                        tete = R.drawable.tete_fille_bonnet_map;
+                    }
+                    if(userSingleton.getUser().getAvatar() == 4){
+                        tete = R.drawable.tete_garcon_meche_map;
+                    }
+                    MarkerOptions markerOptions = new MarkerOptions();
+                    LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
+                    markerOptions.position(latLng);
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(tete));
+                    mMap.addMarker(markerOptions);
                 }
 
-                MarkerOptions markerOptions = new MarkerOptions();
-                LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
-                markerOptions.position(latLng);
-                markerOptions.icon(BitmapDescriptorFactory.fromResource(tete));
-                mMap.addMarker(markerOptions);
+
+
             }
         });
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
