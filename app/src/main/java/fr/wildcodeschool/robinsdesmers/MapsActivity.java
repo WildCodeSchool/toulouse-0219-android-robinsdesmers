@@ -42,6 +42,8 @@ import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.MarkerTypeActivity;
 
+import static fr.wildcodeschool.robinsdesmers.inscription.AvatarChoicesActivity.avatarList;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_LOCATION = 4322;
@@ -135,15 +137,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 userSingleton.getUser().setConnected(true);
 
                 Integer tete = R.drawable.tete_hero;
-                if(userSingleton.getUser().getAvatar() == R.drawable.persohero){
+                if(userSingleton.getUser().getAvatar() == 0){
                     tete = R.drawable.tete_hero;
                 }
-                if(userSingleton.getUser().getAvatar() == R.drawable.persoheroine){
+                if(userSingleton.getUser().getAvatar() == 1){
                     tete = R.drawable.tete_heroine;
                 }
-                if(userSingleton.getUser().getAvatar() == R.drawable.persomarin){
+                if(userSingleton.getUser().getAvatar() == 2){
                     tete = R.drawable.tete_marin;
                 }
+                if(userSingleton.getUser().getAvatar() == 3){
+                    tete = R.drawable.tete_fille_bonnet_map;
+                }
+                if(userSingleton.getUser().getAvatar() == 4){
+                    tete = R.drawable.tete_garcon_meche_map;
+                }
+
                 MarkerOptions markerOptions = new MarkerOptions();
                 LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
                 markerOptions.position(latLng);

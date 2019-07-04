@@ -25,7 +25,7 @@ import fr.wildcodeschool.robinsdesmers.model.User;
 public class AvatarChoicesActivity extends AppCompatActivity {
     ImageButton imBtNext, imBtPrevious;
     ImageSwitcher imageSwitcher;
-    public static ArrayList<Integer> avatarList = new ArrayList<>(Arrays.asList(R.drawable.persohero, R.drawable.persoheroine, R.drawable.persomarin, R.drawable.icon_cat_v3));
+    public static ArrayList<Integer> avatarList = new ArrayList<>(Arrays.asList(R.drawable.persohero, R.drawable.persoheroine, R.drawable.persomarin, R.drawable.perso_fille_bonnet,R.drawable.perso_garcon_meche));
     int index = 0;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
 
