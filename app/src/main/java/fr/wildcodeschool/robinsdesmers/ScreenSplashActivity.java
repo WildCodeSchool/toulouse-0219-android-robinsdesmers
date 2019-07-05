@@ -6,8 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.util.Consumer;
 import android.support.v7.app.AppCompatActivity;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
 
 import fr.wildcodeschool.robinsdesmers.model.User;
 

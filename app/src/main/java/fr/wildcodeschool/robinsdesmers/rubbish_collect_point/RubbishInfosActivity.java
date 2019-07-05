@@ -66,13 +66,6 @@ public class RubbishInfosActivity extends AppCompatActivity {
                 if (cbDechetRamasse.isChecked()) {
                     rubbishItem.setCollected(true);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_RUBBISH_COLLECTED);
-
-                    VolleySingleton.getInstance(RubbishInfosActivity.this).updateUser(userId,userSingleton.getUser(), new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
-
-                        }
-                    });
                 }
                 if (!btSurTerre.isSelected() && !btSurMer.isSelected() || rubbishItem.getSumRubbish() == 0) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RubbishInfosActivity.this);
@@ -81,17 +74,15 @@ public class RubbishInfosActivity extends AppCompatActivity {
                     builder.setPositiveButton(R.string.ok, null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
-
                 } else {
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_RUBBISH);
-                    VolleySingleton.getInstance(RubbishInfosActivity.this).updateUser(userId,userSingleton.getUser(), new Consumer<User>() {
+                    VolleySingleton.getInstance(RubbishInfosActivity.this).updateUser(userId, userSingleton.getUser(), new Consumer<User>() {
                         @Override
                         public void accept(User user) {
                             Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
                             startActivity(intent);
                         }
                     });
-
                     VolleySingleton.getInstance(RubbishInfosActivity.this).postRubbish(rubbishItem, userSingleton.getUser(), new Consumer<RubbishItem>() {
                         @Override
                         public void accept(RubbishItem rubbishItem) {

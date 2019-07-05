@@ -14,7 +14,7 @@ import fr.wildcodeschool.robinsdesmers.model.SecurityInfoItem;
 
 public class SecurityInfoAdapter extends RecyclerView.Adapter<SecurityInfoAdapter.SecurityInfoViewHolder> {
 
-    List<SecurityInfoItem> securityInfoItems;
+    private List<SecurityInfoItem> securityInfoItems;
 
     public SecurityInfoAdapter(List<SecurityInfoItem> securityInfoItems) {
         this.securityInfoItems = securityInfoItems;
