@@ -29,7 +29,7 @@
         android:indeterminateDuration="0"
         android:indeterminateOnly="false"
         android:max="100"
-        android:progressDrawable="@drawable/progress_bar_user"
+        android:progressDrawable="@drawable/progress_bar_collect_point"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toStartOf="@+id/divider2"

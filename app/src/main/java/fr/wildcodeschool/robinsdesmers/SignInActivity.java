@@ -48,10 +48,9 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void accept(Authentication authentication) {
                         if (authentication.getError() != null) {
-                            //TODO gestion d'erreur
                             Toast.makeText(SignInActivity.this, getString(R.string.mdp_email_incorrect), Toast.LENGTH_LONG).show();
                         } else if (authentication.getUser() == null) {
-                            //TODO gestion erreur
+                            Toast.makeText(SignInActivity.this, getString(R.string.erreur_reessayer), Toast.LENGTH_LONG).show();
                         } else {
                             User user = authentication.getUser();
                             if (checkBox.isChecked()) {

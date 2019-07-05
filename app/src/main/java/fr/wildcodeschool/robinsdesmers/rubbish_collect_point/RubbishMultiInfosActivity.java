@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
@@ -138,6 +139,7 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
                 if (cbDechetRamasse.isChecked()) {
                     rubbishItem.setCollected(true);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (rubbishItem.getSumRubbish() * SCORE_COLLECTED));
+                    Toast.makeText(RubbishMultiInfosActivity.this, getString(R.string.merci_ramasser), Toast.LENGTH_LONG).show();
                 }
 
                 if (!btSurTerre.isSelected() && !btSurMer.isSelected() || rubbishItem.getSumRubbish() == 0) {
