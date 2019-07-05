@@ -20,6 +20,8 @@ import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.updateUser.PersonalDetailsActivity;
 
+import static fr.wildcodeschool.robinsdesmers.inscription.AvatarChoicesActivity.avatarList;
+
 public class UserProfileActivity extends AppCompatActivity {
 
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
@@ -76,7 +78,7 @@ public class UserProfileActivity extends AppCompatActivity {
         }
 
         ImageView imageViewAvatar = findViewById(R.id.ivAvatarProfile);
-        imageViewAvatar.setImageResource(userSingleton.getUser().getAvatar());
+        imageViewAvatar.setImageResource(avatarList.get(userSingleton.getUser().getAvatar()));
 
         TextView categoryUser = findViewById(R.id.tvCategoryProfile);
         categoryUser.setText(userSingleton.getUser().getCategory());
