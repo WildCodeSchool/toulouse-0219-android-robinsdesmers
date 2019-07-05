@@ -214,10 +214,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     final LatLng rubbishCoord = new LatLng(rubbish.getLatitude(), rubbish.getLongitude());
                     if (!rubbish.isCollected()) {
                         if (rubbish.getTitle().equals(getString(R.string.dechet_seul))) {
-                            Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_dechet_seul)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
+                            Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_dechet_seul_light_green)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
                             marker.setTag(rubbish);
                         } else {
-                            Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_amas_dechets)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
+                            Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_amas_dechet_light_green)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
                             marker.setTag(rubbish);
                         }
                     }
@@ -230,7 +230,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void accept(List<CollectPointItem> collectPointItems) {
                 for (CollectPointItem collectPoint : collectPointItems) {
                     final LatLng collectPointCoord = new LatLng(collectPoint.getLatitude(), collectPoint.getLongitude());
-                    Marker markerCollect = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_point_collecte)).position(collectPointCoord).title(collectPoint.getTitle()).snippet(collectPoint.getDescription()).alpha(0.99f));
+                    Marker markerCollect = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_collect_point_light_green)).position(collectPointCoord).title(collectPoint.getTitle()).snippet(collectPoint.getDescription()).alpha(0.99f));
                     markerCollect.setTag(collectPoint);
                 }
             }
