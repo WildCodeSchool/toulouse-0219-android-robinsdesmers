@@ -37,6 +37,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.util.List;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
+import fr.wildcodeschool.robinsdesmers.inscription.InscriptionActivity;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
@@ -77,8 +78,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
-                    Intent goToProfile = new Intent(MapsActivity.this, UserProfileActivity.class);
-                    startActivity(goToProfile);
+                    if(userSingleton.getUser().getAvatar() == null){
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+                        builder.setTitle(R.string.merci_de);
+                        builder.setMessage(R.string.acces_visiteur_profile);
+                        builder.setPositiveButton(R.string.ok, null);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    } else {
+                        Intent goToProfile = new Intent(MapsActivity.this, UserProfileActivity.class);
+                        startActivity(goToProfile);
+                    }
                     return true;
             }
             return false;

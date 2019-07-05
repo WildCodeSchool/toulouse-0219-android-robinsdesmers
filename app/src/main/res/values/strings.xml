@@ -210,4 +210,5 @@
     <string name="robins_main">Robins :</string>
     <string name="collect_points_main">Points de collecte</string>
     <string name="dechets_declares">Déchets déclarés</string>
+    <string name="acces_visiteur_profile">Vous enregistrer afin d\'avoir accés à la totalité de l\'application</string>
 </resources>
