@@ -18,6 +18,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Consumer;
 import android.support.v7.app.AlertDialog;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -149,9 +150,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onSuccess(final Location location) {
                 setUserLocation(location);
-                userSingleton.getUser().setLatitude(location.getLatitude());
+                /*userSingleton.getUser().setLatitude(location.getLatitude());
                 userSingleton.getUser().setLongitude(location.getLongitude());
-                userSingleton.getUser().setConnected(true);
+                userSingleton.getUser().setConnected(true);*/
 
                 if (userSingleton.getUser().getAvatar() != null) {
                     Integer tete = avatarHeadList.get(userSingleton.getUser().getAvatar());
@@ -300,6 +301,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             VolleySingleton.getInstance(MapsActivity.this).updateUser(userSingleton.getUser().getId(), userSingleton.getUser(), new Consumer<User>() {
                                 @Override
                                 public void accept(User user) {
+                                    Toast.makeText(MapsActivity.this, getString(R.string.merci_ramasser), Toast.LENGTH_LONG).show();
                                 }
                             });
                             VolleySingleton.getInstance(MapsActivity.this).collectRubbish(rubbishItem.getId(), new Consumer<RubbishItem>() {

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
@@ -62,10 +63,10 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 if (cbDechetRamasse.isChecked()) {
                     rubbishItem.setCollected(true);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_RUBBISH_COLLECTED);
+                    Toast.makeText(RubbishInfosActivity.this, getString(R.string.merci_ramasser), Toast.LENGTH_LONG).show();
                 }
                 if (!btSurTerre.isSelected() && !btSurMer.isSelected() || rubbishItem.getSumRubbish() == 0) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RubbishInfosActivity.this);
