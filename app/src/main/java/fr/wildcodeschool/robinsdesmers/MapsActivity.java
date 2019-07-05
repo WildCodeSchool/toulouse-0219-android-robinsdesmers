@@ -42,6 +42,7 @@ import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.MarkerTypeActivity;
 
+import static fr.wildcodeschool.robinsdesmers.inscription.AvatarChoicesActivity.avatarHeadList;
 import static fr.wildcodeschool.robinsdesmers.inscription.AvatarChoicesActivity.avatarList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -138,21 +139,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 if(userSingleton.getUser().getAvatar() != null){
                      Integer tete;
-                     tete = avatarList.get(0);
+                     tete = avatarHeadList.get(0);
                     if(userSingleton.getUser().getAvatar() == 0){
-                        tete = R.drawable.tete_hero;
+                        tete = avatarHeadList.get(0);
                     }
                     if(userSingleton.getUser().getAvatar() == 1){
-                        tete = R.drawable.tete_heroine;
+                        tete = avatarHeadList.get(1);
                     }
                     if(userSingleton.getUser().getAvatar() == 2){
-                        tete = R.drawable.tete_marin;
+                        tete = avatarHeadList.get(2);
                     }
                     if(userSingleton.getUser().getAvatar() == 3){
-                        tete = R.drawable.tete_fille_bonnet_map;
+                        tete = avatarHeadList.get(3);
                     }
                     if(userSingleton.getUser().getAvatar() == 4){
-                        tete = R.drawable.tete_garcon_meche_map;
+                        tete = avatarHeadList.get(4);
                     }
                     MarkerOptions markerOptions = new MarkerOptions();
                     LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());

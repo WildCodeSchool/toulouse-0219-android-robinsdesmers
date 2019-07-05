@@ -26,6 +26,7 @@ public class AvatarChoicesActivity extends AppCompatActivity {
     ImageButton imBtNext, imBtPrevious;
     ImageSwitcher imageSwitcher;
     public static ArrayList<Integer> avatarList = new ArrayList<>(Arrays.asList(R.drawable.persohero, R.drawable.persoheroine, R.drawable.persomarin, R.drawable.perso_fille_bonnet,R.drawable.perso_garcon_meche));
+    public static ArrayList<Integer> avatarHeadList = new ArrayList<>(Arrays.asList(R.drawable.tete_hero, R.drawable.tete_heroine, R.drawable.tete_marin, R.drawable.tete_fille_bonnet_map,R.drawable.tete_garcon_meche_map));
     int index = 0;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
 
