@@ -21,7 +21,7 @@
 
     <ProgressBar
         android:id="@+id/pbCollectPoint"
-        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Small.Title"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Large"
         android:layout_width="200dp"
         android:layout_height="250dp"
         android:layout_marginBottom="8dp"
@@ -40,6 +40,8 @@
         android:id="@+id/constraintLayout"
         android:layout_width="170dp"
         android:layout_height="135dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/poubelle_main"
         app:layout_constraintBottom_toBottomOf="@+id/pbCollectPoint"
         app:layout_constraintEnd_toEndOf="@+id/pbCollectPoint"

@@ -16,12 +16,10 @@ import fr.wildcodeschool.robinsdesmers.model.Stats;
 
 
 public class MainActivity extends AppCompatActivity {
-    private ProgressBar progressBar2;
     private TextView tvUsers;
     private TextView tvCollectPoint;
     private TextView tvRubbish;
     private TextView tvNbCollectPoints;
-    private Handler handler2 = new Handler();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -56,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        progressBar2 = findViewById(R.id.pbCollectPoint);
         tvUsers = findViewById(R.id.tvUsers);
         tvCollectPoint = findViewById(R.id.tvCollectPoints);
         tvRubbish = findViewById(R.id.tvRubbishes);
@@ -71,23 +68,6 @@ public class MainActivity extends AppCompatActivity {
                 tvNbCollectPoints.setText(String.valueOf(stats.getNbRubbishes()));
                 tvRubbish.setText(getString(R.string.pointcollecte_main) + "\n" + String.valueOf(stats.getNbCollectPoints()));
                 tvCollectPoint.setText(getString(R.string.dechets_declares));
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        int progressStatus = 0;
-                        while (progressStatus < stats.getNbCollectPoints()) {
-                            progressStatus++;
-
-                            handler2.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    progressBar2.setProgress(stats.getNbCollectPoints());
-                                }
-                            });
-                        }
-                    }
-                }).start();
             }
         });
     }
