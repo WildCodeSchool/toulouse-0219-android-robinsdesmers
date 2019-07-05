@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
@@ -48,8 +49,10 @@ public class SignInActivity extends AppCompatActivity {
                     public void accept(Authentication authentication) {
                         if (authentication.getError() != null) {
                             //TODO gestion d'erreur
+                            Toast.makeText(SignInActivity.this, "Email ou mot de passe incorrect", Toast.LENGTH_LONG).show();
                         } else if (authentication.getUser() == null) {
                             //TODO gestion erreur
+                            Toast.makeText(SignInActivity.this, "faux!", Toast.LENGTH_LONG).show();
                         } else {
                             User user = authentication.getUser();
                             if (checkBox.isChecked()) {
@@ -63,11 +66,11 @@ public class SignInActivity extends AppCompatActivity {
                                 editor.commit();
                             }
 
-                            if (emailStr.equals(user.getEmail()) && passwordHash.equals(user.getPassword())) {
+                            //if (emailStr.equals(user.getEmail()) && passwordHash.equals(user.getPassword())) {
                                 UserSingleton.getUserInstance().setUser(user);
                                 Intent goToHome = new Intent(SignInActivity.this, MapsActivity.class);
                                 startActivity(goToHome);
-                            }
+                            //}
                         }
                     }
                 });
