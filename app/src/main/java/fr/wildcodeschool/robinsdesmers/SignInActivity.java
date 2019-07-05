@@ -49,10 +49,9 @@ public class SignInActivity extends AppCompatActivity {
                     public void accept(Authentication authentication) {
                         if (authentication.getError() != null) {
                             //TODO gestion d'erreur
-                            Toast.makeText(SignInActivity.this, "Email ou mot de passe incorrect", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignInActivity.this, getString(R.string.mdp_email_incorrect), Toast.LENGTH_LONG).show();
                         } else if (authentication.getUser() == null) {
                             //TODO gestion erreur
-                            Toast.makeText(SignInActivity.this, "faux!", Toast.LENGTH_LONG).show();
                         } else {
                             User user = authentication.getUser();
                             if (checkBox.isChecked()) {
@@ -65,12 +64,9 @@ public class SignInActivity extends AppCompatActivity {
                                 editor.clear();
                                 editor.commit();
                             }
-
-                            //if (emailStr.equals(user.getEmail()) && passwordHash.equals(user.getPassword())) {
                                 UserSingleton.getUserInstance().setUser(user);
                                 Intent goToHome = new Intent(SignInActivity.this, MapsActivity.class);
                                 startActivity(goToHome);
-                            //}
                         }
                     }
                 });
