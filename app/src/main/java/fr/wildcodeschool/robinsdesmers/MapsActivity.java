@@ -39,6 +39,8 @@ import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.MarkerTypeActivity;
 
+import static fr.wildcodeschool.robinsdesmers.inscription.AvatarChoicesActivity.avatarHeadList;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_LOCATION = 4322;
@@ -61,6 +63,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToHome);
                     return true;
                 case R.id.navigation_mission:
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+                    builder.setTitle(R.string.page_en_dev);
+                    builder.setMessage(R.string.mission_mensuelles_alert);
+                    builder.setPositiveButton(R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                     return true;
                 case R.id.navigation_carte:
                     Intent goToMaps = new Intent(MapsActivity.this, MapsActivity.class);
@@ -71,8 +79,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
-                    Intent goToProfile = new Intent(MapsActivity.this, UserProfileActivity.class);
-                    startActivity(goToProfile);
+                    if (userSingleton.getUser().getAvatar() == null) {
+                        AlertDialog.Builder builder2 = new AlertDialog.Builder(MapsActivity.this);
+                        builder2.setTitle(R.string.merci_de);
+                        builder2.setMessage(R.string.acces_visiteur_profile);
+                        builder2.setPositiveButton(R.string.ok, null);
+                        AlertDialog dialog2 = builder2.create();
+                        dialog2.show();
+                    } else {
+                        Intent goToProfile = new Intent(MapsActivity.this, UserProfileActivity.class);
+                        startActivity(goToProfile);
+                    }
                     return true;
             }
             return false;
@@ -130,6 +147,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 userSingleton.getUser().setLatitude(location.getLatitude());
                 userSingleton.getUser().setLongitude(location.getLongitude());
                 userSingleton.getUser().setConnected(true);
+
+                if (userSingleton.getUser().getAvatar() != null) {
+                    Integer tete = avatarHeadList.get(userSingleton.getUser().getAvatar());
+
+                    MarkerOptions markerOptions = new MarkerOptions();
+                    LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                    markerOptions.position(latLng);
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(tete));
+                    mMap.addMarker(markerOptions);
+                }
             }
         });
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -214,10 +241,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     final LatLng rubbishCoord = new LatLng(rubbish.getLatitude(), rubbish.getLongitude());
                     if (!rubbish.isCollected()) {
                         if (rubbish.getTitle().equals(getString(R.string.dechet_seul))) {
-                            Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_dechet_seul)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
+                            Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_dechet_seul_light_green)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
                             marker.setTag(rubbish);
                         } else {
-                            Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_amas_dechets)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
+                            Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_amas_dechet_light_green)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
                             marker.setTag(rubbish);
                         }
                     }
@@ -230,7 +257,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void accept(List<CollectPointItem> collectPointItems) {
                 for (CollectPointItem collectPoint : collectPointItems) {
                     final LatLng collectPointCoord = new LatLng(collectPoint.getLatitude(), collectPoint.getLongitude());
-                    Marker markerCollect = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_point_collecte)).position(collectPointCoord).title(collectPoint.getTitle()).snippet(collectPoint.getDescription()).alpha(0.99f));
+                    Marker markerCollect = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_collect_point_light_green)).position(collectPointCoord).title(collectPoint.getTitle()).snippet(collectPoint.getDescription()).alpha(0.99f));
                     markerCollect.setTag(collectPoint);
                 }
             }

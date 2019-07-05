@@ -19,11 +19,12 @@ import fr.wildcodeschool.robinsdesmers.UserSingleton;
 import fr.wildcodeschool.robinsdesmers.VolleySingleton;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
+import static fr.wildcodeschool.robinsdesmers.inscription.AvatarChoicesActivity.avatarList;
+
 public class AvatarUserDetailsActivity extends AppCompatActivity {
 
     ImageButton imBtNext, imBtPrevious;
     ImageSwitcher imageSwitcher;
-    Integer[] images = {R.drawable.persohero, R.drawable.persoheroine, R.drawable.persomarin, R.drawable.icon_cat_v3};
     int index = 0;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
     private final Long userId = userSingleton.getUser().getId();
@@ -46,10 +47,11 @@ public class AvatarUserDetailsActivity extends AppCompatActivity {
             }
         });
 
-        final Animation avatar_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_in);
-        final Animation avatar_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_out);
+        final Animation avatarIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_in);
+        final Animation avatarOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_out);
 
-        imageSwitcher.setImageResource(images[index]);
+        index = userSingleton.getUser().getAvatar();
+        imageSwitcher.setImageResource(avatarList.get(index));
         imBtPrevious = findViewById(R.id.imBtPreviousEdit);
         imBtNext = findViewById(R.id.imBtNextEdit);
 
@@ -59,8 +61,8 @@ public class AvatarUserDetailsActivity extends AppCompatActivity {
 
                 if (index > 0) {
                     index--;
-                    imageSwitcher.setInAnimation(avatar_in);
-                    imageSwitcher.setImageResource(images[index]);
+                    imageSwitcher.setInAnimation(avatarIn);
+                    imageSwitcher.setImageResource(avatarList.get(index));
                 }
             }
         });
@@ -69,10 +71,10 @@ public class AvatarUserDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (index < images.length - 1) {
+                if (index < avatarList.size() - 1) {
                     index++;
-                    imageSwitcher.setInAnimation(avatar_out);
-                    imageSwitcher.setImageResource(images[index]);
+                    imageSwitcher.setInAnimation(avatarOut);
+                    imageSwitcher.setImageResource(avatarList.get(index));
                 }
             }
         });
@@ -82,7 +84,7 @@ public class AvatarUserDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                userSingleton.getUser().setAvatar(images[index]);
+                userSingleton.getUser().setAvatar(index);
                 VolleySingleton.getInstance(AvatarUserDetailsActivity.this).updateUser(userId, userSingleton.getUser(), new Consumer<User>() {
                     @Override
                     public void accept(User user) {
