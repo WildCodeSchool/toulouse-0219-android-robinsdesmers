@@ -6,13 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.renderscript.Allocation;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -37,14 +34,12 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.util.List;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
-import fr.wildcodeschool.robinsdesmers.inscription.InscriptionActivity;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.MarkerTypeActivity;
 
 import static fr.wildcodeschool.robinsdesmers.inscription.AvatarChoicesActivity.avatarHeadList;
-import static fr.wildcodeschool.robinsdesmers.inscription.AvatarChoicesActivity.avatarList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -68,12 +63,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToHome);
                     return true;
                 case R.id.navigation_mission:
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
-                        builder.setTitle(R.string.page_en_dev);
-                        builder.setMessage(R.string.mission_mensuelles_alert);
-                        builder.setPositiveButton(R.string.ok, null);
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+                    builder.setTitle(R.string.page_en_dev);
+                    builder.setMessage(R.string.mission_mensuelles_alert);
+                    builder.setPositiveButton(R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                     return true;
                 case R.id.navigation_carte:
                     Intent goToMaps = new Intent(MapsActivity.this, MapsActivity.class);
@@ -84,7 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
-                    if(userSingleton.getUser().getAvatar() == null){
+                    if (userSingleton.getUser().getAvatar() == null) {
                         AlertDialog.Builder builder2 = new AlertDialog.Builder(MapsActivity.this);
                         builder2.setTitle(R.string.merci_de);
                         builder2.setMessage(R.string.acces_visiteur_profile);
@@ -153,33 +148,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 userSingleton.getUser().setLongitude(location.getLongitude());
                 userSingleton.getUser().setConnected(true);
 
-                if(userSingleton.getUser().getAvatar() != null){
-                     Integer tete;
-                     tete = avatarHeadList.get(0);
-                    if(userSingleton.getUser().getAvatar() == 0){
-                        tete = avatarHeadList.get(0);
-                    }
-                    if(userSingleton.getUser().getAvatar() == 1){
-                        tete = avatarHeadList.get(1);
-                    }
-                    if(userSingleton.getUser().getAvatar() == 2){
-                        tete = avatarHeadList.get(2);
-                    }
-                    if(userSingleton.getUser().getAvatar() == 3){
-                        tete = avatarHeadList.get(3);
-                    }
-                    if(userSingleton.getUser().getAvatar() == 4){
-                        tete = avatarHeadList.get(4);
-                    }
+                if (userSingleton.getUser().getAvatar() != null) {
+                    Integer tete = avatarHeadList.get(userSingleton.getUser().getAvatar());
+
                     MarkerOptions markerOptions = new MarkerOptions();
-                    LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
+                    LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                     markerOptions.position(latLng);
                     markerOptions.icon(BitmapDescriptorFactory.fromResource(tete));
                     mMap.addMarker(markerOptions);
                 }
-
-
-
             }
         });
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
