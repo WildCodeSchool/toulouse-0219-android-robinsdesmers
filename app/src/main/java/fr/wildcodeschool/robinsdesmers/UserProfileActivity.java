@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.util.Consumer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,6 +40,12 @@ public class UserProfileActivity extends AppCompatActivity {
                     startActivity(goToHome);
                     return true;
                 case R.id.navigation_mission:
+                    AlertDialog.Builder builder = new AlertDialog.Builder(UserProfileActivity.this);
+                    builder.setTitle(R.string.page_en_dev);
+                    builder.setMessage(R.string.mission_mensuelles_alert);
+                    builder.setPositiveButton(R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                     return true;
                 case R.id.navigation_carte:
                     Intent goToMaps = new Intent(UserProfileActivity.this, MapsActivity.class);
