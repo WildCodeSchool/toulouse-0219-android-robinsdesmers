@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
@@ -48,6 +49,7 @@ public class SignInActivity extends AppCompatActivity {
                     public void accept(Authentication authentication) {
                         if (authentication.getError() != null) {
                             //TODO gestion d'erreur
+                            Toast.makeText(SignInActivity.this, getString(R.string.mdp_email_incorrect), Toast.LENGTH_LONG).show();
                         } else if (authentication.getUser() == null) {
                             //TODO gestion erreur
                         } else {
@@ -62,12 +64,9 @@ public class SignInActivity extends AppCompatActivity {
                                 editor.clear();
                                 editor.commit();
                             }
-
-                            if (emailStr.equals(user.getEmail()) && passwordHash.equals(user.getPassword())) {
                                 UserSingleton.getUserInstance().setUser(user);
                                 Intent goToHome = new Intent(SignInActivity.this, MapsActivity.class);
                                 startActivity(goToHome);
-                            }
                         }
                     }
                 });
