@@ -68,6 +68,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToHome);
                     return true;
                 case R.id.navigation_mission:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+                        builder.setTitle("Page en cours de développement");
+                        builder.setMessage("Prochainement, vous trouverez ici des missions mensuelles remplies de fun !");
+                        builder.setPositiveButton(R.string.ok, null);
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
                     return true;
                 case R.id.navigation_carte:
                     Intent goToMaps = new Intent(MapsActivity.this, MapsActivity.class);
@@ -79,12 +85,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     return true;
                 case R.id.navigation_profile:
                     if(userSingleton.getUser().getAvatar() == null){
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
-                        builder.setTitle(R.string.merci_de);
-                        builder.setMessage(R.string.acces_visiteur_profile);
-                        builder.setPositiveButton(R.string.ok, null);
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
+                        AlertDialog.Builder builder2 = new AlertDialog.Builder(MapsActivity.this);
+                        builder2.setTitle(R.string.merci_de);
+                        builder2.setMessage(R.string.acces_visiteur_profile);
+                        builder2.setPositiveButton(R.string.ok, null);
+                        AlertDialog dialog2 = builder2.create();
+                        dialog2.show();
                     } else {
                         Intent goToProfile = new Intent(MapsActivity.this, UserProfileActivity.class);
                         startActivity(goToProfile);
