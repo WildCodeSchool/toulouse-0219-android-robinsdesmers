@@ -2,16 +2,26 @@ package fr.wildcodeschool.robinsdesmers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.util.Consumer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
+import fr.wildcodeschool.robinsdesmers.model.Stats;
+
 
 public class MainActivity extends AppCompatActivity {
-    private final UserSingleton userSingleton = UserSingleton.getUserInstance();
-    private final Long userId = userSingleton.getUser().getId();
+    private ProgressBar progressBar2;
+    private TextView tvUsers;
+    private TextView tvCollectPoint;
+    private TextView tvRubbish;
+    private TextView tvNbCollectPoints;
+    private Handler handler2 = new Handler();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -46,7 +56,39 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        progressBar2 = findViewById(R.id.pbCollectPoint);
+        tvUsers = findViewById(R.id.tvUsers);
+        tvCollectPoint = findViewById(R.id.tvCollectPoints);
+        tvRubbish = findViewById(R.id.tvRubbishes);
+        tvNbCollectPoints = findViewById(R.id.tvNbCollectPoint);
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        VolleySingleton.getInstance(MainActivity.this).getStats(new Consumer<Stats>() {
+            @Override
+            public void accept(final Stats stats) {
+                tvUsers.setText(getString(R.string.robins_main) + " " + String.valueOf(stats.getNbUsers()));
+                tvNbCollectPoints.setText(String.valueOf(stats.getNbRubbishes()));
+                tvRubbish.setText(getString(R.string.pointcollecte_main) + "\n" + String.valueOf(stats.getNbCollectPoints()));
+                tvCollectPoint.setText(getString(R.string.dechets_declares));
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        int progressStatus = 0;
+                        while (progressStatus < stats.getNbCollectPoints()) {
+                            progressStatus++;
+
+                            handler2.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressBar2.setProgress(stats.getNbCollectPoints());
+                                }
+                            });
+                        }
+                    }
+                }).start();
+            }
+        });
     }
 }

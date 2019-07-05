@@ -13,6 +13,9 @@ import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ViewSwitcher;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserSingleton;
@@ -22,7 +25,8 @@ import fr.wildcodeschool.robinsdesmers.model.User;
 public class AvatarChoicesActivity extends AppCompatActivity {
     ImageButton imBtNext, imBtPrevious;
     ImageSwitcher imageSwitcher;
-    Integer[] images = {R.drawable.persohero, R.drawable.persoheroine, R.drawable.persomarin, R.drawable.icon_cat_v3};
+    public static ArrayList<Integer> avatarList = new ArrayList<>(Arrays.asList(R.drawable.persohero, R.drawable.persoheroine, R.drawable.persomarin, R.drawable.perso_fille_bonnet,R.drawable.perso_garcon_meche));
+    public static ArrayList<Integer> avatarHeadList = new ArrayList<>(Arrays.asList(R.drawable.tete_hero, R.drawable.tete_heroine, R.drawable.tete_marin, R.drawable.tete_fille_bonnet_map,R.drawable.tete_garcon_meche_map));
     int index = 0;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
 
@@ -47,7 +51,7 @@ public class AvatarChoicesActivity extends AppCompatActivity {
         final Animation avatar_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_in);
         final Animation avatar_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_out);
 
-        imageSwitcher.setImageResource(images[index]);
+        imageSwitcher.setImageResource(avatarList.get(index));
         imBtPrevious = findViewById(R.id.imBtPrevious);
         imBtNext = findViewById(R.id.imBtNext);
 
@@ -58,7 +62,7 @@ public class AvatarChoicesActivity extends AppCompatActivity {
                 if (index > 0) {
                     index--;
                     imageSwitcher.setInAnimation(avatar_in);
-                    imageSwitcher.setImageResource(images[index]);
+                    imageSwitcher.setImageResource(avatarList.get(index));
                 }
             }
         });
@@ -67,10 +71,10 @@ public class AvatarChoicesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (index < images.length - 1) {
+                if (index < avatarList.size() - 1) {
                     index++;
                     imageSwitcher.setInAnimation(avatar_out);
-                    imageSwitcher.setImageResource(images[index]);
+                    imageSwitcher.setImageResource(avatarList.get(index));
                 }
             }
         });
@@ -79,7 +83,7 @@ public class AvatarChoicesActivity extends AppCompatActivity {
         imBtAvatarChoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userSingleton.getUser().setAvatar(images[index]);
+                userSingleton.getUser().setAvatar(index);
                 VolleySingleton.getInstance(AvatarChoicesActivity.this).postUser(userSingleton.getUser(), new Consumer<User>() {
                     @Override
                     public void accept(User user) {
