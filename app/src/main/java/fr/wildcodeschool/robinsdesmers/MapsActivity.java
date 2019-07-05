@@ -83,7 +83,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         AlertDialog.Builder builder2 = new AlertDialog.Builder(MapsActivity.this);
                         builder2.setTitle(R.string.merci_de);
                         builder2.setMessage(R.string.acces_visiteur_profile);
-                        builder2.setPositiveButton(R.string.ok, null);
+                        builder2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(MapsActivity.this,FirstPageActivity.class);
+                                startActivity(intent);
+                            }
+                        });
                         AlertDialog dialog2 = builder2.create();
                         dialog2.show();
                     } else {
