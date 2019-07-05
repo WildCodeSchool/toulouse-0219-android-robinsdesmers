@@ -17,10 +17,6 @@ public class UserSingleton {
         return instance;
     }
 
-    public void registerUser(User newUser) {
-        user = newUser;
-    }
-
     public User getUser() {
         if (user.getScore() == null) {
             user.setScore(0);
@@ -31,7 +27,6 @@ public class UserSingleton {
     public void setUser(User user) {
         this.user = user;
     }
-
 }
 
 

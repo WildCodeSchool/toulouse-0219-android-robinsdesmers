@@ -135,7 +135,6 @@ public class LessPersoDetailsActivity extends AppCompatActivity {
         btSendEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 VolleySingleton.getInstance(LessPersoDetailsActivity.this).updateUser(userId, userSingleton.getUser(), new Consumer<User>() {
                     @Override
                     public void accept(User user) {

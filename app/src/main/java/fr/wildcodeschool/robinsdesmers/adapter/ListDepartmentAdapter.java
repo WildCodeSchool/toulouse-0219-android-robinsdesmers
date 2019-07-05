@@ -1,6 +1,5 @@
 package fr.wildcodeschool.robinsdesmers.adapter;
 
-import android.support.v4.util.Consumer;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +10,7 @@ import java.util.ArrayList;
 
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserSingleton;
-import fr.wildcodeschool.robinsdesmers.VolleySingleton;
 import fr.wildcodeschool.robinsdesmers.model.Department;
-import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAdapter.DepartmentViewHolder> {
 
