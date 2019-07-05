@@ -15,8 +15,8 @@ import java.util.List;
 import fr.wildcodeschool.robinsdesmers.MainActivity;
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
-import fr.wildcodeschool.robinsdesmers.RecyclingInfoAdapter;
 import fr.wildcodeschool.robinsdesmers.UserProfileActivity;
+import fr.wildcodeschool.robinsdesmers.adapter.RecyclingInfoAdapter;
 import fr.wildcodeschool.robinsdesmers.model.RecyclingInfoItem;
 
 public class RecyclingInfoActivity extends AppCompatActivity {

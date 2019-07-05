@@ -33,8 +33,8 @@ import fr.wildcodeschool.robinsdesmers.model.Stats;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class VolleySingleton {
-    private static final String REQUEST_URL = "http://10.0.2.2:8080/";
-    //private static final String REQUEST_URL = "http://192.168.8.108:8080/";
+    //private static final String REQUEST_URL = "http://10.0.2.2:8080/";
+    private static final String REQUEST_URL = "http://192.168.8.108:8080/";
     private static VolleySingleton instance;
     private static Context ctx;
     private RequestQueue requestQueue;
@@ -188,33 +188,6 @@ public class VolleySingleton {
         requestQueue.add(jsonArrayRequest);
     }
 
-    public void getAllUsers(final Consumer<List<User>> userListener) {
-        String url = REQUEST_URL + "users";
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        final Gson gson = gsonBuilder.create();
-
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-                Request.Method.GET, url, null,
-                new Response.Listener<JSONArray>() {
-
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        List<User> usersList = new ArrayList<>();
-                        if (response.length() > 0) {
-                            usersList = Arrays.asList(gson.fromJson(response.toString(), User[].class));
-                        }
-                        userListener.accept(usersList);
-                    }
-                }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.e("Error: ", error.getMessage());
-            }
-        });
-        requestQueue.add(jsonArrayRequest);
-    }
-
     public void postUser(User user, final Consumer<User> userListener) {
 
         String url = REQUEST_URL + "users";
@@ -251,30 +224,6 @@ public class VolleySingleton {
                 return requestBody == null ? null : requestBody.getBytes(StandardCharsets.UTF_8);
             }
         };
-        requestQueue.add(jsonObjectRequest);
-    }
-
-    public void getOneUser(Long userId, final Consumer<User> userListener) {
-        String url = REQUEST_URL + "users/" + userId;
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        final Gson gson = gsonBuilder.create();
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        User user = gson.fromJson(response.toString(), User.class);
-                        userListener.accept(user);
-                    }
-                }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.e("Error: ", error.getMessage());
-            }
-        });
         requestQueue.add(jsonObjectRequest);
     }
 
@@ -361,30 +310,6 @@ public class VolleySingleton {
                 return requestBody == null ? null : requestBody.getBytes(StandardCharsets.UTF_8);
             }
         };
-        requestQueue.add(jsonObjectRequest);
-    }
-
-    public void getOneRubbish(Long rubbishId, final Consumer<RubbishItem> rubbishListener) {
-        String url = REQUEST_URL + "rubbishes/" + rubbishId;
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        final Gson gson = gsonBuilder.create();
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.GET, url, null,
-                new Response.Listener<JSONObject>() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        RubbishItem rubbishItem = gson.fromJson(response.toString(), RubbishItem.class);
-                        rubbishListener.accept(rubbishItem);
-                    }
-                }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.e("Error: ", error.getMessage());
-            }
-        });
         requestQueue.add(jsonObjectRequest);
     }
 

@@ -47,7 +47,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private static final float DEFAULT_ZOOM = 16.0f;
     private static final int MIN_DISTANCE = 2;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
-    private Long userId;
     private GoogleMap mMap;
     private boolean mMapInit = false;
     private LocationManager mLocationManager = null;
@@ -292,7 +291,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         public void onClick(DialogInterface dialog, int which) {
                             RubbishItem rubbishItem = (RubbishItem) marker.getTag();
                             userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (rubbishItem.getSumRubbish() * 10));
-                            VolleySingleton.getInstance(MapsActivity.this).updateUser(userId, userSingleton.getUser(), new Consumer<User>() {
+                            VolleySingleton.getInstance(MapsActivity.this).updateUser(userSingleton.getUser().getId(), userSingleton.getUser(), new Consumer<User>() {
                                 @Override
                                 public void accept(User user) {
                                 }
