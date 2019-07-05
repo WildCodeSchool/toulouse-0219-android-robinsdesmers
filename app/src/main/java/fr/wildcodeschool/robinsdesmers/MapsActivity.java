@@ -69,8 +69,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     return true;
                 case R.id.navigation_mission:
                         AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
-                        builder.setTitle("Page en cours de développement");
-                        builder.setMessage("Prochainement, vous trouverez ici des missions mensuelles remplies de fun !");
+                        builder.setTitle(R.string.page_en_dev);
+                        builder.setMessage(R.string.mission_mensuelles_alert);
                         builder.setPositiveButton(R.string.ok, null);
                         AlertDialog dialog = builder.create();
                         dialog.show();

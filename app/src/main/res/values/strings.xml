@@ -211,4 +211,6 @@
     <string name="collect_points_main">Points de collecte</string>
     <string name="dechets_declares">Déchets déclarés</string>
     <string name="acces_visiteur_profile">Vous enregistrer afin d\'avoir accés à la totalité de l\'application</string>
+    <string name="page_en_dev">Page en cours de développement</string>
+    <string name="mission_mensuelles_alert">Prochainement, vous trouverez ici des missions mensuelles remplies de fun !</string>
 </resources>
