@@ -203,11 +203,13 @@
     <string name="oui">Oui</string>
     <string name="non">Non</string>
     <string name="dechet_collecte">Avez-vous collecté ce(s) déchet(s) ?</string>
-
     <string name="nombre_robins">Nombre de Robins :</string>
     <string name="dechet_main">Déchets déclarés :</string>
     <string name="pointcollecte_main">Points de collecte :</string>
     <string name="robins_main">Robins :</string>
     <string name="collect_points_main">Points de collecte</string>
     <string name="dechets_declares">Déchets déclarés</string>
+    <string name="acces_visiteur_profile">Vous enregistrer afin d\'avoir accés à la totalité de l\'application</string>
+    <string name="page_en_dev">Page en cours de développement</string>
+    <string name="mission_mensuelles_alert">Prochainement, vous trouverez ici des missions mensuelles remplies de fun !</string>
 </resources>

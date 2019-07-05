@@ -24,25 +24,23 @@
         style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Small.Title"
         android:layout_width="200dp"
         android:layout_height="250dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
         android:indeterminateBehavior="cycle"
         android:indeterminateDuration="0"
         android:indeterminateOnly="false"
         android:max="100"
         android:progressDrawable="@drawable/progress_bar_user"
         android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toStartOf="@+id/divider2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="131dp"
-        android:layout_height="106dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:alpha="0.6"
-        android:background="@drawable/point_collect"
+        android:layout_width="170dp"
+        android:layout_height="135dp"
+        android:background="@drawable/poubelle_main"
         app:layout_constraintBottom_toBottomOf="@+id/pbCollectPoint"
         app:layout_constraintEnd_toEndOf="@+id/pbCollectPoint"
         app:layout_constraintStart_toStartOf="@+id/pbCollectPoint"
@@ -55,11 +53,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:background="@color/orange"
         app:layout_constraintBottom_toTopOf="@+id/tvUsers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/divider">
+        app:layout_constraintTop_toTopOf="@+id/divider"
+        android:background="@drawable/playa_horizontal">
 
         <ImageView
             android:id="@+id/imageViewRobins"
@@ -131,10 +129,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:background="@color/orange"
+        android:background="#E9C63A"
         android:gravity="center"
         android:textColor="@color/vert_fonce"
-        android:textSize="28sp"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -147,27 +146,12 @@
         android:gravity="center"
         android:textColor="#FFF"
         android:textSize="20sp"
+        android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-    <TextView
-        android:id="@+id/tvCollectPoints"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="@color/orange"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/divider2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pbCollectPoint"
-        app:layout_constraintTop_toBottomOf="@+id/ivCollectPointContainer" />
 
     <View
         android:id="@+id/divider"
@@ -190,29 +174,50 @@
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintStart_toEndOf="@+id/pbCollectPoint" />
 
-    <ImageView
-        android:id="@+id/ivCollectPointContainer"
-        android:layout_width="144dp"
-        android:layout_height="134dp"
-        android:alpha="0.6"
-        android:background="@drawable/icon_jaune"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/vert_fonce"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toBottomOf="@+id/divider2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/divider2"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tvNbCollectPoint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:textColor="#FFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivCollectPointContainer"
-        app:layout_constraintEnd_toEndOf="@+id/ivCollectPointContainer"
-        app:layout_constraintStart_toStartOf="@+id/ivCollectPointContainer"
-        app:layout_constraintTop_toTopOf="@+id/ivCollectPointContainer" />
+        <ImageView
+            android:id="@+id/ivCollectPointContainer"
+            android:layout_width="130dp"
+            android:layout_height="180dp"
+            android:background="@drawable/icon_main"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvNbCollectPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFF"
+            android:textSize="44sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCollectPointContainer"
+            app:layout_constraintEnd_toEndOf="@+id/ivCollectPointContainer"
+            app:layout_constraintStart_toStartOf="@+id/ivCollectPointContainer"
+            app:layout_constraintTop_toTopOf="@+id/ivCollectPointContainer" />
+
+        <TextView
+            android:id="@+id/tvCollectPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivCollectPointContainer" />
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
