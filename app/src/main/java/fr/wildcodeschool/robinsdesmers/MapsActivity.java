@@ -1,7 +1,6 @@
 package fr.wildcodeschool.robinsdesmers;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -51,6 +50,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private boolean mMapInit = false;
     private LocationManager mLocationManager = null;
+    private FusedLocationProviderClient mFusedLocationClient;
     private Location mLocationUser = null;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -86,7 +86,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         builder2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(MapsActivity.this,FirstPageActivity.class);
+                                Intent intent = new Intent(MapsActivity.this, FirstPageActivity.class);
                                 startActivity(intent);
                             }
                         });
@@ -109,6 +109,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         checkPermission();
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -143,28 +144,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    @SuppressLint("MissingPermission")
     private void initLocation() {
-        FusedLocationProviderClient fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(final Location location) {
-                setUserLocation(location);
-                /*userSingleton.getUser().setLatitude(location.getLatitude());
-                userSingleton.getUser().setLongitude(location.getLongitude());
-                userSingleton.getUser().setConnected(true);*/
-
-                if (userSingleton.getUser().getAvatar() != null) {
-                    Integer tete = avatarHeadList.get(userSingleton.getUser().getAvatar());
-
-                    MarkerOptions markerOptions = new MarkerOptions();
-                    LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-                    markerOptions.position(latLng);
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(tete));
-                    mMap.addMarker(markerOptions);
-                }
-            }
-        });
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         LocationListener locationListener = new LocationListener() {
 
@@ -185,12 +165,40 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onProviderDisabled(String provider) {
             }
         };
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, MIN_DISTANCE, locationListener);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mFusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    if (location != null) {
+                        setUserLocation(location);
+                    }
+                }
+            });
+            if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, MIN_DISTANCE, locationListener);
+            }
+            if (mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+                mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, MIN_DISTANCE, locationListener);
+            }
+        }
     }
 
-    @SuppressLint("MissingPermission")
     private void setUserLocation(Location location) {
         if (location != null) {
+            if (userSingleton.getUser().getAvatar() != null && mMap != null) {
+                /*userSingleton.getUser().setLatitude(location.getLatitude());
+                userSingleton.getUser().setLongitude(location.getLongitude());
+                userSingleton.getUser().setConnected(true);*/
+
+                Integer tete = avatarHeadList.get(userSingleton.getUser().getAvatar());
+
+                MarkerOptions markerOptions = new MarkerOptions();
+                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                markerOptions.position(latLng);
+                markerOptions.icon(BitmapDescriptorFactory.fromResource(tete));
+                mMap.addMarker(markerOptions);
+            }
             double lat = location.getLatitude();
             double lng = location.getLongitude();
             LatLng coordinate = new LatLng(lat, lng);
@@ -198,10 +206,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mLocationUser.setLatitude(lat);
             mLocationUser.setLongitude(lng);
 
-            if (mMap != null && !mMapInit) {
-                mMapInit = true;
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, DEFAULT_ZOOM));
-                mMap.setMyLocationEnabled(true);
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                    == PackageManager.PERMISSION_GRANTED) {
+                if (mMap != null && !mMapInit) {
+                    mMapInit = true;
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(coordinate, DEFAULT_ZOOM));
+                    mMap.setMyLocationEnabled(true);
+                }
             }
         }
     }
