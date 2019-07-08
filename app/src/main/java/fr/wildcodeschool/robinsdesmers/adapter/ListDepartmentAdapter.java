@@ -1,6 +1,5 @@
 package fr.wildcodeschool.robinsdesmers.adapter;
 
-import android.support.v4.util.Consumer;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +10,12 @@ import java.util.ArrayList;
 
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserSingleton;
-import fr.wildcodeschool.robinsdesmers.VolleySingleton;
 import fr.wildcodeschool.robinsdesmers.model.Department;
-import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAdapter.DepartmentViewHolder> {
 
     private ArrayList<Department> departments;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
-    private final Long userId = userSingleton.getUser().getId();
 
     public ListDepartmentAdapter(ArrayList<Department> departments) {
         this.departments = departments;
@@ -34,14 +30,6 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
 
     @Override
     public void onBindViewHolder(DepartmentViewHolder holder, final int position) {
-        VolleySingleton.getInstance(holder.container.getContext()).getOneUser(userId, new Consumer<User>() {
-            @Override
-            public void accept(User user) {
-                if (userSingleton.getUser().getDepartment().substring(0,2).equals(departments.get(position).getNumber())) {
-                    departments.get(position).setSelected(true);
-                }
-            }
-        });
         Department department = departments.get(position);
         holder.tvName.setText(department.getName());
         holder.tvNumber.setText(department.getNumber());

@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
@@ -62,17 +63,10 @@ public class RubbishInfosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 if (cbDechetRamasse.isChecked()) {
                     rubbishItem.setCollected(true);
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_RUBBISH_COLLECTED);
-
-                    VolleySingleton.getInstance(RubbishInfosActivity.this).updateUser(userId,userSingleton.getUser(), new Consumer<User>() {
-                        @Override
-                        public void accept(User user) {
-
-                        }
-                    });
+                    Toast.makeText(RubbishInfosActivity.this, getString(R.string.merci_ramasser), Toast.LENGTH_LONG).show();
                 }
                 if (!btSurTerre.isSelected() && !btSurMer.isSelected() || rubbishItem.getSumRubbish() == 0) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(RubbishInfosActivity.this);
@@ -81,17 +75,15 @@ public class RubbishInfosActivity extends AppCompatActivity {
                     builder.setPositiveButton(R.string.ok, null);
                     AlertDialog dialog = builder.create();
                     dialog.show();
-
                 } else {
                     userSingleton.getUser().setScore(userSingleton.getUser().getScore() + SCORE_RUBBISH);
-                    VolleySingleton.getInstance(RubbishInfosActivity.this).updateUser(userId,userSingleton.getUser(), new Consumer<User>() {
+                    VolleySingleton.getInstance(RubbishInfosActivity.this).updateUser(userId, userSingleton.getUser(), new Consumer<User>() {
                         @Override
                         public void accept(User user) {
                             Intent intent = new Intent(RubbishInfosActivity.this, MapsActivity.class);
                             startActivity(intent);
                         }
                     });
-
                     VolleySingleton.getInstance(RubbishInfosActivity.this).postRubbish(rubbishItem, userSingleton.getUser(), new Consumer<RubbishItem>() {
                         @Override
                         public void accept(RubbishItem rubbishItem) {

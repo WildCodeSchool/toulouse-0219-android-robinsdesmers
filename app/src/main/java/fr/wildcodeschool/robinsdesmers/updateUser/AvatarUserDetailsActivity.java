@@ -19,11 +19,12 @@ import fr.wildcodeschool.robinsdesmers.UserSingleton;
 import fr.wildcodeschool.robinsdesmers.VolleySingleton;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
+import static fr.wildcodeschool.robinsdesmers.inscription.AvatarChoicesActivity.avatarList;
+
 public class AvatarUserDetailsActivity extends AppCompatActivity {
 
     ImageButton imBtNext, imBtPrevious;
     ImageSwitcher imageSwitcher;
-    Integer[] images = {R.drawable.persohero, R.drawable.persoheroine, R.drawable.persomarin, R.drawable.icon_cat_v3};
     int index = 0;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
     private final Long userId = userSingleton.getUser().getId();
@@ -33,52 +34,48 @@ public class AvatarUserDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avatar_user_details);
 
-        VolleySingleton.getInstance(AvatarUserDetailsActivity.this).getOneUser(userId, new Consumer<User>() {
+        imageSwitcher = findViewById(R.id.imSwitcherAvatarsEdit);
+
+        imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
             @Override
-            public void accept(User user) {
-                imageSwitcher = findViewById(R.id.imSwitcherAvatarsEdit);
+            public View makeView() {
+                ImageView imageView = new ImageView(getApplicationContext());
+                imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                imageView.setLayoutParams(new ImageSwitcher.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT));
+                return imageView;
+            }
+        });
 
-                imageSwitcher.setFactory(new ViewSwitcher.ViewFactory() {
-                    @Override
-                    public View makeView() {
-                        ImageView imageView = new ImageView(getApplicationContext());
-                        imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-                        imageView.setLayoutParams(new ImageSwitcher.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.MATCH_PARENT));
-                        return imageView;
-                    }
-                });
+        final Animation avatarIn = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_in);
+        final Animation avatarOut = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_out);
 
-                final Animation avatar_in = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_in);
-                final Animation avatar_out = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.avatar_out);
+        index = userSingleton.getUser().getAvatar();
+        imageSwitcher.setImageResource(avatarList.get(index));
+        imBtPrevious = findViewById(R.id.imBtPreviousEdit);
+        imBtNext = findViewById(R.id.imBtNextEdit);
 
-                imageSwitcher.setImageResource(images[index]);
-                imBtPrevious = findViewById(R.id.imBtPreviousEdit);
-                imBtNext = findViewById(R.id.imBtNextEdit);
+        imBtPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                imBtPrevious.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                if (index > 0) {
+                    index--;
+                    imageSwitcher.setInAnimation(avatarIn);
+                    imageSwitcher.setImageResource(avatarList.get(index));
+                }
+            }
+        });
 
-                        if (index > 0) {
-                            index--;
-                            imageSwitcher.setInAnimation(avatar_in);
-                            imageSwitcher.setImageResource(images[index]);
-                        }
-                    }
-                });
+        imBtNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                imBtNext.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        if (index < images.length - 1) {
-                            index++;
-                            imageSwitcher.setInAnimation(avatar_out);
-                            imageSwitcher.setImageResource(images[index]);
-                        }
-                    }
-                });
+                if (index < avatarList.size() - 1) {
+                    index++;
+                    imageSwitcher.setInAnimation(avatarOut);
+                    imageSwitcher.setImageResource(avatarList.get(index));
+                }
             }
         });
 
@@ -87,7 +84,7 @@ public class AvatarUserDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                userSingleton.getUser().setAvatar(images[index]);
+                userSingleton.getUser().setAvatar(index);
                 VolleySingleton.getInstance(AvatarUserDetailsActivity.this).updateUser(userId, userSingleton.getUser(), new Consumer<User>() {
                     @Override
                     public void accept(User user) {

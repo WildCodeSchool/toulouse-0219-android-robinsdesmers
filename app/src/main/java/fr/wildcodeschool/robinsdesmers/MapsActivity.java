@@ -3,6 +3,7 @@ package fr.wildcodeschool.robinsdesmers;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -15,7 +16,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.util.Consumer;
+import android.support.v7.app.AlertDialog;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -34,9 +37,10 @@ import java.util.List;
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
-import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectPointDescriptionActivity;
-import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.CollectRubbishActivity;
+import fr.wildcodeschool.robinsdesmers.model.User;
 import fr.wildcodeschool.robinsdesmers.rubbish_collect_point.MarkerTypeActivity;
+
+import static fr.wildcodeschool.robinsdesmers.inscription.AvatarChoicesActivity.avatarHeadList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -59,6 +63,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToHome);
                     return true;
                 case R.id.navigation_mission:
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+                    builder.setTitle(R.string.page_en_dev);
+                    builder.setMessage(R.string.mission_mensuelles_alert);
+                    builder.setPositiveButton(R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                     return true;
                 case R.id.navigation_carte:
                     Intent goToMaps = new Intent(MapsActivity.this, MapsActivity.class);
@@ -69,8 +79,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
-                    Intent goToProfile = new Intent(MapsActivity.this, UserProfileActivity.class);
-                    startActivity(goToProfile);
+                    if (userSingleton.getUser().getAvatar() == null) {
+                        AlertDialog.Builder builder2 = new AlertDialog.Builder(MapsActivity.this);
+                        builder2.setTitle(R.string.merci_de);
+                        builder2.setMessage(R.string.acces_visiteur_profile);
+                        builder2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(MapsActivity.this,FirstPageActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                        AlertDialog dialog2 = builder2.create();
+                        dialog2.show();
+                    } else {
+                        Intent goToProfile = new Intent(MapsActivity.this, UserProfileActivity.class);
+                        startActivity(goToProfile);
+                    }
                     return true;
             }
             return false;
@@ -125,9 +150,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onSuccess(final Location location) {
                 setUserLocation(location);
-                userSingleton.getUser().setLatitude(location.getLatitude());
+                /*userSingleton.getUser().setLatitude(location.getLatitude());
                 userSingleton.getUser().setLongitude(location.getLongitude());
-                userSingleton.getUser().setConnected(true);
+                userSingleton.getUser().setConnected(true);*/
+
+                if (userSingleton.getUser().getAvatar() != null) {
+                    Integer tete = avatarHeadList.get(userSingleton.getUser().getAvatar());
+
+                    MarkerOptions markerOptions = new MarkerOptions();
+                    LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                    markerOptions.position(latLng);
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(tete));
+                    mMap.addMarker(markerOptions);
+                }
             }
         });
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -211,8 +246,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (RubbishItem rubbish : rubbishItems) {
                     final LatLng rubbishCoord = new LatLng(rubbish.getLatitude(), rubbish.getLongitude());
                     if (!rubbish.isCollected()) {
-                        Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.dechet)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
-                        marker.setTag(rubbish);
+                        if (rubbish.getTitle().equals(getString(R.string.dechet_seul))) {
+                            Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_dechet_seul_light_green)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
+                            marker.setTag(rubbish);
+                        } else {
+                            Marker marker = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_amas_dechet_light_green)).position(rubbishCoord).title(rubbish.getTitle()).snippet(rubbish.getDescription()));
+                            marker.setTag(rubbish);
+                        }
                     }
                 }
             }
@@ -223,7 +263,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void accept(List<CollectPointItem> collectPointItems) {
                 for (CollectPointItem collectPoint : collectPointItems) {
                     final LatLng collectPointCoord = new LatLng(collectPoint.getLatitude(), collectPoint.getLongitude());
-                    Marker markerCollect = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.pointcollecte)).position(collectPointCoord).title(collectPoint.getTitle()).snippet(collectPoint.getDescription()).alpha(0.99f));
+                    Marker markerCollect = mMap.addMarker(new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.marker_collect_point_light_green)).position(collectPointCoord).title(collectPoint.getTitle()).snippet(collectPoint.getDescription()).alpha(0.99f));
                     markerCollect.setTag(collectPoint);
                 }
             }
@@ -231,17 +271,50 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
-            public void onInfoWindowClick(Marker marker) {
+            public void onInfoWindowClick(final Marker marker) {
                 if (marker.getAlpha() == 0.99f) {
-                    CollectPointItem collectPointItem = (CollectPointItem) marker.getTag();
-                    Intent intent1 = new Intent(MapsActivity.this, CollectPointDescriptionActivity.class);
-                    intent1.putExtra("collectPointId", collectPointItem.getId());
-                    startActivity(intent1);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+                    builder.setMessage(R.string.collectPoint_present);
+                    builder.setPositiveButton(R.string.oui, null);
+                    builder.setNegativeButton(R.string.non, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            CollectPointItem collectPointItem = (CollectPointItem) marker.getTag();
+                            VolleySingleton.getInstance(MapsActivity.this).deleteOneCollectPoint(collectPointItem.getId(), new Consumer<CollectPointItem>() {
+                                @Override
+                                public void accept(CollectPointItem collectPointItem) {
+                                }
+                            });
+                            startActivity(new Intent(MapsActivity.this, MapsActivity.class));
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 } else {
-                    RubbishItem rubbishItem = (RubbishItem) marker.getTag();
-                    Intent intent = new Intent(MapsActivity.this, CollectRubbishActivity.class);
-                    intent.putExtra("rubbishId", rubbishItem.getId());
-                    startActivity(intent);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
+                    builder.setTitle(R.string.dechet_collecte);
+                    builder.setPositiveButton(getString(R.string.oui), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            RubbishItem rubbishItem = (RubbishItem) marker.getTag();
+                            userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (rubbishItem.getSumRubbish() * 10));
+                            VolleySingleton.getInstance(MapsActivity.this).updateUser(userSingleton.getUser().getId(), userSingleton.getUser(), new Consumer<User>() {
+                                @Override
+                                public void accept(User user) {
+                                    Toast.makeText(MapsActivity.this, getString(R.string.merci_ramasser), Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            VolleySingleton.getInstance(MapsActivity.this).collectRubbish(rubbishItem.getId(), new Consumer<RubbishItem>() {
+                                @Override
+                                public void accept(RubbishItem rubbishItem) {
+                                    startActivity(new Intent(MapsActivity.this, MapsActivity.class));
+                                }
+                            });
+                        }
+                    });
+                    builder.setNegativeButton(getString(R.string.non), null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
             }
         });

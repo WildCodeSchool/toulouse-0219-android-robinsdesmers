@@ -95,7 +95,6 @@ public class SecurityInfoActivity extends AppCompatActivity {
         throwRubbishInfoItems.add(horaire);
         throwRubbishInfoItems.add(laverMains);
 
-
         RecyclerView mThrowRubbishRecyclerView;
         RecyclerView.Adapter mThrowRubbishAdapter;
         RecyclerView.LayoutManager layoutManagerThrowRubbish;

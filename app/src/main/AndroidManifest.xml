@@ -34,7 +34,6 @@
         <activity android:name=".information.AboutUsActivity" />
         <activity android:name=".information.SecurityInfoActivity" />
         <activity android:name=".information.InformationActivity" />
-        <activity android:name=".rubbish_collect_point.CollectPointDescriptionActivity" />
         <activity android:name=".inscription.UserDescriptionActivity" />
         <activity android:name=".information.RecyclingInfoActivity" />
         <activity android:name=".inscription.UserDetailsActivity" />
@@ -47,7 +46,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".rubbish_collect_point.CollectRubbishActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".rubbish_collect_point.RubbishMultiInfosActivity" />
         <activity android:name=".rubbish_collect_point.CollectPointInfosActivity" />
