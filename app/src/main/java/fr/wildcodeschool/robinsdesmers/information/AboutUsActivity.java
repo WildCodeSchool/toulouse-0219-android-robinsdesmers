@@ -1,10 +1,12 @@
 package fr.wildcodeschool.robinsdesmers.information;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -15,15 +17,18 @@ import com.google.android.gms.appinvite.AppInviteInvitation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import fr.wildcodeschool.robinsdesmers.FirstPageActivity;
 import fr.wildcodeschool.robinsdesmers.MainActivity;
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserProfileActivity;
+import fr.wildcodeschool.robinsdesmers.UserSingleton;
 
 public class AboutUsActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int REQUEST_INVITE = 5076;
+    UserSingleton userSingleton = UserSingleton.getUserInstance();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -46,9 +51,24 @@ public class AboutUsActivity extends AppCompatActivity implements GoogleApiClien
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
-                    Intent goToProfile = new Intent(AboutUsActivity.this, UserProfileActivity.class);
-                    startActivity(goToProfile);
-                    return true;
+                    if (userSingleton.getUser().getAvatar() == null) {
+                        AlertDialog.Builder builder2 = new AlertDialog.Builder(AboutUsActivity.this);
+                        builder2.setTitle(R.string.merci_de);
+                        builder2.setMessage(R.string.acces_visiteur_profile);
+                        builder2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(AboutUsActivity.this, FirstPageActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                        AlertDialog dialog2 = builder2.create();
+                        dialog2.show();
+                    } else {
+                        Intent goToProfile = new Intent(AboutUsActivity.this, UserProfileActivity.class);
+                        startActivity(goToProfile);
+                    }
+
             }
             return false;
         }
