@@ -362,8 +362,8 @@ public class VolleySingleton {
         requestQueue.add(jsonObjectRequest);
     }
 
-    public void getStats(final Consumer<Stats> statsConsumer){
-        String url = REQUEST_URL + "stats" ;
+    public void getStats(final Consumer<Stats> statsConsumer) {
+        String url = REQUEST_URL + "stats";
         GsonBuilder gsonBuilder = new GsonBuilder();
         final Gson gson = gsonBuilder.create();
 
@@ -385,4 +385,5 @@ public class VolleySingleton {
         });
         requestQueue.add(jsonObjectRequest);
     }
+
 }

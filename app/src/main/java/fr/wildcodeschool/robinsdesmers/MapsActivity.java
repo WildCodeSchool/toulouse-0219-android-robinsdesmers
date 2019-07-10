@@ -34,7 +34,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.util.List;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
-import fr.wildcodeschool.robinsdesmers.information.RecyclingInfoActivity;
 import fr.wildcodeschool.robinsdesmers.model.CollectPointItem;
 import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
 import fr.wildcodeschool.robinsdesmers.model.User;
@@ -230,12 +229,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             setUserLocation(mLocationUser);
         }
 
-            mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
 
-                @Override
-                public void onMapClick(LatLng latLng) {
+            @Override
+            public void onMapClick(LatLng latLng) {
 
-                    if(userSingleton.getUser().getAvatar() != null) {
+                if (userSingleton.getUser().getAvatar() != null) {
                     MarkerOptions markerOptions = new MarkerOptions();
 
                     markerOptions.position(latLng);
@@ -251,22 +250,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     intent.putExtra("RubbishItem", rubbishItem);
                     intent.putExtra("CollectPointItem", collectPointItem);
                     startActivity(intent);
-                    }else{
-                        AlertDialog.Builder builder2 = new AlertDialog.Builder(MapsActivity.this);
-                        builder2.setTitle(R.string.merci_de);
-                        builder2.setMessage(R.string.declare_dechets_point);
-                        builder2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent intent = new Intent(MapsActivity.this, FirstPageActivity.class);
-                                startActivity(intent);
-                            }
-                        });
-                        AlertDialog dialog2 = builder2.create();
-                        dialog2.show();
-                    }
+                } else {
+                    AlertDialog.Builder builder2 = new AlertDialog.Builder(MapsActivity.this);
+                    builder2.setTitle(R.string.merci_de);
+                    builder2.setMessage(R.string.declare_dechets_point);
+                    builder2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(MapsActivity.this, FirstPageActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                    AlertDialog dialog2 = builder2.create();
+                    dialog2.show();
                 }
-            });
+            }
+        });
 
 
         VolleySingleton.getInstance(MapsActivity.this).getAllRubbish(new Consumer<List<RubbishItem>>() {
@@ -301,7 +300,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(final Marker marker) {
-                if(userSingleton.getUser().getAvatar() != null) {
+                if (userSingleton.getUser().getAvatar() != null) {
                     if (marker.getAlpha() == 0.99f) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(MapsActivity.this);
                         builder.setMessage(R.string.collectPoint_present);
@@ -346,7 +345,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         AlertDialog dialog = builder.create();
                         dialog.show();
                     }
-                }else{
+                } else {
                     AlertDialog.Builder builder2 = new AlertDialog.Builder(MapsActivity.this);
                     builder2.setTitle(R.string.merci_de);
                     builder2.setMessage(R.string.recolter_dechets_visiteurs);
