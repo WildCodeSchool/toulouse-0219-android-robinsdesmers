@@ -219,4 +219,6 @@
     <string name="email_incorrect">L\'adresse mail est invalide</string>
     <string name="attention_ne_pas_oublier_son_mot_de_passe">Attention : Ne pas oublier son mot de passe</string>
     <string name="champs_obligatoire">* Champs obligatoire</string>
+    <string name="declare_dechets_point">Vous enregistrez afin de pouvoir déclarer des déchets ou un point de collecte</string>
+    <string name="recolter_dechets_visiteurs">Vous enregistrez afin de récolter des déchets</string>
 </resources>
