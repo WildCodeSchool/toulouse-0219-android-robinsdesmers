@@ -51,7 +51,7 @@ public class InscriptionActivity extends AppCompatActivity {
                 } else {
                     if (!isValidEmail(email.getText().toString().trim())) {
                         Toast.makeText(InscriptionActivity.this, getString(R.string.email_incorrect), Toast.LENGTH_LONG).show();
-                    } else {
+                    }
                         if (userSingleton.getUser().getLastName().isEmpty() || userSingleton.getUser().getFirstName().isEmpty()) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(InscriptionActivity.this);
                             builder.setTitle(R.string.merci_de);
@@ -65,7 +65,6 @@ public class InscriptionActivity extends AppCompatActivity {
                         }
                     }
                 }
-            }
         });
     }
 }
