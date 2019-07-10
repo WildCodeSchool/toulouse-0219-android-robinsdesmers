@@ -217,4 +217,6 @@
     <string name="merci_ramasser">MERCI D\'AVOIR AMELIORÉ NOTRE ENVIRONNEMENT!</string>
     <string name="mot_passe_incorrect">Le mot de passe doit contenir 8 charactères minimum.</string>
     <string name="email_incorrect">L\'adresse mail est invalide</string>
+    <string name="declare_dechets_point">Vous enregistrez afin de pouvoir déclarer des déchets ou un point de collecte</string>
+    <string name="recolter_dechets_visiteurs">Vous enregistrez afin de récolter des déchets</string>
 </resources>
