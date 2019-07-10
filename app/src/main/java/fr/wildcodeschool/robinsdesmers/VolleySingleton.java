@@ -33,6 +33,8 @@ import fr.wildcodeschool.robinsdesmers.model.Stats;
 import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class VolleySingleton {
+
+    //private static final String REQUEST_URL = "http://192.168.8.108:8080/";
     private static final String REQUEST_URL = "http://51.77.211.8:8080/robinsdesmers/";
     private static VolleySingleton instance;
     private static Context ctx;

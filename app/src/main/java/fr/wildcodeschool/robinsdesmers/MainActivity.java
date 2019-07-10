@@ -1,5 +1,6 @@
 package fr.wildcodeschool.robinsdesmers;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvCollectPoint;
     private TextView tvRubbish;
     private TextView tvNbCollectPoints;
+    UserSingleton userSingleton = UserSingleton.getUserInstance();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -49,9 +51,25 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(goToInfo);
                     return true;
                 case R.id.navigation_profile:
-                    Intent goToProfile = new Intent(MainActivity.this, UserProfileActivity.class);
-                    startActivity(goToProfile);
-                    return true;
+                    if (userSingleton.getUser().getAvatar() == null) {
+                        AlertDialog.Builder builder2 = new AlertDialog.Builder(MainActivity.this);
+                        builder2.setTitle(R.string.merci_de);
+                        builder2.setMessage(R.string.acces_visiteur_profile);
+                        builder2.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(MainActivity.this, FirstPageActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                        AlertDialog dialog2 = builder2.create();
+                        dialog2.show();
+                    } else {
+                        Intent goToProfile = new Intent(MainActivity.this, UserProfileActivity.class);
+                        startActivity(goToProfile);
+                    }
+
+
             }
             return false;
         }
