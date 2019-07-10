@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Robins des Mers</string>
     <string name="nom_d_utilisateur">Nom d\'utilisateur</string>
-    <string name="adresse_mail">Adresse mail</string>
-    <string name="mot_de_passe">Mot de passe</string>
+    <string name="adresse_mail">Adresse mail *</string>
+    <string name="mot_de_passe">Mot de passe *</string>
     <string name="m_moire_de_poisson_rouge">Mémoire de poisson rouge ?</string>
     <string name="se_souvenir_de_moi">Se souvenir de moi</string>
     <string name="connexion">Connexion</string>
@@ -43,11 +43,11 @@
     <string name="poubelle_classique">Poubelle classique </string>
     <string name="d_cheterie">Décheterie</string>
     <string name="inscription">Inscription</string>
-    <string name="date_de_naissance">Date de naissance</string>
+    <string name="date_de_naissance">Date de naissance *</string>
     <string name="personnalisation">Personnalisation</string>
     <string name="ton_departement">Ton département</string>
     <string name="hyphen">-</string>
-    <string name="ton_rang">Ton rang</string>
+    <string name="ton_rang">Ton rang *</string>
     <string name="navigateur">Navigateur</string>
     <string name="citoyen">Citoyen</string>
     <string name="descCitoyen">Tu es citoyen de la terre, la navigation c\'est pas ton truc ? \n Tous dans le même bateau !</string>
@@ -146,8 +146,8 @@
     <string name="zero">0</string>
     <string name="m_gots">Mégots</string>
     <string name="vous_g_olocalisez">Vous géolocalisez :</string>
-    <string name="femme">Femme</string>
-    <string name="homme">Homme</string>
+    <string name="femme">Femme *</string>
+    <string name="homme">Homme *</string>
     <string name="sss">%s%s%s</string>
     <string name="remplir">Remplir tous les champs</string>
     <string name="merci_de">Merci de :</string>
@@ -161,8 +161,8 @@
     <string name="description_megots">%s%s %s</string>
     <string name="description_metaux">%s%s %s</string>
     <string name="description_btl_plastiques">%s%s %s</string>
-    <string name="prenom">Prénom</string>
-    <string name="nom">Nom</string>
+    <string name="prenom">Prénom *</string>
+    <string name="nom">Nom *</string>
     <string name="modification">Modification du profil</string>
     <string name="donn_es_personnelles">Données personnelles</string>
     <string name="donn_es_moins_personnelles">Données moins personnelles</string>
@@ -217,4 +217,6 @@
     <string name="merci_ramasser">MERCI D\'AVOIR AMELIORÉ NOTRE ENVIRONNEMENT!</string>
     <string name="mot_passe_incorrect">Le mot de passe doit contenir 8 charactères minimum.</string>
     <string name="email_incorrect">L\'adresse mail est invalide</string>
+    <string name="attention_ne_pas_oublier_son_mot_de_passe">Attention : Ne pas oublier son mot de passe</string>
+    <string name="champs_obligatoire">* Champs obligatoire</string>
 </resources>
