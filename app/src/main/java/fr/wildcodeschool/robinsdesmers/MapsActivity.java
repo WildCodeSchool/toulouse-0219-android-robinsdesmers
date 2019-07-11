@@ -52,6 +52,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationManager mLocationManager = null;
     private FusedLocationProviderClient mFusedLocationClient;
     private Location mLocationUser = null;
+    private Marker markerHead;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -196,9 +197,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 MarkerOptions markerOptions = new MarkerOptions();
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 markerOptions.position(latLng);
-                mMap.clear();
                 markerOptions.icon(BitmapDescriptorFactory.fromResource(tete));
-                mMap.addMarker(markerOptions);
+                if (markerHead != null) {
+                    markerHead.remove();
+                }
+                markerHead = mMap.addMarker(markerOptions);
             }
             double lat = location.getLatitude();
             double lng = location.getLongitude();
@@ -240,7 +243,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     markerOptions.position(latLng);
                     markerOptions.title(getString(R.string.dechet));
-                    mMap.clear();
                     mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                     mMap.addMarker(markerOptions);
 
