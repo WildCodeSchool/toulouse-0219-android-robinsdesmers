@@ -196,6 +196,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 MarkerOptions markerOptions = new MarkerOptions();
                 LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
                 markerOptions.position(latLng);
+                mMap.clear();
                 markerOptions.icon(BitmapDescriptorFactory.fromResource(tete));
                 mMap.addMarker(markerOptions);
             }
