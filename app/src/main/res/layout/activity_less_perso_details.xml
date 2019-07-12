@@ -39,7 +39,7 @@
         android:paddingTop="5dp"
         android:paddingRight="20dp"
         android:paddingBottom="5dp"
-        android:text="@string/date_de_naissance"
+        android:text="@string/date_naissance"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:onClick="buttonchecked"
-            android:text="@string/femme"
+            android:text="@string/femme_modif"
             android:textColor="@color/colorWhite"
             android:textSize="20dp" />
 
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:onClick="buttonchecked"
-            android:text="@string/homme"
+            android:text="@string/homme_modif"
             android:textColor="@color/colorWhite"
             android:textSize="20dp" />
 

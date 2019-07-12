@@ -3,14 +3,12 @@ package fr.wildcodeschool.robinsdesmers;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.util.Consumer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import fr.wildcodeschool.robinsdesmers.information.InformationActivity;
@@ -18,12 +16,10 @@ import fr.wildcodeschool.robinsdesmers.model.Stats;
 
 
 public class MainActivity extends AppCompatActivity {
+    UserSingleton userSingleton = UserSingleton.getUserInstance();
     private TextView tvUsers;
     private TextView tvCollectPoint;
     private TextView tvRubbish;
-    private TextView tvNbCollectPoints;
-    UserSingleton userSingleton = UserSingleton.getUserInstance();
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -68,8 +64,6 @@ public class MainActivity extends AppCompatActivity {
                         Intent goToProfile = new Intent(MainActivity.this, UserProfileActivity.class);
                         startActivity(goToProfile);
                     }
-
-
             }
             return false;
         }
@@ -79,20 +73,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tvUsers = findViewById(R.id.tvUsers);
-        tvCollectPoint = findViewById(R.id.tvCollectPoints);
-        tvRubbish = findViewById(R.id.tvRubbishes);
-        tvNbCollectPoints = findViewById(R.id.tvNbCollectPoint);
+        tvUsers = findViewById(R.id.tvNbrRobins);
+        tvCollectPoint = findViewById(R.id.tvNbrePointCollecte);
+        tvRubbish = findViewById(R.id.tvNbrDechetsCollectes);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         VolleySingleton.getInstance(MainActivity.this).getStats(new Consumer<Stats>() {
             @Override
             public void accept(final Stats stats) {
-                tvUsers.setText(getString(R.string.robins_main) + " " + String.valueOf(stats.getNbUsers()));
-                tvNbCollectPoints.setText(String.valueOf(stats.getNbRubbishes()));
-                tvRubbish.setText(getString(R.string.pointcollecte_main) + "\n" + String.valueOf(stats.getNbCollectPoints()));
-                tvCollectPoint.setText(getString(R.string.dechets_declares));
+                tvUsers.setText(String.valueOf(stats.getNbUsers()));
+                tvRubbish.setText(String.valueOf(stats.getNbRubbishes()));
+                tvCollectPoint.setText(String.valueOf(stats.getNbCollectPoints()));
             }
         });
     }

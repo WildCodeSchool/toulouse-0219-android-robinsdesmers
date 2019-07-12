@@ -28,7 +28,7 @@
         android:layout_marginTop="16dp"
         android:alpha="0.6"
         android:gravity="center"
-        android:text="@string/ton_rang"
+        android:text="@string/ton_rangs"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
