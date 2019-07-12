@@ -221,4 +221,14 @@
     <string name="champs_obligatoire">* Champs obligatoire</string>
     <string name="declare_dechets_point">Vous enregistrez afin de pouvoir déclarer des déchets ou un point de collecte</string>
     <string name="recolter_dechets_visiteurs">Vous enregistrez afin de récolter des déchets</string>
+    <string name="deconnexion">Déconnexion</string>
+    <string name="ton_rangs">Ton rang</string>
+    <string name="date_naissance">Date de naissance</string>
+    <string name="femme_modif">Femme</string>
+    <string name="homme_modif">Homme</string>
+    <string name="adresse_mail_modif">Adresse mail</string>
+    <string name="nom_dutilisateur">Nom d\'utilisateu</string>
+    <string name="prenom_modif">Prénom</string>
+    <string name="mot_de_passe_modif">Mot de passe</string>
+    <string name="nom_modif">Nom</string>
 </resources>
