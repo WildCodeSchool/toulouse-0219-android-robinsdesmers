@@ -8,14 +8,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
-import com.google.android.gms.appinvite.AppInviteInvitation;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import fr.wildcodeschool.robinsdesmers.FirstPageActivity;
 import fr.wildcodeschool.robinsdesmers.MainActivity;
@@ -24,10 +18,8 @@ import fr.wildcodeschool.robinsdesmers.R;
 import fr.wildcodeschool.robinsdesmers.UserProfileActivity;
 import fr.wildcodeschool.robinsdesmers.UserSingleton;
 
-public class AboutUsActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+public class AboutUsActivity extends AppCompatActivity {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-    private static final int REQUEST_INVITE = 5076;
     UserSingleton userSingleton = UserSingleton.getUserInstance();
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -68,7 +60,6 @@ public class AboutUsActivity extends AppCompatActivity implements GoogleApiClien
                         Intent goToProfile = new Intent(AboutUsActivity.this, UserProfileActivity.class);
                         startActivity(goToProfile);
                     }
-
             }
             return false;
         }
@@ -78,49 +69,8 @@ public class AboutUsActivity extends AppCompatActivity implements GoogleApiClien
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
-
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        findViewById(R.id.btInviteFriends).setOnClickListener(this);
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        Log.d(TAG, String.format(getString(R.string.on_connection_failed2), connectionResult));
-        showMessage(getString(R.string.erreur_google));
-    }
-
-    private void onInviteClicked() {
-
-        Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invite_tes_amis))
-                .setMessage(getString(R.string.rejoindre_la_communaute))
-                .setDeepLink(Uri.parse(getString(R.string.url_oessit)))
-                .setCustomImage(Uri.parse(getString(R.string.url_logo_google)))
-                .setCallToActionText(getString(R.string.installer))
-                .build();
-        startActivityForResult(intent, REQUEST_INVITE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.d(TAG, String.format(getString(R.string.onActivityResult), requestCode, resultCode));
-
-        if (requestCode == REQUEST_INVITE) {
-            if (resultCode == RESULT_OK) {
-                String[] ids = AppInviteInvitation.getInvitationIds(resultCode, data);
-                for (String id : ids) {
-                    Log.d(TAG, String.format(getString(R.string.invitation_envoyées), id));
-                }
-            } else {
-                showMessage(getString(R.string.envoi_echoué));
-            }
-        }
-    }
-
-    private void showMessage(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 
     public void openRdm(View view) {
@@ -141,14 +91,5 @@ public class AboutUsActivity extends AppCompatActivity implements GoogleApiClien
     public void openTwitter(View view) {
         Intent twitterWebsite = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.url_twitter)));
         startActivity(twitterWebsite);
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btInviteFriends:
-                onInviteClicked();
-                break;
-        }
     }
 }
