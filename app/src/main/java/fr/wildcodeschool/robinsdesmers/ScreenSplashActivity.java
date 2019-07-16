@@ -22,15 +22,21 @@ public class ScreenSplashActivity extends AppCompatActivity {
             VolleySingleton.getInstance(ScreenSplashActivity.this).signByToken(token, new Consumer<User>() {
                 @Override
                 public void accept(User user) {
-                    UserSingleton.getUserInstance().setUser(user);
-                    Intent goToHome = new Intent(ScreenSplashActivity.this, MapsActivity.class);
-                    startActivity(goToHome);
+                    if (user != null) {
+                        UserSingleton.getUserInstance().setUser(user);
+                        Intent goToHome = new Intent(ScreenSplashActivity.this, MapsActivity.class);
+                        startActivity(goToHome);
+                    } else {
+                        Intent intent = new Intent(ScreenSplashActivity.this, FirstPageActivity.class);
+                        startActivity(intent);
+                    }
                     finish();
                 }
             });
         } else {
             Intent intent = new Intent(ScreenSplashActivity.this, FirstPageActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 }

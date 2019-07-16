@@ -247,6 +247,7 @@ public class VolleySingleton {
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.e("Error: ", error.getMessage());
+                userListener.accept(null);
             }
         });
         requestQueue.add(jsonObjectRequest);
