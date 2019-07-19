@@ -44,7 +44,7 @@ import static fr.wildcodeschool.robinsdesmers.inscription.AvatarChoicesActivity.
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private static final int REQUEST_LOCATION = 4322;
-    private static final float DEFAULT_ZOOM = 16.0f;
+    private static final float DEFAULT_ZOOM = 19.0f;
     private static final int MIN_DISTANCE = 2;
     private UserSingleton userSingleton = UserSingleton.getUserInstance();
     private GoogleMap mMap;
