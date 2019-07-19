@@ -212,7 +212,7 @@
         app:backgroundTint="@color/vert"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logout" />
+        android:src="@drawable/deconnexion"/>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/nav_view"
