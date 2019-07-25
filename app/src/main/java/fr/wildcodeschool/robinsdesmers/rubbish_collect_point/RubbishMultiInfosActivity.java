@@ -2,23 +2,29 @@ package fr.wildcodeschool.robinsdesmers.rubbish_collect_point;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.util.Consumer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import fr.wildcodeschool.robinsdesmers.MapsActivity;
 import fr.wildcodeschool.robinsdesmers.R;
-import fr.wildcodeschool.robinsdesmers.User;
-import fr.wildcodeschool.robinsdesmers.model.RubbishMarkers;
+import fr.wildcodeschool.robinsdesmers.UserSingleton;
+import fr.wildcodeschool.robinsdesmers.VolleySingleton;
+import fr.wildcodeschool.robinsdesmers.model.RubbishItem;
+import fr.wildcodeschool.robinsdesmers.model.User;
 
 public class RubbishMultiInfosActivity extends AppCompatActivity {
 
-    final int SCORE_MULTI_RUBBISH = 10;
-    final int SCORE_MULTI_RUBBISH_SIMPLE = 5;
+    final Integer SCORE_COLLECTED = 10;
+    final Integer SCORE_DECLARED = 5;
+    private UserSingleton userSingleton = UserSingleton.getUserInstance();
+    private final Long userId = userSingleton.getUser().getId();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,105 +32,138 @@ public class RubbishMultiInfosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rubbish_multi_infos);
 
         Intent intent = getIntent();
-        final RubbishMarkers location = intent.getParcelableExtra("RubbishMarkers");
-        final User user = intent.getParcelableExtra("User");
+        final RubbishItem rubbishItem = intent.getParcelableExtra("RubbishItem");
 
-        final EditText etBt = findViewById(R.id.etBouteille);
-        final EditText etMa = findViewById(R.id.etMetal);
-        final EditText etM = findViewById(R.id.etMegot);
-        final EditText etP = findViewById(R.id.etPlastique);
-        final EditText etC = findViewById(R.id.etCarton);
-        final EditText etV = findViewById(R.id.etVerre);
-        Button btSend = findViewById(R.id.btSend2);
+        final Button btSurTerre = findViewById(R.id.btSurTerre);
+        final Button btSurMer = findViewById(R.id.btSurMer);
 
-        etBt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String bouteille = etBt.getText().toString();
-                if (Integer.parseInt(bouteille) > 5) {
-                    user.setScore(SCORE_MULTI_RUBBISH);
-                } else {
-                    user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
-                }
-                location.setInfoSup(bouteille + getString(R.string.bouteilles));
-            }
-        });
-        etMa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String metal = etMa.getText().toString();
-                if (Integer.parseInt(metal) > 5) {
-                    user.setScore(SCORE_MULTI_RUBBISH);
-                } else {
-                    user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
-                }
-                location.setInfoSup(metal + getString(R.string.metal));
-            }
-        });
-        etM.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String megot = etM.getText().toString();
-                if (Integer.parseInt(megot) > 5) {
-                    user.setScore(SCORE_MULTI_RUBBISH);
-                } else {
-                    user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
-                }
-                location.setInfoSup(megot + getString(R.string.megots));
-            }
-        });
-        etC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String carton = etC.getText().toString();
-                if (Integer.parseInt(carton) > 5) {
-                    user.setScore(SCORE_MULTI_RUBBISH);
-                } else {
-                    user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
-                }
-                location.setInfoSup(carton + getString(R.string.cartons));
-            }
-        });
-        etV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String verre = etV.getText().toString();
-                if (Integer.parseInt(verre) > 5) {
-                    user.setScore(SCORE_MULTI_RUBBISH);
-                } else {
-                    user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
-                }
-                location.setInfoSup(verre + getString(R.string.dechets_en_verre));
-            }
-        });
-        etP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String plastique = etP.getText().toString();
-                if (Integer.parseInt(plastique) > 5) {
-                    user.setScore(SCORE_MULTI_RUBBISH);
-                } else {
-                    user.setScore(SCORE_MULTI_RUBBISH_SIMPLE);
-                }
+        final EditText etBtlPlastique = findViewById(R.id.etBouteille);
+        final EditText etMetal = findViewById(R.id.etMetal);
+        final EditText etMegot = findViewById(R.id.etMegot);
+        final EditText etPlastique = findViewById(R.id.etPlastique);
+        final EditText etCarton = findViewById(R.id.etCarton);
+        final EditText etVerre = findViewById(R.id.etVerre);
+        final EditText etTissus = findViewById(R.id.etTissus);
+        final EditText etAutre = findViewById(R.id.etAutres);
 
-                location.setInfoSup(plastique + getString(R.string.dechets_en_plastique));
+        final CheckBox cbDechetRamasse = findViewById(R.id.cbDechetsRamasses);
+
+        ImageButton ibSendMutliRubbish = findViewById(R.id.ibSend);
+
+        btSurTerre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btSurTerre.setSelected(true);
+                btSurMer.setSelected(false);
+                rubbishItem.setAtSea(false);
             }
         });
 
-        btSend.setOnClickListener(new View.OnClickListener() {
+        btSurMer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
-                startActivity(intent);
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference markersRef = database.getReference("RubbishMarkers");
-                String key = markersRef.push().getKey();
-                location.setKey(key);
-                markersRef.child(key).setValue(location);
+                btSurTerre.setSelected(false);
+                btSurMer.setSelected(true);
+                rubbishItem.setAtSea(true);
+            }
+        });
 
-                DatabaseReference userRef = database.getReference("User");
-                String key2 = userRef.push().getKey();
-                userRef.child(key2).setValue(user);
+        ibSendMutliRubbish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final String strBtlPlastique = etBtlPlastique.getText().toString();
+                if (!strBtlPlastique.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.description_btl_plastiques), rubbishItem.getDescription(), strBtlPlastique, getString(R.string.bouteilles_plastique)) + " ");
+                    Integer nbBtlPlastique = Integer.parseInt(strBtlPlastique);
+                    rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbBtlPlastique);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbBtlPlastique * SCORE_DECLARED));
+                }
+
+                final String strMetaux = etMetal.getText().toString();
+                if (!strMetaux.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.description_metaux), rubbishItem.getDescription(), strMetaux, getString(R.string.metaux)) + " ");
+                    Integer nbMetaux = Integer.parseInt(strMetaux);
+                    rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbMetaux);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbMetaux * SCORE_DECLARED));
+                }
+
+                final String strMegots = etMegot.getText().toString();
+                if (!strMegots.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.description_megots), rubbishItem.getDescription(), strMegots, getString(R.string.m_gots)) + " ");
+                    Integer nbMegots = Integer.parseInt(strMegots);
+                    rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbMegots);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbMegots * SCORE_DECLARED));
+                }
+
+                final String strPlastique = etPlastique.getText().toString();
+                if (!strPlastique.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.descripiton_autres_plastiques), rubbishItem.getDescription(), strPlastique, getString(R.string.autres_plastique)) + " ");
+                    Integer nbPlastiques = Integer.parseInt(strPlastique);
+                    rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbPlastiques);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbPlastiques * SCORE_DECLARED));
+                }
+
+                final String strCartons = etCarton.getText().toString();
+                if (!strCartons.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.descripiton_cartons), rubbishItem.getDescription(), strCartons, getString(R.string.cartons)) + " ");
+                    Integer nbCartons = Integer.parseInt(strCartons);
+                    rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbCartons);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbCartons * SCORE_DECLARED));
+                }
+
+                final String strVerres = etVerre.getText().toString();
+                if (!strVerres.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.descripiton_verres), rubbishItem.getDescription(), strVerres, getString(R.string.verres)) + " ");
+                    Integer nbVerres = Integer.parseInt(strVerres);
+                    rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbVerres);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbVerres * SCORE_DECLARED));
+                }
+
+                final String strTissus = etTissus.getText().toString();
+                if (!strTissus.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.descripiton_tissus), rubbishItem.getDescription(), strTissus, getString(R.string.tissus)) + " ");
+                    Integer nbrTissus = Integer.parseInt(strTissus);
+                    rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbrTissus);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbrTissus * SCORE_DECLARED));
+                }
+
+                final String strAutres = etAutre.getText().toString();
+                if (!strAutres.isEmpty()) {
+                    rubbishItem.setDescription(String.format(getString(R.string.descripiton_autres), rubbishItem.getDescription(), strAutres, getString(R.string.autres)) + " ");
+                    Integer nbrAutres = Integer.parseInt(strAutres);
+                    rubbishItem.setSumRubbish(rubbishItem.getSumRubbish() + nbrAutres);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (nbrAutres * SCORE_DECLARED));
+                }
+
+                if (cbDechetRamasse.isChecked()) {
+                    rubbishItem.setCollected(true);
+                    userSingleton.getUser().setScore(userSingleton.getUser().getScore() + (rubbishItem.getSumRubbish() * SCORE_COLLECTED));
+                    Toast.makeText(RubbishMultiInfosActivity.this, getString(R.string.merci_ramasser), Toast.LENGTH_LONG).show();
+                }
+
+                if (!btSurTerre.isSelected() && !btSurMer.isSelected() || rubbishItem.getSumRubbish() == 0) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(RubbishMultiInfosActivity.this);
+                    builder.setTitle(R.string.merci_de);
+                    builder.setMessage(R.string.remplir);
+                    builder.setPositiveButton(R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).postRubbish(rubbishItem, userSingleton.getUser(), new Consumer<RubbishItem>() {
+                        @Override
+                        public void accept(RubbishItem rubbishItem) {
+                            Intent intent = new Intent(RubbishMultiInfosActivity.this, MapsActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                    VolleySingleton.getInstance(RubbishMultiInfosActivity.this).updateUser(userId, userSingleton.getUser(), new Consumer<User>() {
+                        @Override
+                        public void accept(User user) {
+
+                        }
+                    });
+                }
             }
         });
     }

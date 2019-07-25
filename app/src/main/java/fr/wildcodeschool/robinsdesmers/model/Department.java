@@ -3,14 +3,13 @@ package fr.wildcodeschool.robinsdesmers.model;
 public class Department {
 
     private String name;
-    private int number;
+    private String number;
     private boolean selected;
 
-    public Department() {
-
+    public Department(Department department) {
     }
 
-    public Department(String nameDepartment, int number) {
+    public Department(String nameDepartment, String number) {
         this.name = nameDepartment;
         this.number = number;
         this.selected = false;
@@ -24,11 +23,11 @@ public class Department {
         this.name = name;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

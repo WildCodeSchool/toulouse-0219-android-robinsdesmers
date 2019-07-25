@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AvatarChoiceActivity"
-    android:background="@color/colorPrimary">
+    android:background="@color/vert_fonce"
+    tools:context=".AvatarChoiceActivity">
 
     <TextView
         android:id="@+id/tvPersonnalisationChoiceAvatar"
@@ -38,48 +38,50 @@
 
     <ImageButton
         android:id="@+id/imBtPrevious"
-        android:layout_width="0dp"
+        android:layout_width="150px"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:adjustViewBounds="true"
-        android:background="@color/colorPrimary"
+        android:background="@color/vert_fonce"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toTopOf="@+id/imBtAvatarChoice"
         app:layout_constraintEnd_toStartOf="@+id/imSwitcherAvatars"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_left" />
+        app:layout_constraintTop_toBottomOf="@+id/tvChoiceAvatar"
+        app:srcCompat="@drawable/left_arrow_avatar_green" />
 
     <ImageButton
         android:id="@+id/imBtNext"
-        android:layout_width="0dp"
+        android:layout_width="150px"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:adjustViewBounds="true"
-        android:background="@color/colorPrimary"
+        android:background="@color/vert_fonce"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toTopOf="@+id/imBtAvatarChoice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imSwitcherAvatars"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_right" />
+        app:layout_constraintTop_toBottomOf="@+id/tvChoiceAvatar"
+        app:srcCompat="@drawable/right_arrow_avatar_green" />
 
     <ImageSwitcher
         android:id="@+id/imSwitcherAvatars"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/imBtAvatarChoice"
         app:layout_constraintEnd_toStartOf="@+id/imBtNext"
         app:layout_constraintStart_toEndOf="@+id/imBtPrevious"
         app:layout_constraintTop_toBottomOf="@+id/tvChoiceAvatar">
@@ -90,12 +92,12 @@
         android:id="@+id/imBtAvatarChoice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginBottom="32dp"
-        android:background="@color/colorPrimary"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/vert_fonce"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imSwitcherAvatars"
-        app:srcCompat="@mipmap/ic_launcher_button" />
+        app:srcCompat="@drawable/btn_empreinte" />
 </android.support.constraint.ConstraintLayout>

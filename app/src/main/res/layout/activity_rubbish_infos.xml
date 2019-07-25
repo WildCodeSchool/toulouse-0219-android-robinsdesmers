@@ -4,176 +4,235 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".rubbish_collect_point.RubbishInfosActivity"
-    android:background="@color/vert_fonce">
+    android:background="@color/vert_fonce"
+    tools:context=".rubbish_collect_point.RubbishInfosActivity">
 
-    <CheckBox
-        android:id="@+id/cbBouteille"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
+    <View
+        android:id="@+id/divTop"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="32dp"
-        android:text=""
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@color/orange"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <CheckBox
-        android:id="@+id/cbVerre"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="70dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbBouteille" />
-
-    <CheckBox
-        android:id="@+id/cbPlastique"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="70dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbVerre" />
-
-    <CheckBox
-        android:id="@+id/cbMetal"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginLeft="64dp"
-        android:layout_marginTop="70dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbPlastique" />
-
-    <CheckBox
-        android:id="@+id/cbMegot"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="70dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbMetal" />
-
-    <CheckBox
-        android:id="@+id/cbCarton"
-        android:layout_width="25dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="70dp"
-        android:text=""
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbMegot" />
-
-    <TextView
-        android:id="@+id/tvBouteille"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/bouteilles_plastique"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cbBouteille"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tvVerre"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="70dp"
-        android:text="@string/verre"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cbVerre"
-        app:layout_constraintTop_toBottomOf="@+id/tvBouteille" />
-
-    <TextView
-        android:id="@+id/tvPlastique"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="70dp"
-        android:text="@string/autre_plastique"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cbPlastique"
-        app:layout_constraintTop_toBottomOf="@+id/tvVerre" />
-
-    <TextView
-        android:id="@+id/tvMetal"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="69dp"
-        android:text="@string/m_tal"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cbMetal"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlastique" />
-
-    <TextView
-        android:id="@+id/tvMegot"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="70dp"
-        android:text="@string/m_got"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cbMegot"
-        app:layout_constraintTop_toBottomOf="@+id/tvMetal" />
-
-    <TextView
-        android:id="@+id/tvCarton"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="70dp"
-        android:text="@string/carton"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cbCarton"
-        app:layout_constraintTop_toBottomOf="@+id/tvMegot" />
 
     <Button
-        android:id="@+id/btSend4"
-        android:layout_width="137dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="161dp"
-        android:layout_marginLeft="161dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginRight="162dp"
-        android:layout_marginBottom="32dp"
-        android:alpha="0.70"
-        android:background="@drawable/button_rounded"
-        android:backgroundTint="@color/orange"
-        android:text="@string/envoyer"
+        android:id="@+id/btTerre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_category"
+        android:text="@string/sur_terre"
+        android:textColor="@color/colorWhite"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/divMiddle"
+        app:layout_constraintEnd_toStartOf="@+id/btMer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divTop" />
+
+    <Button
+        android:id="@+id/btMer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_category"
+        android:text="@string/sur_mer"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/divMiddle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btTerre"
+        app:layout_constraintTop_toBottomOf="@+id/divTop" />
+
+    <View
+        android:id="@+id/divMiddle"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@color/orange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btTerre" />
+
+
+    <RadioGroup
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/divBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divMiddle">
+
+        <RadioButton
+            android:id="@+id/rbBouteille"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/checkbox_button"
+            android:text="@string/bouteille"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:onClick="checked"/>
+
+        <RadioButton
+            android:id="@+id/rbVerre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/checkbox_button"
+            android:text="@string/verre"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:onClick="checked" />
+
+        <RadioButton
+            android:id="@+id/rbPlastique"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/checkbox_button"
+            android:text="@string/autre_plastique"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:onClick="checked" />
+
+        <RadioButton
+            android:id="@+id/rbMetal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/checkbox_button"
+            android:text="@string/m_tal"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:onClick="checked" />
+
+        <RadioButton
+            android:id="@+id/rbMegot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/checkbox_button"
+            android:text="@string/m_got"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:onClick="checked" />
+
+        <RadioButton
+            android:id="@+id/rbCarton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/checkbox_button"
+            android:text="@string/carton"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:onClick="checked" />
+
+        <RadioButton
+            android:id="@+id/rbTissus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/checkbox_button"
+            android:text="@string/tissus"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:onClick="checked" />
+
+        <RadioButton
+            android:id="@+id/rbAutre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@drawable/checkbox_button"
+            android:text="@string/autre"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:onClick="checked" />
+    </RadioGroup>
+
+    <View
+        android:id="@+id/divBottom"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/orange"
+        app:layout_constraintBottom_toTopOf="@+id/cbDechetRamasse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cbDechetRamasse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="16dp"
+        android:button="@drawable/checkbox_button"
+        android:text="@string/ce_d_chet_a_t_ramass"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/ibSendRubbish"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/ibSendRubbish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/button_rounded"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/btn_empreinte" />
 
 </android.support.constraint.ConstraintLayout>

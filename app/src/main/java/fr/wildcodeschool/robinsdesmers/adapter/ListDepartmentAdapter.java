@@ -9,11 +9,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import fr.wildcodeschool.robinsdesmers.R;
+import fr.wildcodeschool.robinsdesmers.UserSingleton;
 import fr.wildcodeschool.robinsdesmers.model.Department;
 
 public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAdapter.DepartmentViewHolder> {
 
     private ArrayList<Department> departments;
+    private UserSingleton userSingleton = UserSingleton.getUserInstance();
 
     public ListDepartmentAdapter(ArrayList<Department> departments) {
         this.departments = departments;
@@ -27,11 +29,14 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
     }
 
     @Override
-    public void onBindViewHolder(DepartmentViewHolder holder, int position) {
+    public void onBindViewHolder(DepartmentViewHolder holder, final int position) {
         Department department = departments.get(position);
         holder.tvName.setText(department.getName());
-        holder.tvNumber.setText(Integer.toString(department.getNumber()));
+        holder.tvNumber.setText(department.getNumber());
         holder.container.setSelected(department.isSelected());
+        if (holder.container.isSelected()) {
+            userSingleton.getUser().setDepartment(department.getNumber() + " " + holder.container.getContext().getString(R.string.hyphen) + " " + department.getName());
+        }
     }
 
     @Override
@@ -39,7 +44,7 @@ public class ListDepartmentAdapter extends RecyclerView.Adapter<ListDepartmentAd
         return departments.size();
     }
 
-    class DepartmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class DepartmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private View container;
         private TextView tvName;
         private TextView tvNumber;

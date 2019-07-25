@@ -1,56 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/vert_fonce"
     tools:context=".FirstPageActivity">
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ImageButton
+        android:id="@+id/ibRegisterPrincipal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="@color/vert_fonce"
+        android:padding="0dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/avatar_inscription"
+        app:layout_constraintBottom_toTopOf="@+id/ibSignPrincipal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/ibRegisterPrincipal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:padding="0dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/register"
-            app:layout_constraintBottom_toTopOf="@+id/ibSignPrincipal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageButton
+        android:id="@+id/ibSignPrincipal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="@color/vert"
+        android:padding="0dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/avatar_connexion"
+        app:layout_constraintBottom_toTopOf="@+id/ibVisitorPrincipal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibRegisterPrincipal" />
 
-        <ImageButton
-            android:id="@+id/ibSignPrincipal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:padding="0dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/sign_in"
-            app:layout_constraintBottom_toTopOf="@+id/ibVisitorPrincipal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ibRegisterPrincipal" />
+    <ImageButton
+        android:id="@+id/ibVisitorPrincipal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:background="@color/orange"
+        android:padding="0dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/avatar_visiteur"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ibSignPrincipal" />
 
-        <ImageButton
-            android:id="@+id/ibVisitorPrincipal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:padding="0dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/visitor"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ibSignPrincipal"
-            app:layout_constraintVertical_bias="0.0" />
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+    <TextView
+        android:id="@+id/tvInscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/inscription"
+        android:textColor="@color/colorWhite"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="@+id/ibRegisterPrincipal"
+        app:layout_constraintTop_toTopOf="@+id/ibRegisterPrincipal" />
+
+    <TextView
+        android:id="@+id/tvConnexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="@string/connexion"
+        android:textColor="@color/colorWhite"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="@+id/ibSignPrincipal"
+        app:layout_constraintTop_toTopOf="@+id/ibSignPrincipal" />
+
+    <TextView
+        android:id="@+id/tvVisiteur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Visiteur"
+        android:textColor="@color/colorWhite"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="@+id/ibVisitorPrincipal"
+        app:layout_constraintTop_toTopOf="@+id/ibVisitorPrincipal" />
+
+</android.support.constraint.ConstraintLayout>

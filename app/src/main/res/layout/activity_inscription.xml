@@ -23,10 +23,37 @@
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/etNameRegister"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/border"
-            android:hint="@string/nom_d_utilisateur"
+            android:hint="@string/nom"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:textColor="@color/colorBlack" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/firstNameRegister"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameRegister"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/etFirstNameRegister"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/border"
+            android:hint="@string/prenom"
             android:inputType="text"
             android:paddingLeft="20dp" />
     </android.support.design.widget.TextInputLayout>
@@ -43,17 +70,18 @@
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameRegister"
+        app:layout_constraintTop_toBottomOf="@+id/firstNameRegister"
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
-
+            android:id="@+id/etMailRegister"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/border"
             android:hint="@string/adresse_mail"
             android:inputType="textEmailAddress"
-            android:paddingLeft="20dp" />
+            android:paddingLeft="20dp"
+            android:textColorHighlight="@color/color_transparent" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -65,7 +93,6 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
-
         app:hintEnabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,27 +100,30 @@
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/etPasswordRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border"
             android:hint="@string/mot_de_passe"
             android:inputType="textPassword"
             android:paddingLeft="20dp"
-            android:paddingRight="20dp" />
+            android:paddingRight="20dp"
+            android:textColorHighlight="@color/color_transparent" />
     </android.support.design.widget.TextInputLayout>
 
     <ImageButton
-        android:background="@color/vert_fonce"
-        android:id="@+id/imBtRegister"
+        android:id="@+id/imBtEditLessPerso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/vert_fonce"
+        app:layout_constraintBottom_toTopOf="@+id/tvFieldRequiredRegister"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordRegister"
-        app:srcCompat="@mipmap/ic_launcher_button" />
+        app:layout_constraintTop_toBottomOf="@+id/tvMsgForPassword"
+        app:srcCompat="@drawable/btn_empreinte" />
 
     <TextView
         android:id="@+id/tvInscripiton"
@@ -101,11 +131,56 @@
         android:layout_height="0dp"
         android:layout_marginTop="28dp"
         android:gravity="center"
-        android:text="@string/inscripiton"
+        android:text="@string/inscription"
         android:textColor="@color/colorWhite"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvMsgForPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/attention_ne_pas_oublier_son_mot_de_passe"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/imBtEditLessPerso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordRegister" />
+
+    <TextView
+        android:id="@+id/tvFieldRequiredRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/champs_obligatoire"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imBtEditLessPerso" />
 
 </android.support.constraint.ConstraintLayout>
