@@ -140,7 +140,7 @@
         app:backgroundTint="@color/vert"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/button_settings" />
+        app:srcCompat="@drawable/parameters" />
 
     <TextView
         android:id="@+id/tvGrade"
